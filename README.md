@@ -10,12 +10,14 @@ This is **Next Template** for development. Technolgies used: **React, TypeScript
 
 ## File Structure
 
--   components
-    -   elements
+-   app
     -   pages
-    -   ui
--   helpers
--   store
--   types
-    -   enums
-    -   interfaces
+-   src
+    -   components
+        -   elements
+        -   ui
+    -   helpers
+    -   store
+    -   types
+        -   enums
+        -   interfaces
