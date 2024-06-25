@@ -1,10 +1,12 @@
-type Props = {
-    children: React.ReactNode;
+import { LabelHTMLAttributes, forwardRef } from 'react';
+
+interface Props extends LabelHTMLAttributes<HTMLLabelElement> {
     className?: string;
-};
+}
 
-const Label: React.FC<Props> = ({ children, className = '' }) => {
-    return <label className={`relative block w-full ${className}`}>{children}</label>;
-};
+const Label: React.FC<Props> = forwardRef<HTMLLabelElement, Props>(({ className = '', ...props }, ref) => (
+    <label ref={ref} {...props} className={`relative block w-full ${className}`} />
+));
 
+Label.displayName = 'Label';
 export default Label;
