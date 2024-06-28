@@ -20,7 +20,7 @@ const RootLayout: React.FC<Props> = ({ children }) => {
         <StoreProvider>
             <html lang='en'>
                 <body>
-                    <main className='relative w-full max-w-[1440px] p-[24px] md:p-[40px] m-auto'>{children}</main>
+                    <main className='relative w-full max-w-screen-2xl p-6 md:p-10 m-auto'>{children}</main>
                 </body>
             </html>
         </StoreProvider>

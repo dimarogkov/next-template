@@ -5,11 +5,7 @@ interface Props extends HTMLAttributes<HTMLHeadingElement> {
 }
 
 const Title: React.FC<Props> = forwardRef<HTMLHeadingElement, Props>(({ className = '', ...props }, ref) => (
-    <h1
-        ref={ref}
-        {...props}
-        className={`w-full text-[28px] md:text-[32px] lg:text-[40px] xl:text-[48px] font-bold ${className}`}
-    />
+    <h1 ref={ref} {...props} className={`w-full text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold ${className}`} />
 ));
 
 Title.displayName = 'Title';
