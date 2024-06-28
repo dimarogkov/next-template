@@ -5,6 +5,7 @@ This is **Next Template** for development. Technolgies used: **React, TypeScript
 ## Installation Steps
 
 -   Download the repository
+-   Use the 18th version of Node.js
 -   Run `npm i`
 -   Run `npm run dev`
 
