@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import countReducer from './countReducer.ts';
 import { TypedUseSelectorHook, createDispatchHook, createSelectorHook } from 'react-redux';
-import counterSlice from './counterSlice';
 
 export const store = configureStore({
     reducer: {
-        counter: counterSlice,
+        count: countReducer,
     },
 });
 

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import StoreProvider from '@/src/store/StoreProvider';
+import StoreProvider from '@/src/storeRedux/StoreProvider';
 
 import './globals.css';
 
