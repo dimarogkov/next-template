@@ -1,19 +1,30 @@
 import { AnchorHTMLAttributes, forwardRef } from 'react';
+import { BtnTypes } from '@/src/types/enums/BtnTypes';
 import Link from 'next/link';
+import cn from 'classnames';
 
 interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
     href: string;
     className?: string;
+    btnType?: string;
 }
 
-const BtnLink: React.FC<Props> = forwardRef<HTMLAnchorElement, Props>(({ href, className = '', ...props }, ref) => (
-    <Link
-        ref={ref}
-        {...props}
-        href={href}
-        className={`flex items-center justify-center w-full sm:w-fit sm:min-w-32 lg:min-w-36 h-10 lg:h-11 font-media px-4 rounded text-[#fff] bg-black transition-opacity duration-300 hover:opacity-80 ${className}`}
-    />
-));
+const BtnLink: React.FC<Props> = forwardRef<HTMLAnchorElement, Props>(
+    ({ href, btnType = BtnTypes.default, className = '', ...props }, ref) => (
+        <Link
+            ref={ref}
+            {...props}
+            href={href}
+            className={cn(
+                `flex items-center justify-center w-full sm:w-fit sm:min-w-32 lg:min-w-36 h-10 lg:h-11 font-media px-4 rounded text-white transition-opacity duration-300 hover:opacity-80 ${className}`,
+                {
+                    'bg-blue': btnType === BtnTypes.default,
+                    'bg-black/25': btnType === BtnTypes.gray,
+                }
+            )}
+        />
+    )
+);
 
 BtnLink.displayName = 'BtnLink';
 export default BtnLink;

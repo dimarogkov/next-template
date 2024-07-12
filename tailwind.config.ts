@@ -7,7 +7,15 @@ const config: Config = {
         './app/**/*.{js,ts,jsx,tsx,mdx}',
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                black: '#222831',
+                blue: '#5356ff',
+                red: '#f1003a',
+                gray: '#e5e5e5',
+                white: '#fff',
+            },
+        },
     },
     plugins: [require('daisyui')],
 };
