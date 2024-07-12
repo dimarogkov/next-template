@@ -2,12 +2,15 @@
 import { useForm } from 'react-hook-form';
 import { formOptions } from '@/src/helpers/formOptions';
 import { FormNames } from '@/src/types/enums/FormNames';
-import { Btn, BtnLink, ErrorMessage, Input, Label, Title } from '../../ui';
+import { BtnTypes } from '@/src/types/enums/BtnTypes';
+import { Btn, BtnLink, Checkbox, ErrorMessage, Input, Label, Option, Select, Text, Title } from '../../ui';
 
 const Form = () => {
     const {
         register,
+        watch,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm(formOptions);
 
@@ -24,6 +27,19 @@ const Form = () => {
             <Title className='mb-5 last:mb-0'>React Hook Form</Title>
 
             <form className='w-full max-w-xl' onSubmit={handleSubmit(onSubmit)}>
+                <Label className='w-full mb-5 last:mb-0'>
+                    <Select register={register} registerName={FormNames.select} className='mb-2 last:mb-0'>
+                        <Option value='default' className='hidden'>
+                            Select Option
+                        </Option>
+                        <Option value='option_1'>Option 1</Option>
+                        <Option value='option_2'>Option 2</Option>
+                        <Option value='option_3'>Option 3</Option>
+                    </Select>
+
+                    {errors.select && <ErrorMessage>{errors.select.message}</ErrorMessage>}
+                </Label>
+
                 <Label className='w-full mb-5 last:mb-0'>
                     <Input
                         placeholder='Username'
@@ -94,7 +110,27 @@ const Form = () => {
                     {errors.confirmPassword && <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>}
                 </Label>
 
-                <Btn type='submit'>Send</Btn>
+                <Label className='w-full mb-5 last:mb-0'>
+                    <div className='flex items-center gap-2 cursor-pointer mb-2 last:mb-0'>
+                        <Checkbox
+                            isChecked={watch('rememberMe')}
+                            register={register}
+                            registerName={FormNames.rememberMe}
+                        />
+
+                        <Text>Remember me</Text>
+                    </div>
+
+                    {errors.rememberMe && <ErrorMessage>{errors.rememberMe.message}</ErrorMessage>}
+                </Label>
+
+                <div className='flex flex-wrap gap-2 w-full'>
+                    <Btn type='submit'>Send</Btn>
+
+                    <Btn type='button' btnType={BtnTypes.gray} onClick={() => reset()}>
+                        Reset
+                    </Btn>
+                </div>
             </form>
         </div>
     );
