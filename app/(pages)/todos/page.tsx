@@ -15,7 +15,7 @@ const TodosPage = () => {
                     Back
                 </BtnLink>
 
-                <Title className='mb-5 last:mb-0'>Todos with React Query</Title>
+                <Title>Todos with React Query</Title>
             </div>
 
             <AddTodo />
