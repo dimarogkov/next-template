@@ -1,4 +1,5 @@
 import Store from '../src/components/elements/Store/Store';
+import Line from '@/src/components/elements/Line/Line';
 import { BtnLink, Text, Title } from '@/src/components/ui';
 
 const HomePage = () => {
@@ -7,9 +8,14 @@ const HomePage = () => {
             <div className='w-full mb-5 last:mb-0'>
                 <Title className='mb-2 last:mb-0'>Home Page</Title>
                 <Text className='mb-5 last:mb-0'>This is Home Page.</Text>
-                <BtnLink href='/form'>Form Page</BtnLink>
+
+                <div className='flex flex-wrap gap-2 w-full'>
+                    <BtnLink href='/form'>Form Page</BtnLink>
+                    <BtnLink href='/todos'>Todos Page</BtnLink>
+                </div>
             </div>
 
+            <Line />
             <Store />
         </section>
     );

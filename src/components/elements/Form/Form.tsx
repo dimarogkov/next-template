@@ -11,7 +11,7 @@ const Form = () => {
         watch,
         handleSubmit,
         reset,
-        formState: { errors },
+        formState: { errors, isSubmitted },
     } = useForm(formOptions);
 
     const onSubmit = (data: any) => {
@@ -127,7 +127,7 @@ const Form = () => {
                 <div className='flex flex-wrap gap-2 w-full'>
                     <Btn type='submit'>Send</Btn>
 
-                    <Btn type='button' btnType={BtnTypes.gray} onClick={() => reset()}>
+                    <Btn type='button' btnType={BtnTypes.gray} disabled={!isSubmitted} onClick={() => reset()}>
                         Reset
                     </Btn>
                 </div>
