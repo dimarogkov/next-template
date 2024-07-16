@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import StoreProvider from '@/src/storeRedux/StoreProvider';
-
+import { Root, RootProviders } from '@/src/components/root';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -17,13 +16,9 @@ type Props = {
 
 const RootLayout: React.FC<Props> = ({ children }) => {
     return (
-        <StoreProvider>
-            <html lang='en'>
-                <body>
-                    <main className='relative w-full max-w-screen-2xl p-6 md:p-10 m-auto'>{children}</main>
-                </body>
-            </html>
-        </StoreProvider>
+        <RootProviders>
+            <Root>{children}</Root>
+        </RootProviders>
     );
 };
 
