@@ -1,3 +1,3 @@
-export interface CountState {
+export interface ICountState {
     count: number;
 }

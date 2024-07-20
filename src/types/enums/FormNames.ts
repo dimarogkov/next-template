@@ -1,4 +1,4 @@
-export enum FormNames {
+export enum EnumFormNames {
     username = 'username',
     age = 'age',
     email = 'email',

@@ -1,17 +1,17 @@
 import { forwardRef, SelectHTMLAttributes } from 'react';
 import { UseFormRegister } from 'react-hook-form';
-import { FormNames } from '@/src/types/enums/FormNames';
-import { FormValues } from '@/src/types/interfaces/FormValues';
+import { EnumFormNames } from '@/src/types/enums/FormNames';
+import { IFormValues } from '@/src/types/interfaces/FormValues';
 import { LuChevronDown } from 'react-icons/lu';
 
-interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
+interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
     className?: string;
-    registerName?: FormNames;
-    register?: UseFormRegister<FormValues>;
+    registerName?: EnumFormNames;
+    register?: UseFormRegister<IFormValues>;
 }
 
-const Select: React.FC<SelectProps> = forwardRef<HTMLSelectElement, SelectProps>(
-    ({ className = '', registerName = FormNames.select, register = () => {}, ...props }, ref) => (
+const Select: React.FC<Props> = forwardRef<HTMLSelectElement, Props>(
+    ({ className = '', registerName = EnumFormNames.select, register = () => {}, ...props }, ref) => (
         <div className={`relative flex items-center w-full h-10 ${className}`}>
             <select
                 ref={ref}

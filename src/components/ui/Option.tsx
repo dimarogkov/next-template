@@ -1,8 +1,8 @@
 import { forwardRef, OptionHTMLAttributes } from 'react';
 
-interface OptionProps extends OptionHTMLAttributes<HTMLOptionElement> {}
+interface Props extends OptionHTMLAttributes<HTMLOptionElement> {}
 
-const Option: React.FC<OptionProps> = forwardRef<HTMLOptionElement, OptionProps>(({ ...props }, ref) => (
+const Option: React.FC<Props> = forwardRef<HTMLOptionElement, Props>(({ ...props }, ref) => (
     <option ref={ref} {...props} />
 ));
 

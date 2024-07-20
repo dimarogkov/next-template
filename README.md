@@ -1,6 +1,6 @@
 # Next Template
 
-This is **Next Template** for development. Technolgies used: **React, TypeScript, Redux Toolkit, Tailwind CSS.**
+This is **Next Template** for development. Technolgies used: **React, TypeScript, Tailwind CSS, Axios, React Query, React Hook Form, Yup, Lodash Debounce, Redux Toolkit, Zustand.**
 
 ## Installation Steps
 
@@ -18,6 +18,7 @@ This is **Next Template** for development. Technolgies used: **React, TypeScript
         -   elements
         -   ui
     -   helpers
+    -   services
     -   store
     -   types
         -   enums
