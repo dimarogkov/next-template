@@ -1,4 +1,4 @@
-export enum BtnTypes {
+export enum EnumBtnTypes {
     default = 'default',
     gray = 'gray',
 }

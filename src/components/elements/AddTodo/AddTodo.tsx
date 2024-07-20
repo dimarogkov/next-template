@@ -8,7 +8,7 @@ const AddTodo = () => {
     const [todoTitle, setTodoTitle] = useState('');
     const { invalidateQueries } = useQueryClient();
 
-    const { mutate: createTodoMutation, isPending: isPendingCreateTodo } = useMutation({
+    const { mutate: createTodoMutation, isPending } = useMutation({
         mutationFn: createTodo,
         mutationKey: ['create todo'],
         onSuccess: () => invalidateQueries({ queryKey: ['todos'] }),
@@ -34,12 +34,12 @@ const AddTodo = () => {
             <Input
                 name='search'
                 placeholder='Add Todo'
-                disabled={isPendingCreateTodo}
+                disabled={isPending}
                 value={todoTitle}
                 onChange={({ target }) => setTodoTitle(target.value)}
             />
-            <Btn disabled={isPendingCreateTodo} onClick={addTodo}>
-                {isPendingCreateTodo ? 'Loading...' : 'Add todo'}
+            <Btn disabled={isPending} onClick={addTodo}>
+                {isPending ? 'Loading...' : 'Add todo'}
             </Btn>
         </div>
     );

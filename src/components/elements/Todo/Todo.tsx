@@ -1,15 +1,15 @@
-import { UseMutateFunction } from '@tanstack/react-query';
 import { AxiosResponse } from 'axios';
-import { Todo as TodoType } from '@/src/types/interfaces/Todo';
+import { UseMutateFunction } from '@tanstack/react-query';
+import { ITodo } from '@/src/types/interfaces/Todo';
 
 import { LuTrash } from 'react-icons/lu';
 import { Btn, Subtitle, Text } from '../../ui';
 import cn from 'classnames';
 
 type Props = {
-    todo: TodoType;
-    updateTodo: UseMutateFunction<AxiosResponse<TodoType, any>, Error, TodoType, unknown>;
-    removeTodo: UseMutateFunction<AxiosResponse<TodoType, any>, Error, number, unknown>;
+    todo: ITodo;
+    updateTodo: UseMutateFunction<AxiosResponse<ITodo, any>, Error, ITodo, unknown>;
+    removeTodo: UseMutateFunction<AxiosResponse<ITodo, any>, Error, number, unknown>;
 };
 
 export const Todo: React.FC<Props> = ({ todo, updateTodo, removeTodo }) => {
