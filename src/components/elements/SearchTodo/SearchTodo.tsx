@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 import { useCallback, useState } from 'react';
-import debounce from 'lodash.debounce';
 import { useTodo } from '@/src/storeZustand/todo';
+import { debounce } from '@/src/helpers/debounce';
 import { Input } from '../../ui';
 
 const SearchTodo = () => {
