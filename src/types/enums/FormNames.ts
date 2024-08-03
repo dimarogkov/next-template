@@ -6,5 +6,6 @@ export enum EnumFormNames {
     select = 'select',
     password = 'password',
     confirmPassword = 'confirmPassword',
+    radioType = 'radioType',
     rememberMe = 'rememberMe',
 }

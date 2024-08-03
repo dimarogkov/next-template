@@ -25,6 +25,7 @@ const validationSchema = yup
             .trim()
             .required('Missing confirm password')
             .oneOf([yup.ref('password')], 'Passwords must match'),
+        radioType: yup.string().required('Radio Type is required'),
         rememberMe: yup.bool().required().oneOf([true], 'Remember me is required'),
     })
     .required();
@@ -39,6 +40,7 @@ export const formOptions = {
         select: 'default',
         password: '',
         confirmPassword: '',
+        radioType: '',
         rememberMe: false,
     },
 };

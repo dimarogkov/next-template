@@ -2,8 +2,8 @@
 import { useForm } from 'react-hook-form';
 import { formOptions } from '@/src/helpers/formOptions';
 import { EnumFormNames } from '@/src/types/enums/FormNames';
-import { EnumBtnTypes } from '@/src/types/enums/BtnTypes';
-import { Btn, Checkbox, ErrorMessage, Input, Label, Option, Select, Text } from '../../ui';
+import { EnumBtn } from '@/src/types/enums/Btn';
+import { Btn, Checkbox, ErrorMessage, Input, Label, Option, Radio, Select, Text } from '../../ui';
 
 const Form = () => {
     const {
@@ -20,6 +20,7 @@ const Form = () => {
 
     return (
         <form className='w-full max-w-xl' onSubmit={handleSubmit(onSubmit)}>
+            {/* select */}
             <Label className='w-full mb-5 last:mb-0'>
                 <Select register={register} registerName={EnumFormNames.select} className='mb-2 last:mb-0'>
                     <Option value='default' className='hidden'>
@@ -32,7 +33,9 @@ const Form = () => {
 
                 {errors.select && <ErrorMessage>{errors.select.message}</ErrorMessage>}
             </Label>
+            {/* end select */}
 
+            {/* text */}
             <Label className='w-full mb-5 last:mb-0'>
                 <Input
                     placeholder='Username'
@@ -43,7 +46,9 @@ const Form = () => {
 
                 {errors.username && <ErrorMessage>{errors.username.message}</ErrorMessage>}
             </Label>
+            {/* end text */}
 
+            {/* number */}
             <Label className='w-full mb-5 last:mb-0'>
                 <Input
                     type='number'
@@ -55,7 +60,9 @@ const Form = () => {
 
                 {errors.age && <ErrorMessage>{errors.age.message}</ErrorMessage>}
             </Label>
+            {/* end number */}
 
+            {/* email */}
             <Label className='w-full mb-5 last:mb-0'>
                 <Input
                     type='email'
@@ -67,7 +74,9 @@ const Form = () => {
 
                 {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
             </Label>
+            {/* end email */}
 
+            {/* phone */}
             <Label className='w-full mb-5 last:mb-0'>
                 <Input
                     placeholder='Phone'
@@ -78,7 +87,9 @@ const Form = () => {
 
                 {errors.phone && <ErrorMessage>{errors.phone.message}</ErrorMessage>}
             </Label>
+            {/* end phone */}
 
+            {/* password */}
             <Label className='w-full mb-5 last:mb-0'>
                 <Input
                     type='password'
@@ -102,7 +113,41 @@ const Form = () => {
 
                 {errors.confirmPassword && <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>}
             </Label>
+            {/* end password */}
 
+            {/* radio */}
+            <div className='w-full mb-5 last:mb-0'>
+                <div className='flex gap-4 w-full mb-2 last:mb-0'>
+                    <Label className='w-full'>
+                        <div className='flex items-center gap-2 cursor-pointer'>
+                            <Radio
+                                isChecked={watch('radioType')}
+                                value='type_one'
+                                register={register}
+                                registerName={EnumFormNames.radioType}
+                            />
+                            <Text>Type One</Text>
+                        </div>
+                    </Label>
+
+                    <Label className='w-full'>
+                        <div className='flex items-center gap-2 cursor-pointer'>
+                            <Radio
+                                isChecked={watch('radioType')}
+                                value='type_two'
+                                register={register}
+                                registerName={EnumFormNames.radioType}
+                            />
+                            <Text>Type Two</Text>
+                        </div>
+                    </Label>
+                </div>
+
+                {errors.radioType && <ErrorMessage>{errors.radioType.message}</ErrorMessage>}
+            </div>
+            {/* end radio */}
+
+            {/* checkbox */}
             <Label className='w-full mb-5 last:mb-0'>
                 <div className='flex items-center gap-2 cursor-pointer mb-2 last:mb-0'>
                     <Checkbox
@@ -116,11 +161,12 @@ const Form = () => {
 
                 {errors.rememberMe && <ErrorMessage>{errors.rememberMe.message}</ErrorMessage>}
             </Label>
+            {/* end checkbox */}
 
             <div className='flex flex-wrap gap-2 w-full'>
                 <Btn type='submit'>Send</Btn>
 
-                <Btn type='button' btnType={EnumBtnTypes.gray} disabled={!isSubmitted} onClick={() => reset()}>
+                <Btn type='button' btnType={EnumBtn.gray} disabled={!isSubmitted} onClick={() => reset()}>
                     Reset
                 </Btn>
             </div>

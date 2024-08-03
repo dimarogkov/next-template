@@ -6,5 +6,6 @@ export interface IFormValues {
     select: string;
     password: string;
     confirmPassword: string;
+    radioType: string;
     rememberMe: boolean;
 }
