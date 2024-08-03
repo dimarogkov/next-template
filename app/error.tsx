@@ -1,16 +1,18 @@
 'use client';
-import { Title } from '@/src/components/ui';
+import { Btn, Title } from '@/src/components/ui';
 
 type Props = {
-    error: Error;
+    error?: Error;
+    reset?: () => void;
 };
 
-const ErrorBoundary: React.FC<Props> = ({ error }) => {
+const Error: React.FC<Props> = ({ error, reset = () => {} }) => {
     return (
         <section className='relative w-full'>
-            <Title>{error.message}</Title>
+            <Title>{error?.message}</Title>
+            <Btn onClick={() => reset()}>Retry</Btn>
         </section>
     );
 };
 
-export default ErrorBoundary;
+export default Error;
