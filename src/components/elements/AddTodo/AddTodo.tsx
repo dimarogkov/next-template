@@ -38,7 +38,8 @@ const AddTodo = () => {
                 value={todoTitle}
                 onChange={({ target }) => setTodoTitle(target.value)}
             />
-            <Btn disabled={isPending} onClick={addTodo}>
+
+            <Btn disabled={todoTitle.length === 0 || isPending} onClick={addTodo}>
                 {isPending ? 'Loading...' : 'Add todo'}
             </Btn>
         </div>
