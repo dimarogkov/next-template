@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Form from '@/src/components/elements/Form/Form';
-import { BtnLink, Title } from '@/src/components/ui';
+import { BtnLink, Line, Title } from '@/src/components/ui';
 
 export const metadata: Metadata = {
     title: 'Form Page',
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 const FormPage = () => {
     return (
         <section className='relative w-full'>
-            <div className='w-full mb-5 last:mb-0'>
+            <div className='w-full'>
                 <BtnLink href='/' className='mb-5 last:mb-0'>
                     Back
                 </BtnLink>
@@ -17,6 +17,7 @@ const FormPage = () => {
                 <Title>React Hook Form</Title>
             </div>
 
+            <Line />
             <Form />
         </section>
     );

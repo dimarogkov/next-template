@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import ThemeController from '@/src/components/elements/ThemeController/ThemeController';
-import { BtnLink, Subtitle, Text, Title } from '@/src/components/ui';
+import { BtnLink, Line, Subtitle, Text, Title } from '@/src/components/ui';
 
 export const metadata: Metadata = {
     title: 'Theme Page',
@@ -9,13 +9,15 @@ export const metadata: Metadata = {
 const ThemePage = () => {
     return (
         <section className='relative w-full mb-10 last:mb-0'>
-            <div className='w-full mb-8 last:mb-0'>
+            <div className='w-full'>
                 <BtnLink href='/' className='mb-6 last:mb-0'>
                     Back
                 </BtnLink>
 
                 <Title>React Theme</Title>
             </div>
+
+            <Line />
 
             <div className='w-full'>
                 <ThemeController className='mb-5 last:mb-0' />
