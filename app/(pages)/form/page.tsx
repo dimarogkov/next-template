@@ -14,7 +14,7 @@ const FormPage = () => {
                     Back
                 </BtnLink>
 
-                <div className='flex gap-2 mb-4 last:mb-0'>
+                <div className='flex gap-2 mb-5 last:mb-0'>
                     <Badge>React Hook Form</Badge>
                     <Badge>Yup Validation</Badge>
                 </div>
