@@ -16,7 +16,7 @@ const TodosPage = () => {
                     Back
                 </BtnLink>
 
-                <div className='flex gap-2 mb-3 last:mb-0'>
+                <div className='flex gap-2 mb-4 last:mb-0'>
                     <Badge>Axios</Badge>
                     <Badge>React Query</Badge>
                     <Badge>Debounce</Badge>
