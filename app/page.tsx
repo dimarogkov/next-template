@@ -1,6 +1,5 @@
 import Store from '../src/components/elements/Store/Store';
-import Line from '@/src/components/elements/Line/Line';
-import { BtnLink, Text, Title } from '@/src/components/ui';
+import { BtnLink, Line, Text, Title } from '@/src/components/ui';
 
 const HomePage = () => {
     return (
