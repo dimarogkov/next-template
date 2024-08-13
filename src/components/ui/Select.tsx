@@ -2,7 +2,7 @@ import { forwardRef, SelectHTMLAttributes } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { EnumFormNames } from '@/src/types/enums/FormNames';
 import { IFormValues } from '@/src/types/interfaces/FormValues';
-import { LuChevronDown } from 'react-icons/lu';
+import { ChevronDown } from 'lucide-react';
 
 interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
     className?: string;
@@ -20,7 +20,7 @@ const Select: React.FC<Props> = forwardRef<HTMLSelectElement, Props>(
                 {...register(registerName)}
             />
 
-            <LuChevronDown className='absolute right-4 w-5 h-5 text-black' />
+            <ChevronDown className='absolute right-4 w-5 h-5 text-black' />
         </div>
     )
 );

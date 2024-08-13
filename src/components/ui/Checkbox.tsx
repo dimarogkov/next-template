@@ -2,7 +2,7 @@ import { forwardRef, InputHTMLAttributes } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { EnumFormNames } from '@/src/types/enums/FormNames';
 import { IFormValues } from '@/src/types/interfaces/FormValues';
-import { LuCheck } from 'react-icons/lu';
+import { Check } from 'lucide-react';
 import cn from 'classnames';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
@@ -30,7 +30,7 @@ const Checkbox: React.FC<Props> = forwardRef<HTMLInputElement, Props>(
                         'border-blue bg-blue': isChecked,
                     })}
                 >
-                    <LuCheck
+                    <Check
                         className={cn('w-4 h-4 text-white', {
                             'opacity-0 invisible': !isChecked,
                             'opacity-1 visible': isChecked,

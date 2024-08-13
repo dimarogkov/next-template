@@ -2,8 +2,8 @@ import { AxiosResponse } from 'axios';
 import { UseMutateFunction } from '@tanstack/react-query';
 import { ITodo } from '@/src/types/interfaces/Todo';
 
-import { LuTrash } from 'react-icons/lu';
 import { Btn, Subtitle, Text } from '../../ui';
+import { Trash2 } from 'lucide-react';
 import cn from 'classnames';
 
 type Props = {
@@ -26,7 +26,7 @@ export const Todo: React.FC<Props> = ({ todo, updateTodo, removeTodo }) => {
                 className='absolute z-10 top-2 right-2 flex items-center justify-center w-8 h-8 rounded border border-red bg-red/15 transition-opacity duration-300 hover:opacity-70'
                 onClick={() => removeTodo(id)}
             >
-                <LuTrash className='w-5 h-5 text-red' />
+                <Trash2 className='w-5 h-5 text-red' />
             </button>
 
             <div className='flex-grow w-full mb-3 last:mb-0'>
