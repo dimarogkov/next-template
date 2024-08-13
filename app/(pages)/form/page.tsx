@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Form from '@/src/components/elements/Form/Form';
-import { BtnLink, Line, Title } from '@/src/components/ui';
+import { Badge, BtnLink, Line, Title } from '@/src/components/ui';
 
 export const metadata: Metadata = {
     title: 'Form Page',
@@ -14,7 +14,12 @@ const FormPage = () => {
                     Back
                 </BtnLink>
 
-                <Title>React Hook Form</Title>
+                <div className='flex gap-2 mb-3 last:mb-0'>
+                    <Badge>React Hook Form</Badge>
+                    <Badge>Yup Validation</Badge>
+                </div>
+
+                <Title>React Form</Title>
             </div>
 
             <Line />
