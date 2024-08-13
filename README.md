@@ -16,10 +16,12 @@ This is **Next Template** for development. Technolgies used: **React, TypeScript
 -   src
     -   components
         -   elements
+        -   root
         -   ui
     -   helpers
     -   services
-    -   store
+    -   storeRedux
+    -   storeZustand
     -   types
         -   enums
         -   interfaces

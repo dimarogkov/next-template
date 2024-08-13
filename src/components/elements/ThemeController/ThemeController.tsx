@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
-import { LuMoon, LuSun } from 'react-icons/lu';
+import { Moon, Sun } from 'lucide-react';
 
 type Props = {
     className?: string;
@@ -20,7 +20,7 @@ const ThemeController: React.FC<Props> = ({ className = '' }) => {
     return (
         mounted && (
             <label className={`flex items-center cursor-pointer gap-x-3 ${className}`}>
-                <LuSun className='w-5 h-5 text-black' />
+                <Sun className='w-5 h-5 text-black' />
 
                 <input
                     type='checkbox'
@@ -30,7 +30,7 @@ const ThemeController: React.FC<Props> = ({ className = '' }) => {
                     className='toggle theme-controller text-black border-black'
                 />
 
-                <LuMoon className='w-5 h-5 text-black' />
+                <Moon className='w-5 h-5 text-black' />
             </label>
         )
     );

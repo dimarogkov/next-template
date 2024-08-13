@@ -2,7 +2,7 @@ import { forwardRef, InputHTMLAttributes } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { EnumFormNames } from '@/src/types/enums/FormNames';
 import { IFormValues } from '@/src/types/interfaces/FormValues';
-import { LuCircle } from 'react-icons/lu';
+import { Circle } from 'lucide-react';
 import cn from 'classnames';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
@@ -41,7 +41,7 @@ const Radio: React.FC<Props> = forwardRef<HTMLInputElement, Props>(
                     'border-blue': isChecked === value,
                 })}
             >
-                <LuCircle
+                <Circle
                     className={cn('w-3 h-3 rounded-full text-blue bg-blue', {
                         'opacity-0 invisible': isChecked !== value,
                         'opacity-1 visible': isChecked === value,
