@@ -1,11 +1,11 @@
 'use client';
+import { useMemo } from 'react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { deleteTodo, getTodos, updateTodo } from '@/src/services/todos';
 import { useTodo } from '@/src/storeZustand/todo';
 
-import { Todo } from '../Todo/Todo';
-import { Text } from '../../ui';
-import { useMemo } from 'react';
+import Todo from './Todo';
+import { Text } from '../ui';
 
 const TodoList = () => {
     const { searchValue } = useTodo((state) => state);

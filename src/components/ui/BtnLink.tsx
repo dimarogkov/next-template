@@ -1,16 +1,16 @@
-import { AnchorHTMLAttributes, forwardRef } from 'react';
-import { EnumBtn } from '@/src/types/enums/Btn';
+import { AnchorHTMLAttributes, forwardRef, RefAttributes } from 'react';
 import Link from 'next/link';
+import { EnumBtn } from '@/src/types/enums';
 import cn from 'classnames';
 
-interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
+interface Props extends AnchorHTMLAttributes<HTMLAnchorElement>, RefAttributes<HTMLAnchorElement> {
     href: string;
     className?: string;
     btnType?: string;
 }
 
 const BtnLink: React.FC<Props> = forwardRef<HTMLAnchorElement, Props>(
-    ({ href, btnType = EnumBtn.default, className = '', ...props }, ref) => (
+    ({ href, className = '', btnType = EnumBtn.default, ...props }, ref) => (
         <Link
             ref={ref}
             {...props}

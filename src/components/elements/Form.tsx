@@ -1,9 +1,8 @@
 'use client';
 import { useForm } from 'react-hook-form';
-import { formOptions } from '@/src/helpers/formOptions';
-import { EnumFormNames } from '@/src/types/enums/FormNames';
-import { EnumBtn } from '@/src/types/enums/Btn';
-import { Btn, Checkbox, ErrorMessage, Input, Label, Option, Radio, Select, Text } from '../../ui';
+import { formOptions } from '@/src/helpers';
+import { EnumFormNames, EnumBtn } from '@/src/types/enums';
+import { Btn, Checkbox, ErrorMessage, Input, Label, Option, Radio, Select, Text } from '../ui';
 
 const Form = () => {
     const {
@@ -23,7 +22,7 @@ const Form = () => {
             {/* select */}
             <Label className='w-full mb-5 last:mb-0'>
                 <Select register={register} registerName={EnumFormNames.select} className='mb-2 last:mb-0'>
-                    <Option value='default' className='hidden'>
+                    <Option value='default' hidden>
                         Select Option
                     </Option>
                     <Option value='option_1'>Option 1</Option>

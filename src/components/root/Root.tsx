@@ -1,5 +1,5 @@
 import { ThemeProvider } from 'next-themes';
-import { Header } from '../elements/Header';
+import { Header } from '../elements';
 
 type Props = {
     children?: React.ReactNode;

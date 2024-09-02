@@ -2,8 +2,8 @@
 'use client';
 import { useCallback, useState } from 'react';
 import { useTodo } from '@/src/storeZustand/todo';
-import { debounce } from '@/src/helpers/debounce';
-import { Input } from '../../ui';
+import { debounce } from '@/src/helpers';
+import { Input } from '../ui';
 
 const SearchTodo = () => {
     const { setSearchValue } = useTodo((state) => state);

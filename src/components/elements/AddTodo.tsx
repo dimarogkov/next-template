@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createTodo } from '@/src/services/todos';
-import { Btn, Input } from '../../ui';
+import { Btn, Input } from '../ui';
 
 const AddTodo = () => {
     const [todoTitle, setTodoTitle] = useState('');
