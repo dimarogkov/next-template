@@ -1,6 +1,6 @@
-import { forwardRef, HTMLAttributes } from 'react';
+import { forwardRef, HTMLAttributes, RefAttributes } from 'react';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {}
+interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {}
 
 const Loader: React.FC<Props> = forwardRef<HTMLDivElement, Props>(({ ...props }, ref) => (
     <div

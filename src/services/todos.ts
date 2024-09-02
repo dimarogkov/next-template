@@ -1,7 +1,6 @@
 import axios from 'axios';
+import { API_URL } from '../variables';
 import { ITodo } from '../types/interfaces/Todo';
-
-const API_URL = 'https://mate.academy/students-api';
 
 export const getTodos = () => {
     return axios.get<ITodo[]>(`${API_URL}/todos`);

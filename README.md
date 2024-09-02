@@ -25,3 +25,4 @@ This is **Next Template** for development. Technolgies used: **React, TypeScript
     -   types
         -   enums
         -   interfaces
+    -   variables

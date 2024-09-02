@@ -1,10 +1,10 @@
-import { forwardRef, SelectHTMLAttributes } from 'react';
+import { forwardRef, RefAttributes, SelectHTMLAttributes } from 'react';
 import { UseFormRegister } from 'react-hook-form';
-import { EnumFormNames } from '@/src/types/enums/FormNames';
+import { EnumFormNames } from '@/src/types/enums';
 import { IFormValues } from '@/src/types/interfaces/FormValues';
 import { ChevronDown } from 'lucide-react';
 
-interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
+interface Props extends SelectHTMLAttributes<HTMLSelectElement>, RefAttributes<HTMLSelectElement> {
     className?: string;
     registerName?: EnumFormNames;
     register?: UseFormRegister<IFormValues>;
@@ -16,7 +16,7 @@ const Select: React.FC<Props> = forwardRef<HTMLSelectElement, Props>(
             <select
                 ref={ref}
                 {...props}
-                className='w-full h-full px-4 pr-12 rounded outline-none appearance-none border border-gray transition-all duration-300 focus:border-black'
+                className='w-full h-full px-4 pr-12 rounded outline-none appearance-none border border-gray bg-white transition-all duration-300 focus:border-black'
                 {...register(registerName)}
             />
 

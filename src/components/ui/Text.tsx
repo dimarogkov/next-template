@@ -1,11 +1,11 @@
-import { HTMLAttributes, forwardRef } from 'react';
+import { HTMLAttributes, RefAttributes, forwardRef } from 'react';
 
-interface Props extends HTMLAttributes<HTMLParagraphElement> {
+interface Props extends HTMLAttributes<HTMLParagraphElement>, RefAttributes<HTMLParagraphElement> {
     className?: string;
 }
 
 const Text: React.FC<Props> = forwardRef<HTMLParagraphElement, Props>(({ className = '', ...props }, ref) => (
-    <p ref={ref} {...props} className={`w-full text-base text-black ${className}`} />
+    <p ref={ref} {...props} className={`w-full text-base ${className}`} />
 ));
 
 Text.displayName = 'Text';

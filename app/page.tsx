@@ -1,4 +1,4 @@
-import Store from '../src/components/elements/Store/Store';
+import { StoreRedux, StoreZustand } from '@/src/components/elements';
 import { Badge, BtnLink, Line, Text, Title } from '@/src/components/ui';
 
 const HomePage = () => {
@@ -21,7 +21,11 @@ const HomePage = () => {
             </div>
 
             <Line />
-            <Store />
+
+            <div className='w-full'>
+                <StoreRedux className='mb-10 last:mb-0' />
+                <StoreZustand />
+            </div>
         </section>
     );
 };

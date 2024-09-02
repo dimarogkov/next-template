@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import Form from '@/src/components/elements/Form/Form';
+import { Form } from '@/src/components/elements';
 import { Badge, BtnLink, Line, Title } from '@/src/components/ui';
 
 export const metadata: Metadata = {

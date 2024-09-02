@@ -1,21 +1,20 @@
-import { forwardRef, InputHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes, RefAttributes } from 'react';
 import { UseFormRegister } from 'react-hook-form';
-import { EnumFormNames } from '@/src/types/enums/FormNames';
+import { EnumFormNames } from '@/src/types/enums';
 import { IFormValues } from '@/src/types/interfaces/FormValues';
 import { Check } from 'lucide-react';
 import cn from 'classnames';
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
+interface Props extends InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTMLInputElement> {
     isChecked: boolean;
-    className?: string;
     registerName?: EnumFormNames;
     register?: UseFormRegister<IFormValues>;
 }
 
 const Checkbox: React.FC<Props> = forwardRef<HTMLInputElement, Props>(
-    ({ isChecked, className = '', registerName = EnumFormNames.rememberMe, register = () => {}, ...props }, ref) => {
+    ({ isChecked, registerName = EnumFormNames.rememberMe, register = () => {}, ...props }, ref) => {
         return (
-            <div className={`relative w-5 min-w-5 h-5 ${className}`}>
+            <div className='relative w-5 min-w-5 h-5'>
                 <input
                     ref={ref}
                     {...props}

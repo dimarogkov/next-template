@@ -1,7 +1,5 @@
 import { Metadata } from 'next';
-import AddTodo from '@/src/components/elements/AddTodo/AddTodo';
-import TodoList from '@/src/components/elements/TodoList/TodoList';
-import SearchTodo from '@/src/components/elements/SearchTodo/SearchTodo';
+import { AddTodo, SearchTodo, TodoList } from '@/src/components/elements';
 import { Badge, BtnLink, Title } from '@/src/components/ui';
 
 export const metadata: Metadata = {

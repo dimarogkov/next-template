@@ -6,6 +6,7 @@
 
 body {
     font-family: 'Inter', sans-serif;
+    color: #222831;
 }
 
 .loader {
@@ -41,4 +42,10 @@ body {
     100% {
         stroke-dashoffset: -125px;
     }
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

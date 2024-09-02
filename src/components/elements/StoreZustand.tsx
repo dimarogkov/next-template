@@ -1,12 +1,12 @@
 'use client';
 import { useCount } from '@/src/storeZustand/count';
-import { Btn, Subtitle, Text } from '../../ui';
+import { Btn, Subtitle, Text } from '../ui';
 
 type Props = {
     className?: string;
 };
 
-export const StoreZustand: React.FC<Props> = ({ className = '' }) => {
+const StoreZustand: React.FC<Props> = ({ className = '' }) => {
     const { count, addCount, removeCount, resetCount } = useCount((state) => state);
 
     return (
@@ -22,3 +22,5 @@ export const StoreZustand: React.FC<Props> = ({ className = '' }) => {
         </div>
     );
 };
+
+export default StoreZustand;
