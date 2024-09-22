@@ -25,7 +25,7 @@ const Radio: React.FC<Props> = forwardRef<HTMLInputElement, Props>(
             />
 
             <span
-                className={cn('flex items-center justify-center w-full h-full rounded-full border', {
+                className={cn('flex items-center justify-center w-full h-full bg-transparent rounded-full border', {
                     'border-gray': isChecked !== value,
                     'border-blue': isChecked === value,
                 })}

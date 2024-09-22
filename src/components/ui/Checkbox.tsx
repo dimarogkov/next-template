@@ -24,7 +24,7 @@ const Checkbox: React.FC<Props> = forwardRef<HTMLInputElement, Props>(
                 />
 
                 <span
-                    className={cn('flex items-center justify-center w-full h-full rounded border', {
+                    className={cn('flex items-center justify-center w-full h-full bg-transparent rounded border', {
                         'border-gray': !isChecked,
                         'border-blue bg-blue': isChecked,
                     })}
