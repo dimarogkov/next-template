@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    --fallback-b1: #fff;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     color: #222831;
