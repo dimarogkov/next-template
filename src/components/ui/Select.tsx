@@ -16,7 +16,7 @@ const Select: React.FC<Props> = forwardRef<HTMLSelectElement, Props>(
             <select
                 ref={ref}
                 {...props}
-                className='w-full h-full px-4 pr-12 rounded outline-none appearance-none border border-gray bg-white transition-all duration-300 focus:border-black'
+                className='w-full h-full px-4 pr-12 rounded outline-none appearance-none border border-gray bg-transparent transition-all duration-300 focus:border-black'
                 {...register(registerName)}
             />
 
