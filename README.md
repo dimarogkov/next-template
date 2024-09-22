@@ -1,5 +1,7 @@
 # Next Template
 
+[Project Demo](https://next-template-blue.vercel.app/)
+
 This is **Next Template** for development. Technolgies used: **React, TypeScript, Tailwind CSS, Axios, React Query, React Hook Form, Yup, Lodash Debounce, Redux Toolkit, Zustand.**
 
 ## Installation Steps
