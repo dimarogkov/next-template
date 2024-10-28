@@ -1,5 +1,7 @@
+import { capitalizeFirstLetter } from './capitalizeFirstLetter';
 import { debounce } from './debounce';
 import { formOptions } from './formOptions';
+import { getFixedName } from './getFixedName';
 import { setDataToLocalStorage, getDataFromLocalStorage } from './localStorage';
 
-export { debounce, formOptions, setDataToLocalStorage, getDataFromLocalStorage };
+export { capitalizeFirstLetter, debounce, formOptions, getFixedName, setDataToLocalStorage, getDataFromLocalStorage };

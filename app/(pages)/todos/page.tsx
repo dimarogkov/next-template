@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { AddTodo, SearchTodo, TodoList } from '@/src/components/elements';
+import { AddTodo, Breadcrumbs, SearchTodo, TodoList } from '@/src/components/elements';
 import { Badge, BtnLink, Title } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -19,6 +19,8 @@ const TodosPage = () => {
                     <Badge>React Query</Badge>
                     <Badge>Debounce</Badge>
                 </div>
+
+                <Breadcrumbs className='mb-6 last:mb-0' />
 
                 <Title>Todos with React Query</Title>
             </div>
