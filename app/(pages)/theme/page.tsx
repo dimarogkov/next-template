@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { EnumTitle } from '@/src/types/enums/Title';
 
-import { ThemeController } from '@/src/components/elements';
+import { Breadcrumbs, ThemeController } from '@/src/components/elements';
 import { Badge, BtnLink, Line, Text, Title } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -15,6 +15,8 @@ const ThemePage = () => {
                 <BtnLink href='/' className='mb-6 last:mb-0'>
                     Back
                 </BtnLink>
+
+                <Breadcrumbs className='mb-6 last:mb-0' />
 
                 <div className='flex gap-2 mb-5 last:mb-0'>
                     <Badge>Next Themes</Badge>
