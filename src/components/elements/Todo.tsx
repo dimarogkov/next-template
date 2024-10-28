@@ -9,18 +9,20 @@ import cn from 'classnames';
 
 type Props = {
     todo: ITodo;
+    isPending: boolean;
     updateTodo: UseMutateFunction<AxiosResponse<ITodo, any>, Error, ITodo, unknown>;
     removeTodo: UseMutateFunction<AxiosResponse<ITodo, any>, Error, number, unknown>;
 };
 
-const Todo: React.FC<Props> = ({ todo, updateTodo = () => {}, removeTodo = () => {} }) => {
+const Todo: React.FC<Props> = ({ todo, isPending, updateTodo = () => {}, removeTodo = () => {} }) => {
     const { id, title, userId, completed } = todo;
 
     return (
         <div
-            className={cn('relative flex flex-col w-full rounded-lg border p-4 pr-12', {
+            className={cn('relative flex flex-col w-full rounded-lg border p-4 pr-12 transition-opacity duration-300', {
                 'border-gray bg-gray/20': !completed,
                 'border-green bg-green/15': completed,
+                'opacity-70 pointer-events-none': isPending,
             })}
         >
             <button
