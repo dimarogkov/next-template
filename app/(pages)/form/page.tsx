@@ -1,8 +1,6 @@
 import { Metadata } from 'next';
-import { PATHS } from '@/src/variables/paths';
-
-import { Breadcrumbs, Form } from '@/src/components/elements';
-import { Badge, BtnLink, Line, Title } from '@/src/components/ui';
+import { BackLink, Breadcrumbs, Form } from '@/src/components/elements';
+import { Badge, Line, Title } from '@/src/components/ui';
 
 export const metadata: Metadata = {
     title: 'Form Page',
@@ -12,9 +10,7 @@ const FormPage = () => {
     return (
         <section className='relative w-full'>
             <div className='w-full'>
-                <BtnLink href={PATHS.HOME} className='mb-5 last:mb-0'>
-                    Back
-                </BtnLink>
+                <BackLink className='mb-6 last:mb-0' />
 
                 <Breadcrumbs className='mb-6 last:mb-0' />
 

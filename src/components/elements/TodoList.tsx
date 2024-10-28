@@ -20,7 +20,7 @@ const TodoList = () => {
         queryKey: ['todos'],
     });
 
-    const { mutate: updateTodoMutation } = useMutation({
+    const { mutate: updateTodoMutation, isPending: isPendingUpdateTodo } = useMutation({
         mutationFn: updateTodo,
         mutationKey: ['update todo'],
         onSuccess: () => refetch(),
@@ -55,6 +55,7 @@ const TodoList = () => {
                     {filteredTodos.map((todo) => (
                         <Todo
                             todo={todo}
+                            isPending={isPendingUpdateTodo}
                             updateTodo={updateTodoMutation}
                             removeTodo={removeTodoMutation}
                             key={todo.id}

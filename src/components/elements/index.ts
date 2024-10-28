@@ -1,4 +1,5 @@
 import AddTodo from './AddTodo';
+import BackLink from './BackLink';
 import Breadcrumbs from './Breadcrumbs';
 import Form from './Form';
 import Header from './Header';
@@ -9,4 +10,16 @@ import ThemeController from './ThemeController';
 import Todo from './Todo';
 import TodoList from './TodoList';
 
-export { AddTodo, Breadcrumbs, Form, Header, SearchTodo, StoreRedux, StoreZustand, ThemeController, Todo, TodoList };
+export {
+    AddTodo,
+    BackLink,
+    Breadcrumbs,
+    Form,
+    Header,
+    SearchTodo,
+    StoreRedux,
+    StoreZustand,
+    ThemeController,
+    Todo,
+    TodoList,
+};

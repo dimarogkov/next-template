@@ -1,9 +1,8 @@
 import { Metadata } from 'next';
 import { EnumTitle } from '@/src/types/enums/Title';
-import { PATHS } from '@/src/variables/paths';
 
-import { Breadcrumbs, ThemeController } from '@/src/components/elements';
-import { Badge, BtnLink, Line, Text, Title } from '@/src/components/ui';
+import { BackLink, Breadcrumbs, ThemeController } from '@/src/components/elements';
+import { Badge, Line, Text, Title } from '@/src/components/ui';
 
 export const metadata: Metadata = {
     title: 'Theme Page',
@@ -13,9 +12,7 @@ const ThemePage = () => {
     return (
         <section className='relative w-full mb-10 last:mb-0'>
             <div className='w-full'>
-                <BtnLink href={PATHS.HOME} className='mb-6 last:mb-0'>
-                    Back
-                </BtnLink>
+                <BackLink className='mb-6 last:mb-0' />
 
                 <Breadcrumbs className='mb-6 last:mb-0' />
 
