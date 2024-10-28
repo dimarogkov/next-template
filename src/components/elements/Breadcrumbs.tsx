@@ -2,6 +2,7 @@
 import React, { Suspense, useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { PATHS } from '@/src/variables/paths';
 import { capitalizeFirstLetter, getFixedName } from '@/src/helpers';
 
 import { Text } from '../ui';
@@ -24,7 +25,7 @@ const Breadcrumbs: React.FC<Props> = ({ className = '' }) => {
         }));
 
     const breadcrumbs = useMemo(
-        () => [{ id: crypto.randomUUID(), href: '/', text: 'Home' }, ...pathNames],
+        () => [{ id: crypto.randomUUID(), href: `${PATHS.HOME}`, text: 'Home' }, ...pathNames],
         [pathNames]
     );
 

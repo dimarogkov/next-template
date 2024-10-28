@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { EnumTitle } from '@/src/types/enums/Title';
+import { PATHS } from '@/src/variables/paths';
 
 import { Breadcrumbs, ThemeController } from '@/src/components/elements';
 import { Badge, BtnLink, Line, Text, Title } from '@/src/components/ui';
@@ -12,7 +13,7 @@ const ThemePage = () => {
     return (
         <section className='relative w-full mb-10 last:mb-0'>
             <div className='w-full'>
-                <BtnLink href='/' className='mb-6 last:mb-0'>
+                <BtnLink href={PATHS.HOME} className='mb-6 last:mb-0'>
                     Back
                 </BtnLink>
 
