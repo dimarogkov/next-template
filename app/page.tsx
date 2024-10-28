@@ -1,3 +1,4 @@
+import { PATHS } from '@/src/variables/paths';
 import { StoreRedux, StoreZustand } from '@/src/components/elements';
 import { Badge, BtnLink, Line, Text, Title } from '@/src/components/ui';
 
@@ -14,9 +15,9 @@ const HomePage = () => {
                 <Text className='mb-5 last:mb-0'>This is Home Page.</Text>
 
                 <div className='flex flex-wrap gap-2 w-full'>
-                    <BtnLink href='/form'>Form Page</BtnLink>
-                    <BtnLink href='/todos'>Todos Page</BtnLink>
-                    <BtnLink href='/theme'>Theme Page</BtnLink>
+                    <BtnLink href={PATHS.FORM}>Form Page</BtnLink>
+                    <BtnLink href={PATHS.TODOS}>Todos Page</BtnLink>
+                    <BtnLink href={PATHS.THEME}>Theme Page</BtnLink>
                 </div>
             </div>
 
