@@ -1,4 +1,4 @@
-import { HTMLAttributes, RefAttributes, forwardRef } from 'react';
+import { FC, HTMLAttributes, RefAttributes, forwardRef } from 'react';
 import { EnumTitle } from '@/src/types/enums/Title';
 
 interface Props extends HTMLAttributes<HTMLHeadingElement>, RefAttributes<HTMLHeadingElement> {
@@ -6,7 +6,7 @@ interface Props extends HTMLAttributes<HTMLHeadingElement>, RefAttributes<HTMLHe
     className?: string;
 }
 
-const Title: React.FC<Props> = forwardRef<HTMLHeadingElement, Props>(
+const Title: FC<Props> = forwardRef<HTMLHeadingElement, Props>(
     ({ titleType = EnumTitle.h1, className = '', ...props }, ref) => (
         <>
             {titleType === EnumTitle.h1 && (

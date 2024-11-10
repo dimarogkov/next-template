@@ -1,5 +1,5 @@
 'use client';
-import React, { Suspense, useMemo } from 'react';
+import React, { FC, Suspense, useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { PATHS } from '@/src/variables/paths';
@@ -12,7 +12,7 @@ type Props = {
     className?: string;
 };
 
-const Breadcrumbs: React.FC<Props> = ({ className = '' }) => {
+const Breadcrumbs: FC<Props> = ({ className = '' }) => {
     const paths = usePathname();
 
     const pathNames = paths

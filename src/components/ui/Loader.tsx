@@ -1,8 +1,8 @@
-import { forwardRef, HTMLAttributes, RefAttributes } from 'react';
+import { FC, forwardRef, HTMLAttributes, RefAttributes } from 'react';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {}
 
-const Loader: React.FC<Props> = forwardRef<HTMLDivElement, Props>(({ ...props }, ref) => (
+const Loader: FC<Props> = forwardRef<HTMLDivElement, Props>(({ ...props }, ref) => (
     <div
         ref={ref}
         {...props}

@@ -1,3 +1,4 @@
+import { FC, ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Root, RootProviders } from '@/src/components/root';
 import './globals.css';
@@ -11,10 +12,10 @@ export const metadata: Metadata = {
 };
 
 type Props = {
-    children: React.ReactNode;
+    children: ReactNode;
 };
 
-const RootLayout: React.FC<Props> = ({ children }) => {
+const RootLayout: FC<Props> = ({ children }) => {
     return (
         <RootProviders>
             <Root>{children}</Root>

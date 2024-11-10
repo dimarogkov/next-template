@@ -1,4 +1,4 @@
-import { forwardRef, InputHTMLAttributes, RefAttributes } from 'react';
+import { FC, forwardRef, InputHTMLAttributes, RefAttributes } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { EnumFormNames } from '@/src/types/enums';
 import { IFormValues } from '@/src/types/interfaces/FormValues';
@@ -12,7 +12,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTM
     register?: UseFormRegister<IFormValues>;
 }
 
-const Radio: React.FC<Props> = forwardRef<HTMLInputElement, Props>(
+const Radio: FC<Props> = forwardRef<HTMLInputElement, Props>(
     ({ isChecked, value = '', registerName = EnumFormNames.radioType, register = () => {}, ...props }, ref) => (
         <div className='relative w-5 min-w-5 h-5'>
             <input

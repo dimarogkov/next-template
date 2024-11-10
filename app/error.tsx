@@ -1,4 +1,5 @@
 'use client';
+import { FC } from 'react';
 import { Btn, Title } from '@/src/components/ui';
 
 type Props = {
@@ -6,7 +7,7 @@ type Props = {
     reset?: () => void;
 };
 
-const Error: React.FC<Props> = ({ error, reset = () => {} }) => {
+const Error: FC<Props> = ({ error, reset = () => {} }) => {
     return (
         <section className='relative w-full'>
             <Title>{error?.message}</Title>
