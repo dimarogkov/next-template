@@ -7,10 +7,9 @@ import Input from './Input';
 import Label from './Label';
 import Line from './Line';
 import Loader from './Loader';
-import Option from './Option';
 import Radio from './Radio';
 import Select from './Select';
 import Text from './Text';
 import Title from './Title';
 
-export { Badge, Btn, BtnLink, Checkbox, ErrorMessage, Input, Label, Line, Loader, Radio, Select, Option, Text, Title };
+export { Badge, Btn, BtnLink, Checkbox, ErrorMessage, Input, Label, Line, Loader, Radio, Select, Text, Title };
