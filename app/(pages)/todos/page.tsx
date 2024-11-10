@@ -14,11 +14,11 @@ const TodosPage = () => {
 
                 <Breadcrumbs className='mb-6 last:mb-0' />
 
-                <div className='flex gap-2 mb-5 last:mb-0'>
-                    <Badge>Axios</Badge>
-                    <Badge>React Query</Badge>
-                    <Badge>Debounce</Badge>
-                </div>
+                <Badge className='mb-5 last:mb-0'>
+                    <Badge.Item>Axios</Badge.Item>
+                    <Badge.Item>React Query</Badge.Item>
+                    <Badge.Item>Debounce</Badge.Item>
+                </Badge>
 
                 <Title>Todos with React Query</Title>
             </div>
