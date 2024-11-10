@@ -2,7 +2,7 @@
 import { useForm } from 'react-hook-form';
 import { formOptions } from '@/src/helpers';
 import { EnumFormNames, EnumBtn } from '@/src/types/enums';
-import { Btn, Checkbox, ErrorMessage, Input, Label, Option, Radio, Select, Text } from '../ui';
+import { Btn, Checkbox, ErrorMessage, Input, Label, Radio, Select, Text } from '../ui';
 
 const Form = () => {
     const {
@@ -19,22 +19,19 @@ const Form = () => {
 
     return (
         <form className='w-full max-w-xl' onSubmit={handleSubmit(onSubmit)}>
-            {/* select */}
             <Label className='w-full mb-5 last:mb-0'>
                 <Select register={register} registerName={EnumFormNames.select} className='mb-2 last:mb-0'>
-                    <Option value='default' hidden>
+                    <Select.Option value='default' hidden>
                         Select Option
-                    </Option>
-                    <Option value='option_1'>Option 1</Option>
-                    <Option value='option_2'>Option 2</Option>
-                    <Option value='option_3'>Option 3</Option>
+                    </Select.Option>
+                    <Select.Option value='option_1'>Option 1</Select.Option>
+                    <Select.Option value='option_2'>Option 2</Select.Option>
+                    <Select.Option value='option_3'>Option 3</Select.Option>
                 </Select>
 
                 {errors.select && <ErrorMessage>{errors.select.message}</ErrorMessage>}
             </Label>
-            {/* end select */}
 
-            {/* text */}
             <Label className='w-full mb-5 last:mb-0'>
                 <Input
                     placeholder='Username'
@@ -45,9 +42,7 @@ const Form = () => {
 
                 {errors.username && <ErrorMessage>{errors.username.message}</ErrorMessage>}
             </Label>
-            {/* end text */}
 
-            {/* number */}
             <Label className='w-full mb-5 last:mb-0'>
                 <Input
                     type='number'
@@ -59,9 +54,7 @@ const Form = () => {
 
                 {errors.age && <ErrorMessage>{errors.age.message}</ErrorMessage>}
             </Label>
-            {/* end number */}
 
-            {/* email */}
             <Label className='w-full mb-5 last:mb-0'>
                 <Input
                     type='email'
@@ -73,9 +66,7 @@ const Form = () => {
 
                 {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
             </Label>
-            {/* end email */}
 
-            {/* phone */}
             <Label className='w-full mb-5 last:mb-0'>
                 <Input
                     placeholder='Phone'
@@ -86,9 +77,7 @@ const Form = () => {
 
                 {errors.phone && <ErrorMessage>{errors.phone.message}</ErrorMessage>}
             </Label>
-            {/* end phone */}
 
-            {/* password */}
             <Label className='w-full mb-5 last:mb-0'>
                 <Input
                     type='password'
@@ -112,9 +101,7 @@ const Form = () => {
 
                 {errors.confirmPassword && <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>}
             </Label>
-            {/* end password */}
 
-            {/* radio */}
             <div className='w-full mb-5 last:mb-0'>
                 <div className='flex gap-4 w-full mb-2 last:mb-0'>
                     <Label className='w-full'>
@@ -144,9 +131,7 @@ const Form = () => {
 
                 {errors.radioType && <ErrorMessage>{errors.radioType.message}</ErrorMessage>}
             </div>
-            {/* end radio */}
 
-            {/* checkbox */}
             <Label className='w-full mb-5 last:mb-0'>
                 <div className='flex items-center gap-2 cursor-pointer mb-2 last:mb-0'>
                     <Checkbox
@@ -160,7 +145,6 @@ const Form = () => {
 
                 {errors.rememberMe && <ErrorMessage>{errors.rememberMe.message}</ErrorMessage>}
             </Label>
-            {/* end checkbox */}
 
             <div className='flex flex-wrap gap-2 w-full'>
                 <Btn type='submit'>Send</Btn>

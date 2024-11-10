@@ -1,16 +1,18 @@
-import { FC, forwardRef, RefAttributes, SelectHTMLAttributes } from 'react';
+import { FC, forwardRef, OptionHTMLAttributes, RefAttributes, SelectHTMLAttributes } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { EnumFormNames } from '@/src/types/enums';
 import { IFormValues } from '@/src/types/interfaces/FormValues';
 import { ChevronDown } from 'lucide-react';
 
-interface Props extends SelectHTMLAttributes<HTMLSelectElement>, RefAttributes<HTMLSelectElement> {
+interface PropsWrapper extends SelectHTMLAttributes<HTMLSelectElement>, RefAttributes<HTMLSelectElement> {
     className?: string;
     registerName?: EnumFormNames;
     register?: UseFormRegister<IFormValues>;
 }
 
-const Select: FC<Props> = forwardRef<HTMLSelectElement, Props>(
+interface PropsOption extends OptionHTMLAttributes<HTMLOptionElement>, RefAttributes<HTMLOptionElement> {}
+
+const SelectWrapper: FC<PropsWrapper> = forwardRef<HTMLSelectElement, PropsWrapper>(
     ({ className = '', registerName = EnumFormNames.select, register = () => {}, ...props }, ref) => (
         <div className={`relative flex items-center w-full h-10 ${className}`}>
             <select
@@ -25,5 +27,15 @@ const Select: FC<Props> = forwardRef<HTMLSelectElement, Props>(
     )
 );
 
-Select.displayName = 'Select';
+const SelectOption: FC<PropsOption> = forwardRef<HTMLOptionElement, PropsOption>(({ ...props }, ref) => (
+    <option ref={ref} {...props} />
+));
+
+SelectWrapper.displayName = 'SelectWrapper';
+SelectOption.displayName = 'SelectOption';
+
+const Select = Object.assign(SelectWrapper, {
+    Option: SelectOption,
+});
+
 export default Select;
