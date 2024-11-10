@@ -1,4 +1,4 @@
-import { forwardRef, RefAttributes, SelectHTMLAttributes } from 'react';
+import { FC, forwardRef, RefAttributes, SelectHTMLAttributes } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { EnumFormNames } from '@/src/types/enums';
 import { IFormValues } from '@/src/types/interfaces/FormValues';
@@ -10,7 +10,7 @@ interface Props extends SelectHTMLAttributes<HTMLSelectElement>, RefAttributes<H
     register?: UseFormRegister<IFormValues>;
 }
 
-const Select: React.FC<Props> = forwardRef<HTMLSelectElement, Props>(
+const Select: FC<Props> = forwardRef<HTMLSelectElement, Props>(
     ({ className = '', registerName = EnumFormNames.select, register = () => {}, ...props }, ref) => (
         <div className={`relative flex items-center w-full h-10 ${className}`}>
             <select

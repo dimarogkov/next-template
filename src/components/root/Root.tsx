@@ -1,11 +1,12 @@
+import { FC, ReactNode } from 'react';
 import { ThemeProvider } from 'next-themes';
 import { Header } from '../elements';
 
 type Props = {
-    children?: React.ReactNode;
+    children?: ReactNode;
 };
 
-const Root: React.FC<Props> = ({ children }) => {
+const Root: FC<Props> = ({ children }) => {
     return (
         <html lang='en' suppressHydrationWarning>
             <body>

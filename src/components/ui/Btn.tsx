@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, forwardRef, RefAttributes } from 'react';
+import { ButtonHTMLAttributes, FC, forwardRef, RefAttributes } from 'react';
 import { EnumBtn } from '@/src/types/enums';
 import cn from 'classnames';
 
@@ -7,7 +7,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, RefAttributes<H
     className?: string;
 }
 
-const Btn: React.FC<Props> = forwardRef<HTMLButtonElement, Props>(
+const Btn: FC<Props> = forwardRef<HTMLButtonElement, Props>(
     ({ className = '', btnType = EnumBtn.default, ...props }, ref) => (
         <button
             ref={ref}

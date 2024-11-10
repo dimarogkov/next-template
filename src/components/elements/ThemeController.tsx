@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 import { Moon, Sun } from 'lucide-react';
 
@@ -7,7 +7,7 @@ type Props = {
     className?: string;
 };
 
-const ThemeController: React.FC<Props> = ({ className = '' }) => {
+const ThemeController: FC<Props> = ({ className = '' }) => {
     const [mounted, setMounted] = useState(false);
     const { resolvedTheme, setTheme } = useTheme();
 

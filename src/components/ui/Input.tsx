@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, RefAttributes, forwardRef } from 'react';
+import { FC, InputHTMLAttributes, RefAttributes, forwardRef } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { EnumFormNames } from '@/src/types/enums';
 import { IFormValues } from '@/src/types/interfaces/FormValues';
@@ -9,7 +9,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTM
     register?: UseFormRegister<IFormValues>;
 }
 
-const Input: React.FC<Props> = forwardRef<HTMLInputElement, Props>(
+const Input: FC<Props> = forwardRef<HTMLInputElement, Props>(
     ({ className = '', registerName = EnumFormNames.username, register = () => {}, ...props }, ref) => (
         <input
             ref={ref}

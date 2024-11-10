@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { AxiosResponse } from 'axios';
 import { UseMutateFunction } from '@tanstack/react-query';
 import { EnumTitle } from '@/src/types/enums/Title';
@@ -14,7 +15,7 @@ type Props = {
     removeTodo: UseMutateFunction<AxiosResponse<ITodo, any>, Error, number, unknown>;
 };
 
-const Todo: React.FC<Props> = ({ todo, isPending, updateTodo = () => {}, removeTodo = () => {} }) => {
+const Todo: FC<Props> = ({ todo, isPending, updateTodo = () => {}, removeTodo = () => {} }) => {
     const { id, title, userId, completed } = todo;
 
     return (

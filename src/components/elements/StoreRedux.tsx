@@ -1,15 +1,15 @@
 'use client';
+import { FC } from 'react';
 import { useAppDispatch, useAppSelector } from '@/src/storeRedux';
 import { addCount, removeCount, resetCount } from '@/src/storeRedux/countReducer.ts';
 import { EnumTitle } from '@/src/types/enums/Title';
-
 import { Btn, Text, Title } from '../ui';
 
 type Props = {
     className?: string;
 };
 
-const StoreRedux: React.FC<Props> = ({ className = '' }) => {
+const StoreRedux: FC<Props> = ({ className = '' }) => {
     const count = useAppSelector((state) => state.count.count);
     const dispatch = useAppDispatch();
 
