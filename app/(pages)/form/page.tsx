@@ -14,7 +14,7 @@ const FormPage = () => {
 
                 <Breadcrumbs className='mb-6 last:mb-0' />
 
-                <Badge className='mb-5 last:mb-0'>
+                <Badge className='mb-6 last:mb-0'>
                     <Badge.Item>React Hook Form</Badge.Item>
                     <Badge.Item>Yup Validation</Badge.Item>
                 </Badge>

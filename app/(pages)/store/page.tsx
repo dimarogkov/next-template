@@ -9,7 +9,7 @@ const StorePage = () => {
 
                 <Breadcrumbs className='mb-6 last:mb-0' />
 
-                <Badge className='mb-5 last:mb-0'>
+                <Badge className='mb-6 last:mb-0'>
                     <Badge.Item>Redux Store</Badge.Item>
                     <Badge.Item>Zustand Store</Badge.Item>
                 </Badge>
