@@ -16,7 +16,6 @@
         "classnames": "^2.5.1",
         "lucide-react": "^0.427.0",
         "next": "14.2.4",
-        "next-themes": "^0.3.0",
         "react": "^18",
         "react-dom": "^18",
         "react-hook-form": "^7.52.0",

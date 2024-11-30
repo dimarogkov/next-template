@@ -17,7 +17,6 @@ const HomePage = () => {
                 <div className='flex flex-wrap gap-2 w-full'>
                     <BtnLink href={PATHS.FORM}>Form Page</BtnLink>
                     <BtnLink href={PATHS.TODOS}>Todos Page</BtnLink>
-                    <BtnLink href={PATHS.THEME}>Theme Page</BtnLink>
                 </div>
             </div>
 
