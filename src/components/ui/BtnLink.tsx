@@ -16,11 +16,10 @@ const BtnLink: FC<Props> = forwardRef<HTMLAnchorElement, Props>(
             {...props}
             href={href}
             className={cn(
-                `flex items-center justify-center w-full sm:w-fit sm:min-w-32 lg:min-w-36 h-10 lg:h-11 font-media px-4 rounded transition-opacity duration-300 hover:opacity-80 ${className}`,
+                `flex items-center justify-center gap-2 w-full sm:w-fit sm:min-w-32 lg:min-w-36 h-10 lg:h-11 font-media px-4 rounded transition-opacity duration-300 hover:opacity-80 ${className}`,
                 {
                     'bg-blue text-white': btnType === EnumBtn.default,
                     'border-2 border-blue text-blue': btnType === EnumBtn.outline,
-                    'bg-black/25 text-white': btnType === EnumBtn.disabled,
                 }
             )}
         />
