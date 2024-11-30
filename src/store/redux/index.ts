@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import countReducer from './countReducer.ts';
 import { TypedUseSelectorHook, createDispatchHook, createSelectorHook } from 'react-redux';
+
+import countReducer from './countReducer';
 
 export const store = configureStore({
     reducer: {

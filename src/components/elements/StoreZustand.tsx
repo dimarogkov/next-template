@@ -1,6 +1,6 @@
 'use client';
 import { FC } from 'react';
-import { useCount } from '@/src/storeZustand/count';
+import { useCount } from '@/src/store/zustand';
 import { EnumTitle } from '@/src/types/enums/Title';
 import { Btn, Text, Title } from '../ui';
 

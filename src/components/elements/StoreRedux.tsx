@@ -1,7 +1,7 @@
 'use client';
 import { FC } from 'react';
-import { useAppDispatch, useAppSelector } from '@/src/storeRedux';
-import { addCount, removeCount, resetCount } from '@/src/storeRedux/countReducer.ts';
+import { useAppDispatch, useAppSelector } from '@/src/store/redux';
+import { addCount, removeCount, resetCount } from '@/src/store/redux/countReducer';
 import { EnumTitle } from '@/src/types/enums/Title';
 import { Btn, Text, Title } from '../ui';
 

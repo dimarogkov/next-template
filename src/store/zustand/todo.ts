@@ -1,5 +1,5 @@
+import { ITodoState } from '@/src/types/interfaces/TodoState';
 import { create } from 'zustand';
-import { ITodoState } from '../types/interfaces/TodoState';
 
 export const useTodo = create<ITodoState>((set) => ({
     searchValue: '',

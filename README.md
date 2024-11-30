@@ -22,8 +22,9 @@ This is **Next Template** for development. Technolgies used: **React, TypeScript
         -   ui
     -   helpers
     -   services
-    -   storeRedux
-    -   storeZustand
+    -   store
+        -   redux
+        -   zustand
     -   types
         -   enums
         -   interfaces

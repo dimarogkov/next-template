@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { ICountState } from '../types/interfaces/CountState';
+import { ICountState } from '../../types/interfaces/CountState';
 
 const initialState: ICountState = {
     count: 0,
