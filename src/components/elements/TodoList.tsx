@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { deleteTodo, getTodos, updateTodo } from '@/src/services/todos';
-import { useTodo } from '@/src/storeZustand/todo';
+import { useTodo } from '@/src/store/zustand';
 
 import Todo from './Todo';
 import { Text } from '../ui';

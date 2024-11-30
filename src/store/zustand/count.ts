@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { ICountStore } from '../types/interfaces/CountStore';
+import { ICountStore } from '../../types/interfaces/CountStore';
 
 export const useCount = create<ICountStore>((set) => ({
     count: 0,
