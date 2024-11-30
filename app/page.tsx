@@ -15,6 +15,7 @@ const HomePage = () => {
                 <Text className='mb-5 last:mb-0'>This is Home Page.</Text>
 
                 <div className='flex flex-wrap gap-2 w-full'>
+                    <BtnLink href={PATHS.UI}>UI Page</BtnLink>
                     <BtnLink href={PATHS.FORM}>Form Page</BtnLink>
                     <BtnLink href={PATHS.TODOS}>Todos Page</BtnLink>
                 </div>
