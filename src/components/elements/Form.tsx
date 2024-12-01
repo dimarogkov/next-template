@@ -56,6 +56,7 @@ const Form = () => {
                 <Input
                     type='password'
                     placeholder='Password'
+                    autoComplete='Password'
                     {...register(EnumFormNames.password)}
                     className='mb-2 last:mb-0'
                 />
@@ -67,6 +68,7 @@ const Form = () => {
                 <Input
                     type='password'
                     placeholder='Confirm Password'
+                    autoComplete='Confirm Password'
                     {...register(EnumFormNames.confirmPassword)}
                     className='mb-2 last:mb-0'
                 />

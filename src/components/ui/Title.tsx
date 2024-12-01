@@ -2,7 +2,7 @@ import { FC, HTMLAttributes, RefAttributes, forwardRef } from 'react';
 import { EnumTitle } from '@/src/types/enums/Title';
 
 interface Props extends HTMLAttributes<HTMLHeadingElement>, RefAttributes<HTMLHeadingElement> {
-    titleType?: string;
+    titleType?: EnumTitle;
     className?: string;
 }
 

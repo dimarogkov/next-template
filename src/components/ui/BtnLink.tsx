@@ -7,7 +7,7 @@ interface Props extends AnchorHTMLAttributes<HTMLAnchorElement>, RefAttributes<H
     href: string;
     target?: string;
     className?: string;
-    btnType?: string;
+    btnType?: EnumBtn;
 }
 
 const BtnLink: FC<Props> = forwardRef<HTMLAnchorElement, Props>(

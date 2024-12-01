@@ -1,7 +1,7 @@
 import { PATHS } from '@/src/variables/paths';
-import { EnumAvatar, EnumBtn, EnumText, EnumTitle } from '@/src/types/enums';
-import { BackLink, Breadcrumbs } from '@/src/components/elements';
-import { Avatar, AvatarGroup, Badge, Btn, BtnLink, Line, Text, Title } from '@/src/components/ui';
+import { EnumAvatar, EnumBtn, EnumDropdownAlign, EnumDropdownPosition, EnumText, EnumTitle } from '@/src/types/enums';
+import { BackLink, Breadcrumbs, DropdownContent } from '@/src/components/elements';
+import { Avatar, AvatarGroup, Badge, Btn, BtnLink, Dropdown, Line, Text, Title } from '@/src/components/ui';
 import { User } from 'lucide-react';
 
 const UIPage = () => {
@@ -91,6 +91,41 @@ const UIPage = () => {
                         </Badge.Item>
                         <Badge.Item>Badge Default</Badge.Item>
                     </Badge>
+                </div>
+            </section>
+
+            <section className='relative w-full mb-10 last:mb-0'>
+                <div className='flex w-full gap-4 mb-4 last:mb-0'>
+                    <Dropdown>
+                        <Dropdown.Trigger skipPropsToChildren>
+                            <Btn>Dropdown Default</Btn>
+                        </Dropdown.Trigger>
+                        <Dropdown.Content skipPropsToChildren>
+                            <ul className='flex flex-col gap-2 w-full mb-4 last:mb-0'>
+                                <li>
+                                    <Text>Lorem, ipsum dolor sit amet consectetur</Text>
+                                </li>
+                                <li>
+                                    <Text>Item 2</Text>
+                                </li>
+                                <li>
+                                    <Text>Item 3</Text>
+                                </li>
+                                <li>
+                                    <Text>Item 4</Text>
+                                </li>
+                            </ul>
+                        </Dropdown.Content>
+                    </Dropdown>
+
+                    <Dropdown isOpen>
+                        <Dropdown.Trigger skipPropsToChildren>
+                            <Btn>Dropdown isOpen</Btn>
+                        </Dropdown.Trigger>
+                        <Dropdown.Content align={EnumDropdownAlign.start} position={EnumDropdownPosition.bottom}>
+                            <DropdownContent />
+                        </Dropdown.Content>
+                    </Dropdown>
                 </div>
             </section>
 
