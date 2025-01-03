@@ -1,5 +1,10 @@
+import { Metadata } from 'next';
 import { BackLink, Breadcrumbs, StoreRedux, StoreZustand } from '@/src/components/elements';
 import { Badge, Line, Title } from '@/src/components/ui';
+
+export const metadata: Metadata = {
+    title: 'Store Page',
+};
 
 const StorePage = () => {
     return (

@@ -13,6 +13,10 @@ body {
     color: #222831;
 }
 
+body.lock {
+    overflow: hidden;
+}
+
 .loader {
     transform-origin: center;
     animation: rotate4 2s linear infinite;
