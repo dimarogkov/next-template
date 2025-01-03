@@ -2,7 +2,19 @@ import { Metadata } from 'next';
 import { PATHS } from '@/src/variables/paths';
 import { EnumAvatar, EnumBtn, EnumDropdownAlign, EnumDropdownPosition, EnumText, EnumTitle } from '@/src/types/enums';
 import { BackLink, Breadcrumbs, DropdownContent, ModalContent } from '@/src/components/elements';
-import { Avatar, AvatarGroup, Badge, Btn, BtnLink, Dropdown, Line, Modal, Text, Title } from '@/src/components/ui';
+import {
+    Avatar,
+    AvatarGroup,
+    Badge,
+    Btn,
+    BtnLink,
+    Dropdown,
+    Line,
+    Modal,
+    SimpleLink,
+    Text,
+    Title,
+} from '@/src/components/ui';
 import { User } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -23,27 +35,25 @@ const UIPage = () => {
             <Line />
 
             <section className='relative w-full md:w-[50%] mb-10 last:mb-0'>
-                <div className='w-full mb-5 last:mb-0'>
-                    <Title className='mb-2 last:mb-0'>Title H1</Title>
+                <div className='flex flex-col gap-2 w-full mb-5 last:mb-0'>
+                    <Title>Title H1</Title>
+                    <Title titleType={EnumTitle.h2}>Title H2</Title>
+                    <Title titleType={EnumTitle.h3}>Title H3</Title>
 
-                    <Title titleType={EnumTitle.h2} className='mb-2 last:mb-0'>
-                        Title H2
-                    </Title>
-
-                    <Title titleType={EnumTitle.h3} className='mb-2 last:mb-0'>
-                        Title H3
-                    </Title>
-
-                    <Text textType={EnumText.large} className='mb-2 last:mb-0'>
+                    <Text textType={EnumText.large}>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam doloribus obcaecati aliquid
                         accusamus hic dicta blanditiis porro eos voluptate iusto ipsum atque, tenetur ullam enim ipsa.
-                        Modi magnam incidunt minima?
+                        Modi magnam incidunt minima? accusamus hic dicta blanditiis porro{' '}
+                        <SimpleLink href={PATHS.UI}>voluptate iusto</SimpleLink> eos ipsum atque, tenetur ullam enim
+                        ipsa. Modi magnam incidunt minima?
                     </Text>
 
                     <Text>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam doloribus obcaecati aliquid
                         accusamus hic dicta blanditiis porro eos voluptate iusto ipsum atque, tenetur ullam enim ipsa.
-                        Modi magnam incidunt minima?
+                        Modi magnam incidunt minima? accusamus hic dicta blanditiis porro{' '}
+                        <SimpleLink href={PATHS.UI}>voluptate iusto</SimpleLink> eos ipsum atque, tenetur ullam enim
+                        ipsa. Modi magnam incidunt minima?
                     </Text>
                 </div>
             </section>
