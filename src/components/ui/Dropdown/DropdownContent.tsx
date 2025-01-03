@@ -56,12 +56,15 @@ const DropdownContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
             <div
                 ref={ref}
                 {...props}
-                className={cn(`absolute z-10 min-w-full w-max rounded p-2.5 border border-gray bg-white ${className}`, {
-                    'left-0': align === EnumDropdownAlign.start && isVerticalPosition,
-                    'top-0': align === EnumDropdownAlign.start && isHorizontalPosition,
-                    'right-0': align === EnumDropdownAlign.end && isVerticalPosition,
-                    'bottom-0': align === EnumDropdownAlign.end && isHorizontalPosition,
-                })}
+                className={cn(
+                    `absolute z-10 min-w-full max-w-[calc(100vw-32px)] w-max rounded p-2.5 border border-gray bg-white ${className}`,
+                    {
+                        'left-0': align === EnumDropdownAlign.start && isVerticalPosition,
+                        'top-0': align === EnumDropdownAlign.start && isHorizontalPosition,
+                        'right-0': align === EnumDropdownAlign.end && isVerticalPosition,
+                        'bottom-0': align === EnumDropdownAlign.end && isHorizontalPosition,
+                    }
+                )}
                 style={dropdownContentStyle}
             >
                 {Children.map(props.children, (child) => {

@@ -1,8 +1,13 @@
+import { Metadata } from 'next';
 import { PATHS } from '@/src/variables/paths';
 import { EnumAvatar, EnumBtn, EnumDropdownAlign, EnumDropdownPosition, EnumText, EnumTitle } from '@/src/types/enums';
-import { BackLink, Breadcrumbs, DropdownContent } from '@/src/components/elements';
-import { Avatar, AvatarGroup, Badge, Btn, BtnLink, Dropdown, Line, Text, Title } from '@/src/components/ui';
+import { BackLink, Breadcrumbs, DropdownContent, ModalContent } from '@/src/components/elements';
+import { Avatar, AvatarGroup, Badge, Btn, BtnLink, Dropdown, Line, Modal, Text, Title } from '@/src/components/ui';
 import { User } from 'lucide-react';
+
+export const metadata: Metadata = {
+    title: 'UI Page',
+};
 
 const UIPage = () => {
     return (
@@ -44,7 +49,7 @@ const UIPage = () => {
             </section>
 
             <section className='relative w-full mb-10 last:mb-0'>
-                <div className='flex w-full gap-4 mb-4 last:mb-0'>
+                <div className='flex flex-wrap w-full gap-4 mb-4 last:mb-0'>
                     <BtnLink href={PATHS.UI}>Link Default</BtnLink>
 
                     <BtnLink href={PATHS.UI} btnType={EnumBtn.outline}>
@@ -62,7 +67,7 @@ const UIPage = () => {
                     </BtnLink>
                 </div>
 
-                <div className='flex w-full gap-4 mb-4 last:mb-0'>
+                <div className='flex flex-wrap w-full gap-4 mb-4 last:mb-0'>
                     <Btn>Button Default</Btn>
                     <Btn btnType={EnumBtn.outline}>Button Outline</Btn>
                     <Btn btnType={EnumBtn.disabled}>Button Disabled</Btn>
@@ -95,15 +100,18 @@ const UIPage = () => {
             </section>
 
             <section className='relative w-full mb-10 last:mb-0'>
-                <div className='flex w-full gap-4 mb-4 last:mb-0'>
+                <div className='flex flex-wrap w-full gap-4 mb-4 last:mb-0'>
                     <Dropdown>
-                        <Dropdown.Trigger skipPropsToChildren>
+                        <Dropdown.Trigger>
                             <Btn>Dropdown Default</Btn>
                         </Dropdown.Trigger>
-                        <Dropdown.Content skipPropsToChildren>
+                        <Dropdown.Content className='md:w-[400px]' skipPropsToChildren>
                             <ul className='flex flex-col gap-2 w-full mb-4 last:mb-0'>
                                 <li>
-                                    <Text>Lorem, ipsum dolor sit amet consectetur</Text>
+                                    <Text>
+                                        Lorem, ipsum dolor sit amet consectetur. Lorem, ipsum dolor sit amet
+                                        consectetur, asd dima and some people.
+                                    </Text>
                                 </li>
                                 <li>
                                     <Text>Item 2</Text>
@@ -118,9 +126,9 @@ const UIPage = () => {
                         </Dropdown.Content>
                     </Dropdown>
 
-                    <Dropdown isOpen>
-                        <Dropdown.Trigger skipPropsToChildren>
-                            <Btn>Dropdown isOpen</Btn>
+                    <Dropdown>
+                        <Dropdown.Trigger>
+                            <Btn>Dropdown Close Btn</Btn>
                         </Dropdown.Trigger>
                         <Dropdown.Content align={EnumDropdownAlign.start} position={EnumDropdownPosition.bottom}>
                             <DropdownContent />
@@ -130,20 +138,60 @@ const UIPage = () => {
             </section>
 
             <section className='relative w-full mb-10 last:mb-0'>
+                <div className='flex flex-wrap w-full gap-4 mb-4 last:mb-0'>
+                    <Modal>
+                        <Modal.Trigger>
+                            <Btn>Modal Default</Btn>
+                        </Modal.Trigger>
+                        <Modal.Content skipPropsToChildren>
+                            <div className='w-full'>
+                                <Title titleType={EnumTitle.h2}>Default Modal</Title>
+
+                                <Line />
+
+                                <div className='flex flex-col gap-2 w-full'>
+                                    <Text>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima eum dolor nulla
+                                        delectus sint optio cum ducimus vitae placeat veritatis vero deleniti,
+                                        voluptatibus fugit. Laudantium error cum earum rem hic!
+                                    </Text>
+
+                                    <Text>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima eum dolor nulla
+                                        delectus sint optio cum ducimus vitae placeat veritatis vero deleniti,
+                                        voluptatibus fugit. Laudantium error cum earum rem hic!
+                                    </Text>
+                                </div>
+                            </div>
+                        </Modal.Content>
+                    </Modal>
+
+                    <Modal>
+                        <Modal.Trigger>
+                            <Btn>Modal Close Btn</Btn>
+                        </Modal.Trigger>
+                        <Modal.Content>
+                            <ModalContent />
+                        </Modal.Content>
+                    </Modal>
+                </div>
+            </section>
+
+            <section className='relative w-full mb-10 last:mb-0'>
                 <div className='flex w-full gap-4 mb-4 last:mb-0'>
                     <Avatar>
                         <Avatar.Img src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' />
                     </Avatar>
 
-                    <Avatar isOnline={true}>
+                    <Avatar isOnline>
                         <Avatar.Img src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' />
                     </Avatar>
 
-                    <Avatar isOnline={false}>
+                    <Avatar isOffline>
                         <Avatar.Img src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' />
                     </Avatar>
 
-                    <Avatar isOnline={true}>
+                    <Avatar isOnline>
                         <Avatar.Link href={PATHS.UI}>
                             <Avatar.Img
                                 src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
@@ -158,111 +206,15 @@ const UIPage = () => {
                         <Avatar.Img src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' />
                     </Avatar>
 
-                    <Avatar type={EnumAvatar.square} isOnline={true}>
+                    <Avatar type={EnumAvatar.square} isOnline>
                         <Avatar.Img src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' />
                     </Avatar>
 
-                    <Avatar type={EnumAvatar.square} isOnline={false}>
+                    <Avatar type={EnumAvatar.square} isOffline>
                         <Avatar.Img src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' />
                     </Avatar>
 
-                    <Avatar type={EnumAvatar.square} isOnline={true}>
-                        <Avatar.Link href={PATHS.UI}>
-                            <Avatar.Img
-                                src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
-                                className='transition-all duration-500 will-change-transform hover:scale-110'
-                            />
-                        </Avatar.Link>
-                    </Avatar>
-                </div>
-                <div className='flex w-full gap-4 mb-4 last:mb-0'>
-                    <AvatarGroup visibleCount={4}>
-                        <Avatar>
-                            <Avatar.Link href={PATHS.UI}>
-                                <Avatar.Img
-                                    src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
-                                    className='transition-all duration-500 will-change-transform hover:scale-110'
-                                />
-                            </Avatar.Link>
-                        </Avatar>
-
-                        <Avatar>
-                            <Avatar.Link href={PATHS.UI}>
-                                <Avatar.Img
-                                    src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
-                                    className='transition-all duration-500 will-change-transform hover:scale-110'
-                                />
-                            </Avatar.Link>
-                        </Avatar>
-
-                        <Avatar>
-                            <Avatar.Link href={PATHS.UI}>
-                                <Avatar.Img
-                                    src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
-                                    className='transition-all duration-500 will-change-transform hover:scale-110'
-                                />
-                            </Avatar.Link>
-                        </Avatar>
-
-                        <Avatar>
-                            <Avatar.Link href={PATHS.UI}>
-                                <Avatar.Img
-                                    src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
-                                    className='transition-all duration-500 will-change-transform hover:scale-110'
-                                />
-                            </Avatar.Link>
-                        </Avatar>
-
-                        <Avatar>
-                            <Avatar.Link href={PATHS.UI}>
-                                <Avatar.Img
-                                    src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
-                                    className='transition-all duration-500 will-change-transform hover:scale-110'
-                                />
-                            </Avatar.Link>
-                        </Avatar>
-                    </AvatarGroup>
-                </div>
-            </section>
-
-            <section className='relative w-full mb-10 last:mb-0'>
-                <div className='flex w-full gap-4 mb-4 last:mb-0'>
-                    <Avatar size={80}>
-                        <Avatar.Img src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' />
-                    </Avatar>
-
-                    <Avatar size={80} isOnline={true}>
-                        <Avatar.Img src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' />
-                    </Avatar>
-
-                    <Avatar size={80} isOnline={false}>
-                        <Avatar.Img src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' />
-                    </Avatar>
-
-                    <Avatar size={80} isOnline={true}>
-                        <Avatar.Link href={PATHS.UI}>
-                            <Avatar.Img
-                                src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
-                                className='transition-all duration-500 will-change-transform hover:scale-110'
-                            />
-                        </Avatar.Link>
-                    </Avatar>
-                </div>
-
-                <div className='flex w-full gap-4 mb-4 last:mb-0'>
-                    <Avatar type={EnumAvatar.square} size={80}>
-                        <Avatar.Img src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' />
-                    </Avatar>
-
-                    <Avatar type={EnumAvatar.square} size={80} isOnline={true}>
-                        <Avatar.Img src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' />
-                    </Avatar>
-
-                    <Avatar type={EnumAvatar.square} size={80} isOnline={false}>
-                        <Avatar.Img src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' />
-                    </Avatar>
-
-                    <Avatar type={EnumAvatar.square} size={80} isOnline={true}>
+                    <Avatar type={EnumAvatar.square} isOnline>
                         <Avatar.Link href={PATHS.UI}>
                             <Avatar.Img
                                 src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
@@ -274,7 +226,7 @@ const UIPage = () => {
 
                 <div className='flex w-full gap-4 mb-4 last:mb-0'>
                     <AvatarGroup visibleCount={4}>
-                        <Avatar size={80}>
+                        <Avatar>
                             <Avatar.Link href={PATHS.UI}>
                                 <Avatar.Img
                                     src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
@@ -283,7 +235,7 @@ const UIPage = () => {
                             </Avatar.Link>
                         </Avatar>
 
-                        <Avatar size={80}>
+                        <Avatar>
                             <Avatar.Link href={PATHS.UI}>
                                 <Avatar.Img
                                     src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
@@ -292,7 +244,7 @@ const UIPage = () => {
                             </Avatar.Link>
                         </Avatar>
 
-                        <Avatar size={80}>
+                        <Avatar>
                             <Avatar.Link href={PATHS.UI}>
                                 <Avatar.Img
                                     src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
@@ -301,7 +253,7 @@ const UIPage = () => {
                             </Avatar.Link>
                         </Avatar>
 
-                        <Avatar size={80}>
+                        <Avatar>
                             <Avatar.Link href={PATHS.UI}>
                                 <Avatar.Img
                                     src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
@@ -310,7 +262,7 @@ const UIPage = () => {
                             </Avatar.Link>
                         </Avatar>
 
-                        <Avatar size={80}>
+                        <Avatar>
                             <Avatar.Link href={PATHS.UI}>
                                 <Avatar.Img
                                     src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'

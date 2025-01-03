@@ -1,3 +1,4 @@
+'use client';
 import { FC, forwardRef, ImgHTMLAttributes, RefAttributes } from 'react';
 import Image from 'next/image';
 import { EnumAvatar } from '@/src/types/enums';
@@ -20,7 +21,7 @@ export const AvatarImg: FC<Props> = forwardRef<HTMLImageElement, Props>(
                 src={src}
                 alt={props.alt || ''}
                 fill
-                className={cn(`absolute top-0 left-0 w-full h-full object-cover object-center ${className}`, {
+                className={cn(`absolute top-0 left-0 object-cover object-center ${className}`, {
                     'rounded-full': isTypeCircle,
                     'rounded-md': isTypeSquare,
                 })}

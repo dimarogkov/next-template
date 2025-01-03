@@ -1,3 +1,4 @@
+'use client';
 import {
     Children,
     cloneElement,
@@ -7,6 +8,9 @@ import {
     isValidElement,
     ReactElement,
     RefAttributes,
+    useEffect,
+    useRef,
+    useState,
 } from 'react';
 import { EnumAvatar } from '@/src/types/enums';
 import cn from 'classnames';
@@ -14,38 +18,44 @@ import cn from 'classnames';
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     currentIndex?: number;
     type?: EnumAvatar;
-    size?: number;
     isOnline?: boolean;
+    isOffline?: boolean;
     className?: string;
 }
 
 const AvatarWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(
-    ({ currentIndex, type = EnumAvatar.circle, size = 48, isOnline, className = '', ...props }, ref) => {
+    (
+        { currentIndex, type = EnumAvatar.circle, isOnline = false, isOffline = false, className = '', ...props },
+        ref
+    ) => {
+        const [currentWidth, setCurrentWidth] = useState(0);
+        const avatarRef = useRef<HTMLDivElement>(null);
+
         const isTypeCircle = type === EnumAvatar.circle;
         const isTypeSquare = type === EnumAvatar.square;
-        const isOfflineExist = isOnline === false;
-        const isOnlineExist = isOnline === true;
+
+        useEffect(() => {
+            setCurrentWidth(avatarRef.current?.offsetWidth || 48);
+        }, []);
 
         const avatarStyle = {
-            width: `${size}px`,
-            height: `${size}px`,
             ...(currentIndex && {
-                left: `${currentIndex * Math.round(size / 4) * -1}px`,
-                outline: `${Math.round(size / 30)}px solid white`,
+                left: `${currentIndex * Math.round(currentWidth / 4) * -1}px`,
+                outline: `${Math.round(currentWidth / 30)}px solid white`,
             }),
         };
 
         return (
             <div
-                ref={ref}
+                ref={ref || avatarRef}
                 {...props}
-                className={cn(`relative skeleton ${className}`, {
+                className={cn(`relative skeleton ${className || 'w-12 h-12'}`, {
                     'rounded-full': isTypeCircle,
                     'rounded-md': isTypeSquare,
-                    'offline-square': isOfflineExist && isTypeSquare,
-                    'online-square': isOnlineExist && isTypeSquare,
-                    offline: isOfflineExist && isTypeCircle,
-                    online: isOnlineExist && isTypeCircle,
+                    'offline-square': isOffline && isTypeSquare,
+                    'online-square': isOnline && isTypeSquare,
+                    offline: isOffline && isTypeCircle,
+                    online: isOnline && isTypeCircle,
                 })}
                 style={avatarStyle}
             >
