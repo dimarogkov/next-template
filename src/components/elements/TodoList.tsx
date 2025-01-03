@@ -45,7 +45,7 @@ const TodoList = () => {
     }, [searchValue, todos]);
 
     return (
-        <div>
+        <>
             {isLoading && <Text>Loading...</Text>}
 
             {filteredTodos?.length === 0 && <Text>No todos found. Try searching again.</Text>}
@@ -63,7 +63,7 @@ const TodoList = () => {
                     ))}
                 </div>
             )}
-        </div>
+        </>
     );
 };
 

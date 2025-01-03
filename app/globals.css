@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,7 +7,6 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
     color: #222831;
 }
 
@@ -73,10 +70,12 @@ input[type='number']::-webkit-outer-spin-button {
     outline: 2px solid white;
     background-color: oklch(64.8% 0.15 160 / 1);
 }
+
 .offline::before,
 .offline-square::before {
     background-color: #e5e5e5;
 }
+
 .online-square::before,
 .offline-square::before {
     top: -10%;
