@@ -17,8 +17,8 @@ const Form = () => {
 
     return (
         <form className='flex flex-col gap-5 w-full max-w-xl' onSubmit={handleSubmit(onSubmit)}>
-            <Label>
-                <Select {...register(EnumFormNames.select)} className='mb-2 last:mb-0'>
+            <Label className='flex flex-col gap-2'>
+                <Select {...register(EnumFormNames.select)}>
                     <Select.Option value='default' hidden>
                         Select Option
                     </Select.Option>
@@ -30,50 +30,43 @@ const Form = () => {
                 {errors.select && <ErrorMessage>{errors.select.message}</ErrorMessage>}
             </Label>
 
-            <Label>
-                <Input placeholder='Username' {...register(EnumFormNames.username)} className='mb-2 last:mb-0' />
+            <Label className='flex flex-col gap-2'>
+                <Input placeholder='Username' {...register(EnumFormNames.username)} />
                 {errors.username && <ErrorMessage>{errors.username.message}</ErrorMessage>}
             </Label>
 
-            <Label>
-                <Input type='number' placeholder='Age' {...register(EnumFormNames.age)} className='mb-2 last:mb-0' />
+            <Label className='flex flex-col gap-2'>
+                <Input type='number' placeholder='Age' {...register(EnumFormNames.age)} />
                 {errors.age && <ErrorMessage>{errors.age.message}</ErrorMessage>}
             </Label>
 
-            <Label>
-                <Input type='email' placeholder='Email' {...register(EnumFormNames.email)} className='mb-2 last:mb-0' />
+            <Label className='flex flex-col gap-2'>
+                <Input type='email' placeholder='Email' {...register(EnumFormNames.email)} />
                 {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
             </Label>
 
-            <Label>
-                <Input placeholder='Phone' {...register(EnumFormNames.phone)} className='mb-2 last:mb-0' />
+            <Label className='flex flex-col gap-2'>
+                <Input placeholder='Phone' {...register(EnumFormNames.phone)} />
                 {errors.phone && <ErrorMessage>{errors.phone.message}</ErrorMessage>}
             </Label>
 
-            <Label>
-                <InputPassword
-                    placeholder='Password'
-                    autoComplete='Password'
-                    {...register(EnumFormNames.password)}
-                    className='mb-2 last:mb-0'
-                />
-
+            <Label className='flex flex-col gap-2'>
+                <InputPassword placeholder='Password' autoComplete='Password' {...register(EnumFormNames.password)} />
                 {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
             </Label>
 
-            <Label>
+            <Label className='flex flex-col gap-2'>
                 <InputPassword
                     placeholder='Confirm Password'
                     autoComplete='Confirm Password'
                     {...register(EnumFormNames.confirmPassword)}
-                    className='mb-2 last:mb-0'
                 />
 
                 {errors.confirmPassword && <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>}
             </Label>
 
-            <div className='w-full'>
-                <div className='flex gap-4 w-full mb-2 last:mb-0'>
+            <div className='flex flex-col gap-2 w-full'>
+                <div className='flex gap-4 w-full'>
                     <Label className='w-full'>
                         <div className='flex items-center gap-2 cursor-pointer'>
                             <Radio
@@ -100,8 +93,8 @@ const Form = () => {
                 {errors.radioType && <ErrorMessage>{errors.radioType.message}</ErrorMessage>}
             </div>
 
-            <Label>
-                <div className='flex items-center gap-2 cursor-pointer mb-2 last:mb-0'>
+            <Label className='flex flex-col gap-2'>
+                <div className='flex items-center gap-2 cursor-pointer'>
                     <Checkbox isChecked={watch('rememberMe')} {...register(EnumFormNames.rememberMe)} />
                     <Text>Remember me</Text>
                 </div>
