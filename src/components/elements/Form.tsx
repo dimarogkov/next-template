@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { formOptions } from '@/src/helpers';
 import { EnumFormNames, EnumBtn } from '@/src/types/enums';
 import { Btn, Checkbox, ErrorMessage, Input, Label, Radio, Select, Text } from '../ui';
+import InputPassword from '../ui/InputPassword';
 
 const Form = () => {
     const {
@@ -53,8 +54,7 @@ const Form = () => {
             </Label>
 
             <Label className='w-full mb-5 last:mb-0'>
-                <Input
-                    type='password'
+                <InputPassword
                     placeholder='Password'
                     autoComplete='Password'
                     {...register(EnumFormNames.password)}
@@ -65,8 +65,7 @@ const Form = () => {
             </Label>
 
             <Label className='w-full mb-5 last:mb-0'>
-                <Input
-                    type='password'
+                <InputPassword
                     placeholder='Confirm Password'
                     autoComplete='Confirm Password'
                     {...register(EnumFormNames.confirmPassword)}
