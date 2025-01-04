@@ -9,7 +9,7 @@ type Props = {
 
 const Error: FC<Props> = ({ error, reset = () => {} }) => {
     return (
-        <section className='relative w-full'>
+        <section className='relative flex flex-col gap-5 w-full'>
             <Title>{error?.message}</Title>
             <Btn onClick={() => reset()}>Retry</Btn>
         </section>

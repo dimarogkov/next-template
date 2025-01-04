@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 
 const NotFoundPage = () => {
     return (
-        <section className='relative w-full'>
-            <Title className='mb-5 last:mb-0'>Page not Found | 404</Title>
+        <section className='relative flex flex-col gap-5 w-full'>
+            <Title>Page not Found | 404</Title>
             <BtnLink href={PATHS.HOME}>Go Home</BtnLink>
         </section>
     );

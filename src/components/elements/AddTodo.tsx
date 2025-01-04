@@ -30,7 +30,7 @@ const AddTodo = () => {
     };
 
     return (
-        <div className='flex flex-wrap w-full gap-2 mb-6 md:mb-8 last:mb-0'>
+        <div className='flex flex-wrap w-full gap-2'>
             <Input
                 name='search'
                 placeholder='Add Todo'

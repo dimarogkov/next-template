@@ -25,9 +25,9 @@ const UIPage = () => {
     return (
         <>
             <section className='relative w-full'>
-                <div className='w-full'>
-                    <BackLink className='mb-6 last:mb-0' />
-                    <Breadcrumbs className='mb-6 last:mb-0' />
+                <div className='flex flex-col gap-6 w-full'>
+                    <BackLink />
+                    <Breadcrumbs />
                     <Title>React UI</Title>
                 </div>
             </section>
@@ -156,7 +156,6 @@ const UIPage = () => {
                         <Modal.Content skipPropsToChildren>
                             <div className='w-full'>
                                 <Title titleType={EnumTitle.h2}>Default Modal</Title>
-
                                 <Line />
 
                                 <div className='flex flex-col gap-2 w-full'>

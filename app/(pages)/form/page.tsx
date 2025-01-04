@@ -9,12 +9,11 @@ export const metadata: Metadata = {
 const FormPage = () => {
     return (
         <section className='relative w-full'>
-            <div className='w-full'>
-                <BackLink className='mb-6 last:mb-0' />
+            <div className='flex flex-col gap-6 w-full'>
+                <BackLink />
+                <Breadcrumbs />
 
-                <Breadcrumbs className='mb-6 last:mb-0' />
-
-                <Badge className='mb-6 last:mb-0'>
+                <Badge>
                     <Badge.Item>React Hook Form</Badge.Item>
                     <Badge.Item>Yup Validation</Badge.Item>
                 </Badge>

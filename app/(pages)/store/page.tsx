@@ -9,12 +9,11 @@ export const metadata: Metadata = {
 const StorePage = () => {
     return (
         <section className='relative w-full'>
-            <div className='w-full'>
-                <BackLink className='mb-6 last:mb-0' />
+            <div className='flex flex-col gap-6 w-full'>
+                <BackLink />
+                <Breadcrumbs />
 
-                <Breadcrumbs className='mb-6 last:mb-0' />
-
-                <Badge className='mb-6 last:mb-0'>
+                <Badge>
                     <Badge.Item>Redux Store</Badge.Item>
                     <Badge.Item>Zustand Store</Badge.Item>
                 </Badge>
@@ -24,8 +23,8 @@ const StorePage = () => {
 
             <Line />
 
-            <div className='w-full mb-10 last:mb-0'>
-                <StoreRedux className='mb-10 last:mb-0' />
+            <div className='flex flex-col gap-10 w-full'>
+                <StoreRedux />
                 <StoreZustand />
             </div>
         </section>
