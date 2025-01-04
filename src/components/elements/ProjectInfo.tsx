@@ -10,12 +10,10 @@ type Props = {
 const ProjectInfo: FC<Props> = ({ className = '' }) => {
     return (
         <div className={`relative w-full ${className}`}>
-            <div className='w-full mb-8 last:mb-0'>
-                <Title titleType={EnumTitle.h2} className='mb-3 last:mb-0'>
-                    React Template
-                </Title>
+            <div className='flex flex-col gap-3 w-full mb-8 last:mb-0'>
+                <Title titleType={EnumTitle.h2}>React Template</Title>
 
-                <Text textType={EnumText.large} className='mb-3 last:mb-0'>
+                <Text textType={EnumText.large}>
                     This is React Template for development. Technolgies used: React, TypeScript, Tailwind CSS, Axios,
                     React Query, React Hook Form, Yup, Debounce, Redux Toolkit, Zustand.
                 </Text>

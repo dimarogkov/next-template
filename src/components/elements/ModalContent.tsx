@@ -8,11 +8,10 @@ type Props = {
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
 };
 
-const ModalContent: FC<Props> = ({ setIsOpen = () => {}, className = '' }) => {
+const ModalContent: FC<Props> = ({ className = '', setIsOpen = () => {} }) => {
     return (
         <div className={`relative w-full ${className}`}>
             <Title titleType={EnumTitle.h2}>Modal Close Btn</Title>
-
             <Line />
 
             <div className='flex flex-col gap-2 w-full mb-5 last:mb-0'>

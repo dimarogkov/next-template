@@ -2,8 +2,7 @@
 import { useForm } from 'react-hook-form';
 import { formOptions } from '@/src/helpers';
 import { EnumFormNames, EnumBtn } from '@/src/types/enums';
-import { Btn, Checkbox, ErrorMessage, Input, Label, Radio, Select, Text } from '../ui';
-import InputPassword from '../ui/InputPassword';
+import { Btn, Checkbox, ErrorMessage, Input, InputPassword, Label, Radio, Select, Text } from '../ui';
 
 const Form = () => {
     const {
@@ -14,13 +13,11 @@ const Form = () => {
         formState: { errors, isSubmitted },
     } = useForm(formOptions);
 
-    const onSubmit = (data: any) => {
-        console.log(data);
-    };
+    const onSubmit = (data: any) => console.log(data);
 
     return (
-        <form className='w-full max-w-xl' onSubmit={handleSubmit(onSubmit)}>
-            <Label className='w-full mb-5 last:mb-0'>
+        <form className='flex flex-col gap-5 w-full max-w-xl' onSubmit={handleSubmit(onSubmit)}>
+            <Label>
                 <Select {...register(EnumFormNames.select)} className='mb-2 last:mb-0'>
                     <Select.Option value='default' hidden>
                         Select Option
@@ -33,27 +30,27 @@ const Form = () => {
                 {errors.select && <ErrorMessage>{errors.select.message}</ErrorMessage>}
             </Label>
 
-            <Label className='w-full mb-5 last:mb-0'>
+            <Label>
                 <Input placeholder='Username' {...register(EnumFormNames.username)} className='mb-2 last:mb-0' />
                 {errors.username && <ErrorMessage>{errors.username.message}</ErrorMessage>}
             </Label>
 
-            <Label className='w-full mb-5 last:mb-0'>
+            <Label>
                 <Input type='number' placeholder='Age' {...register(EnumFormNames.age)} className='mb-2 last:mb-0' />
                 {errors.age && <ErrorMessage>{errors.age.message}</ErrorMessage>}
             </Label>
 
-            <Label className='w-full mb-5 last:mb-0'>
+            <Label>
                 <Input type='email' placeholder='Email' {...register(EnumFormNames.email)} className='mb-2 last:mb-0' />
                 {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
             </Label>
 
-            <Label className='w-full mb-5 last:mb-0'>
+            <Label>
                 <Input placeholder='Phone' {...register(EnumFormNames.phone)} className='mb-2 last:mb-0' />
                 {errors.phone && <ErrorMessage>{errors.phone.message}</ErrorMessage>}
             </Label>
 
-            <Label className='w-full mb-5 last:mb-0'>
+            <Label>
                 <InputPassword
                     placeholder='Password'
                     autoComplete='Password'
@@ -64,7 +61,7 @@ const Form = () => {
                 {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
             </Label>
 
-            <Label className='w-full mb-5 last:mb-0'>
+            <Label>
                 <InputPassword
                     placeholder='Confirm Password'
                     autoComplete='Confirm Password'
@@ -75,7 +72,7 @@ const Form = () => {
                 {errors.confirmPassword && <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>}
             </Label>
 
-            <div className='w-full mb-5 last:mb-0'>
+            <div className='w-full'>
                 <div className='flex gap-4 w-full mb-2 last:mb-0'>
                     <Label className='w-full'>
                         <div className='flex items-center gap-2 cursor-pointer'>
@@ -103,7 +100,7 @@ const Form = () => {
                 {errors.radioType && <ErrorMessage>{errors.radioType.message}</ErrorMessage>}
             </div>
 
-            <Label className='w-full mb-5 last:mb-0'>
+            <Label>
                 <div className='flex items-center gap-2 cursor-pointer mb-2 last:mb-0'>
                     <Checkbox isChecked={watch('rememberMe')} {...register(EnumFormNames.rememberMe)} />
                     <Text>Remember me</Text>
