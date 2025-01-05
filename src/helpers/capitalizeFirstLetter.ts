@@ -1,1 +1,3 @@
-export const capitalizeFirstLetter = (word: any) => `${word?.charAt(0).toUpperCase()}${word?.slice(1)}`;
+export const capitalizeFirstLetter = (word: any) => {
+    return `${word?.charAt(0).toUpperCase()}${word?.slice(1)}`;
+};

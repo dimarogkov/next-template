@@ -1,1 +1,3 @@
-export const getFixedName = (str: string) => str.replaceAll('%20', ' ');
+export const getFixedName = (str: string) => {
+    return str.replaceAll('%20', ' ');
+};
