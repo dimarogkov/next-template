@@ -2,7 +2,7 @@
 import { useForm } from 'react-hook-form';
 import { formOptions } from '@/src/helpers';
 import { EnumFormNames, EnumBtn } from '@/src/types/enums';
-import { Btn, Checkbox, ErrorMessage, Input, InputPassword, Label, Radio, Select, Text } from '../ui';
+import { Btn, Checkbox, ErrorMessage, Input, InputPassword, Label, Radio, Select } from '../ui';
 
 const Form = () => {
     const {
