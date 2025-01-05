@@ -7,14 +7,16 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
 }
 
 const ModalTrigger: FC<Props> = forwardRef<HTMLDivElement, Props>(
-    ({ className = '', setIsOpen = () => {}, ...props }, ref) => (
-        <div
-            ref={ref}
-            {...props}
-            onClick={() => setIsOpen(true)}
-            className={`relative w-auto cursor-pointer list-none ${className}`}
-        />
-    )
+    ({ className = '', setIsOpen = () => {}, ...props }, ref) => {
+        return (
+            <div
+                ref={ref}
+                {...props}
+                onClick={() => setIsOpen(true)}
+                className={`relative w-auto cursor-pointer list-none ${className}`}
+            />
+        );
+    }
 );
 
 ModalTrigger.displayName = 'ModalTrigger';

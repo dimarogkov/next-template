@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client';
-import { FC, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useTodo } from '@/src/store/zustand';
 import { debounce } from '@/src/helpers';
 import { Input } from '../ui';

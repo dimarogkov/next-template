@@ -4,13 +4,15 @@ interface Props extends InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTM
     className?: string;
 }
 
-const Input: FC<Props> = forwardRef<HTMLInputElement, Props>(({ className = '', ...props }, ref) => (
-    <input
-        ref={ref}
-        {...props}
-        className={`w-full h-10 px-4 rounded border border-gray bg-transparent outline-none transition-all duration-300 focus:border-black ${className}`}
-    />
-));
+const Input: FC<Props> = forwardRef<HTMLInputElement, Props>(({ className = '', ...props }, ref) => {
+    return (
+        <input
+            ref={ref}
+            {...props}
+            className={`w-full h-10 px-4 rounded border border-gray bg-transparent outline-none transition-all duration-300 focus:border-black ${className}`}
+        />
+    );
+});
 
 Input.displayName = 'Input';
 export default Input;

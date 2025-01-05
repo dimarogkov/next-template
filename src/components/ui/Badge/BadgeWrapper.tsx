@@ -4,9 +4,9 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
     className?: string;
 }
 
-const BadgeWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => (
-    <div ref={ref} {...props} className={`relative flex flex-wrap gap-2 ${className}`} />
-));
+const BadgeWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
+    return <div ref={ref} {...props} className={`relative flex flex-wrap gap-2 ${className}`} />;
+});
 
 BadgeWrapper.displayName = 'BadgeWrapper';
 export default BadgeWrapper;

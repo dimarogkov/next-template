@@ -8,13 +8,15 @@ interface Props extends HTMLAttributes<HTMLParagraphElement>, RefAttributes<HTML
 }
 
 const Text: FC<Props> = forwardRef<HTMLParagraphElement, Props>(
-    ({ textType = EnumText.default, className = '', ...props }, ref) => (
-        <p
-            ref={ref}
-            {...props}
-            className={cn(`w-full text-base ${className}`, { 'md:text-lg': textType === EnumText.large })}
-        />
-    )
+    ({ textType = EnumText.default, className = '', ...props }, ref) => {
+        return (
+            <p
+                ref={ref}
+                {...props}
+                className={cn(`w-full text-base ${className}`, { 'md:text-lg': textType === EnumText.large })}
+            />
+        );
+    }
 );
 
 Text.displayName = 'Text';

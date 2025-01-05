@@ -23,41 +23,43 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
 }
 
 const ModalContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
-    ({ isOpen, skipPropsToChildren = false, className = '', setIsOpen = () => {}, ...props }, ref) => (
-        <div
-            className={cn(
-                'fixed z-20 top-0 left-0 flex items-center justify-center w-full h-full transition-all duration-300',
-                {
-                    'opacity-0 invisible': !isOpen,
-                    'opacity-100 visible': isOpen,
-                }
-            )}
-        >
-            <ModalLayer setIsOpen={setIsOpen} />
-
+    ({ isOpen, skipPropsToChildren = false, className = '', setIsOpen = () => {}, ...props }, ref) => {
+        return (
             <div
-                ref={ref}
-                {...props}
                 className={cn(
-                    `relative md:w-[600px] max-w-[calc(100%-32px)] p-5 rounded-lg bg-white transition-transform duration-300 ${className}`,
+                    'fixed z-20 top-0 left-0 flex items-center justify-center w-full h-full transition-all duration-300',
                     {
-                        'translate-y-10': !isOpen,
-                        'translate-y-0': isOpen,
+                        'opacity-0 invisible': !isOpen,
+                        'opacity-100 visible': isOpen,
                     }
                 )}
             >
-                <ModalClose onClick={() => setIsOpen(false)} />
+                <ModalLayer setIsOpen={setIsOpen} />
 
-                {Children.map(props.children, (child) => {
-                    if (isValidElement(child) && !skipPropsToChildren) {
-                        return cloneElement(child as ReactElement, { setIsOpen });
-                    }
+                <div
+                    ref={ref}
+                    {...props}
+                    className={cn(
+                        `relative md:w-[600px] max-w-[calc(100%-32px)] p-5 rounded-lg bg-white transition-transform duration-300 ${className}`,
+                        {
+                            'translate-y-10': !isOpen,
+                            'translate-y-0': isOpen,
+                        }
+                    )}
+                >
+                    <ModalClose onClick={() => setIsOpen(false)} />
 
-                    return child;
-                })}
+                    {Children.map(props.children, (child) => {
+                        if (isValidElement(child) && !skipPropsToChildren) {
+                            return cloneElement(child as ReactElement, { setIsOpen });
+                        }
+
+                        return child;
+                    })}
+                </div>
             </div>
-        </div>
-    )
+        );
+    }
 );
 
 ModalContent.displayName = 'ModalContent';
