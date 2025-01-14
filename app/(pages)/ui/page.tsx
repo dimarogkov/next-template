@@ -1,6 +1,14 @@
 import { Metadata } from 'next';
 import { PATHS } from '@/src/variables/paths';
-import { EnumAvatar, EnumBtn, EnumDropdownAlign, EnumDropdownPosition, EnumText, EnumTitle } from '@/src/types/enums';
+import {
+    EnumAvatar,
+    EnumBtn,
+    EnumDropdownAlign,
+    EnumDropdownPosition,
+    EnumText,
+    EnumTitle,
+    EnumToast,
+} from '@/src/types/enums';
 import { BackLink, Breadcrumbs, DropdownContent, ModalContent } from '@/src/components/elements';
 import {
     Avatar,
@@ -8,6 +16,7 @@ import {
     Badge,
     Btn,
     BtnLink,
+    CreateToast,
     Dropdown,
     Line,
     Modal,
@@ -60,7 +69,7 @@ const UIPage = () => {
             </section>
 
             <section className='relative w-full mb-10 last:mb-0'>
-                <div className='flex flex-wrap w-full gap-4 mb-4 last:mb-0'>
+                <div className='flex flex-wrap w-full gap-2.5 mb-4 last:mb-0'>
                     <BtnLink href={PATHS.UI}>Link Default</BtnLink>
 
                     <BtnLink href={PATHS.UI} btnType={EnumBtn.outline}>
@@ -78,7 +87,7 @@ const UIPage = () => {
                     </BtnLink>
                 </div>
 
-                <div className='flex flex-wrap w-full gap-4 mb-4 last:mb-0'>
+                <div className='flex flex-wrap w-full gap-2.5 mb-4 last:mb-0'>
                     <Btn>Button Default</Btn>
                     <Btn btnType={EnumBtn.outline}>Button Outline</Btn>
                     <Btn btnType={EnumBtn.disabled}>Button Disabled</Btn>
@@ -135,8 +144,8 @@ const UIPage = () => {
             </section>
 
             <section className='relative w-full mb-10 last:mb-0'>
-                <div className='flex flex-wrap w-full gap-4 mb-4 last:mb-0'>
-                    <Dropdown>
+                <div className='flex flex-wrap w-full gap-2.5 mb-4 last:mb-0'>
+                    <Dropdown className='w-full sm:w-auto'>
                         <Dropdown.Trigger>
                             <Btn>Dropdown Default</Btn>
                         </Dropdown.Trigger>
@@ -161,7 +170,7 @@ const UIPage = () => {
                         </Dropdown.Content>
                     </Dropdown>
 
-                    <Dropdown>
+                    <Dropdown className='w-full sm:w-auto'>
                         <Dropdown.Trigger>
                             <Btn>Dropdown Close Btn</Btn>
                         </Dropdown.Trigger>
@@ -173,15 +182,54 @@ const UIPage = () => {
             </section>
 
             <section className='relative w-full mb-10 last:mb-0'>
-                <div className='flex flex-wrap w-full gap-4 mb-4 last:mb-0'>
-                    <Modal>
+                <div className='flex flex-wrap w-full gap-2.5 mb-4 last:mb-0'>
+                    <CreateToast
+                        title='This is a Info notification.'
+                        text='This toast message notifies you of something.'
+                        className='w-full sm:w-auto'
+                    >
+                        <Btn>Toast Info</Btn>
+                    </CreateToast>
+
+                    <CreateToast
+                        type={EnumToast.success}
+                        title='This is a Success notification.'
+                        text='This toast message notifies you of all your great successes.'
+                        className='w-full sm:w-auto'
+                    >
+                        <Btn>Toast Success</Btn>
+                    </CreateToast>
+
+                    <CreateToast
+                        type={EnumToast.warning}
+                        title='This is a Warning notification.'
+                        text='This toast message notifies you of a Warning.'
+                        className='w-full sm:w-auto'
+                    >
+                        <Btn>Toast Warning</Btn>
+                    </CreateToast>
+
+                    <CreateToast
+                        type={EnumToast.error}
+                        title='This is a Error notification'
+                        text='This toast message notifies you of an Error. It is probably not your fault.'
+                        className='w-full sm:w-auto'
+                    >
+                        <Btn>Toast Error</Btn>
+                    </CreateToast>
+                </div>
+            </section>
+
+            <section className='relative w-full mb-10 last:mb-0'>
+                <div className='flex flex-wrap w-full gap-2.5 mb-4 last:mb-0'>
+                    <Modal className='w-full sm:w-auto'>
                         <Modal.Trigger>
                             <Btn>Modal Default</Btn>
                         </Modal.Trigger>
                         <Modal.Content skipPropsToChildren>
                             <div className='w-full'>
                                 <Title titleType={EnumTitle.h2}>Default Modal</Title>
-                                <Line />
+                                <Line className='my-4 sm:my-5' />
 
                                 <div className='flex flex-col gap-2 w-full'>
                                     <Text>
@@ -200,7 +248,7 @@ const UIPage = () => {
                         </Modal.Content>
                     </Modal>
 
-                    <Modal>
+                    <Modal className='w-full sm:w-auto'>
                         <Modal.Trigger>
                             <Btn>Modal Close Btn</Btn>
                         </Modal.Trigger>
@@ -212,7 +260,7 @@ const UIPage = () => {
             </section>
 
             <section className='relative w-full mb-10 last:mb-0'>
-                <div className='flex w-full gap-4 mb-4 last:mb-0'>
+                <div className='flex w-full gap-2.5 mb-4 last:mb-0'>
                     <Avatar>
                         <Avatar.Img src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' />
                     </Avatar>
@@ -235,7 +283,7 @@ const UIPage = () => {
                     </Avatar>
                 </div>
 
-                <div className='flex w-full gap-4 mb-4 last:mb-0'>
+                <div className='flex w-full gap-2.5 mb-4 last:mb-0'>
                     <Avatar type={EnumAvatar.square}>
                         <Avatar.Img src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' />
                     </Avatar>
@@ -258,7 +306,7 @@ const UIPage = () => {
                     </Avatar>
                 </div>
 
-                <div className='flex w-full gap-4 mb-4 last:mb-0'>
+                <div className='flex w-full gap-2.5 mb-4 last:mb-0'>
                     <AvatarGroup visibleCount={4}>
                         <Avatar>
                             <Avatar.Link href={PATHS.UI}>

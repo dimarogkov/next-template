@@ -40,7 +40,7 @@ const ModalContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
                     ref={ref}
                     {...props}
                     className={cn(
-                        `relative md:w-[600px] max-w-[calc(100%-32px)] p-5 rounded-lg bg-white transition-transform duration-300 ${className}`,
+                        `relative md:w-[600px] max-w-[calc(100%-32px)] p-4 sm:p-5 rounded-lg bg-white transition-transform duration-300 ${className}`,
                         {
                             'translate-y-10': !isOpen,
                             'translate-y-0': isOpen,

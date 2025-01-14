@@ -20,6 +20,7 @@ This is **Next Template** for development. Technolgies used: **React, TypeScript
         -   elements
         -   root
         -   ui
+    -   context
     -   helpers
     -   services
     -   store

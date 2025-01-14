@@ -1,7 +1,7 @@
 'use client';
 import { Dispatch, FC, SetStateAction } from 'react';
+import { EnumTitle } from '@/src/types/enums';
 import { Btn, Line, Text, Title } from '../ui';
-import { EnumTitle } from '../../types/enums';
 
 type Props = {
     className?: string;
@@ -12,7 +12,7 @@ const ModalContent: FC<Props> = ({ className = '', setIsOpen = () => {} }) => {
     return (
         <div className={`relative w-full ${className}`}>
             <Title titleType={EnumTitle.h2}>Modal Close Btn</Title>
-            <Line />
+            <Line className='my-4 sm:my-5' />
 
             <div className='flex flex-col gap-2 w-full mb-5 last:mb-0'>
                 <Text>

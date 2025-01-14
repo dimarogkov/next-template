@@ -42,12 +42,7 @@ const DropdownWrapper: FC<Props> = forwardRef<HTMLDetailsElement, Props>(
         }, []);
 
         return (
-            <details
-                ref={ref || dropdownRef}
-                {...props}
-                open={isDropdownOpen}
-                className={`relative w-auto ${className}`}
-            >
+            <details ref={ref || dropdownRef} {...props} open={isDropdownOpen} className={`relative ${className}`}>
                 {Children.map(props.children, (child) => {
                     if (isValidElement(child)) {
                         return cloneElement(child as ReactElement, {

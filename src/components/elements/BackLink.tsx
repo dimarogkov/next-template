@@ -6,6 +6,7 @@ type Props = {
     href?: string;
     className?: string;
 };
+
 const BackLink: FC<Props> = ({ href = PATHS.HOME, className = '' }) => {
     return (
         <BtnLink href={href} className={className}>
