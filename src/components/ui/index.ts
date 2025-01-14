@@ -4,6 +4,7 @@ import Badge from './Badge';
 import Btn from './Btn';
 import BtnLink from './BtnLink';
 import Checkbox from './Checkbox';
+import CreateToast from './Toast/CreateToast';
 import Dropdown from './Dropdown';
 import ErrorMessage from './ErrorMessage';
 import Input from './Input';
@@ -18,6 +19,7 @@ import SimpleLink from './SimpleLink';
 import Tabs from './Tabs';
 import Text from './Text';
 import Title from './Title';
+import Toast from './Toast/Toast';
 
 export {
     Avatar,
@@ -26,6 +28,7 @@ export {
     Btn,
     BtnLink,
     Checkbox,
+    CreateToast,
     Dropdown,
     ErrorMessage,
     Input,
@@ -40,4 +43,5 @@ export {
     Tabs,
     Text,
     Title,
+    Toast,
 };

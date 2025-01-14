@@ -18,6 +18,15 @@ const config: Config = {
                 white: '#fff',
             },
         },
+        animation: {
+            showToastAnimation: 'showToast 0.4s ease-in-out',
+        },
+        keyframes: {
+            showToast: {
+                from: { opacity: '0', transform: 'translateX(30%)' },
+                to: { opacity: '1', transform: 'translateX(0)' },
+            },
+        },
     },
     plugins: [require('daisyui')],
 };

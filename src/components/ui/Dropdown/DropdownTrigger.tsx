@@ -19,7 +19,7 @@ const DropdownTrigger: FC<Props> = forwardRef<HTMLDivElement, Props>(
                 ref={ref}
                 {...props}
                 onClick={changeIsOpen}
-                className={`relative w-full cursor-pointer list-none ${className}`}
+                className={`relative cursor-pointer list-none ${className}`}
             />
         );
     }
