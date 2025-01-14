@@ -20,6 +20,7 @@ export const AvatarImg: FC<Props> = forwardRef<HTMLImageElement, Props>(
                 ref={ref}
                 src={src}
                 alt={props.alt || ''}
+                sizes='100%'
                 fill
                 className={cn(`absolute top-0 left-0 object-cover object-center ${className}`, {
                     'rounded-full': isTypeCircle,
