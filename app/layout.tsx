@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import type { Metadata } from 'next';
-import { Root, RootProviders } from '@/src/components/root';
+import { Root, RootLayout, RootProviders } from '@/src/components/root';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -15,12 +15,14 @@ type Props = {
     children: ReactNode;
 };
 
-const RootLayout: FC<Props> = ({ children }) => {
+const MainLayout: FC<Props> = ({ children }) => {
     return (
-        <RootProviders>
-            <Root>{children}</Root>
-        </RootProviders>
+        <Root>
+            <RootProviders>
+                <RootLayout>{children}</RootLayout>
+            </RootProviders>
+        </Root>
     );
 };
 
-export default RootLayout;
+export default MainLayout;
