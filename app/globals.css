@@ -67,7 +67,7 @@ input[type='number']::-webkit-outer-spin-button {
     width: 20%;
     height: 20%;
     border-radius: 50%;
-    outline: 2px solid white;
+    outline: 2px solid #fff;
     background-color: oklch(64.8% 0.15 160 / 1);
 }
 
@@ -80,4 +80,15 @@ input[type='number']::-webkit-outer-spin-button {
 .offline-square::before {
     top: -10%;
     right: -10%;
+}
+
+.active-tab::before {
+    position: absolute;
+    content: '';
+    z-index: 1;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
 }

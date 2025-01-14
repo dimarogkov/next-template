@@ -11,8 +11,6 @@ import {
     useEffect,
     useState,
 } from 'react';
-import { getChildName } from '@/src/helpers';
-import ModalContent from './ModalContent';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     className?: string;
@@ -30,13 +28,7 @@ const ModalWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(({ className =
         <div ref={ref} {...props} className={`relative w-auto ${className}`}>
             {Children.map(props.children, (child) => {
                 if (isValidElement(child)) {
-                    const childName = getChildName(child);
-
-                    return cloneElement(child as ReactElement, {
-                        ...(childName === ModalContent.displayName
-                            ? { isOpen: isModalOpen, setIsOpen: setIsModalOpen }
-                            : { setIsOpen: setIsModalOpen }),
-                    });
+                    return cloneElement(child as ReactElement, { isOpen: isModalOpen, setIsOpen: setIsModalOpen });
                 }
 
                 return child;

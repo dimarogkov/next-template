@@ -12,6 +12,7 @@ import {
     Line,
     Modal,
     SimpleLink,
+    Tabs,
     Text,
     Title,
 } from '@/src/components/ui';
@@ -28,7 +29,7 @@ const UIPage = () => {
                 <div className='flex flex-col gap-6 w-full'>
                     <BackLink />
                     <Breadcrumbs />
-                    <Title>React UI</Title>
+                    <Title>UI Elements</Title>
                 </div>
             </section>
 
@@ -107,6 +108,30 @@ const UIPage = () => {
                         <Badge.Item>Badge Default</Badge.Item>
                     </Badge>
                 </div>
+            </section>
+
+            <section className='relative w-full md:w-[50%] mb-10 last:mb-0'>
+                <Tabs>
+                    <Tabs.TabList>
+                        <Tabs.Tab>Tab 1</Tabs.Tab>
+                        <Tabs.Tab>Tab 2</Tabs.Tab>
+                        <Tabs.Tab>Tab 3</Tabs.Tab>
+                    </Tabs.TabList>
+                    <Tabs.Panels>
+                        <Tabs.Panel>
+                            Lorem, ipsum dolor sit amet consectetur. Lorem, ipsum dolor sit amet consectetur, asd dima
+                            and some people. Panel 1.
+                        </Tabs.Panel>
+                        <Tabs.Panel>
+                            Lorem, ipsum dolor sit amet consectetur. Lorem, ipsum dolor sit amet consectetur. Panel 2.
+                        </Tabs.Panel>
+                        <Tabs.Panel>
+                            Lorem, ipsum dolor sit amet consectetur. Lorem, ipsum dolor sit amet consectetur. Lorem,
+                            ipsum dolor sit amet consectetur. Lorem, ipsum dolor sit amet consectetur, asd dima and some
+                            people. Panel 3.
+                        </Tabs.Panel>
+                    </Tabs.Panels>
+                </Tabs>
             </section>
 
             <section className='relative w-full mb-10 last:mb-0'>
