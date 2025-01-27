@@ -21,6 +21,7 @@ import Tabs from './Tabs';
 import Text from './Text';
 import Title from './Title';
 import Toast from './Toast/Toast';
+import ToggleBtn from './ToggleBtn';
 
 export {
     Accordion,
@@ -46,4 +47,5 @@ export {
     Text,
     Title,
     Toast,
+    ToggleBtn,
 };

@@ -28,7 +28,7 @@ const Checkbox: FC<Props> = forwardRef<HTMLInputElement, Props>(
                         })}
                     >
                         <Check
-                            className={cn('w-4 h-4 text-blue', {
+                            className={cn('size-4 text-blue', {
                                 'opacity-0 invisible': !isChecked,
                                 'opacity-1 visible': isChecked,
                             })}
