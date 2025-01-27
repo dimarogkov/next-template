@@ -52,7 +52,7 @@ const AvatarGroup: FC<Props> = forwardRef<HTMLDivElement, Props>(({ visibleCount
             {visibleCount && childArray.length > visibleCount && (
                 <div
                     className={cn(
-                        `relative flex items-center justify-center text-base bg-gray ${widthClasses || 'w-12 h-12'}`,
+                        `relative flex items-center justify-center text-base bg-gray ${widthClasses || 'size-12'}`,
                         {
                             'rounded-full': childType === EnumAvatar.circle,
                             'rounded-md': childType === EnumAvatar.square,

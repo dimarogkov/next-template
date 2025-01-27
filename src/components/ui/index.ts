@@ -1,3 +1,4 @@
+import Accordion from './Accordion';
 import Avatar from './Avatar';
 import AvatarGroup from './Avatar/AvatarGroup';
 import Badge from './Badge';
@@ -22,6 +23,7 @@ import Title from './Title';
 import Toast from './Toast/Toast';
 
 export {
+    Accordion,
     Avatar,
     AvatarGroup,
     Badge,

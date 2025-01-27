@@ -18,9 +18,9 @@ const ProjectInfo: FC<Props> = ({ className = '' }) => {
                     React Query, React Hook Form, Yup, Debounce, Redux Toolkit, Zustand.
                 </Text>
 
-                <BtnLink href='https://github.com/dimarogkov/react-template' target='_blank'>
+                <BtnLink href='https://github.com/dimarogkov/next-template' target='_blank'>
                     <span>Git Repo</span>
-                    <ArrowUpRight className='w-5 h-5' />
+                    <ArrowUpRight className='size-5' />
                 </BtnLink>
             </div>
         </div>

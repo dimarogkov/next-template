@@ -14,7 +14,7 @@ const Radio: FC<Props> = forwardRef<HTMLInputElement, Props>(
     ({ isChecked, label, value = '', className = '', ...props }, ref) => {
         return (
             <div className={`flex items-center gap-2 cursor-pointer ${className}`}>
-                <div className='relative w-5 min-w-5 h-5'>
+                <div className='relative size-5 min-w-5'>
                     <input
                         ref={ref}
                         {...props}
@@ -33,7 +33,7 @@ const Radio: FC<Props> = forwardRef<HTMLInputElement, Props>(
                         )}
                     >
                         <Circle
-                            className={cn('w-3 h-3 rounded-full text-blue bg-blue', {
+                            className={cn('size-3 rounded-full text-blue bg-blue', {
                                 'opacity-0 invisible': isChecked !== value,
                                 'opacity-1 visible': isChecked === value,
                             })}

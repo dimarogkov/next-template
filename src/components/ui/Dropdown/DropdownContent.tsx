@@ -65,13 +65,15 @@ const DropdownContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
                         'top-0': align === EnumDropdownAlign.start && isHorizontalPosition,
                         'right-0': align === EnumDropdownAlign.end && isVerticalPosition,
                         'bottom-0': align === EnumDropdownAlign.end && isHorizontalPosition,
+                        hidden: !isOpen,
+                        block: isOpen,
                     }
                 )}
                 style={dropdownContentStyle}
             >
                 {Children.map(props.children, (child) => {
                     if (isValidElement(child) && !skipPropsToChildren) {
-                        return cloneElement(child as ReactElement, { setIsOpen });
+                        return cloneElement(child as ReactElement, { isOpen, setIsOpen });
                     }
 
                     return child;

@@ -27,10 +27,10 @@ const Todo: FC<Props> = ({ todo, isPending, updateTodo = () => {}, removeTodo = 
             })}
         >
             <button
-                className='absolute z-10 top-2 right-2 flex items-center justify-center w-8 h-8 rounded border border-red bg-red/15 transition-opacity duration-300 hover:opacity-70'
+                className='absolute z-10 top-2 right-2 flex items-center justify-center size-8 rounded border border-red bg-red/15 transition-opacity duration-300 hover:opacity-70'
                 onClick={() => removeTodo(id)}
             >
-                <Trash2 className='w-5 h-5 text-red' />
+                <Trash2 className='size-5 text-red' />
             </button>
 
             <div className='flex-grow w-full mb-3 last:mb-0'>

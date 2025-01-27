@@ -15,7 +15,7 @@ const TabsPanel: FC<Props> = forwardRef<HTMLDivElement, Props>(
                 ref={ref}
                 {...props}
                 hidden={panelIndex !== activeIndex}
-                className={cn(`relative w-full p-4 rounded-md border border-gray ${className}`, {
+                className={cn(`relative w-full text-base p-2.5 sm:p-4 rounded-md border border-gray ${className}`, {
                     'rounded-ss-none': panelIndex === 0,
                 })}
             >

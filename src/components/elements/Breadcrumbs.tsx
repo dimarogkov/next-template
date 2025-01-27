@@ -38,8 +38,7 @@ const Breadcrumbs: FC<Props> = ({ className = '' }) => {
                             {breadcrumbs.length - 1 !== index ? (
                                 <Link href={href} className='flex items-center line-clamp-1 hover:underline'>
                                     <span>{text}</span>
-
-                                    <ChevronRight className='w-5 min-w-5 h-5 stroke-1 text-black' />
+                                    <ChevronRight className='size-5 min-w-5 stroke-1 text-black' />
                                 </Link>
                             ) : (
                                 <Text className='line-clamp-1 text-blue'>{text}</Text>
