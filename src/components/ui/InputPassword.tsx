@@ -39,9 +39,9 @@ const InputPassword: FC<Props> = forwardRef<HTMLInputElement, Props>(
                     className='absolute right-0 flex items-center justify-center w-10 h-full'
                 >
                     {!isPasswordVisible ? (
-                        <EyeOff className='w-5 h-5 stroke-1' />
+                        <EyeOff className='size-5 stroke-1' />
                     ) : (
-                        <Eye className='w-5 h-5 stroke-1' />
+                        <Eye className='size-5 stroke-1' />
                     )}
                 </button>
             </div>

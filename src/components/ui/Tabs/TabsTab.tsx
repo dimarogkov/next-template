@@ -21,10 +21,13 @@ const TabsTab: FC<Props> = forwardRef<HTMLLIElement, Props>(
                 ref={ref}
                 {...props}
                 onClick={() => setActiveIndex(tabIndex)}
-                className={cn(`relative px-3 py-1.5 rounded-t-md border border-b-0 cursor-pointer ${className}`, {
-                    'active-tab border-gray': tabIndex === activeIndex,
-                    'border-transparent': tabIndex !== activeIndex,
-                })}
+                className={cn(
+                    `relative text-base px-2.5 sm:px-3 py-1.5 rounded-t-md border border-b-0 cursor-pointer ${className}`,
+                    {
+                        'active-tab border-gray': tabIndex === activeIndex,
+                        'border-transparent': tabIndex !== activeIndex,
+                    }
+                )}
             >
                 {props.children}
             </li>

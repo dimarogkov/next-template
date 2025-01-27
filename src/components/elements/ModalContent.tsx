@@ -12,7 +12,7 @@ const ModalContent: FC<Props> = ({ className = '', setIsOpen = () => {} }) => {
     return (
         <div className={`relative w-full ${className}`}>
             <Title titleType={EnumTitle.h2}>Modal Close Btn</Title>
-            <Line className='my-4 sm:my-5' />
+            <Line className='my-2.5 md:my-4 lg:my-5' />
 
             <div className='flex flex-col gap-2 w-full mb-5 last:mb-0'>
                 <Text>

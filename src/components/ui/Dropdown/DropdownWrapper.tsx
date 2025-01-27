@@ -2,7 +2,7 @@
 import {
     Children,
     cloneElement,
-    DetailsHTMLAttributes,
+    HTMLAttributes,
     FC,
     forwardRef,
     isValidElement,
@@ -13,15 +13,15 @@ import {
     useState,
 } from 'react';
 
-interface Props extends DetailsHTMLAttributes<HTMLDetailsElement>, RefAttributes<HTMLDetailsElement> {
+interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     isOpen?: boolean;
     className?: string;
 }
 
-const DropdownWrapper: FC<Props> = forwardRef<HTMLDetailsElement, Props>(
+const DropdownWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(
     ({ isOpen = false, className = '', ...props }, ref) => {
         const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-        const dropdownRef = useRef<HTMLDetailsElement>(null);
+        const dropdownRef = useRef<HTMLDivElement>(null);
 
         useEffect(() => {
             setIsDropdownOpen(isOpen);
@@ -42,7 +42,7 @@ const DropdownWrapper: FC<Props> = forwardRef<HTMLDetailsElement, Props>(
         }, []);
 
         return (
-            <details ref={ref || dropdownRef} {...props} open={isDropdownOpen} className={`relative ${className}`}>
+            <div ref={ref || dropdownRef} {...props} className={`relative ${className}`}>
                 {Children.map(props.children, (child) => {
                     if (isValidElement(child)) {
                         return cloneElement(child as ReactElement, {
@@ -53,7 +53,7 @@ const DropdownWrapper: FC<Props> = forwardRef<HTMLDetailsElement, Props>(
 
                     return child;
                 })}
-            </details>
+            </div>
         );
     }
 );

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { PATHS } from '@/src/variables/paths';
 import {
+    EnumAccordionIcon,
     EnumAvatar,
     EnumBtn,
     EnumDropdownAlign,
@@ -11,6 +12,7 @@ import {
 } from '@/src/types/enums';
 import { BackLink, Breadcrumbs, DropdownContent, ModalContent } from '@/src/components/elements';
 import {
+    Accordion,
     Avatar,
     AvatarGroup,
     Badge,
@@ -77,13 +79,13 @@ const UIPage = () => {
                     </BtnLink>
 
                     <BtnLink href={PATHS.UI}>
-                        <User className='w-5 h-5' />
+                        <User className='size-5' />
                         <span>Link Icon</span>
                     </BtnLink>
 
                     <BtnLink href={PATHS.UI}>
                         <span>Link Icon</span>
-                        <User className='w-5 h-5' />
+                        <User className='size-5' />
                     </BtnLink>
                 </div>
 
@@ -94,25 +96,25 @@ const UIPage = () => {
                     <Btn disabled>Button Disabled</Btn>
 
                     <Btn>
-                        <User className='w-5 h-5' />
+                        <User className='size-5' />
                         <span>Button Icon</span>
                     </Btn>
 
                     <Btn>
                         <span>Button Icon</span>
-                        <User className='w-5 h-5' />
+                        <User className='size-5' />
                     </Btn>
                 </div>
 
                 <div className='w-full'>
                     <Badge>
                         <Badge.Item>
-                            <User className='w-5 h-5' />
+                            <User className='size-5' />
                             <span>Badge Icon</span>
                         </Badge.Item>
                         <Badge.Item>
                             <span>Badge Icon</span>
-                            <User className='w-5 h-5' />
+                            <User className='size-5' />
                         </Badge.Item>
                         <Badge.Item>Badge Default</Badge.Item>
                     </Badge>
@@ -141,6 +143,66 @@ const UIPage = () => {
                         </Tabs.Panel>
                     </Tabs.Panels>
                 </Tabs>
+            </section>
+
+            <section className='relative w-full md:w-[50%] mb-10 last:mb-0'>
+                <Accordion className='mb-10 last:mb-0'>
+                    <Accordion.Item>
+                        <Accordion.Title>Accordion Title 1</Accordion.Title>
+                        <Accordion.Content>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia eveniet.
+                            Vitae veritatis eligendi non officiis nesciunt praesentium sapiente, earum, similique odio
+                            accusamus, quos quis. Aspernatur beatae ipsa praesentium.
+                        </Accordion.Content>
+                    </Accordion.Item>
+                    <Accordion.Item>
+                        <Accordion.Title>Accordion Title 2</Accordion.Title>
+                        <Accordion.Content>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia eveniet.
+                            Vitae veritatis eligendi non officiis nesciunt praesentium sapiente, earum, similique odio
+                            accusamus, quos quis. Aspernatur beatae ipsa praesentium. Lorem ipsum dolor sit amet
+                            consectetur adipisicing elit. Aperiam atque officia eveniet. Vitae veritatis eligendi non
+                            officiis nesciunt praesentium sapiente, earum, similique odio accusamus, quos quis.
+                            Aspernatur beatae ipsa praesentium.
+                        </Accordion.Content>
+                    </Accordion.Item>
+                    <Accordion.Item>
+                        <Accordion.Title>Accordion Title 3</Accordion.Title>
+                        <Accordion.Content>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia eveniet.
+                            Vitae veritatis eligendi non officiis nesciunt praesentium sapiente.
+                        </Accordion.Content>
+                    </Accordion.Item>
+                </Accordion>
+
+                <Accordion iconType={EnumAccordionIcon.plus}>
+                    <Accordion.Item isOpen>
+                        <Accordion.Title>Accordion Title 1</Accordion.Title>
+                        <Accordion.Content>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia eveniet.
+                            Vitae veritatis eligendi non officiis nesciunt praesentium sapiente, earum, similique odio
+                            accusamus, quos quis. Aspernatur beatae ipsa praesentium.
+                        </Accordion.Content>
+                    </Accordion.Item>
+                    <Accordion.Item>
+                        <Accordion.Title>Accordion Title 2</Accordion.Title>
+                        <Accordion.Content>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia eveniet.
+                            Vitae veritatis eligendi non officiis nesciunt praesentium sapiente, earum, similique odio
+                            accusamus, quos quis. Aspernatur beatae ipsa praesentium. Lorem ipsum dolor sit amet
+                            consectetur adipisicing elit. Aperiam atque officia eveniet. Vitae veritatis eligendi non
+                            officiis nesciunt praesentium sapiente, earum, similique odio accusamus, quos quis.
+                            Aspernatur beatae ipsa praesentium.
+                        </Accordion.Content>
+                    </Accordion.Item>
+                    <Accordion.Item>
+                        <Accordion.Title>Accordion Title 3</Accordion.Title>
+                        <Accordion.Content>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia eveniet.
+                            Vitae veritatis eligendi non officiis nesciunt praesentium sapiente.
+                        </Accordion.Content>
+                    </Accordion.Item>
+                </Accordion>
             </section>
 
             <section className='relative w-full mb-10 last:mb-0'>

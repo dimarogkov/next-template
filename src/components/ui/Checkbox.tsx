@@ -13,7 +13,7 @@ const Checkbox: FC<Props> = forwardRef<HTMLInputElement, Props>(
     ({ isChecked, label, className = '', ...props }, ref) => {
         return (
             <div className={`flex items-center gap-2 cursor-pointer ${className}`}>
-                <div className='relative w-5 min-w-5 h-5'>
+                <div className='relative size-5 min-w-5'>
                     <input
                         ref={ref}
                         {...props}
