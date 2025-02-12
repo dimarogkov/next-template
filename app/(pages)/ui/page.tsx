@@ -7,6 +7,7 @@ import {
     EnumDropdownAlign,
     EnumDropdownPosition,
     EnumLoaderType,
+    EnumProgress,
     EnumText,
     EnumTitle,
     EnumToast,
@@ -24,6 +25,7 @@ import {
     Line,
     Loader,
     Modal,
+    Progress,
     SimpleLink,
     Tabs,
     Text,
@@ -148,6 +150,26 @@ const UIPage = () => {
                 <div className='flex flex-wrap w-full gap-2.5'>
                     <ToggleBtn />
                     <ToggleBtn isActive />
+                </div>
+            </section>
+
+            <section className='relative flex flex-col gap-6 w-full md:w-[50%] mb-10 last:mb-0'>
+                <div className='flex flex-col gap-2.5 w-full'>
+                    <Text textType={EnumText.large}>Progress</Text>
+                    <Progress value={25} />
+                    <Progress value={50} />
+                    <Progress value={75} />
+                    <Progress value={100} />
+                </div>
+                <div className='flex flex-col gap-2.5 w-full'>
+                    <Text textType={EnumText.large}>Circle Progress</Text>
+
+                    <div className='flex flex-wrap gap-5 sm:gap-10 w-full'>
+                        <Progress type={EnumProgress.circle} value={25} />
+                        <Progress type={EnumProgress.circle} value={50} />
+                        <Progress type={EnumProgress.circle} value={75} />
+                        <Progress type={EnumProgress.circle} value={100} />
+                    </div>
                 </div>
             </section>
 

@@ -13,6 +13,7 @@ import InputPassword from './InputPassword';
 import Label from './Label';
 import Line from './Line';
 import Loader from './Loader';
+import Progress from './Progress';
 import Modal from './Modal';
 import Radio from './Radio';
 import Select from './Select';
@@ -39,6 +40,7 @@ export {
     Label,
     Line,
     Loader,
+    Progress,
     Modal,
     Radio,
     SimpleLink,
