@@ -1,6 +1,7 @@
 import AddTodo from './AddTodo';
 import BackLink from './BackLink';
 import Breadcrumbs from './Breadcrumbs';
+import DevIcon from './DevIcon';
 import DropdownContent from './DropdownContent';
 import Form from './Form';
 import Header from './Header';
@@ -16,6 +17,7 @@ export {
     AddTodo,
     BackLink,
     Breadcrumbs,
+    DevIcon,
     DropdownContent,
     Form,
     Header,

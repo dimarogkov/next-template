@@ -19,7 +19,7 @@ const config: Config = {
                 white: '#fff',
             },
             animation: {
-                showToastAnimation: 'showToast 0.4s ease-in-out',
+                showToastAnimation: 'showToast 0.3s ease-in-out',
             },
             keyframes: {
                 showToast: {

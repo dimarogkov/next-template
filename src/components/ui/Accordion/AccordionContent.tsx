@@ -18,7 +18,7 @@ const AccordionContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
                 ref={ref}
                 {...props}
                 className={cn(
-                    `relative grid w-full text-base px-2.5 sm:px-3 transition-all duration-500 ${className}`,
+                    `relative grid w-full text-base px-2.5 sm:px-3 transition-all duration-300 ${className}`,
                     {
                         'grid-rows-[1fr] pb-2.5 sm:pb-3 opacity-100': accordionIndex === activeIndex,
                         'grid-rows-[0fr] pb-0 opacity-0': accordionIndex !== activeIndex,
