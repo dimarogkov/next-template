@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'devicon/devicon.min.css';
 
 html {
     --fallback-b1: #fff;
