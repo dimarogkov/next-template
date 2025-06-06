@@ -8,9 +8,8 @@ import {
     EnumProgress,
     EnumText,
     EnumTitle,
-    EnumToast,
 } from '@/src/types/enums';
-import { BackLink, Breadcrumbs } from '@/src/components/elements';
+import { BackLink, Breadcrumbs, ToastBtns } from '@/src/components/elements';
 import {
     Accordion,
     Avatar,
@@ -18,7 +17,6 @@ import {
     Badge,
     Btn,
     BtnLink,
-    CreateToast,
     Dropdown,
     Line,
     Loader,
@@ -322,40 +320,7 @@ const UIPage = () => {
 
             <section className='relative w-full mb-2.5 last:mb-0'>
                 <div className='flex flex-wrap w-full gap-2.5'>
-                    <CreateToast
-                        title='This is a Info notification.'
-                        text='This toast message notifies you of something.'
-                        className='w-full sm:w-auto'
-                    >
-                        <Btn>Toast Info</Btn>
-                    </CreateToast>
-
-                    <CreateToast
-                        type={EnumToast.success}
-                        title='This is a Success notification.'
-                        text='This toast message notifies you of all your great successes.'
-                        className='w-full sm:w-auto'
-                    >
-                        <Btn>Toast Success</Btn>
-                    </CreateToast>
-
-                    <CreateToast
-                        type={EnumToast.warning}
-                        title='This is a Warning notification.'
-                        text='This toast message notifies you of a Warning.'
-                        className='w-full sm:w-auto'
-                    >
-                        <Btn>Toast Warning</Btn>
-                    </CreateToast>
-
-                    <CreateToast
-                        type={EnumToast.error}
-                        title='This is a Error notification'
-                        text='This toast message notifies you of an Error. It is probably not your fault.'
-                        className='w-full sm:w-auto'
-                    >
-                        <Btn>Toast Error</Btn>
-                    </CreateToast>
+                    <ToastBtns />
                 </div>
             </section>
 

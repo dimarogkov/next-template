@@ -19,12 +19,17 @@ const config: Config = {
                 white: '#fff',
             },
             animation: {
-                showToastAnimation: 'showToast 0.3s ease-in-out',
+                enter: 'enter 0.2s forwards',
+                leave: 'leave 0.2s forwards',
             },
             keyframes: {
-                showToast: {
-                    from: { opacity: '0', transform: 'translateX(30%)' },
-                    to: { opacity: '1', transform: 'translateX(0)' },
+                enter: {
+                    '0%': { opacity: '0', visibility: 'hidden', transform: 'translateY(20px)' },
+                    '100%': { opacity: '1', visibility: 'visible', transform: 'translateY(0)' },
+                },
+                leave: {
+                    '0%': { opacity: '1', visibility: 'visible', transform: 'translateY(0)' },
+                    '100%': { opacity: '0', visibility: 'hidden', transform: 'translateY(20px)' },
                 },
             },
         },
