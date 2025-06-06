@@ -342,7 +342,7 @@ const UIPage = () => {
                         <Avatar.Link href={PATHS.UI}>
                             <Avatar.Img
                                 src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
-                                className='transition-all duration-500 will-change-transform hover:scale-110'
+                                hasHover
                             />
                         </Avatar.Link>
                     </Avatar>
@@ -365,7 +365,7 @@ const UIPage = () => {
                         <Avatar.Link href={PATHS.UI}>
                             <Avatar.Img
                                 src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
-                                className='transition-all duration-500 will-change-transform hover:scale-110'
+                                hasHover
                             />
                         </Avatar.Link>
                     </Avatar>
@@ -377,7 +377,7 @@ const UIPage = () => {
                             <Avatar.Link href={PATHS.UI}>
                                 <Avatar.Img
                                     src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
-                                    className='transition-all duration-500 will-change-transform hover:scale-110'
+                                    hasHover
                                 />
                             </Avatar.Link>
                         </Avatar>
@@ -386,7 +386,7 @@ const UIPage = () => {
                             <Avatar.Link href={PATHS.UI}>
                                 <Avatar.Img
                                     src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
-                                    className='transition-all duration-500 will-change-transform hover:scale-110'
+                                    hasHover
                                 />
                             </Avatar.Link>
                         </Avatar>
@@ -395,7 +395,7 @@ const UIPage = () => {
                             <Avatar.Link href={PATHS.UI}>
                                 <Avatar.Img
                                     src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
-                                    className='transition-all duration-500 will-change-transform hover:scale-110'
+                                    hasHover
                                 />
                             </Avatar.Link>
                         </Avatar>
@@ -404,7 +404,7 @@ const UIPage = () => {
                             <Avatar.Link href={PATHS.UI}>
                                 <Avatar.Img
                                     src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
-                                    className='transition-all duration-500 will-change-transform hover:scale-110'
+                                    hasHover
                                 />
                             </Avatar.Link>
                         </Avatar>
@@ -413,7 +413,7 @@ const UIPage = () => {
                             <Avatar.Link href={PATHS.UI}>
                                 <Avatar.Img
                                     src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
-                                    className='transition-all duration-500 will-change-transform hover:scale-110'
+                                    hasHover
                                 />
                             </Avatar.Link>
                         </Avatar>
