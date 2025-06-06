@@ -22,7 +22,7 @@ const Btn: FC<Props> = forwardRef<HTMLButtonElement, Props>(
                 {...props}
                 {...animation}
                 className={cn(
-                    `flex items-center justify-center gap-2 w-full sm:w-fit sm:min-w-32 lg:min-w-36 h-10 lg:h-11 font-media px-4 rounded ${className}`,
+                    `flex items-center justify-center gap-2 w-full sm:w-fit sm:min-w-32 lg:min-w-36 h-10 lg:h-11 font-media px-4 rounded outline-none ${className}`,
                     {
                         'bg-gray text-white pointer-events-none': props.disabled,
                         'bg-blue text-white': !props.disabled && btnType === EnumBtn.default,
