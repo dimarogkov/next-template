@@ -8,6 +8,7 @@ import ProjectInfo from './ProjectInfo';
 import SearchTodo from './SearchTodo';
 import StoreRedux from './StoreRedux';
 import StoreZustand from './StoreZustand';
+import ToastBtns from './ToastBtns';
 import Todo from './Todo';
 import TodoList from './TodoList';
 
@@ -22,6 +23,7 @@ export {
     SearchTodo,
     StoreRedux,
     StoreZustand,
+    ToastBtns,
     Todo,
     TodoList,
 };

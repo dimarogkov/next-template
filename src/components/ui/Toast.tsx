@@ -1,21 +1,23 @@
 'use client';
+import toast, { type Toast as TostType } from 'react-hot-toast';
 import { FC, forwardRef, HTMLAttributes, RefAttributes } from 'react';
 import { EnumText, EnumToast } from '@/src/types/enums';
-import { IToast } from '@/src/types/interfaces/Toast';
+import { IToastData } from '@/src/types/interfaces/ToastData';
 
-import Text from '../Text';
+import Text from './Text';
 import { CircleAlert, CircleCheck, CircleX, Info, X } from 'lucide-react';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
-    toast: IToast;
+    toast: TostType;
+    type?: EnumToast;
+    data: IToastData;
     className?: string;
-    closeToast: (toastId: string) => void;
 }
 
 const Toast: FC<Props> = forwardRef<HTMLDivElement, Props>(
-    ({ toast, className = '', closeToast = () => {}, ...props }, ref) => {
-        const { id, type, title, text } = toast;
+    ({ toast: t, type = EnumToast.info, data, className = '', ...props }, ref) => {
+        const { title, text } = data;
 
         const toastClasses = {
             border: {
@@ -49,8 +51,12 @@ const Toast: FC<Props> = forwardRef<HTMLDivElement, Props>(
                 {...props}
                 role='alert'
                 className={cn(
-                    `relative flex items-center gap-3 w-full sm:max-w-[440px] rounded p-2.5 sm:p-3 pr-10 border border-l-4 border-gray bg-white animate-showToastAnimation ${className}`,
-                    toastClasses.border[type]
+                    `relative flex items-center gap-3 w-full sm:w-[440px] rounded p-2.5 sm:p-3 pr-10 border border-l-4 border-gray bg-white ${className}`,
+                    toastClasses.border[type],
+                    {
+                        'animate-leave': !t.visible,
+                        'animate-enter': t.visible,
+                    }
                 )}
             >
                 {icon[type]}
@@ -65,7 +71,7 @@ const Toast: FC<Props> = forwardRef<HTMLDivElement, Props>(
 
                 <button
                     type='button'
-                    onClick={() => closeToast(id)}
+                    onClick={() => toast.dismiss(t.id)}
                     className='absolute top-1.5 right-1.5 transition-opacity duration-300 hover:opacity-65'
                 >
                     <X className='size-6 stroke-1' />
