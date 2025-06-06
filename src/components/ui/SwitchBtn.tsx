@@ -25,7 +25,7 @@ const SwitchBtn: FC<Props> = forwardRef<HTMLButtonElement, Props>(
                 type='button'
                 onClick={toggleSwitchBtn}
                 className={cn(
-                    `relative flex w-12 h-[26px] rounded-full p-0.5 border transition-colors duration-300 ${className}`,
+                    `relative flex w-12 h-[26px] rounded-full p-0.5 border outline-none transition-colors duration-300 ${className}`,
                     {
                         'justify-start border-gray': !isActive,
                         'justify-end border-blue': isActive,

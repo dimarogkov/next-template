@@ -72,7 +72,7 @@ const Toast: FC<Props> = forwardRef<HTMLDivElement, Props>(
                 <button
                     type='button'
                     onClick={() => toast.dismiss(t.id)}
-                    className='absolute top-1.5 right-1.5 transition-opacity duration-300 hover:opacity-65'
+                    className='absolute top-1.5 right-1.5 outline-none transition-opacity duration-300 hover:opacity-65'
                 >
                     <X className='size-6 stroke-1' />
                 </button>
