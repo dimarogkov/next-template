@@ -31,11 +31,15 @@ const AccordionTitle: FC<Props> = forwardRef<HTMLDivElement, Props>(
             ),
         };
 
+        const toggleAccordion = () => {
+            setActiveIndex((prevState) => (prevState !== accordionIndex ? accordionIndex : null));
+        };
+
         return (
             <div
                 ref={ref}
                 {...props}
-                onClick={() => setActiveIndex((prevState) => (prevState !== accordionIndex ? accordionIndex : null))}
+                onClick={toggleAccordion}
                 className={`relative flex items-center justify-between w-full text-base p-2.5 sm:p-3 cursor-pointer transition-all duration-300 ${className}`}
             >
                 {props.children}

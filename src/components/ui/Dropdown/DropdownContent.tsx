@@ -1,23 +1,12 @@
 'use client';
-import {
-    Children,
-    cloneElement,
-    Dispatch,
-    FC,
-    forwardRef,
-    HTMLAttributes,
-    isValidElement,
-    ReactElement,
-    RefAttributes,
-    SetStateAction,
-} from 'react';
+import { Dispatch, FC, forwardRef, RefAttributes, SetStateAction } from 'react';
+import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 import { EnumDropdownAlign, EnumDropdownPosition } from '@/src/types/enums';
 import cn from 'classnames';
 
-interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
     align?: EnumDropdownAlign;
     position?: EnumDropdownPosition;
-    skipPropsToChildren?: boolean;
     isOpen?: boolean;
     className?: string;
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
@@ -28,7 +17,6 @@ const DropdownContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
         {
             align = EnumDropdownAlign.start,
             position = EnumDropdownPosition.bottom,
-            skipPropsToChildren = false,
             isOpen,
             className = '',
             setIsOpen = () => {},
@@ -38,6 +26,12 @@ const DropdownContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
     ) => {
         const isVerticalPosition = position === EnumDropdownPosition.top || position === EnumDropdownPosition.bottom;
         const isHorizontalPosition = position === EnumDropdownPosition.left || position === EnumDropdownPosition.right;
+
+        const animation: HTMLMotionProps<'div'> = {
+            initial: { y: 10, opacity: 0 },
+            animate: { y: 0, opacity: 1, transition: { duration: 0.3, ease: [0.215, 0.61, 0.355, 1] } },
+            exit: { y: -5, opacity: 0 },
+        };
 
         const dropdownContentStyle = {
             ...(position === EnumDropdownPosition.top && {
@@ -55,30 +49,27 @@ const DropdownContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
         };
 
         return (
-            <div
-                ref={ref}
-                {...props}
-                className={cn(
-                    `absolute z-10 min-w-full max-w-[calc(100vw-32px)] w-max rounded p-2.5 border border-gray bg-white transition-all will-change-transform duration-300 ${className}`,
-                    {
-                        'left-0': align === EnumDropdownAlign.start && isVerticalPosition,
-                        'top-0': align === EnumDropdownAlign.start && isHorizontalPosition,
-                        'right-0': align === EnumDropdownAlign.end && isVerticalPosition,
-                        'bottom-0': align === EnumDropdownAlign.end && isHorizontalPosition,
-                        'scale-100 opacity-100 visible': isOpen,
-                        'scale-90 opacity-0 invisible': !isOpen,
-                    }
+            <AnimatePresence mode='wait'>
+                {isOpen && (
+                    <motion.div
+                        ref={ref}
+                        {...props}
+                        {...animation}
+                        className={cn(
+                            `absolute z-10 min-w-full max-w-[calc(100vw-32px)] w-max rounded p-2.5 border border-gray bg-white ${className}`,
+                            {
+                                'left-0': align === EnumDropdownAlign.start && isVerticalPosition,
+                                'top-0': align === EnumDropdownAlign.start && isHorizontalPosition,
+                                'right-0': align === EnumDropdownAlign.end && isVerticalPosition,
+                                'bottom-0': align === EnumDropdownAlign.end && isHorizontalPosition,
+                            }
+                        )}
+                        style={dropdownContentStyle}
+                    >
+                        {props.children}
+                    </motion.div>
                 )}
-                style={dropdownContentStyle}
-            >
-                {Children.map(props.children, (child) => {
-                    if (isValidElement(child) && !skipPropsToChildren) {
-                        return cloneElement(child as ReactElement, { isOpen, setIsOpen });
-                    }
-
-                    return child;
-                })}
-            </div>
+            </AnimatePresence>
         );
     }
 );

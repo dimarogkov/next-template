@@ -4,15 +4,13 @@ import {
     EnumAccordionIcon,
     EnumAvatar,
     EnumBtn,
-    EnumDropdownAlign,
-    EnumDropdownPosition,
     EnumLoaderType,
     EnumProgress,
     EnumText,
     EnumTitle,
     EnumToast,
 } from '@/src/types/enums';
-import { BackLink, Breadcrumbs, DropdownContent, ModalContent } from '@/src/components/elements';
+import { BackLink, Breadcrumbs } from '@/src/components/elements';
 import {
     Accordion,
     Avatar,
@@ -27,10 +25,10 @@ import {
     Modal,
     Progress,
     SimpleLink,
+    SwitchBtn,
     Tabs,
     Text,
     Title,
-    ToggleBtn,
 } from '@/src/components/ui';
 import { User } from 'lucide-react';
 
@@ -148,22 +146,24 @@ const UIPage = () => {
                 </div>
 
                 <div className='flex flex-wrap w-full gap-2.5'>
-                    <ToggleBtn />
-                    <ToggleBtn isActive />
+                    <SwitchBtn />
+                    <SwitchBtn isActive />
                 </div>
             </section>
 
-            <section className='relative flex flex-col gap-6 w-full md:w-[50%] mb-10 last:mb-0'>
-                <div className='flex flex-col gap-2.5 w-full'>
-                    <Text textType={EnumText.large}>Progress</Text>
-                    <Progress value={25} />
-                    <Progress value={50} />
-                    <Progress value={75} />
-                    <Progress value={100} />
+            <section className='relative w-full md:w-[50%] mb-10 last:mb-0'>
+                <div className='flex flex-col gap-6 w-full'>
+                    <div className='flex flex-col gap-2.5 w-full'>
+                        <Text textType={EnumText.large}>Progress</Text>
+                        <Progress value={25} />
+                        <Progress value={50} />
+                        <Progress value={75} />
+                        <Progress value={100} />
+                    </div>
                 </div>
+
                 <div className='flex flex-col gap-2.5 w-full'>
                     <Text textType={EnumText.large}>Circle Progress</Text>
-
                     <div className='flex flex-wrap gap-5 sm:gap-10 w-full'>
                         <Progress type={EnumProgress.circle} value={25} />
                         <Progress type={EnumProgress.circle} value={50} />
@@ -174,96 +174,101 @@ const UIPage = () => {
             </section>
 
             <section className='relative w-full md:w-[50%] mb-10 last:mb-0'>
-                <Tabs>
-                    <Tabs.TabList>
-                        <Tabs.Tab>Tab 1</Tabs.Tab>
-                        <Tabs.Tab>Tab 2</Tabs.Tab>
-                        <Tabs.Tab>Tab 3</Tabs.Tab>
-                    </Tabs.TabList>
-                    <Tabs.Panels>
-                        <Tabs.Panel>
-                            Lorem, ipsum dolor sit amet consectetur. Lorem, ipsum dolor sit amet consectetur, asd dima
-                            and some people. Panel 1.
-                        </Tabs.Panel>
-                        <Tabs.Panel>
-                            Lorem, ipsum dolor sit amet consectetur. Lorem, ipsum dolor sit amet consectetur. Panel 2.
-                        </Tabs.Panel>
-                        <Tabs.Panel>
-                            Lorem, ipsum dolor sit amet consectetur. Lorem, ipsum dolor sit amet consectetur. Lorem,
-                            ipsum dolor sit amet consectetur. Lorem, ipsum dolor sit amet consectetur, asd dima and some
-                            people. Panel 3.
-                        </Tabs.Panel>
-                    </Tabs.Panels>
-                </Tabs>
+                <div className='w-full'>
+                    <Tabs>
+                        <Tabs.TabList>
+                            <Tabs.Tab>Tab 1</Tabs.Tab>
+                            <Tabs.Tab>Tab 2</Tabs.Tab>
+                            <Tabs.Tab>Tab 3</Tabs.Tab>
+                        </Tabs.TabList>
+                        <Tabs.Panels>
+                            <Tabs.Panel>
+                                Lorem, ipsum dolor sit amet consectetur. Lorem, ipsum dolor sit amet consectetur, asd
+                                dima and some people. Panel 1.
+                            </Tabs.Panel>
+                            <Tabs.Panel>
+                                Lorem, ipsum dolor sit amet consectetur. Lorem, ipsum dolor sit amet consectetur. Panel
+                                2.
+                            </Tabs.Panel>
+                            <Tabs.Panel>
+                                Lorem, ipsum dolor sit amet consectetur. Lorem, ipsum dolor sit amet consectetur. Lorem,
+                                ipsum dolor sit amet consectetur. Lorem, ipsum dolor sit amet consectetur, asd dima and
+                                some people. Panel 3.
+                            </Tabs.Panel>
+                        </Tabs.Panels>
+                    </Tabs>
+                </div>
             </section>
 
-            <section className='relative flex flex-col gap-10 w-full md:w-[50%] mb-10 last:mb-0'>
-                <Accordion>
-                    <Accordion.Item>
-                        <Accordion.Title>Accordion Title 1</Accordion.Title>
-                        <Accordion.Content>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia eveniet.
-                            Vitae veritatis eligendi non officiis nesciunt praesentium sapiente, earum, similique odio
-                            accusamus, quos quis. Aspernatur beatae ipsa praesentium.
-                        </Accordion.Content>
-                    </Accordion.Item>
-                    <Accordion.Item>
-                        <Accordion.Title>Accordion Title 2</Accordion.Title>
-                        <Accordion.Content>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia eveniet.
-                            Vitae veritatis eligendi non officiis nesciunt praesentium sapiente, earum, similique odio
-                            accusamus, quos quis. Aspernatur beatae ipsa praesentium. Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Aperiam atque officia eveniet. Vitae veritatis eligendi non
-                            officiis nesciunt praesentium sapiente, earum, similique odio accusamus, quos quis.
-                            Aspernatur beatae ipsa praesentium.
-                        </Accordion.Content>
-                    </Accordion.Item>
-                    <Accordion.Item>
-                        <Accordion.Title>Accordion Title 3</Accordion.Title>
-                        <Accordion.Content>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia eveniet.
-                            Vitae veritatis eligendi non officiis nesciunt praesentium sapiente.
-                        </Accordion.Content>
-                    </Accordion.Item>
-                </Accordion>
+            <section className='relative w-full md:w-[50%] mb-10 last:mb-0'>
+                <div className='flex flex-col gap-10 w-full'>
+                    <Accordion>
+                        <Accordion.Item>
+                            <Accordion.Title>Accordion Title 1</Accordion.Title>
+                            <Accordion.Content>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia eveniet.
+                                Vitae veritatis eligendi non officiis nesciunt praesentium sapiente, earum, similique
+                                odio accusamus, quos quis. Aspernatur beatae ipsa praesentium.
+                            </Accordion.Content>
+                        </Accordion.Item>
+                        <Accordion.Item>
+                            <Accordion.Title>Accordion Title 2</Accordion.Title>
+                            <Accordion.Content>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia eveniet.
+                                Vitae veritatis eligendi non officiis nesciunt praesentium sapiente, earum, similique
+                                odio accusamus, quos quis. Aspernatur beatae ipsa praesentium. Lorem ipsum dolor sit
+                                amet consectetur adipisicing elit. Aperiam atque officia eveniet. Vitae veritatis
+                                eligendi non officiis nesciunt praesentium sapiente, earum, similique odio accusamus,
+                                quos quis. Aspernatur beatae ipsa praesentium.
+                            </Accordion.Content>
+                        </Accordion.Item>
+                        <Accordion.Item>
+                            <Accordion.Title>Accordion Title 3</Accordion.Title>
+                            <Accordion.Content>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia eveniet.
+                                Vitae veritatis eligendi non officiis nesciunt praesentium sapiente.
+                            </Accordion.Content>
+                        </Accordion.Item>
+                    </Accordion>
 
-                <Accordion iconType={EnumAccordionIcon.plus}>
-                    <Accordion.Item isOpen>
-                        <Accordion.Title>Accordion Title 1</Accordion.Title>
-                        <Accordion.Content>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia eveniet.
-                            Vitae veritatis eligendi non officiis nesciunt praesentium sapiente, earum, similique odio
-                            accusamus, quos quis. Aspernatur beatae ipsa praesentium.
-                        </Accordion.Content>
-                    </Accordion.Item>
-                    <Accordion.Item>
-                        <Accordion.Title>Accordion Title 2</Accordion.Title>
-                        <Accordion.Content>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia eveniet.
-                            Vitae veritatis eligendi non officiis nesciunt praesentium sapiente, earum, similique odio
-                            accusamus, quos quis. Aspernatur beatae ipsa praesentium. Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Aperiam atque officia eveniet. Vitae veritatis eligendi non
-                            officiis nesciunt praesentium sapiente, earum, similique odio accusamus, quos quis.
-                            Aspernatur beatae ipsa praesentium.
-                        </Accordion.Content>
-                    </Accordion.Item>
-                    <Accordion.Item>
-                        <Accordion.Title>Accordion Title 3</Accordion.Title>
-                        <Accordion.Content>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia eveniet.
-                            Vitae veritatis eligendi non officiis nesciunt praesentium sapiente.
-                        </Accordion.Content>
-                    </Accordion.Item>
-                </Accordion>
+                    <Accordion iconType={EnumAccordionIcon.plus}>
+                        <Accordion.Item isOpen>
+                            <Accordion.Title>Accordion Title 1</Accordion.Title>
+                            <Accordion.Content>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia eveniet.
+                                Vitae veritatis eligendi non officiis nesciunt praesentium sapiente, earum, similique
+                                odio accusamus, quos quis. Aspernatur beatae ipsa praesentium.
+                            </Accordion.Content>
+                        </Accordion.Item>
+                        <Accordion.Item>
+                            <Accordion.Title>Accordion Title 2</Accordion.Title>
+                            <Accordion.Content>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia eveniet.
+                                Vitae veritatis eligendi non officiis nesciunt praesentium sapiente, earum, similique
+                                odio accusamus, quos quis. Aspernatur beatae ipsa praesentium. Lorem ipsum dolor sit
+                                amet consectetur adipisicing elit. Aperiam atque officia eveniet. Vitae veritatis
+                                eligendi non officiis nesciunt praesentium sapiente, earum, similique odio accusamus,
+                                quos quis. Aspernatur beatae ipsa praesentium.
+                            </Accordion.Content>
+                        </Accordion.Item>
+                        <Accordion.Item>
+                            <Accordion.Title>Accordion Title 3</Accordion.Title>
+                            <Accordion.Content>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia eveniet.
+                                Vitae veritatis eligendi non officiis nesciunt praesentium sapiente.
+                            </Accordion.Content>
+                        </Accordion.Item>
+                    </Accordion>
+                </div>
             </section>
 
             <section className='relative w-full mb-2.5 last:mb-0'>
                 <div className='flex flex-wrap w-full gap-2.5'>
-                    <Dropdown className='w-full sm:w-auto'>
+                    <Dropdown className='w-full sm:w-fit'>
                         <Dropdown.Trigger>
-                            <Btn>Dropdown Default</Btn>
+                            <Btn>Dropdown Trigger</Btn>
                         </Dropdown.Trigger>
-                        <Dropdown.Content className='md:w-[400px]' skipPropsToChildren>
+                        <Dropdown.Content className='md:w-[400px]'>
                             <ul className='flex flex-col gap-2 w-full mb-4 last:mb-0'>
                                 <li>
                                     <Text>
@@ -284,14 +289,34 @@ const UIPage = () => {
                         </Dropdown.Content>
                     </Dropdown>
 
-                    <Dropdown className='w-full sm:w-auto'>
-                        <Dropdown.Trigger>
-                            <Btn>Dropdown Close Btn</Btn>
-                        </Dropdown.Trigger>
-                        <Dropdown.Content align={EnumDropdownAlign.start} position={EnumDropdownPosition.bottom}>
-                            <DropdownContent />
-                        </Dropdown.Content>
-                    </Dropdown>
+                    <Modal className='w-full sm:w-auto'>
+                        <Modal.Trigger>
+                            <Btn>Modal Trigger</Btn>
+                        </Modal.Trigger>
+                        <Modal.Content>
+                            <div className='w-full'>
+                                <Title titleType={EnumTitle.h2} className='p-2.5 md:p-4 lg:p-5'>
+                                    Modal Title
+                                </Title>
+
+                                <Line className='!m-0' />
+
+                                <div className='flex flex-col gap-2 w-full p-2.5 md:p-4 lg:p-5'>
+                                    <Text>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima eum dolor nulla
+                                        delectus sint optio cum ducimus vitae placeat veritatis vero deleniti,
+                                        voluptatibus fugit. Laudantium error cum earum rem hic!
+                                    </Text>
+
+                                    <Text>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima eum dolor nulla
+                                        delectus sint optio cum ducimus vitae placeat veritatis vero deleniti,
+                                        voluptatibus fugit. Laudantium error cum earum rem hic!
+                                    </Text>
+                                </div>
+                            </div>
+                        </Modal.Content>
+                    </Modal>
                 </div>
             </section>
 
@@ -331,45 +356,6 @@ const UIPage = () => {
                     >
                         <Btn>Toast Error</Btn>
                     </CreateToast>
-                </div>
-            </section>
-
-            <section className='relative w-full mb-10 last:mb-0'>
-                <div className='flex flex-wrap w-full gap-2.5'>
-                    <Modal className='w-full sm:w-auto'>
-                        <Modal.Trigger>
-                            <Btn>Modal Default</Btn>
-                        </Modal.Trigger>
-                        <Modal.Content skipPropsToChildren>
-                            <div className='w-full'>
-                                <Title titleType={EnumTitle.h2}>Default Modal</Title>
-                                <Line className='my-4 sm:my-5' />
-
-                                <div className='flex flex-col gap-2 w-full'>
-                                    <Text>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima eum dolor nulla
-                                        delectus sint optio cum ducimus vitae placeat veritatis vero deleniti,
-                                        voluptatibus fugit. Laudantium error cum earum rem hic!
-                                    </Text>
-
-                                    <Text>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima eum dolor nulla
-                                        delectus sint optio cum ducimus vitae placeat veritatis vero deleniti,
-                                        voluptatibus fugit. Laudantium error cum earum rem hic!
-                                    </Text>
-                                </div>
-                            </div>
-                        </Modal.Content>
-                    </Modal>
-
-                    <Modal className='w-full sm:w-auto'>
-                        <Modal.Trigger>
-                            <Btn>Modal Close Btn</Btn>
-                        </Modal.Trigger>
-                        <Modal.Content>
-                            <ModalContent />
-                        </Modal.Content>
-                    </Modal>
                 </div>
             </section>
 

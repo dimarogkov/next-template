@@ -1,63 +1,51 @@
 'use client';
-import {
-    Children,
-    cloneElement,
-    Dispatch,
-    FC,
-    forwardRef,
-    HTMLAttributes,
-    isValidElement,
-    ReactElement,
-    RefAttributes,
-    SetStateAction,
-} from 'react';
+import { Dispatch, FC, forwardRef, ReactNode, RefAttributes, SetStateAction } from 'react';
+import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 import ModalLayer from './ModalLayer';
 import ModalClose from './ModalClose';
-import cn from 'classnames';
 
-interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
     isOpen?: boolean;
-    skipPropsToChildren?: boolean;
+    children: ReactNode;
     className?: string;
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 const ModalContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
-    ({ isOpen, skipPropsToChildren = false, className = '', setIsOpen = () => {}, ...props }, ref) => {
+    ({ isOpen, children, className = '', setIsOpen = () => {}, ...props }, ref) => {
+        const animation: HTMLMotionProps<'div'> = {
+            initial: { opacity: 0 },
+            animate: { opacity: 1, transition: { duration: 0.3, ease: [0.215, 0.61, 0.355, 1] } },
+            exit: { opacity: 0 },
+        };
+
+        const animationPopup: HTMLMotionProps<'div'> = {
+            initial: { y: 20, opacity: 0 },
+            animate: { y: 0, opacity: 1, transition: { duration: 0.3, ease: [0.215, 0.61, 0.355, 1] } },
+            exit: { y: 20, opacity: 0 },
+        };
+
         return (
-            <div
-                className={cn(
-                    'fixed z-20 top-0 left-0 flex items-center justify-center w-full h-full transition-all duration-300',
-                    {
-                        'opacity-0 invisible': !isOpen,
-                        'opacity-100 visible': isOpen,
-                    }
+            <AnimatePresence mode='wait'>
+                {isOpen && (
+                    <motion.div
+                        {...animation}
+                        className='fixed z-20 top-0 left-0 flex items-center justify-center w-full h-full'
+                    >
+                        <ModalLayer setIsOpen={setIsOpen} />
+
+                        <motion.div
+                            ref={ref}
+                            {...props}
+                            {...animationPopup}
+                            className={`relative md:w-[600px] max-w-[calc(100%-32px)] rounded-lg bg-white ${className}`}
+                        >
+                            <ModalClose onClick={() => setIsOpen(false)} />
+                            {children}
+                        </motion.div>
+                    </motion.div>
                 )}
-            >
-                <ModalLayer setIsOpen={setIsOpen} />
-
-                <div
-                    ref={ref}
-                    {...props}
-                    className={cn(
-                        `relative md:w-[600px] max-w-[calc(100%-32px)] p-2.5 md:p-4 lg:p-5 rounded-lg bg-white transition-transform duration-300 ${className}`,
-                        {
-                            'translate-y-10': !isOpen,
-                            'translate-y-0': isOpen,
-                        }
-                    )}
-                >
-                    <ModalClose onClick={() => setIsOpen(false)} />
-
-                    {Children.map(props.children, (child) => {
-                        if (isValidElement(child) && !skipPropsToChildren) {
-                            return cloneElement(child as ReactElement, { setIsOpen });
-                        }
-
-                        return child;
-                    })}
-                </div>
-            </div>
+            </AnimatePresence>
         );
     }
 );

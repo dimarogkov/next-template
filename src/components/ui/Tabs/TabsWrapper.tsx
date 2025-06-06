@@ -19,7 +19,7 @@ const TabsWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(({ className = 
     const [activeIndex, setActiveIndex] = useState(0);
 
     return (
-        <div ref={ref} {...props} className={`relative w-full ${className}`}>
+        <div ref={ref} {...props} className={`relative w-full rounded-md border border-gray ${className}`}>
             {Children.map(props.children, (child) => {
                 if (isValidElement(child)) {
                     return cloneElement(child as ReactElement, { activeIndex, setActiveIndex });
