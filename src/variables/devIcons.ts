@@ -26,6 +26,10 @@ export const devIcons: IDevIcon[] = [
         text: 'Tailwind CSS',
     },
     {
+        icon: 'devicon-framermotion-original',
+        text: 'Frame Motion',
+    },
+    {
         icon: 'devicon-axios-plain',
         text: 'Axios',
     },

@@ -24,7 +24,7 @@ const ProjectInfo: FC<Props> = ({ className = '' }) => {
 
                 <Text textType={EnumText.large}>
                     This is React Template for development. Technolgies used: React, TypeScript, Tailwind CSS, Axios,
-                    React Query, React Hook Form, Yup, Debounce, Redux Toolkit, Zustand.
+                    React Query, React Hook Form, Yup, Frame Motion, Debounce, Redux Toolkit, Zustand.
                 </Text>
 
                 <BtnLink href='https://github.com/dimarogkov/next-template' target='_blank'>

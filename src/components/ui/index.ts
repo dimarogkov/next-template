@@ -18,11 +18,11 @@ import Modal from './Modal';
 import Radio from './Radio';
 import Select from './Select';
 import SimpleLink from './SimpleLink';
+import SwitchBtn from './SwitchBtn';
 import Tabs from './Tabs';
 import Text from './Text';
 import Title from './Title';
 import Toast from './Toast/Toast';
-import ToggleBtn from './ToggleBtn';
 
 export {
     Accordion,
@@ -45,9 +45,9 @@ export {
     Radio,
     SimpleLink,
     Select,
+    SwitchBtn,
     Tabs,
     Text,
     Title,
     Toast,
-    ToggleBtn,
 };

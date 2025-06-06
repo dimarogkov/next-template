@@ -5,7 +5,7 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
 }
 
 const Line: FC<Props> = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
-    return <div ref={ref} {...props} className={`relative w-full border-t border-gray my-5 ${className}`}></div>;
+    return <div ref={ref} {...props} className={`relative w-full border-t border-gray my-5 ${className}`} />;
 });
 
 Line.displayName = 'Line';

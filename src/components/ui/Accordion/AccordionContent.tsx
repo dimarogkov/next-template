@@ -1,32 +1,42 @@
 'use client';
-import { Dispatch, FC, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
+import { Dispatch, FC, forwardRef, ReactNode, RefAttributes, SetStateAction } from 'react';
+import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 import { EnumAccordionIcon } from '@/src/types/enums';
-import cn from 'classnames';
 
-interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
     iconType?: EnumAccordionIcon;
     accordionIndex?: number;
     activeIndex?: number;
+    children: ReactNode;
     className?: string;
     setActiveIndex?: Dispatch<SetStateAction<number | null>>;
 }
 
 const AccordionContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
-    ({ iconType, accordionIndex = 0, activeIndex, className = '', setActiveIndex = () => {}, ...props }, ref) => {
+    (
+        { iconType, accordionIndex = 0, activeIndex, children, className = '', setActiveIndex = () => {}, ...props },
+        ref
+    ) => {
+        const animation: HTMLMotionProps<'div'> = {
+            initial: { height: 0 },
+            animate: { height: 'auto' },
+            exit: { height: 0 },
+            transition: { type: 'spring', duration: 0.4, bounce: 0 },
+        };
+
         return (
-            <div
-                ref={ref}
-                {...props}
-                className={cn(
-                    `relative grid w-full text-base px-2.5 sm:px-3 transition-all duration-300 ${className}`,
-                    {
-                        'grid-rows-[1fr] pb-2.5 sm:pb-3 opacity-100': accordionIndex === activeIndex,
-                        'grid-rows-[0fr] pb-0 opacity-0': accordionIndex !== activeIndex,
-                    }
+            <AnimatePresence initial={false}>
+                {accordionIndex === activeIndex && (
+                    <motion.div
+                        ref={ref}
+                        {...props}
+                        {...animation}
+                        className={`relative w-full text-base ${className}`}
+                    >
+                        <div className='p-2.5 pt-0 sm:p-3 sm:pt-0'>{children}</div>
+                    </motion.div>
                 )}
-            >
-                <div className='overflow-hidden'>{props.children}</div>
-            </div>
+            </AnimatePresence>
         );
     }
 );

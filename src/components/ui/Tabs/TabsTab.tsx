@@ -1,5 +1,6 @@
 'use client';
 import { Dispatch, FC, forwardRef, LiHTMLAttributes, RefAttributes, SetStateAction, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import cn from 'classnames';
 
 interface Props extends LiHTMLAttributes<HTMLLIElement>, RefAttributes<HTMLLIElement> {
@@ -22,14 +23,21 @@ const TabsTab: FC<Props> = forwardRef<HTMLLIElement, Props>(
                 {...props}
                 onClick={() => setActiveIndex(tabIndex)}
                 className={cn(
-                    `relative text-base px-2.5 sm:px-3 py-1.5 rounded-t-md border border-b-0 cursor-pointer ${className}`,
+                    `relative w-full text-center text-base px-2.5 sm:px-3 py-1.5 border-r border-gray last:border-none cursor-pointer transition-colors duration-200 ${className}`,
                     {
-                        'active-tab border-gray': tabIndex === activeIndex,
-                        'border-transparent': tabIndex !== activeIndex,
+                        'text-blue': tabIndex === activeIndex,
                     }
                 )}
             >
                 {props.children}
+
+                {tabIndex === activeIndex && (
+                    <motion.div
+                        id='underline'
+                        layoutId='underline'
+                        className='absolute left-0 -bottom-[1px] w-full h-0.5 bg-blue'
+                    />
+                )}
             </li>
         );
     }

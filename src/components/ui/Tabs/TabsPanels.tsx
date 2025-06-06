@@ -11,6 +11,7 @@ import {
     RefAttributes,
     SetStateAction,
 } from 'react';
+import { AnimatePresence } from 'framer-motion';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     activeIndex?: number;
@@ -22,13 +23,17 @@ const TabsPanels: FC<Props> = forwardRef<HTMLDivElement, Props>(
     ({ activeIndex, className = '', setActiveIndex = () => {}, ...props }, ref) => {
         return (
             <div ref={ref} {...props} className={`relative w-full ${className}`}>
-                {Children.map(props.children, (child, index) => {
-                    if (isValidElement(child)) {
-                        return cloneElement(child as ReactElement, { panelIndex: index, activeIndex });
-                    }
+                <AnimatePresence mode='wait'>
+                    {Children.map(props.children, (child, index) => {
+                        if (index === activeIndex) {
+                            if (isValidElement(child)) {
+                                return cloneElement(child as ReactElement);
+                            }
 
-                    return child;
-                })}
+                            return child;
+                        }
+                    })}
+                </AnimatePresence>
             </div>
         );
     }

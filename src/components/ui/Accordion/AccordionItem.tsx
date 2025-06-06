@@ -33,7 +33,11 @@ const AccordionItem: FC<Props> = forwardRef<HTMLDivElement, Props>(
         }, [accordionIndex, isOpen, setActiveIndex]);
 
         return (
-            <div ref={ref} {...props} className={`relative w-full border-b border-gray last:border-b-0 ${className}`}>
+            <div
+                ref={ref}
+                {...props}
+                className={`relative w-full border-b border-gray last:border-b-0 overflow-hidden ${className}`}
+            >
                 {Children.map(props.children, (child) => {
                     if (isValidElement(child)) {
                         return cloneElement(child as ReactElement, {
