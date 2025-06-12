@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
-import { BackLink, Breadcrumbs, StoreRedux, StoreZustand } from '@/src/components/elements';
+import { EnumTitle } from '@/src/types/enums';
+import { StoreRedux, StoreZustand } from '@/src/components/elements';
 import { Badge, Line, Title } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -9,23 +10,24 @@ export const metadata: Metadata = {
 const StorePage = () => {
     return (
         <section className='relative w-full'>
-            <div className='flex flex-col gap-6 w-full'>
-                <BackLink />
-                <Breadcrumbs />
+            <div className='container'>
+                <div className='w-full'>
+                    <div className='flex flex-col gap-6 w-full'>
+                        <Badge>
+                            <Badge.Item>Redux Store</Badge.Item>
+                            <Badge.Item>Zustand Store</Badge.Item>
+                        </Badge>
 
-                <Badge>
-                    <Badge.Item>Redux Store</Badge.Item>
-                    <Badge.Item>Zustand Store</Badge.Item>
-                </Badge>
+                        <Title titleType={EnumTitle.h2}>Redux & Zustand Store</Title>
+                    </div>
 
-                <Title>Redux & Zustand Store</Title>
-            </div>
+                    <Line />
 
-            <Line />
-
-            <div className='flex flex-col gap-10 w-full'>
-                <StoreRedux />
-                <StoreZustand />
+                    <div className='flex flex-col gap-10 w-full'>
+                        <StoreRedux />
+                        <StoreZustand />
+                    </div>
+                </div>
             </div>
         </section>
     );

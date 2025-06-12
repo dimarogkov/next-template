@@ -3,7 +3,6 @@ import { AxiosResponse } from 'axios';
 import { UseMutateFunction } from '@tanstack/react-query';
 import { EnumTitle } from '@/src/types/enums/Title';
 import { ITodo } from '@/src/types/interfaces/Todo';
-
 import { Btn, Text, Title } from '../ui';
 import { Trash2 } from 'lucide-react';
 import cn from 'classnames';
@@ -20,21 +19,21 @@ const Todo: FC<Props> = ({ todo, isPending, updateTodo = () => {}, removeTodo = 
 
     return (
         <div
-            className={cn('relative flex flex-col w-full rounded-lg border p-4 pr-12 transition-opacity duration-300', {
+            className={cn('relative flex flex-col w-full rounded-md border p-4 pr-12 transition-opacity duration-300', {
                 'border-gray bg-gray/20': !completed,
                 'border-green bg-green/15': completed,
                 'opacity-70 pointer-events-none': isPending,
             })}
         >
             <button
-                className='absolute z-10 top-2 right-2 flex items-center justify-center size-8 rounded border border-red bg-red/15 outline-none transition-opacity duration-300 hover:opacity-70'
+                className='absolute z-10 top-1.5 right-1.5 flex items-center justify-center size-7 rounded-md border border-red bg-red/15 outline-none transition-opacity duration-300 hover:opacity-70'
                 onClick={() => removeTodo(id)}
             >
-                <Trash2 className='size-5 text-red' />
+                <Trash2 className='size-4 text-red' />
             </button>
 
             <div className='flex-grow w-full mb-3 last:mb-0'>
-                <Title titleType={EnumTitle.h3} className='mb-2 last:mb-0'>
+                <Title titleType={EnumTitle.h3} className='truncate mb-2 last:mb-0'>
                     {title}
                 </Title>
 

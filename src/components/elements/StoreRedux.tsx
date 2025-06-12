@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '@/src/store/redux';
 import { addCount, removeCount, resetCount } from '@/src/store/redux/countReducer';
 import { EnumTitle } from '@/src/types/enums/Title';
 import { Btn, Text, Title } from '../ui';
+import { RotateCcw } from 'lucide-react';
 
 type Props = {
     className?: string;
@@ -24,7 +25,11 @@ const StoreRedux: FC<Props> = ({ className = '' }) => {
             <div className='flex flex-col sm:flex-row w-full gap-2'>
                 <Btn onClick={() => dispatch(removeCount(5))}>- 5</Btn>
                 <Btn onClick={() => dispatch(addCount(5))}>+ 5</Btn>
-                <Btn onClick={() => dispatch(resetCount())}>Reset</Btn>
+
+                <Btn onClick={() => dispatch(resetCount())}>
+                    <RotateCcw className='size-5' />
+                    <span>Reset</span>
+                </Btn>
             </div>
         </div>
     );

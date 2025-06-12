@@ -1,6 +1,6 @@
 import { IDevIcon } from '../types/interfaces/DevIcon';
 
-export const devIcons: IDevIcon[] = [
+export const DEV_ICONS: IDevIcon[] = [
     {
         icon: 'devicon-react-original',
         text: 'React',

@@ -3,6 +3,7 @@ import { FC } from 'react';
 import { useCount } from '@/src/store/zustand';
 import { EnumTitle } from '@/src/types/enums/Title';
 import { Btn, Text, Title } from '../ui';
+import { RotateCcw } from 'lucide-react';
 
 type Props = {
     className?: string;
@@ -22,7 +23,11 @@ const StoreZustand: FC<Props> = ({ className = '' }) => {
             <div className='flex flex-col sm:flex-row w-full gap-2'>
                 <Btn onClick={() => removeCount(5)}>- 5</Btn>
                 <Btn onClick={() => addCount(5)}>+ 5</Btn>
-                <Btn onClick={() => resetCount()}>Reset</Btn>
+
+                <Btn onClick={() => resetCount()}>
+                    <RotateCcw className='size-5' />
+                    <span>Reset</span>
+                </Btn>
             </div>
         </div>
     );

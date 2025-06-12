@@ -51,7 +51,7 @@ const Toast: FC<Props> = forwardRef<HTMLDivElement, Props>(
                 {...props}
                 role='alert'
                 className={cn(
-                    `relative flex items-center gap-3 w-full sm:w-[440px] rounded p-2.5 sm:p-3 pr-10 border border-l-4 border-gray bg-white ${className}`,
+                    `relative flex items-center gap-3 w-full sm:w-[440px] rounded-md p-2.5 sm:p-3 pr-10 border border-l-4 border-gray bg-white ${className}`,
                     toastClasses.border[type],
                     {
                         'animate-leave': !t.visible,

@@ -41,6 +41,10 @@ input[type='number']::-webkit-outer-spin-button {
     margin: 0;
 }
 
+.container {
+    @apply w-full max-w-6xl px-4 md:px-5 m-auto;
+}
+
 .online::before,
 .offline::before,
 .online-square::before,

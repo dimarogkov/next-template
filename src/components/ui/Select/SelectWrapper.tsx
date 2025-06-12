@@ -11,7 +11,7 @@ const SelectWrapper: FC<Props> = forwardRef<HTMLSelectElement, Props>(({ classNa
             <select
                 ref={ref}
                 {...props}
-                className='w-full h-full px-4 pr-12 rounded outline-none appearance-none border border-gray bg-white transition-all duration-300 focus:border-black'
+                className='w-full h-full px-4 pr-12 rounded-md outline-none appearance-none border border-gray bg-white transition-all duration-300 focus:border-black'
             />
 
             <ChevronDown className='absolute right-4 size-5' />

@@ -1,6 +1,6 @@
 import { FC, forwardRef, InputHTMLAttributes, RefAttributes } from 'react';
-import { Circle } from 'lucide-react';
 import Text from './Text';
+import { Circle } from 'lucide-react';
 import cn from 'classnames';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTMLInputElement> {

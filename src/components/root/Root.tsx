@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
-import { Inter } from 'next/font/google';
+import { Geist } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+const geist = Geist({ subsets: ['latin'] });
 
 type Props = {
     children?: ReactNode;
@@ -10,7 +10,7 @@ type Props = {
 const Root: FC<Props> = ({ children }) => {
     return (
         <html lang='en' suppressHydrationWarning>
-            <body className={inter.className}>{children}</body>
+            <body className={geist.className}>{children}</body>
         </html>
     );
 };
