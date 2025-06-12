@@ -1,7 +1,7 @@
 'use client';
 import { FC, InputHTMLAttributes, RefAttributes, forwardRef, MouseEvent, useRef, useState } from 'react';
-import { Eye, EyeOff } from 'lucide-react';
 import Input from './Input';
+import { Eye, EyeOff } from 'lucide-react';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTMLInputElement> {
     className?: string;

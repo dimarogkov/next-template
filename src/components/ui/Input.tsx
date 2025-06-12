@@ -9,7 +9,7 @@ const Input: FC<Props> = forwardRef<HTMLInputElement, Props>(({ className = '', 
         <input
             ref={ref}
             {...props}
-            className={`w-full h-10 px-4 rounded border border-gray bg-transparent outline-none transition-all duration-300 focus:border-black ${className}`}
+            className={`w-full h-10 px-4 rounded-md border border-gray bg-transparent outline-none transition-all duration-300 focus:border-black ${className}`}
         />
     );
 });

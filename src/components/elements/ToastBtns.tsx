@@ -2,6 +2,7 @@
 import toast from 'react-hot-toast';
 import { EnumToast } from '@/src/types/enums';
 import { Btn, Toast } from '../ui';
+import { CircleAlert, CircleCheck, CircleX, Info } from 'lucide-react';
 
 const ToastBtns = () => {
     return (
@@ -19,7 +20,8 @@ const ToastBtns = () => {
                     ))
                 }
             >
-                Toast Info
+                <Info className='size-5' />
+                <span>Toast Info</span>
             </Btn>
 
             <Btn
@@ -36,7 +38,8 @@ const ToastBtns = () => {
                     ))
                 }
             >
-                Toast Success
+                <CircleCheck className='size-5' />
+                <span>Toast Success</span>
             </Btn>
 
             <Btn
@@ -53,7 +56,8 @@ const ToastBtns = () => {
                     ))
                 }
             >
-                Toast Warning
+                <CircleAlert className='size-5' />
+                <span>Toast Warning</span>
             </Btn>
 
             <Btn
@@ -70,7 +74,8 @@ const ToastBtns = () => {
                     ))
                 }
             >
-                Toast Error
+                <CircleX className='size-5' />
+                <span>Toast Error</span>
             </Btn>
         </>
     );

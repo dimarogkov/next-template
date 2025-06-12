@@ -56,7 +56,7 @@ const DropdownContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
                         {...props}
                         {...animation}
                         className={cn(
-                            `absolute z-10 min-w-full max-w-[calc(100vw-32px)] w-max rounded p-2.5 border border-gray bg-white ${className}`,
+                            `absolute z-10 min-w-full max-w-[calc(100vw-32px)] w-max rounded-md p-2.5 border border-gray bg-white ${className}`,
                             {
                                 'left-0': align === EnumDropdownAlign.start && isVerticalPosition,
                                 'top-0': align === EnumDropdownAlign.start && isHorizontalPosition,

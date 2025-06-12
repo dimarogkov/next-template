@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { formOptions } from '@/src/helpers';
 import { EnumFormNames, EnumBtn } from '@/src/types/enums';
 import { Btn, Checkbox, ErrorMessage, Input, InputPassword, Label, Radio, Select } from '../ui';
+import { RotateCcw, SendHorizontal } from 'lucide-react';
 
 const Form = () => {
     const {
@@ -95,10 +96,14 @@ const Form = () => {
             </Label>
 
             <div className='flex flex-wrap gap-2 w-full'>
-                <Btn type='submit'>Send</Btn>
+                <Btn type='submit'>
+                    <span>Send</span>
+                    <SendHorizontal className='size-5' />
+                </Btn>
 
                 <Btn type='button' btnType={EnumBtn.ghost} disabled={!isSubmitted} onClick={() => reset()}>
-                    Reset
+                    <RotateCcw className='size-5' />
+                    <span>Reset</span>
                 </Btn>
             </div>
         </form>

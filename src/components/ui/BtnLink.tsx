@@ -25,7 +25,7 @@ const BtnLink: FC<Props> = forwardRef<HTMLAnchorElement, Props>(
                 target={target}
                 {...props}
                 className={cn(
-                    `flex items-center justify-center gap-2 w-full sm:w-fit h-10 lg:h-11 font-media px-5 rounded transition-all duration-300 active:scale-95 ${className}`,
+                    `flex items-center justify-center gap-1.5 w-full sm:w-fit h-10 font-media px-4 rounded-md transition-all duration-300 will-change-transform active:scale-95 ${className}`,
                     btnLinkClasses[btnType],
                     {
                         'hover:bg-gray': btnType === EnumBtn.ghost,

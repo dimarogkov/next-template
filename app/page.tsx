@@ -1,28 +1,35 @@
-import { PATHS } from '@/src/variables/paths';
-import { EnumText } from '@/src/types/enums';
-import { ProjectInfo } from '@/src/components/elements';
-import { BtnLink, Line, Text, Title } from '@/src/components/ui';
+import { DEV_ICONS } from '@/src/variables';
+import { EnumText, EnumTitle } from '@/src/types/enums';
+import { DevIcon } from '@/src/components/elements';
+import { BtnLink, Text, Title } from '@/src/components/ui';
+import { ArrowUpRight } from 'lucide-react';
 
 const HomePage = () => {
     return (
         <section className='relative w-full'>
-            <div className='w-full mb-5 last:mb-0'>
-                <Title className='mb-2 last:mb-0'>Home Page</Title>
+            <div className='container'>
+                <div className='w-full'>
+                    <div className='flex flex-col gap-4 w-full mb-8 last:mb-0'>
+                        <Title titleType={EnumTitle.h2}>React Template</Title>
 
-                <Text textType={EnumText.large} className='mb-3 last:mb-0'>
-                    Navigation to other Pages.
-                </Text>
+                        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 w-full'>
+                            {DEV_ICONS.map((icon, text) => (
+                                <DevIcon key={text} devIcon={icon} />
+                            ))}
+                        </div>
 
-                <div className='flex flex-wrap gap-2 w-full'>
-                    <BtnLink href={PATHS.UI}>UI Page</BtnLink>
-                    <BtnLink href={PATHS.STORE}>Store Page</BtnLink>
-                    <BtnLink href={PATHS.FORM}>Form Page</BtnLink>
-                    <BtnLink href={PATHS.TODOS}>Todos Page</BtnLink>
+                        <Text textType={EnumText.large}>
+                            This is React Template for development. Technolgies used: React.js, TypeScript, Tailwind
+                            CSS, Axios, React Query, React Hook Form, Yup, Frame Motion, Redux Toolkit, Zustand.
+                        </Text>
+
+                        <BtnLink href='https://github.com/dimarogkov/next-template' target='_blank'>
+                            <span>Git Repo</span>
+                            <ArrowUpRight className='size-5' />
+                        </BtnLink>
+                    </div>
                 </div>
             </div>
-
-            <Line />
-            <ProjectInfo className='md:w-[50%]' />
         </section>
     );
 };

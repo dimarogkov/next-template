@@ -21,7 +21,7 @@ const Progress: FC<Props> = forwardRef<HTMLDivElement, Props>(
             <div
                 ref={ref}
                 {...props}
-                className={cn(`relative rounded overflow-hidden ${className}`, {
+                className={cn(`relative rounded-md overflow-hidden ${className}`, {
                     'w-full h-2 bg-gray': type === EnumProgress.line,
                 })}
             >
@@ -59,7 +59,7 @@ const Progress: FC<Props> = forwardRef<HTMLDivElement, Props>(
                     </div>
                 ) : (
                     <span
-                        className='absolute top-0 left-0 h-full rounded bg-blue transition-all duration-300'
+                        className='absolute top-0 left-0 h-full rounded-md bg-blue transition-all duration-300'
                         style={{ width: `${value}%` }}
                     />
                 )}
