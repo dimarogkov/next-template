@@ -2,35 +2,27 @@ import { IDevIcon } from '../types/interfaces/DevIcon';
 
 export const DEV_ICONS: IDevIcon[] = [
     {
-        icon: 'devicon-react-original',
-        text: 'React',
-    },
-    {
-        icon: 'devicon-redux-original',
-        text: 'Redux',
+        icon: 'devicon-nextjs-plain',
+        text: 'Next JS',
     },
     {
         icon: 'devicon-typescript-plain',
         text: 'TypeScript',
     },
     {
-        icon: 'devicon-nextjs-plain',
-        text: 'Next JS',
-    },
-    {
-        icon: 'devicon-reactrouter-plain',
-        text: 'React Router',
-    },
-    {
         icon: 'devicon-tailwindcss-original',
         text: 'Tailwind CSS',
     },
     {
-        icon: 'devicon-framermotion-original',
-        text: 'Frame Motion',
+        icon: 'devicon-redux-original',
+        text: 'Redux Toolkit',
     },
     {
         icon: 'devicon-axios-plain',
         text: 'Axios',
+    },
+    {
+        icon: 'devicon-framermotion-original',
+        text: 'Frame Motion',
     },
 ];
