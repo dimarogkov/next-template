@@ -20,7 +20,7 @@ const HomePage = () => {
 
                         <Text textType={EnumText.large}>
                             This is Next Template for development. Technolgies used: Next.js, TypeScript, Tailwind CSS,
-                            Axios, React Query, React Hook Form, Yup, Frame Motion, Redux Toolkit, Zustand.
+                            Redux Toolkit, Zustand, Axios, React Query, React Hook Form, Yup, Frame Motion.
                         </Text>
 
                         <BtnLink href='https://github.com/dimarogkov/next-template' target='_blank'>
