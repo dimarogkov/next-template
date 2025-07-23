@@ -7,7 +7,6 @@ import {
     ACCORDION_CONTENT_CODE,
     ACCORDION_USAGE_CODE,
     ACCORDION_ACTIVE_USAGE_CODE,
-    COMPONENTS_SECTIONS,
     NPM_CLASSNAMES_CODE,
     NPM_FRAMER_MOTION_CODE,
     NPM_LUCIDE_CODE,
@@ -22,12 +21,6 @@ export const metadata: Metadata = {
 };
 
 const AccordionPage = () => {
-    const sectionsArr = [
-        { id: 'installation', text: 'Installation' },
-        ...COMPONENTS_SECTIONS,
-        { id: 'active', text: 'Active' },
-    ];
-
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -44,7 +37,7 @@ const AccordionPage = () => {
         {
             id: 'code',
             title: 'Code',
-            link: '',
+            link: 'https://github.com/dimarogkov/next-template/tree/master/src/components/ui/Accordion',
             description: (
                 <Text>
                     Include a custom <span className='badge-item'>Accordion</span> component for consistent and
@@ -87,7 +80,6 @@ const AccordionPage = () => {
         title: 'Accordion',
         description: 'A vertically stacked set of interactive headings that each reveal a section of content.',
         preview: <AccordionPreview />,
-        sectionsArr,
         codeSections,
     };
 

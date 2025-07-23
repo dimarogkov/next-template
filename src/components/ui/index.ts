@@ -1,6 +1,5 @@
 import Accordion from './Accordion';
-import Avatar from './Avatar';
-import AvatarGroup from './Avatar/AvatarGroup';
+import { Avatar, AvatarGroup } from './Avatar';
 import Badge from './Badge';
 import Btn from './Btn';
 import Checkbox from './Checkbox';

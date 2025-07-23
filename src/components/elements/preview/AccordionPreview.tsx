@@ -1,6 +1,6 @@
 import { Accordion } from '@/src/components/ui';
 
-export const AccordionPreview = () => {
+const AccordionPreview = () => {
     return (
         <Accordion>
             <Accordion.Item>
@@ -24,3 +24,5 @@ export const AccordionPreview = () => {
         </Accordion>
     );
 };
+
+export default AccordionPreview;

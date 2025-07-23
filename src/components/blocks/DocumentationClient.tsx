@@ -21,7 +21,9 @@ type Props = {
 
 const DocumentationClient: FC<Props> = ({ data }) => {
     const { sectionsRef, registerRef } = useSectionsRefs();
-    const { title, description, preview, sectionsArr, codeSections } = data;
+    const { title, description, preview, codeSections } = data;
+
+    const sectionsArr = codeSections.map(({ id, title }) => ({ id, text: title }));
 
     return (
         <section className='relative w-full'>

@@ -1,3 +1,4 @@
-import { AccordionPreview } from './AccordionPreview';
+import AccordionPreview from './AccordionPreview';
+import AvatarPreview from './AvatarPreview';
 
-export { AccordionPreview };
+export { AccordionPreview, AvatarPreview };

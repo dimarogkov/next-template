@@ -16,9 +16,5 @@ export interface IDocumentationData {
     title: string;
     description: string;
     preview: JSX.Element;
-    sectionsArr: {
-        id: string;
-        text: string;
-    }[];
     codeSections: IDocumentationCodeSection[];
 }
