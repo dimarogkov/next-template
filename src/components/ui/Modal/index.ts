@@ -1,6 +1,6 @@
-import ModalContent from './ModalContent';
-import ModalTrigger from './ModalTrigger';
 import ModalWrapper from './ModalWrapper';
+import ModalTrigger from './ModalTrigger';
+import ModalContent from './ModalContent';
 
 const Modal = Object.assign(ModalWrapper, {
     Trigger: ModalTrigger,

@@ -1,9 +1,9 @@
 export const convertUrlToString = (url: string) => {
-    return url
-        .replaceAll('%20', ' ')
-        .replaceAll('_', ' ')
-        .replaceAll('/', '')
-        .split(' ')
+    const decoded = decodeURIComponent(url);
+    const normalized = decoded.replace(/[_/]/g, ' ');
+
+    return normalized
+        .split(/[\s-]+/)
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
 };

@@ -1,34 +1,46 @@
 import Link from 'next/link';
 import { PATHS } from '@/src/variables';
-import { EnumText } from '@/src/types/enums';
-import { HeaderLink } from '../elements';
-import { Text } from '../ui';
+import { HeaderLink, HeaderSwitch } from '@/src/components/elements';
+import { Text } from '@/src/components/ui';
+import { Github } from 'lucide-react';
 
 const Header = () => {
+    const { MAIN } = PATHS.PAGES;
+
     return (
-        <header className='sticky top-0 left-0 z-20 flex items-center w-full h-16 lg:h-20 border-b border-gray bg-white'>
+        <header className='sticky top-0 left-0 z-20 flex items-center w-full h-16 lg:h-20 border-b border-border bg-bg'>
             <div className='container'>
                 <div className='flex items-center justify-between w-full'>
                     <Link
                         href={PATHS.HOME}
-                        className='flex items-center gap-2.5 transition-opacity duration-300 hover:opacity-75'
+                        className='flex items-center gap-2 sm:gap-2.5 transition-opacity duration-300 hover:opacity-75'
                     >
-                        <span className='flex items-center justify-center size-9 md:size-10 rounded-md bg-blue'>
-                            <i className='text-[22px] md:text-[24px] text-white devicon-nextjs-plain' />
+                        <span className='flex items-center justify-center size-8 sm:size-9 rounded-md bg-title'>
+                            <i className='text-[24px] md:text-[28px] text-bg devicon-nextjs-plain' />
                         </span>
 
-                        <Text textType={EnumText.large} className='!w-fit font-medium'>
+                        <Text size='large' className='!w-fit font-medium text-title select-none'>
                             Next Template
                         </Text>
                     </Link>
 
-                    <ul className='hidden sm:flex gap-2 w-fit'>
-                        {Object.values(PATHS.PAGES).map((path) => (
-                            <li key={path}>
-                                <HeaderLink href={path} />
+                    <div className='flex items-center gap-2.5'>
+                        <ul className='hidden sm:flex w-fit'>
+                            <li>
+                                <HeaderLink href={MAIN.DOCUMENTATION} />
                             </li>
-                        ))}
-                    </ul>
+                        </ul>
+
+                        <Link
+                            href='https://github.com/dimarogkov/next-template'
+                            target='_blank'
+                            className='flex items-center justify-center size-8 rounded-md transition-colors duration-300 hover:bg-border'
+                        >
+                            <Github className='size-5 text-text' />
+                        </Link>
+
+                        <HeaderSwitch />
+                    </div>
                 </div>
             </div>
         </header>

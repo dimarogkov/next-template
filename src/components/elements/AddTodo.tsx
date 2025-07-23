@@ -1,46 +1,32 @@
 'use client';
-import { useState } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createTodo } from '@/src/services/todos';
-import { Btn, Input } from '../ui';
+import { FC, useState } from 'react';
+import { Btn, Input } from '@/src/components/ui';
 
-const AddTodo = () => {
+type Props = {
+    isLoading: boolean;
+    createTodo: (title: string) => void;
+};
+
+const AddTodo: FC<Props> = ({ isLoading, createTodo = () => {} }) => {
     const [todoTitle, setTodoTitle] = useState('');
-    const { invalidateQueries } = useQueryClient();
 
-    const { mutate: createTodoMutation, isPending } = useMutation({
-        mutationFn: createTodo,
-        mutationKey: ['create todo'],
-        onSuccess: () => invalidateQueries({ queryKey: ['todos'] }),
-    });
-
-    const addTodo = () => {
-        if (todoTitle.trim() === '') {
-            return;
-        }
-
-        const newTodo = {
-            userId: 1,
-            title: todoTitle.trim(),
-            completed: false,
-        };
-
-        createTodoMutation(newTodo);
+    const handleAddTodo = () => {
+        createTodo(todoTitle);
         setTodoTitle('');
     };
 
     return (
-        <div className='flex flex-wrap w-full gap-3'>
+        <div className='flex flex-wrap w-full gap-2.5'>
             <Input
                 name='search'
                 placeholder='Add Todo'
-                disabled={isPending}
+                disabled={isLoading}
                 value={todoTitle}
                 onChange={({ target }) => setTodoTitle(target.value)}
             />
 
-            <Btn disabled={todoTitle.length === 0 || isPending} onClick={addTodo}>
-                {isPending ? 'Loading...' : 'Add todo'}
+            <Btn disabled={todoTitle.length === 0 || isLoading} onClick={handleAddTodo}>
+                {isLoading ? 'Loading...' : 'Add todo'}
             </Btn>
         </div>
     );

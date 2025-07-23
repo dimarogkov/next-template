@@ -8,7 +8,7 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
 }
 
 const DropdownTrigger: FC<Props> = forwardRef<HTMLDivElement, Props>(
-    ({ isOpen, setIsOpen = () => {}, className = '', ...props }, ref) => {
+    ({ isOpen, className = '', setIsOpen = () => {}, ...props }, ref) => {
         return (
             <div
                 ref={ref}

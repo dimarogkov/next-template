@@ -1,10 +1,47 @@
 export const PATHS = {
     HOME: '/',
-    PAGES: {
-        COMPONENTS: '/components',
-        STORE: '/store',
-        FORM: '/form',
-        TODOS: '/todos',
-    },
     NOT_FOUND: '*',
+    PAGES: {
+        MAIN: {
+            DOCUMENTATION: '/documentation',
+        },
+        COMPONENTS: {
+            ACCORDION: '/accordion',
+            AVATAR: '/avatar',
+            BADGE: '/badge',
+            BREADCRUMB: '/breadcrumb',
+            BTN: '/button',
+            CHECKBOX: '/checkbox',
+            DROPDOWN: '/dropdown',
+            INPUT: '/input',
+            INPUT_PASSWORD: '/input-password',
+            LABEL: '/label',
+            LOADER: '/loader',
+            MODAL: '/modal',
+            PROGRESS: '/progress',
+            RADIO: '/radio',
+            SELECT: '/select',
+            SEPARATOR: '/separator',
+            SIMPLE_LINK: '/simple-link',
+            SWITCH: '/switch',
+            TABS: '/tabs',
+            TEXT: '/text',
+            TEXTAREA: '/textarea',
+            TITLE: '/title',
+            TOAST: '/toast',
+            TOOLTIP: '/tooltip',
+        },
+        DATA_FETCHING: {
+            REACT_QUERY: '/react-query',
+            RTK_QUERY: '/RTK-query',
+        },
+        FORM_VALIDATION: {
+            YUP: '/yup',
+            ZOD: '/zod',
+        },
+        STORE: {
+            REDUX_TOOLKIT: '/redux-toolkit',
+            ZUSTAND: '/zustand',
+        },
+    },
 };

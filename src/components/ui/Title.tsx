@@ -1,63 +1,60 @@
-import { FC, HTMLAttributes, RefAttributes, forwardRef } from 'react';
-import { EnumTitle } from '@/src/types/enums/Title';
+import { FC, HTMLAttributes, ReactNode, RefAttributes, forwardRef } from 'react';
 
 interface Props extends HTMLAttributes<HTMLHeadingElement>, RefAttributes<HTMLHeadingElement> {
-    titleType?: EnumTitle;
+    children?: ReactNode;
+    size?: 'h1' | 'h2' | 'h3' | 'h4';
     className?: string;
 }
 
 const Title: FC<Props> = forwardRef<HTMLHeadingElement, Props>(
-    ({ titleType = EnumTitle.h1, className = '', ...props }, ref) => {
+    ({ children, size = 'h1', className = '', ...props }, ref) => {
         const titleSize = {
-            [EnumTitle.h1 as string]:
-                'text-[38px] sm:text-[44px] md:text-[56px] lg:text-[66px] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2]',
-            [EnumTitle.h2 as string]:
-                'text-3xl sm:text-[36px] md:text-[40px] lg:text-[56px] !leading-[1.3] md:!leading-[1.25]',
-            [EnumTitle.h3 as string]: 'text-2xl md:text-3xl lg:text-4xl',
-            [EnumTitle.h4 as string]: 'text-xl md:text-2xl',
-            [EnumTitle.h5 as string]: 'text-xl',
+            h1: '!leading-tight text-4xl md:text-5xl',
+            h2: '!leading-tight text-3xl md:text-4xl',
+            h3: '!leading-tight text-2xl md:text-3xl',
+            h4: '!leading-tight text-xl md:text-2xl',
         };
 
         return (
             <>
-                {titleType === EnumTitle.h1 && (
+                {size === 'h1' && (
                     <h1
                         ref={ref}
                         {...props}
-                        className={`relative font-semibold ${titleSize[titleType]} ${className}`}
-                    />
+                        className={`relative font-bold text-title ${titleSize[size]} ${className}`}
+                    >
+                        {children}
+                    </h1>
                 )}
 
-                {titleType === EnumTitle.h2 && (
+                {size === 'h2' && (
                     <h2
                         ref={ref}
                         {...props}
-                        className={`relative font-semibold ${titleSize[titleType]} ${className}`}
-                    />
+                        className={`relative font-bold text-title ${titleSize[size]} ${className}`}
+                    >
+                        {children}
+                    </h2>
                 )}
 
-                {titleType === EnumTitle.h3 && (
+                {size === 'h3' && (
                     <h3
                         ref={ref}
                         {...props}
-                        className={`relative font-semibold ${titleSize[titleType]} ${className}`}
-                    />
+                        className={`relative font-bold text-title ${titleSize[size]} ${className}`}
+                    >
+                        {children}
+                    </h3>
                 )}
 
-                {titleType === EnumTitle.h4 && (
+                {size === 'h4' && (
                     <h4
                         ref={ref}
                         {...props}
-                        className={`relative font-semibold ${titleSize[titleType]} ${className}`}
-                    />
-                )}
-
-                {titleType === EnumTitle.h5 && (
-                    <h5
-                        ref={ref}
-                        {...props}
-                        className={`relative font-semibold ${titleSize[titleType]} ${className}`}
-                    />
+                        className={`relative font-bold text-title ${titleSize[size]} ${className}`}
+                    >
+                        {children}
+                    </h4>
                 )}
             </>
         );

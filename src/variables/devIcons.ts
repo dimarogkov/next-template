@@ -1,4 +1,4 @@
-import { IDevIcon } from '../types/interfaces/DevIcon';
+import { IDevIcon } from '@/src/types/interfaces/DevIcon';
 
 export const DEV_ICONS: IDevIcon[] = [
     {

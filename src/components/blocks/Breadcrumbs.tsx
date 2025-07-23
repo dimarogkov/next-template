@@ -1,10 +1,9 @@
 'use client';
-import { FC, useMemo } from 'react';
+import { FC } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { PATHS } from '@/src/variables';
-import { convertUrlToString } from '@/src/helpers';
-import { Text } from '../ui';
+import { convertUrlToString, getLinks } from '@/src/helpers';
 import { ChevronRight } from 'lucide-react';
 
 type Props = {
@@ -12,46 +11,51 @@ type Props = {
 };
 
 const Breadcrumbs: FC<Props> = ({ className = '' }) => {
-    const paths = usePathname();
-    const isBreadcrumbVisible = Object.values(PATHS.PAGES).includes(paths);
+    const pathname = usePathname();
+    const { componentsLinks, dataFetchingLinks, formValidationLinks, storeLinks } = getLinks();
+    const { MAIN } = PATHS.PAGES;
 
-    const pathNames = paths
-        .split('/')
-        .filter((path) => path)
-        .map((path, index, arr) => ({
-            id: crypto.randomUUID(),
-            href: `/${arr.slice(0, index + 1).join('/')}`,
-            text: convertUrlToString(path),
-        }));
+    const pathsArr = [
+        ...Object.values(MAIN),
+        ...componentsLinks.map(({ href }) => href),
+        ...dataFetchingLinks.map(({ href }) => href),
+        ...formValidationLinks.map(({ href }) => href),
+        ...storeLinks.map(({ href }) => href),
+    ];
 
-    const breadcrumbs = useMemo(
-        () => [{ id: crypto.randomUUID(), href: `${PATHS.HOME}`, text: 'Home' }, ...pathNames],
-        [pathNames]
-    );
+    const isBreadcrumbVisible = pathsArr.includes(pathname);
+
+    const links = pathname.split('/').map((link) => ({
+        id: crypto.randomUUID(),
+        href: `/${link}`,
+        name: link ? convertUrlToString(link) : 'Home',
+    }));
 
     return (
-        isBreadcrumbVisible && (
-            <section
-                className={`sticky z-10 top-16 lg:top-20 left-0 w-full h-11 border-b border-gray bg-white ${className}`}
-            >
-                <div className='container h-full'>
-                    <ul className='flex items-center gap-1 w-full h-full'>
-                        {breadcrumbs.map(({ id, href, text }, index) => (
-                            <li key={id}>
-                                {breadcrumbs.length - 1 !== index ? (
-                                    <Link href={href} className='flex items-center line-clamp-1 hover:underline'>
-                                        <span>{text}</span>
-                                        <ChevronRight className='size-5 min-w-5 stroke-1 text-black' />
-                                    </Link>
-                                ) : (
-                                    <Text className='line-clamp-1 text-blue'>{text}</Text>
-                                )}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </section>
-        )
+        <>
+            {isBreadcrumbVisible && (
+                <section
+                    className={`sticky z-20 top-16 lg:top-20 left-0 w-full h-11 border-b border-border bg-bg ${className}`}
+                >
+                    <div className='container h-full'>
+                        <ul className='flex items-center gap-1 w-full h-full'>
+                            {links.map(({ id, href, name }, index) => (
+                                <li key={id}>
+                                    {links.length - 1 !== index ? (
+                                        <Link href={href} className='flex items-center line-clamp-1 hover:underline'>
+                                            <span className='line-clamp-1'>{name}</span>
+                                            <ChevronRight className='size-5 min-w-5 stroke-1 text-text' />
+                                        </Link>
+                                    ) : (
+                                        <span className='line-clamp-1 text-title'>{name}</span>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </section>
+            )}
+        </>
     );
 };
 

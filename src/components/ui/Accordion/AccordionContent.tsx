@@ -1,20 +1,29 @@
 'use client';
-import { Dispatch, FC, forwardRef, ReactNode, RefAttributes, SetStateAction } from 'react';
+import { FC, forwardRef, ReactNode, RefAttributes } from 'react';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
-import { EnumAccordionIcon } from '@/src/types/enums';
 
 interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
-    iconType?: EnumAccordionIcon;
+    iconType?: 'arrow' | 'plus';
     accordionIndex?: number;
     activeIndex?: number;
-    children: ReactNode;
     className?: string;
-    setActiveIndex?: Dispatch<SetStateAction<number | null>>;
+    classNameBlock?: string;
+    children: ReactNode;
+    setActiveIndex?: () => void;
 }
 
 const AccordionContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
     (
-        { iconType, accordionIndex = 0, activeIndex, children, className = '', setActiveIndex = () => {}, ...props },
+        {
+            iconType,
+            accordionIndex = 0,
+            activeIndex,
+            className = '',
+            classNameBlock = '',
+            children,
+            setActiveIndex = () => {},
+            ...props
+        },
         ref
     ) => {
         const animation: HTMLMotionProps<'div'> = {
@@ -33,7 +42,7 @@ const AccordionContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
                         {...animation}
                         className={`relative w-full text-base ${className}`}
                     >
-                        <div className='p-2.5 pt-0 sm:p-3 sm:pt-0'>{children}</div>
+                        <div className={`p-2.5 pt-0 sm:p-3 sm:pt-0 ${classNameBlock}`}>{children}</div>
                     </motion.div>
                 )}
             </AnimatePresence>

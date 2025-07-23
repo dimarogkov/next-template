@@ -1,32 +1,43 @@
-import { DEV_ICONS } from '@/src/variables';
-import { EnumText, EnumTitle } from '@/src/types/enums';
-import { DevIcon } from '@/src/components/elements';
-import { BtnLink, Text, Title } from '@/src/components/ui';
+import { DEV_ICONS, PATHS } from '@/src/variables';
+import { DevIcon, HomeBg } from '@/src/components/elements';
+import { Btn, Text, Title } from '@/src/components/ui';
 import { ArrowUpRight } from 'lucide-react';
 
 const HomePage = () => {
+    const { MAIN } = PATHS.PAGES;
+
     return (
-        <section className='relative w-full'>
-            <div className='container'>
-                <div className='w-full'>
-                    <div className='flex flex-col gap-4 w-full mb-8 last:mb-0'>
-                        <Title titleType={EnumTitle.h2}>Next Template</Title>
+        <section className='relative w-full sm:h-[calc(100svh-64px)] min-h-[calc(100svh-64px)] lg:h-[calc(100svh-80px)] lg:min-h-[calc(100svh-80px)] py-7 md:py-10'>
+            <HomeBg />
 
-                        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 w-full'>
-                            {DEV_ICONS.map((icon, text) => (
-                                <DevIcon key={text} devIcon={icon} />
-                            ))}
-                        </div>
+            <div className='container relative'>
+                <div className='flex flex-col gap-5 w-full mb-8 last:mb-0'>
+                    <Title size='h2' className='mb-1.5 last:mb-0'>
+                        Build Faster with Next Template
+                    </Title>
 
-                        <Text textType={EnumText.large}>
-                            This is Next Template for development. Technolgies used: Next.js, TypeScript, Tailwind CSS,
-                            Redux Toolkit, Zustand, Axios, React Query, React Hook Form, Yup, Frame Motion.
-                        </Text>
+                    <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 w-full'>
+                        {DEV_ICONS.map((icon, text) => (
+                            <DevIcon key={text} devIcon={icon} />
+                        ))}
+                    </div>
 
-                        <BtnLink href='https://github.com/dimarogkov/next-template' target='_blank'>
-                            <span>Git Repo</span>
-                            <ArrowUpRight className='size-5' />
-                        </BtnLink>
+                    <Text size='large' className='text-title'>
+                        A curated set of accessible, ready-to-use components for modern web apps. Designed to save you
+                        time and help you create stunning UIs effortlessly.
+                    </Text>
+
+                    <div className='flex flex-wrap gap-2 w-full'>
+                        <Btn isLink>
+                            <Btn.Link href={MAIN.DOCUMENTATION}>Get Started</Btn.Link>
+                        </Btn>
+
+                        <Btn variant='outline' isLink>
+                            <Btn.Link href='https://github.com/dimarogkov/next-template' target='_blank'>
+                                <span>Git Repo</span>
+                                <ArrowUpRight className='size-5' />
+                            </Btn.Link>
+                        </Btn>
                     </div>
                 </div>
             </div>

@@ -21,7 +21,7 @@ interface Props extends HTMLAttributes<HTMLUListElement>, RefAttributes<HTMLULis
 const TabsList: FC<Props> = forwardRef<HTMLUListElement, Props>(
     ({ activeIndex, className = '', setActiveIndex = () => {}, ...props }, ref) => {
         return (
-            <ul ref={ref} {...props} className={`relative flex w-full border-b border-gray ${className}`}>
+            <ul ref={ref} {...props} className={`relative flex w-full border-b border-border ${className}`}>
                 {Children.map(props.children, (child, index) => {
                     if (isValidElement(child)) {
                         return cloneElement(child as ReactElement, { tabIndex: index, activeIndex, setActiveIndex });

@@ -1,19 +1,18 @@
 import { FC, HTMLAttributes, RefAttributes, forwardRef } from 'react';
-import { EnumText } from '@/src/types/enums';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLParagraphElement>, RefAttributes<HTMLParagraphElement> {
-    textType?: EnumText;
+    size?: 'default' | 'large';
     className?: string;
 }
 
 const Text: FC<Props> = forwardRef<HTMLParagraphElement, Props>(
-    ({ textType = EnumText.default, className = '', ...props }, ref) => {
+    ({ size = 'default', className = '', ...props }, ref) => {
         return (
             <p
                 ref={ref}
                 {...props}
-                className={cn(`w-full text-base ${className}`, { 'md:text-lg': textType === EnumText.large })}
+                className={cn(`w-full text-base ${className}`, { 'md:text-lg': size === 'large' })}
             />
         );
     }

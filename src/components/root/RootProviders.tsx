@@ -1,6 +1,6 @@
 'use client';
 import { FC, ReactNode } from 'react';
-import StoreProvider from '@/src/store/redux/StoreProvider';
+import StoreProvider from '@/src/store/redux-toolkit/StoreProvider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 type Props = {

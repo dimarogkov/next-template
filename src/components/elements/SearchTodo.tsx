@@ -1,15 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client';
-import { useCallback, useState } from 'react';
-import { useTodo } from '@/src/store/zustand';
+import { Dispatch, FC, SetStateAction, useCallback, useState } from 'react';
 import { debounce } from '@/src/helpers';
-import { Input } from '../ui';
+import { Input } from '@/src/components/ui';
 
-const SearchTodo = () => {
-    const { setSearchValue } = useTodo((state) => state);
+type Props = {
+    setAppliedSearchValue: Dispatch<SetStateAction<string>>;
+};
+
+const SearchTodo: FC<Props> = ({ setAppliedSearchValue = () => {} }) => {
     const [value, setValue] = useState('');
 
-    const applySearchValue = useCallback(debounce(setSearchValue, 700), []);
+    const applySearchValue = useCallback(debounce(setAppliedSearchValue, 700), []);
 
     const handleSearch = (value: string) => {
         applySearchValue(value);
@@ -17,7 +19,7 @@ const SearchTodo = () => {
     };
 
     return (
-        <div className='relative w-full'>
+        <div className='relative w-full mb-3 last:mb-0s'>
             <Input
                 name='search'
                 placeholder='Find Todo'

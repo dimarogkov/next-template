@@ -11,7 +11,7 @@ const ModalLayer: FC<Props> = forwardRef<HTMLDivElement, Props>(({ setIsOpen = (
             ref={ref}
             {...props}
             onClick={() => setIsOpen(false)}
-            className='absolute top-0 left-0 w-full h-full bg-black/30'
+            className='absolute top-0 left-0 w-full h-full bg-black/50'
         />
     );
 });

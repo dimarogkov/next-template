@@ -12,7 +12,7 @@ interface Props extends LiHTMLAttributes<HTMLLIElement>, RefAttributes<HTMLLIEle
 }
 
 const TabsTab: FC<Props> = forwardRef<HTMLLIElement, Props>(
-    ({ tabIndex = 0, activeIndex, isActive = false, className = '', setActiveIndex = () => {}, ...props }, ref) => {
+    ({ tabIndex = 0, activeIndex, isActive, className = '', setActiveIndex = () => {}, ...props }, ref) => {
         useEffect(() => {
             isActive && setActiveIndex(tabIndex);
         }, [isActive, setActiveIndex, tabIndex]);
@@ -23,9 +23,9 @@ const TabsTab: FC<Props> = forwardRef<HTMLLIElement, Props>(
                 {...props}
                 onClick={() => setActiveIndex(tabIndex)}
                 className={cn(
-                    `relative w-full text-center text-base px-2.5 sm:px-3 py-1.5 border-r border-gray last:border-none cursor-pointer transition-colors duration-200 ${className}`,
+                    `relative w-full text-center text-base px-2.5 sm:px-3 py-1.5 border-r border-border last:border-none cursor-pointer transition-colors duration-200 ${className}`,
                     {
-                        'text-blue': tabIndex === activeIndex,
+                        'text-title': tabIndex === activeIndex,
                     }
                 )}
             >
@@ -35,7 +35,7 @@ const TabsTab: FC<Props> = forwardRef<HTMLLIElement, Props>(
                     <motion.div
                         id='underline'
                         layoutId='underline'
-                        className='absolute left-0 -bottom-[1px] w-full h-0.5 bg-blue'
+                        className='absolute left-0 -bottom-[1px] w-full h-0.5 bg-title'
                     />
                 )}
             </li>

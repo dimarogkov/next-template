@@ -3,19 +3,23 @@ import Link from 'next/link';
 
 interface Props extends HTMLAttributes<HTMLAnchorElement>, RefAttributes<HTMLAnchorElement> {
     href: string;
+    target?: string;
     className?: string;
 }
 
-const SimpleLink: FC<Props> = forwardRef<HTMLAnchorElement, Props>(({ href, className = '', ...props }, ref) => {
-    return (
-        <Link
-            ref={ref}
-            {...props}
-            href={href}
-            className={`relative w-auto font-medium text-blue underline ${className}`}
-        />
-    );
-});
+const SimpleLink: FC<Props> = forwardRef<HTMLAnchorElement, Props>(
+    ({ href, target, className = '', ...props }, ref) => {
+        return (
+            <Link
+                ref={ref}
+                {...props}
+                href={href}
+                target={target}
+                className={`relative w-auto font-medium text-title underline ${className}`}
+            />
+        );
+    }
+);
 
 SimpleLink.displayName = 'SimpleLink';
 export default SimpleLink;

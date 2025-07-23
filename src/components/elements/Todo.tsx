@@ -1,46 +1,46 @@
 import { FC } from 'react';
-import { AxiosResponse } from 'axios';
-import { UseMutateFunction } from '@tanstack/react-query';
-import { EnumTitle } from '@/src/types/enums/Title';
 import { ITodo } from '@/src/types/interfaces/Todo';
-import { Btn, Text, Title } from '../ui';
-import { Trash2 } from 'lucide-react';
+import { Btn, Text, Title } from '@/src/components/ui';
+import { X } from 'lucide-react';
 import cn from 'classnames';
 
 type Props = {
     todo: ITodo;
-    isPending: boolean;
-    updateTodo: UseMutateFunction<AxiosResponse<ITodo, any>, Error, ITodo, unknown>;
-    removeTodo: UseMutateFunction<AxiosResponse<ITodo, any>, Error, number, unknown>;
+    isLoading: boolean;
+    updateTodo: (todo: ITodo) => void;
+    removeTodo: (todoId: number) => void;
 };
 
-const Todo: FC<Props> = ({ todo, isPending, updateTodo = () => {}, removeTodo = () => {} }) => {
+const Todo: FC<Props> = ({ todo, isLoading, updateTodo = () => {}, removeTodo = () => {} }) => {
     const { id, title, userId, completed } = todo;
 
     return (
         <div
-            className={cn('relative flex flex-col w-full rounded-md border p-4 pr-12 transition-opacity duration-300', {
-                'border-gray bg-gray/20': !completed,
-                'border-green bg-green/15': completed,
-                'opacity-70 pointer-events-none': isPending,
+            className={cn('relative flex flex-col w-full rounded-md border p-4 transition-opacity duration-300', {
+                'border-border': !completed,
+                'border-green bg-green/10': completed,
+                'opacity-70 pointer-events-none': isLoading,
             })}
         >
             <button
-                className='absolute z-10 top-1.5 right-1.5 flex items-center justify-center size-7 rounded-md border border-red bg-red/15 outline-none transition-opacity duration-300 hover:opacity-70'
+                type='button'
                 onClick={() => removeTodo(id)}
+                className='absolute top-1.5 right-1.5 outline-none transition-opacity duration-300 hover:opacity-65'
             >
-                <Trash2 className='size-4 text-red' />
+                <X className='size-5' />
             </button>
 
-            <div className='flex-grow w-full mb-3 last:mb-0'>
-                <Title titleType={EnumTitle.h3} className='truncate mb-2 last:mb-0'>
+            <div className='flex-grow w-full pr-8 mb-5 last:mb-0'>
+                <Title size='h4' className='truncate mb-1 last:mb-0'>
                     {title}
                 </Title>
 
                 <Text>User ID - {userId}</Text>
             </div>
 
-            <Btn onClick={() => updateTodo(todo)}>{completed ? 'Uncomplete Todo' : 'Complete Todo'}</Btn>
+            <Btn variant='secondary' onClick={() => updateTodo(todo)} className='sm:!w-full'>
+                {completed ? 'Uncomplete' : 'Complete'}
+            </Btn>
         </div>
     );
 };

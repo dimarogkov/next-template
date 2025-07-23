@@ -10,13 +10,13 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                black: '#222831',
+                title: '#d4d4d4',
+                text: '#a1a1a1',
+                border: '#ffffff1a',
+                yellow: '#facc15',
                 green: '#52881a',
-                blue: '#5356ff',
-                yellow: '#fab12f',
-                red: '#f1003a',
-                gray: '#e5e5e5',
-                white: '#fff',
+                red: '#ff6467',
+                bg: '#0a0a0a',
             },
             animation: {
                 enter: 'enter 0.2s forwards',

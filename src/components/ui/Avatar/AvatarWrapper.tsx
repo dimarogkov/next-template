@@ -12,27 +12,22 @@ import {
     useRef,
     useState,
 } from 'react';
-import { EnumAvatar } from '@/src/types/enums';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     currentIndex?: number;
-    type?: EnumAvatar;
+    type?: 'circle' | 'square';
     isOnline?: boolean;
-    isOffline?: boolean;
     className?: string;
 }
 
 const AvatarWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(
-    (
-        { currentIndex, type = EnumAvatar.circle, isOnline = false, isOffline = false, className = '', ...props },
-        ref
-    ) => {
+    ({ currentIndex, type = 'circle', isOnline = false, className = '', ...props }, ref) => {
         const [currentWidth, setCurrentWidth] = useState(0);
         const avatarRef = useRef<HTMLDivElement>(null);
 
-        const isTypeCircle = type === EnumAvatar.circle;
-        const isTypeSquare = type === EnumAvatar.square;
+        const isTypeCircle = type === 'circle';
+        const isTypeSquare = type === 'square';
 
         useEffect(() => {
             setCurrentWidth(avatarRef.current?.offsetWidth || 48);
@@ -41,7 +36,7 @@ const AvatarWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(
         const avatarStyle = {
             ...(currentIndex && {
                 left: `${currentIndex * Math.round(currentWidth / 4) * -1}px`,
-                outline: `${Math.round(currentWidth / 30)}px solid white`,
+                outline: `3px solid #0a0a0a`,
             }),
         };
 
@@ -52,9 +47,7 @@ const AvatarWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(
                 className={cn(`relative skeleton ${className || 'size-12'}`, {
                     'rounded-full': isTypeCircle,
                     'rounded-md': isTypeSquare,
-                    'offline-square': isOffline && isTypeSquare,
                     'online-square': isOnline && isTypeSquare,
-                    offline: isOffline && isTypeCircle,
                     online: isOnline && isTypeCircle,
                 })}
                 style={avatarStyle}

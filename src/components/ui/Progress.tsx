@@ -1,17 +1,16 @@
 import { FC, forwardRef, HTMLAttributes, RefAttributes } from 'react';
-import { EnumProgress, EnumText } from '@/src/types/enums';
 import Text from './Text';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     value: number;
     radius?: number;
-    type?: EnumProgress;
+    type?: 'line' | 'circle';
     className?: string;
 }
 
 const Progress: FC<Props> = forwardRef<HTMLDivElement, Props>(
-    ({ value, radius = 60, type = EnumProgress.line, className = '', ...props }, ref) => {
+    ({ value, radius = 60, type = 'line', className = '', ...props }, ref) => {
         const size = radius * 2;
         const normalizedRadius = radius - 3;
         const circumference = normalizedRadius * 2 * Math.PI;
@@ -22,10 +21,10 @@ const Progress: FC<Props> = forwardRef<HTMLDivElement, Props>(
                 ref={ref}
                 {...props}
                 className={cn(`relative rounded-md overflow-hidden ${className}`, {
-                    'w-full h-2 bg-gray': type === EnumProgress.line,
+                    'w-full h-2 bg-border': type === 'line',
                 })}
             >
-                {type === EnumProgress.circle ? (
+                {type === 'circle' ? (
                     <div className='relative' style={{ width: size }}>
                         <svg width={size} height={size}>
                             <circle
@@ -34,7 +33,7 @@ const Progress: FC<Props> = forwardRef<HTMLDivElement, Props>(
                                 r={normalizedRadius}
                                 fill='transparent'
                                 strokeWidth={6}
-                                className='stroke-gray'
+                                className='stroke-border'
                             />
                             <circle
                                 r={normalizedRadius}
@@ -46,12 +45,12 @@ const Progress: FC<Props> = forwardRef<HTMLDivElement, Props>(
                                 strokeDasharray={`${circumference} ${circumference}`}
                                 strokeDashoffset={strokeDashoffset}
                                 transform={`rotate(-90 ${radius} ${radius})`}
-                                className='stroke-blue transition-all duration-300'
+                                className='stroke-title transition-all duration-300'
                             />
                         </svg>
 
                         <Text
-                            textType={EnumText.large}
+                            size='large'
                             className='absolute top-0 left-0 flex items-center justify-center w-full h-full'
                         >
                             {value}%
@@ -59,7 +58,7 @@ const Progress: FC<Props> = forwardRef<HTMLDivElement, Props>(
                     </div>
                 ) : (
                     <span
-                        className='absolute top-0 left-0 h-full rounded-md bg-blue transition-all duration-300'
+                        className='absolute top-0 left-0 h-full rounded-md bg-title transition-all duration-300'
                         style={{ width: `${value}%` }}
                     />
                 )}

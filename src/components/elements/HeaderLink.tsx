@@ -19,8 +19,8 @@ const HeaderLink: FC<Props> = ({ href }) => {
             className={cn(
                 `flex items-center justify-center gap-2 w-full sm:w-fit h-8 font-media px-3 rounded-md transition-colors duration-300`,
                 {
-                    'text-blue pointer-events-none': isActive,
-                    'hover:bg-gray': !isActive,
+                    'text-title pointer-events-none': isActive,
+                    'hover:bg-border': !isActive,
                 }
             )}
         >

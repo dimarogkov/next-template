@@ -4,48 +4,44 @@ import { Circle } from 'lucide-react';
 import cn from 'classnames';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTMLInputElement> {
-    isChecked: string;
     label?: string;
-    value?: string;
     className?: string;
 }
 
-const Radio: FC<Props> = forwardRef<HTMLInputElement, Props>(
-    ({ isChecked, label, value = '', className = '', ...props }, ref) => {
-        return (
-            <div className={`flex items-center gap-2 cursor-pointer ${className}`}>
-                <div className='relative size-5 min-w-5'>
-                    <input
-                        ref={ref}
-                        {...props}
-                        type='radio'
-                        value={value}
-                        className='absolute top-5 left-0 w-full h-full opacity-0 cursor-pointer'
+const Radio: FC<Props> = forwardRef<HTMLInputElement, Props>(({ label, className = '', ...props }, ref) => {
+    return (
+        <div
+            className={cn(`flex items-center gap-2 cursor-pointer select-none ${className}`, {
+                'opacity-70 pointer-events-none': props.disabled,
+            })}
+        >
+            <div className='relative size-5 min-w-5'>
+                <input
+                    ref={ref}
+                    {...props}
+                    type='radio'
+                    className='absolute top-5 left-0 w-full h-full opacity-0 cursor-pointer'
+                />
+
+                <span
+                    className={cn('flex items-center justify-center w-full h-full bg-transparent rounded-full border', {
+                        'border-border': !props.checked,
+                        'border-title': props.checked,
+                    })}
+                >
+                    <Circle
+                        className={cn('size-3 rounded-full text-title bg-title', {
+                            'opacity-0 invisible': !props.checked,
+                            'opacity-1 visible': props.checked,
+                        })}
                     />
-
-                    <span
-                        className={cn(
-                            'flex items-center justify-center w-full h-full bg-transparent rounded-full border',
-                            {
-                                'border-gray': isChecked !== value,
-                                'border-blue': isChecked === value,
-                            }
-                        )}
-                    >
-                        <Circle
-                            className={cn('size-3 rounded-full text-blue bg-blue', {
-                                'opacity-0 invisible': isChecked !== value,
-                                'opacity-1 visible': isChecked === value,
-                            })}
-                        />
-                    </span>
-                </div>
-
-                {label && <Text>{label}</Text>}
+                </span>
             </div>
-        );
-    }
-);
+
+            {label && <Text>{label}</Text>}
+        </div>
+    );
+});
 
 Radio.displayName = 'Radio';
 export default Radio;

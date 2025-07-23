@@ -1,6 +1,7 @@
 import { FC, ReactNode } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { Breadcrumbs, Header } from '../blocks';
+import { Breadcrumbs, Header } from '@/src/components/blocks';
+import { ScrollTopBtn } from '@/src/components/elements';
 
 type Props = {
     children?: ReactNode;
@@ -11,7 +12,8 @@ const RootLayout: FC<Props> = ({ children }) => {
         <>
             <Header />
             <Breadcrumbs />
-            <main className='relative w-full p-5'>{children}</main>
+            <ScrollTopBtn />
+            {children}
             <Toaster position='bottom-right' reverseOrder={false} toastOptions={{ duration: 2000 }} />
         </>
     );

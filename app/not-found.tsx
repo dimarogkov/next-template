@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import { PATHS } from '@/src/variables';
-import { EnumTitle } from '@/src/types/enums';
-import { BtnLink, Text, Title } from '@/src/components/ui';
+import { Btn, Text, Title } from '@/src/components/ui';
 import { ArrowUpRight } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -10,10 +9,10 @@ export const metadata: Metadata = {
 
 const NotFoundPage = () => {
     return (
-        <section className='relative flex items-center w-full h-[calc(100svh-104px)] lg:h-[calc(100svh-120px)] pb-16 lg:pb-20'>
+        <section className='relative flex items-center w-full h-[calc(100svh-120px)] md:h-[calc(100svh-144px)] lg:h-[calc(100svh-160px)] pb-16 lg:pb-20'>
             <div className='container'>
                 <div className='w-full text-center'>
-                    <Title titleType={EnumTitle.h2} className='mb-1 last:mb-0'>
+                    <Title size='h2' className='mb-1 last:mb-0'>
                         Ooops! Page Not Found
                     </Title>
 
@@ -21,10 +20,12 @@ const NotFoundPage = () => {
                         This page doesn’t exist or was removed! We suggest you go back to home.
                     </Text>
 
-                    <BtnLink href={PATHS.HOME} className='m-auto'>
-                        <span>Go Home</span>
-                        <ArrowUpRight className='size-5' />
-                    </BtnLink>
+                    <Btn isLink className='m-auto'>
+                        <Btn.Link href={PATHS.HOME}>
+                            <span>Go Home</span>
+                            <ArrowUpRight className='size-5' />
+                        </Btn.Link>
+                    </Btn>
                 </div>
             </div>
         </section>

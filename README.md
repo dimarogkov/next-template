@@ -2,7 +2,7 @@
 
 [Project Demo](https://next-template-blue.vercel.app)
 
-This is **Next Template** for development. Technolgies used: **Next.js, TypeScript, Tailwind CSS, Redux Toolkit, Zustand, Axios, React Query, React Hook Form, Yup, Frame Motion.**
+This is **Next Template** for development. Technolgies used: **Next.js, TypeScript, Tailwind CSS, Redux Toolkit, Zustand, Axios, React Query, RTK Query, React Hook Form, Yup, Zod, Frame Motion.**
 
 ## Installation Steps
 
@@ -19,14 +19,20 @@ This is **Next Template** for development. Technolgies used: **Next.js, TypeScri
 -   components
     -   blocks
     -   elements
+        -   preview
+    -   other
     -   root
     -   ui
+-   form-validation
+    -   yup
+    -   zod
 -   helpers
+-   hooks
 -   services
 -   store
-    -   redux
+    -   redux-toolkit
     -   zustand
 -   types
-    -   enums
     -   interfaces
 -   variables
+    -   code

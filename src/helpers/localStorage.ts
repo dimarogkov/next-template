@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE_KEY } from '../variables';
+import { LOCAL_STORAGE_KEY } from '@/src/variables';
 
 export const setDataToLocalStorage = (arr: []) => {
     return localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(arr));

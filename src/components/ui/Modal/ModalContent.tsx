@@ -20,9 +20,9 @@ const ModalContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
         };
 
         const animationPopup: HTMLMotionProps<'div'> = {
-            initial: { y: 20, opacity: 0 },
-            animate: { y: 0, opacity: 1, transition: { duration: 0.3, ease: [0.215, 0.61, 0.355, 1] } },
-            exit: { y: 20, opacity: 0 },
+            initial: { scale: 0.95, opacity: 0 },
+            animate: { scale: 1, opacity: 1, transition: { ease: [0.215, 0.61, 0.355, 1] } },
+            exit: { scale: 0.95, opacity: 0 },
         };
 
         return (
@@ -38,7 +38,7 @@ const ModalContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
                             ref={ref}
                             {...props}
                             {...animationPopup}
-                            className={`relative md:w-[600px] max-w-[calc(100%-32px)] rounded-md bg-white ${className}`}
+                            className={`relative md:w-[600px] max-w-[calc(100%-32px)] rounded-md border border-border bg-bg will-change-transform ${className}`}
                         >
                             <ModalClose onClick={() => setIsOpen(false)} />
                             {children}

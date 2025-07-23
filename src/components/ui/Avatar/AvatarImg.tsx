@@ -1,30 +1,31 @@
 'use client';
-import { FC, forwardRef, ImgHTMLAttributes, RefAttributes } from 'react';
-import Image from 'next/image';
-import { EnumAvatar } from '@/src/types/enums';
+import { FC, forwardRef, RefAttributes } from 'react';
+import { HTMLMotionProps, motion } from 'framer-motion';
 import cn from 'classnames';
 
-interface Props extends ImgHTMLAttributes<HTMLImageElement>, RefAttributes<HTMLImageElement> {
-    src: string;
-    type?: EnumAvatar;
+interface Props extends HTMLMotionProps<'img'>, RefAttributes<HTMLImageElement> {
+    type?: 'circle' | 'square';
     hasHover?: boolean;
     className?: string;
 }
 
 export const AvatarImg: FC<Props> = forwardRef<HTMLImageElement, Props>(
-    ({ src, type = EnumAvatar.circle, hasHover = false, className = '', ...props }, ref) => {
-        const isTypeCircle = type === EnumAvatar.circle;
-        const isTypeSquare = type === EnumAvatar.square;
+    ({ type = 'circle', hasHover = false, className = '', ...props }, ref) => {
+        const isTypeCircle = type === 'circle';
+        const isTypeSquare = type === 'square';
+
+        const animation: HTMLMotionProps<'img'> = {
+            whileHover: { scale: 1.1, transition: { duration: 0.5, ease: [0.215, 0.61, 0.355, 1] } },
+        };
 
         return (
-            <Image
+            <motion.img
                 ref={ref}
-                src={src}
-                alt={props.alt || ''}
-                sizes='100%'
-                fill
+                {...props}
+                {...(hasHover && animation)}
+                alt={props.alt}
                 className={cn(`absolute top-0 left-0 object-cover object-center ${className}`, {
-                    'transition-all duration-500 will-change-transform hover:scale-110': hasHover,
+                    'will-change-transform': hasHover,
                     'rounded-full': isTypeCircle,
                     'rounded-md': isTypeSquare,
                 })}
