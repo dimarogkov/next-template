@@ -1,6 +1,11 @@
 import Link from 'next/link';
+import { Metadata } from 'next';
 import { getLinks } from '@/src/helpers';
 import { Separator, Text, Title } from '@/src/components/ui';
+
+export const metadata: Metadata = {
+    title: 'Documentation',
+};
 
 const DocumentationPage = () => {
     const { componentsLinks, dataFetchingLinks, formValidationLinks, storeLinks } = getLinks();

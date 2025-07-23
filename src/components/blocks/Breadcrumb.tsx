@@ -10,7 +10,7 @@ type Props = {
     className?: string;
 };
 
-const Breadcrumbs: FC<Props> = ({ className = '' }) => {
+const Breadcrumb: FC<Props> = ({ className = '' }) => {
     const pathname = usePathname();
     const { componentsLinks, dataFetchingLinks, formValidationLinks, storeLinks } = getLinks();
     const { MAIN } = PATHS.PAGES;
@@ -59,4 +59,4 @@ const Breadcrumbs: FC<Props> = ({ className = '' }) => {
     );
 };
 
-export default Breadcrumbs;
+export default Breadcrumb;

@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { getTodos, createTodo, updateTodo, removeTodo } from '@/src/services';
 
-export const useTodoQuery = () => {
+const useTodoQuery = () => {
     const {
         data: todos,
         refetch,
@@ -41,3 +41,5 @@ export const useTodoQuery = () => {
         isLoadingRemoveTodo,
     };
 };
+
+export default useTodoQuery;

@@ -2,7 +2,7 @@ import { usePathname } from 'next/navigation';
 import { PATHS } from '@/src/variables';
 import { getLinks } from '@/src/helpers';
 
-export const usePrevNextComponentPath = () => {
+const usePrevNextComponentPath = () => {
     const pathname = usePathname();
     const { MAIN } = PATHS.PAGES;
     const { componentsLinks, dataFetchingLinks, formValidationLinks, storeLinks } = getLinks();
@@ -22,3 +22,5 @@ export const usePrevNextComponentPath = () => {
 
     return { prevPath, nextPath };
 };
+
+export default usePrevNextComponentPath;
