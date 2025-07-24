@@ -8,17 +8,32 @@ export const BREADCRUMB_HELPERS_CODE = `export const convertUrlToString = (url: 
         .join(' ');
 };`;
 
-export const BREADCRUMB_CODE = `import { FC } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { convertUrlToString } from '../../helpers';
+export const BREADCRUMB_CODE = `'use client';
+import { FC } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { PATHS } from '@/src/variables';
+import { convertUrlToString, getLinks } from '@/src/helpers';
 import { ChevronRight } from 'lucide-react';
 
 type Props = {
     className?: string;
 };
 
-export const Breadcrumb: FC<Props> = ({ className = '' }) => {
-    const { pathname } = useLocation();
+const Breadcrumb: FC<Props> = ({ className = '' }) => {
+    const pathname = usePathname();
+    const { componentsLinks, dataFetchingLinks, formValidationLinks, storeLinks } = getLinks();
+    const { MAIN } = PATHS.PAGES;
+
+    const pathsArr = [
+        ...Object.values(MAIN),
+        ...componentsLinks.map(({ href }) => href),
+        ...dataFetchingLinks.map(({ href }) => href),
+        ...formValidationLinks.map(({ href }) => href),
+        ...storeLinks.map(({ href }) => href),
+    ];
+
+    const isBreadcrumbVisible = pathsArr.includes(pathname);
 
     const links = pathname.split('/').map((link) => ({
         id: crypto.randomUUID(),
@@ -27,25 +42,31 @@ export const Breadcrumb: FC<Props> = ({ className = '' }) => {
     }));
 
     return (
-        <section
-            className={\`sticky z-20 top-16 lg:top-20 left-0 w-full h-11 border-b border-gray bg-white \${className}\`}
-        >
-            <div className='container h-full'>
-                <ul className='flex items-center gap-1 w-full h-full'>
-                    {links.map(({ id, href, name }, index) => (
-                        <li key={id}>
-                            {links.length - 1 !== index ? (
-                                <Link to={href} className='flex items-center line-clamp-1 hover:underline'>
-                                    <span className='line-clamp-1'>{name}</span>
-                                    <ChevronRight className='size-5 min-w-5 stroke-1 text-text' />
-                                </Link>
-                            ) : (
-                                <span className='line-clamp-1 text-title'>{name}</span>
-                            )}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </section>
+        <>
+            {isBreadcrumbVisible && (
+                <section
+                    className={\`sticky z-20 top-16 lg:top-20 left-0 w-full h-11 border-b border-border bg-bg \${className}\`}
+                >
+                    <div className='container h-full'>
+                        <ul className='flex items-center gap-1 w-full h-full'>
+                            {links.map(({ id, href, name }, index) => (
+                                <li key={id}>
+                                    {links.length - 1 !== index ? (
+                                        <Link href={href} className='flex items-center line-clamp-1 hover:underline'>
+                                            <span className='line-clamp-1'>{name}</span>
+                                            <ChevronRight className='size-5 min-w-5 stroke-1 text-text' />
+                                        </Link>
+                                    ) : (
+                                        <span className='line-clamp-1 text-title'>{name}</span>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </section>
+            )}
+        </>
     );
-};`;
+};
+
+export default Breadcrumb;`;
