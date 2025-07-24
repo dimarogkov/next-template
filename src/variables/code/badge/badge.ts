@@ -4,7 +4,7 @@ interface Props extends HTMLAttributes<HTMLSpanElement>, RefAttributes<HTMLSpanE
     className?: string;
 }
 
-export const BadgeItem: FC<Props> = forwardRef<HTMLSpanElement, Props>(({ className = '', ...props }, ref) => {
+const Badge: FC<Props> = forwardRef<HTMLSpanElement, Props>(({ className = '', ...props }, ref) => {
     return (
         <span
             ref={ref}
@@ -12,4 +12,7 @@ export const BadgeItem: FC<Props> = forwardRef<HTMLSpanElement, Props>(({ classN
             className={\`flex items-center gap-1.5 text-base px-3 py-1.5 rounded-md bg-border \${className}\`}
         />
     );
-});`;
+});
+
+Badge.displayName = 'Badge';
+export default Badge;`;
