@@ -1,9 +1,11 @@
-export const BTN_CODE = `import { BtnWrapper } from './BtnWrapper';
-import { BtnLink } from './BtnLink';
+export const BTN_CODE = `import BtnWrapper from './BtnWrapper';
+import BtnLink from './BtnLink';
 
-export const Btn = Object.assign(BtnWrapper, {
-	Link: BtnLink,
-});`;
+const Btn = Object.assign(BtnWrapper, {
+    Link: BtnLink,
+});
+
+export default Btn;`;
 
 export const BTN_WRAPPER_CODE = `import { ButtonHTMLAttributes, FC, forwardRef, RefAttributes } from 'react';
 import cn from 'classnames';
@@ -14,7 +16,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, RefAttributes<H
 	className?: string;
 }
 
-export const BtnWrapper: FC<Props> = forwardRef<HTMLButtonElement, Props>(
+const BtnWrapper: FC<Props> = forwardRef<HTMLButtonElement, Props>(
 	({ variant = 'default', isLink = false, className = '', ...props }, ref) => {
 		return (
 			<button
@@ -34,30 +36,36 @@ export const BtnWrapper: FC<Props> = forwardRef<HTMLButtonElement, Props>(
 			/>
 		);
 	}
-);`;
+);
+
+BtnWrapper.displayName = 'BtnWrapper';
+export default BtnWrapper;`;
 
 export const BTN_LINK_CODE = `import { FC, ReactNode, RefAttributes, forwardRef } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 interface Props extends RefAttributes<HTMLAnchorElement>, RefAttributes<HTMLAnchorElement> {
-	href: string;
-	target?: string;
-	children: ReactNode;
-	className?: string;
+    href: string;
+    target?: string;
+    children: ReactNode;
+    className?: string;
 }
 
-export const BtnLink: FC<Props> = forwardRef<HTMLAnchorElement, Props>(
-	({ href, target, children, className = '', ...props }, ref) => {
-		return (
-			<Link
-				ref={ref}
-				to={href}
-				target={target}
-				{...props}
-				className='flex items-center justify-center gap-1.5 w-full h-full px-4'
-			>
-				{children}
-			</Link>
-		);
-	}
-);`;
+const BtnLink: FC<Props> = forwardRef<HTMLAnchorElement, Props>(
+    ({ href, target, children, className = '', ...props }, ref) => {
+        return (
+            <Link
+                ref={ref}
+                href={href}
+                target={target}
+                {...props}
+                className='flex items-center justify-center gap-1.5 w-full h-full px-4'
+            >
+                {children}
+            </Link>
+        );
+    }
+);
+
+BtnLink.displayName = 'BtnLink';
+export default BtnLink;`;
