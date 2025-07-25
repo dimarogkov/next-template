@@ -1,8 +1,4 @@
-export const CHECKBOX_USAGE_CODE = `<Label>
-	<Checkbox label='Accept terms and conditions' />
-</Label>`;
-
-export const CHECKBOX_CONTROLLING_USAGE_CODE = `'use client';
+'use client';
 import { useState } from 'react';
 import { Checkbox, Label } from '@/src/components/ui';
 
@@ -35,4 +31,4 @@ const CheckboxPreview = () => {
     );
 };
 
-export default CheckboxPreview;`;
+export default CheckboxPreview;

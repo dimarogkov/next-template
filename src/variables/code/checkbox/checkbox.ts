@@ -1,5 +1,5 @@
 export const CHECKBOX_CODE = `import { FC, forwardRef, InputHTMLAttributes, RefAttributes } from 'react';
-import { Text } from './Text';
+import Text from './Text';
 import { Check } from 'lucide-react';
 import cn from 'classnames';
 
@@ -8,7 +8,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTM
     className?: string;
 }
 
-export const Checkbox: FC<Props> = forwardRef<HTMLInputElement, Props>(({ label, className = '', ...props }, ref) => {
+const Checkbox: FC<Props> = forwardRef<HTMLInputElement, Props>(({ label, className = '', ...props }, ref) => {
     return (
         <div
             className={cn(\`flex items-center gap-2 cursor-pointer select-none \${className}\`, {
@@ -41,4 +41,7 @@ export const Checkbox: FC<Props> = forwardRef<HTMLInputElement, Props>(({ label,
             {label && <Text>{label}</Text>}
         </div>
     );
-});`;
+});
+
+Checkbox.displayName = 'Checkbox';
+export default Checkbox;`;
