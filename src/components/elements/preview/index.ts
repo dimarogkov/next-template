@@ -5,6 +5,7 @@ import BreadcrumbPreview from './BreadcrumbPreview';
 import BtnPreview from './BtnPreview';
 import CheckboxPreview from './CheckboxPreview';
 import DropdownPreview from './DropdownPreview';
+import InputPreview from './InputPreview';
 
 export {
     AccordionPreview,
@@ -14,4 +15,5 @@ export {
     BtnPreview,
     CheckboxPreview,
     DropdownPreview,
+    InputPreview,
 };

@@ -4,15 +4,18 @@ interface Props extends InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTM
     className?: string;
 }
 
-export const Input: FC<Props> = forwardRef<HTMLInputElement, Props>(({ className = '', ...props }, ref) => {
+const Input: FC<Props> = forwardRef<HTMLInputElement, Props>(({ className = '', ...props }, ref) => {
     return (
         <input
             ref={ref}
             {...props}
-            className={\`w-full h-10 px-4 rounded-md border border-border bg-transparent outline-none transition-all duration-300 focus:border-text placeholder:text-text \${className}\`}
+            className={\`w-full h-10 px-4 rounded-md text-title border border-border bg-transparent outline-none transition-all duration-300 focus:border-text placeholder:text-text \${className}\`}
         />
     );
-});`;
+});
+
+Input.displayName = 'Input';
+export default Input;`;
 
 export const INPUT_PASSWORD_CODE = `import {
     FC,
