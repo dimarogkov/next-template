@@ -1,13 +1,16 @@
-export const DROPDOWN_CODE = `import { DropdownWrapper } from './DropdownWrapper';
-import { DropdownTrigger } from './DropdownTrigger';
-import { DropdownContent } from './DropdownContent';
+export const DROPDOWN_CODE = `import DropdownWrapper from './DropdownWrapper';
+import DropdownTrigger from './DropdownTrigger';
+import DropdownContent from './DropdownContent';
 
-export const Dropdown = Object.assign(DropdownWrapper, {
+const Dropdown = Object.assign(DropdownWrapper, {
     Trigger: DropdownTrigger,
     Content: DropdownContent,
-});`;
+});
 
-export const DROPDOWN_WRAPPER_CODE = `import {
+export default Dropdown;`;
+
+export const DROPDOWN_WRAPPER_CODE = `'use client';
+import {
     Children,
     cloneElement,
     FC,
@@ -26,7 +29,7 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
     className?: string;
 }
 
-export const DropdownWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(
+const DropdownWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(
     ({ isOpen = false, className = '', ...props }, ref) => {
         const [isDropdownOpen, setIsDropdownOpen] = useState(false);
         const dropdownRef = useRef<HTMLDivElement>(null);
@@ -64,16 +67,13 @@ export const DropdownWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(
             </div>
         );
     }
-);`;
+);
 
-export const DROPDOWN_TRIGGER_CODE = `import {
-	Dispatch,
-	FC,
-	forwardRef,
-	HTMLAttributes,
-	RefAttributes,
-	SetStateAction,
-} from 'react';
+DropdownWrapper.displayName = 'DropdownWrapper';
+export default DropdownWrapper;`;
+
+export const DROPDOWN_TRIGGER_CODE = `'use client';
+import { Dispatch, FC, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     isOpen?: boolean;
@@ -81,7 +81,7 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
-export const DropdownTrigger: FC<Props> = forwardRef<HTMLDivElement, Props>(
+const DropdownTrigger: FC<Props> = forwardRef<HTMLDivElement, Props>(
     ({ isOpen, className = '', setIsOpen = () => {}, ...props }, ref) => {
         return (
             <div
@@ -92,15 +92,13 @@ export const DropdownTrigger: FC<Props> = forwardRef<HTMLDivElement, Props>(
             />
         );
     }
-);`;
+);
 
-export const DROPDOWN_CONTENT_CODE = `import {
-    Dispatch,
-    FC,
-    forwardRef,
-    RefAttributes,
-    SetStateAction,
-} from 'react';
+DropdownTrigger.displayName = 'DropdownTrigger';
+export default DropdownTrigger;`;
+
+export const DROPDOWN_CONTENT_CODE = `'use client';
+import { Dispatch, FC, forwardRef, RefAttributes, SetStateAction } from 'react';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 import cn from 'classnames';
 
@@ -112,7 +110,7 @@ interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
-export const DropdownContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
+const DropdownContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
     ({ align = 'start', position = 'bottom', isOpen, className = '', setIsOpen = () => {}, ...props }, ref) => {
         const isVerticalPosition = position === 'top' || position === 'bottom';
         const isHorizontalPosition = position === 'left' || position === 'right';
@@ -166,4 +164,7 @@ export const DropdownContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
             </AnimatePresence>
         );
     }
-);`;
+);
+
+DropdownContent.displayName = 'DropdownContent';
+export default DropdownContent;`;
