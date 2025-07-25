@@ -5,6 +5,7 @@ import BreadcrumbPreview from './BreadcrumbPreview';
 import BtnPreview from './BtnPreview';
 import CheckboxPreview from './CheckboxPreview';
 import DropdownPreview from './DropdownPreview';
+import InputPasswordPreview from './InputPasswordPreview';
 import InputPreview from './InputPreview';
 
 export {
@@ -15,5 +16,6 @@ export {
     BtnPreview,
     CheckboxPreview,
     DropdownPreview,
+    InputPasswordPreview,
     InputPreview,
 };

@@ -17,16 +17,9 @@ const Input: FC<Props> = forwardRef<HTMLInputElement, Props>(({ className = '', 
 Input.displayName = 'Input';
 export default Input;`;
 
-export const INPUT_PASSWORD_CODE = `import {
-    FC,
-    InputHTMLAttributes,
-    RefAttributes,
-    forwardRef,
-    MouseEvent,
-    useRef,
-    useState,
-} from 'react';
-import { Input } from './Input';
+export const INPUT_PASSWORD_CODE = `'use client';
+import { FC, InputHTMLAttributes, RefAttributes, forwardRef, MouseEvent, useRef, useState } from 'react';
+import Input from './Input';
 import { Eye, EyeOff } from 'lucide-react';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTMLInputElement> {
@@ -34,7 +27,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTM
     classNameInput?: string;
 }
 
-export const InputPassword: FC<Props> = forwardRef<HTMLInputElement, Props>(
+const InputPassword: FC<Props> = forwardRef<HTMLInputElement, Props>(
     ({ className = '', classNameInput = '', ...props }, ref) => {
         const [isPasswordVisible, setIsPasswordVisible] = useState(false);
         const inputRef = useRef<HTMLInputElement | null>(null);
@@ -69,4 +62,7 @@ export const InputPassword: FC<Props> = forwardRef<HTMLInputElement, Props>(
             </div>
         );
     }
-);`;
+);
+
+InputPassword.displayName = 'InputPassword';
+export default InputPassword;`;

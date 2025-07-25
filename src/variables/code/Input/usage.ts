@@ -27,10 +27,11 @@ export const INPUT_PASSWORD_USAGE_CODE = `<Label>
 	<InputPassword name='password' placeholder='Password' />
 </Label>`;
 
-export const INPUT_PASSWORD_CONTROLLING_USAGE_CODE = `import { useState } from 'react';
-import { InputPassword, Label } from '../../ui';
+export const INPUT_PASSWORD_CONTROLLING_USAGE_CODE = `'use client';
+import { useState } from 'react';
+import { InputPassword, Label } from '@/src/components/ui';
 
-export const InputPasswordPreview = () => {
+const InputPasswordPreview = () => {
 	const [value, setValue] = useState('');
 
 	return (
@@ -43,4 +44,6 @@ export const InputPasswordPreview = () => {
 			/>
 		</Label>
 	);
-};`;
+};
+
+export default InputPasswordPreview;`;
