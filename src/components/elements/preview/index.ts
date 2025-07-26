@@ -9,6 +9,7 @@ import InputPasswordPreview from './InputPasswordPreview';
 import InputPreview from './InputPreview';
 import LoaderPreview from './LoaderPreview';
 import ModalPreview from './ModalPreview';
+import ProgressPreview from './ProgressPreview';
 
 export {
     AccordionPreview,
@@ -22,4 +23,5 @@ export {
     InputPreview,
     LoaderPreview,
     ModalPreview,
+    ProgressPreview,
 };
