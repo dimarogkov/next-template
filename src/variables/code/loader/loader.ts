@@ -6,7 +6,7 @@ interface Props extends SVGProps<SVGSVGElement>, RefAttributes<SVGSVGElement> {
     className?: string;
 }
 
-export const Loader: FC<Props> = forwardRef<SVGSVGElement, Props>(
+const Loader: FC<Props> = forwardRef<SVGSVGElement, Props>(
     ({ size = 20, variant = 'light', className = '', ...props }, ref) => {
         const circleFill = {
             light: 'fill-title/50',
@@ -45,4 +45,7 @@ export const Loader: FC<Props> = forwardRef<SVGSVGElement, Props>(
             </svg>
         );
     }
-);`;
+);
+
+Loader.displayName = 'Loader';
+export default Loader;`;

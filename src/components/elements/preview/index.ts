@@ -7,6 +7,7 @@ import CheckboxPreview from './CheckboxPreview';
 import DropdownPreview from './DropdownPreview';
 import InputPasswordPreview from './InputPasswordPreview';
 import InputPreview from './InputPreview';
+import LoaderPreview from './LoaderPreview';
 
 export {
     AccordionPreview,
@@ -18,4 +19,5 @@ export {
     DropdownPreview,
     InputPasswordPreview,
     InputPreview,
+    LoaderPreview,
 };
