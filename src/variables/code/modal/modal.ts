@@ -1,89 +1,86 @@
-export const MODAL_CODE = `import { ModalWrapper } from './ModalWrapper';
-import { ModalTrigger } from './ModalTrigger';
-import { ModalContent } from './ModalContent';
+export const MODAL_CODE = `import ModalWrapper from './ModalWrapper';
+import ModalTrigger from './ModalTrigger';
+import ModalContent from './ModalContent';
 
-export const Modal = Object.assign(ModalWrapper, {
-	Trigger: ModalTrigger,
-	Content: ModalContent,
-});`;
+const Modal = Object.assign(ModalWrapper, {
+    Trigger: ModalTrigger,
+    Content: ModalContent,
+});
 
-export const MODAL_WRAPPER_CODE = `import {
-	Children,
-	cloneElement,
-	FC,
-	forwardRef,
-	HTMLAttributes,
-	isValidElement,
-	ReactElement,
-	RefAttributes,
-	useEffect,
-	useState,
+export default Modal;`;
+
+export const MODAL_WRAPPER_CODE = `'use client';
+import {
+    Children,
+    cloneElement,
+    FC,
+    forwardRef,
+    HTMLAttributes,
+    isValidElement,
+    ReactElement,
+    RefAttributes,
+    useEffect,
+    useState,
 } from 'react';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
-	className?: string;
+    className?: string;
 }
 
-export const ModalWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
-	const [isModalOpen, setIsModalOpen] = useState(false);
+const ModalWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-	useEffect(() => {
-		const bodyClassList = document.body.classList;
-		isModalOpen ? bodyClassList.add('lock') : bodyClassList.remove('lock');
-	}, [isModalOpen]);
+    useEffect(() => {
+        const bodyClassList = document.body.classList;
+        isModalOpen ? bodyClassList.add('lock') : bodyClassList.remove('lock');
+    }, [isModalOpen]);
 
-	return (
-		<div ref={ref} {...props} className={\`relative w-fit \${className}\`}>
-			{Children.map(props.children, (child) => {
-				if (isValidElement(child)) {
-					return cloneElement(child as ReactElement, { isOpen: isModalOpen, setIsOpen: setIsModalOpen });
-				}
+    return (
+        <div ref={ref} {...props} className={\`relative w-fit \${className}\`}>
+            {Children.map(props.children, (child) => {
+                if (isValidElement(child)) {
+                    return cloneElement(child as ReactElement, { isOpen: isModalOpen, setIsOpen: setIsModalOpen });
+                }
 
-				return child;
-			})}
-		</div>
-	);
-});`;
+                return child;
+            })}
+        </div>
+    );
+});
 
-export const MODAL_TRIGGER_CODE = `import { 
-	Dispatch,
-	FC,
-	forwardRef,
-	HTMLAttributes,
-	RefAttributes,
-	SetStateAction,
-} from 'react';
+ModalWrapper.displayName = 'ModalWrapper';
+export default ModalWrapper;`;
+
+export const MODAL_TRIGGER_CODE = `'use client';
+import { Dispatch, FC, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
-	isOpen?: boolean;
-	className?: string;
-	setIsOpen?: Dispatch<SetStateAction<boolean>>;
+    isOpen?: boolean;
+    className?: string;
+    setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
-export const ModalTrigger: FC<Props> = forwardRef<HTMLDivElement, Props>(
-	({ isOpen, className = '', setIsOpen = () => {}, ...props }, ref) => {
-		return (
-			<div
-				ref={ref}
-				{...props}
-				onClick={() => setIsOpen(true)}
-				className={\`relative cursor-pointer list-none \${className}\`}
-			/>
-		);
-	}
-);`;
+const ModalTrigger: FC<Props> = forwardRef<HTMLDivElement, Props>(
+    ({ isOpen, className = '', setIsOpen = () => {}, ...props }, ref) => {
+        return (
+            <div
+                ref={ref}
+                {...props}
+                onClick={() => setIsOpen(true)}
+                className={\`relative cursor-pointer list-none \${className}\`}
+            />
+        );
+    }
+);
 
-export const MODAL_CONTENT_CODE = `import {
-	Dispatch,
-	FC,
-	forwardRef,
-	ReactNode,
-	RefAttributes,
-	SetStateAction,
-} from 'react';
+ModalTrigger.displayName = 'ModalTrigger';
+export default ModalTrigger;`;
+
+export const MODAL_CONTENT_CODE = `'use client';
+import { Dispatch, FC, forwardRef, ReactNode, RefAttributes, SetStateAction } from 'react';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
-import { ModalLayer } from './ModalLayer';
-import { ModalClose } from './ModalClose';
+import ModalLayer from './ModalLayer';
+import ModalClose from './ModalClose';
 
 interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
     isOpen?: boolean;
@@ -92,7 +89,7 @@ interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
-export const ModalContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
+const ModalContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
     ({ isOpen, children, className = '', setIsOpen = () => {}, ...props }, ref) => {
         const animation: HTMLMotionProps<'div'> = {
             initial: { opacity: 0 },
@@ -129,38 +126,39 @@ export const ModalContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
             </AnimatePresence>
         );
     }
-);`;
+);
 
-export const MODAL_LAYER_CODE = `import {
-	Dispatch,
-	FC,
-	forwardRef,
-	HTMLAttributes,
-	RefAttributes,
-	SetStateAction,
-} from 'react';
+ModalContent.displayName = 'ModalContent';
+export default ModalContent;`;
+
+export const MODAL_LAYER_CODE = `'use client';
+import { Dispatch, FC, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
-	setIsOpen: Dispatch<SetStateAction<boolean>>;
+    setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export const ModalLayer: FC<Props> = forwardRef<HTMLDivElement, Props>(({ setIsOpen = () => {}, ...props }, ref) => {
-	return (
-		<div
-			ref={ref}
-			{...props}
-			onClick={() => setIsOpen(false)}
-			className='absolute top-0 left-0 w-full h-full bg-black/50'
-		/>
-	);
-});`;
+const ModalLayer: FC<Props> = forwardRef<HTMLDivElement, Props>(({ setIsOpen = () => {}, ...props }, ref) => {
+    return (
+        <div
+            ref={ref}
+            {...props}
+            onClick={() => setIsOpen(false)}
+            className='absolute top-0 left-0 w-full h-full bg-black/50'
+        />
+    );
+});
 
-export const MODAL_CLOSE_CODE = `import { ButtonHTMLAttributes, FC, forwardRef, RefAttributes } from 'react';
+ModalLayer.displayName = 'ModalLayer';
+export default ModalLayer;`;
+
+export const MODAL_CLOSE_CODE = `'use client';
+import { ButtonHTMLAttributes, FC, forwardRef, RefAttributes } from 'react';
 import { X } from 'lucide-react';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, RefAttributes<HTMLButtonElement> {}
 
-export const ModalClose: FC<Props> = forwardRef<HTMLButtonElement, Props>(({ ...props }, ref) => {
+const ModalClose: FC<Props> = forwardRef<HTMLButtonElement, Props>(({ ...props }, ref) => {
     return (
         <button
             ref={ref}
@@ -170,4 +168,7 @@ export const ModalClose: FC<Props> = forwardRef<HTMLButtonElement, Props>(({ ...
             <X className='w-full h-full text-text' />
         </button>
     );
-});`;
+});
+
+ModalClose.displayName = 'ModalClose';
+export default ModalClose;`;

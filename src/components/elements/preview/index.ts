@@ -8,6 +8,7 @@ import DropdownPreview from './DropdownPreview';
 import InputPasswordPreview from './InputPasswordPreview';
 import InputPreview from './InputPreview';
 import LoaderPreview from './LoaderPreview';
+import ModalPreview from './ModalPreview';
 
 export {
     AccordionPreview,
@@ -20,4 +21,5 @@ export {
     InputPasswordPreview,
     InputPreview,
     LoaderPreview,
+    ModalPreview,
 };
