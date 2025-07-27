@@ -12,6 +12,7 @@ import ModalPreview from './ModalPreview';
 import ProgressPreview from './ProgressPreview';
 import RadioPreview from './RadioPreview';
 import SelectPreview from './SelectPreview';
+import SeparatorPreview from './SeparatorPreview';
 
 export {
     AccordionPreview,
@@ -28,4 +29,5 @@ export {
     ProgressPreview,
     RadioPreview,
     SelectPreview,
+    SeparatorPreview,
 };
