@@ -1,8 +1,4 @@
-export const RADIO_USAGE_CODE = `<Label>
-	<Radio name='radio' label='Radio' />
-</Label>`;
-
-export const RADIO_CONTROLLING_USAGE_CODE = `'use client';
+'use client';
 import { useState } from 'react';
 import { Label, Radio } from '@/src/components/ui';
 
@@ -38,4 +34,4 @@ const RadioPreview = () => {
     );
 };
 
-export default RadioPreview;`;
+export default RadioPreview;
