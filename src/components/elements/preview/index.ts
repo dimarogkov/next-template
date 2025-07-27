@@ -11,6 +11,7 @@ import LoaderPreview from './LoaderPreview';
 import ModalPreview from './ModalPreview';
 import ProgressPreview from './ProgressPreview';
 import RadioPreview from './RadioPreview';
+import SelectPreview from './SelectPreview';
 
 export {
     AccordionPreview,
@@ -26,4 +27,5 @@ export {
     ModalPreview,
     ProgressPreview,
     RadioPreview,
+    SelectPreview,
 };
