@@ -7,31 +7,16 @@ import { useState } from 'react';
 import { Checkbox, Label } from '@/src/components/ui';
 
 const CheckboxPreview = () => {
-    const [firstCheckbox, setFirstCheckbox] = useState(false);
-    const [secondCheckbox, setSecondCheckbox] = useState(true);
+    const [isActive, setIsActive] = useState(false);
 
     return (
-        <div className='relative flex flex-col gap-2.5 w-full'>
-            <Label>
-                <Checkbox
-                    label='Accept terms and conditions'
-                    checked={firstCheckbox}
-                    onChange={() => setFirstCheckbox(!firstCheckbox)}
-                />
-            </Label>
-
-            <Label>
-                <Checkbox
-                    label='Accept terms and conditions'
-                    checked={secondCheckbox}
-                    onChange={() => setSecondCheckbox(!secondCheckbox)}
-                />
-            </Label>
-
-            <Label>
-                <Checkbox label='Accept terms and conditions' disabled />
-            </Label>
-        </div>
+        <Label>
+            <Checkbox
+                label='Accept terms and conditions'
+                checked={isActive}
+                onChange={() => setIsActive(!isActive)}
+            />
+        </Label>
     );
 };
 

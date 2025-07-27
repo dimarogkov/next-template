@@ -13,7 +13,8 @@ import ProgressPreview from './ProgressPreview';
 import RadioPreview from './RadioPreview';
 import SelectPreview from './SelectPreview';
 import SeparatorPreview from './SeparatorPreview';
-import { SimpleLinkPreview } from './SimpleLinkPreview';
+import SimpleLinkPreview from './SimpleLinkPreview';
+import SwitchPreview from './SwitchPreview';
 
 export {
     AccordionPreview,
@@ -31,5 +32,6 @@ export {
     RadioPreview,
     SelectPreview,
     SeparatorPreview,
-    SimpleLinkPreview
+    SimpleLinkPreview,
+    SwitchPreview,
 };

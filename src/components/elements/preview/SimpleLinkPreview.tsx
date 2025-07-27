@@ -2,7 +2,7 @@
 import { usePathname } from 'next/navigation';
 import { SimpleLink, Text } from '@/src/components/ui';
 
-export const SimpleLinkPreview = () => {
+const SimpleLinkPreview = () => {
     const pathname = usePathname();
 
     return (
@@ -13,3 +13,5 @@ export const SimpleLinkPreview = () => {
         </Text>
     );
 };
+
+export default SimpleLinkPreview;

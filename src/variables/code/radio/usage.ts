@@ -30,10 +30,6 @@ const RadioPreview = () => {
                     onChange={() => setSelectedValue('checked_radio')}
                 />
             </Label>
-
-            <Label>
-                <Radio name='radio' value='disabled_radio' label='Disabled Radio' disabled />
-            </Label>
         </div>
     );
 };

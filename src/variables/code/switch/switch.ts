@@ -1,11 +1,5 @@
-export const SWITCH_CODE = `import {
-    ButtonHTMLAttributes,
-    FC,
-    forwardRef,
-    RefAttributes,
-    useEffect,
-    useState,
-} from 'react';
+export const SWITCH_CODE = `'use client';
+import { ButtonHTMLAttributes, FC, forwardRef, RefAttributes, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import cn from 'classnames';
 
@@ -14,7 +8,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, RefAttributes<H
     className?: string;
 }
 
-export const Switch: FC<Props> = forwardRef<HTMLButtonElement, Props>(
+const Switch: FC<Props> = forwardRef<HTMLButtonElement, Props>(
     ({ isActive: isSwitchActive = false, className = '', ...props }, ref) => {
         const [isActive, setIsActive] = useState(false);
 
@@ -50,4 +44,7 @@ export const Switch: FC<Props> = forwardRef<HTMLButtonElement, Props>(
             </button>
         );
     }
-);`;
+);
+
+Switch.displayName = 'Switch';
+export default Switch;`;
