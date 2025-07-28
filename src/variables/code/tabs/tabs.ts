@@ -1,17 +1,20 @@
-export const TABS_CODE = `import { TabsWrapper } from './TabsWrapper';
-import { TabsList } from './TabsList';
-import { TabsTab } from './TabsTab';
-import { TabsPanels } from './TabsPanels';
-import { TabsPanel } from './TabsPanel';
+export const TABS_CODE = `import TabsWrapper from './TabsWrapper';
+import TabsList from './TabsList';
+import TabsTab from './TabsTab';
+import TabsPanels from './TabsPanels';
+import TabsPanel from './TabsPanel';
 
-export const Tabs = Object.assign(TabsWrapper, {
+const Tabs = Object.assign(TabsWrapper, {
     TabList: TabsList,
     Tab: TabsTab,
     Panels: TabsPanels,
     Panel: TabsPanel,
-});`;
+});
 
-export const TABS_WRAPPER_CODE = `import {
+export default Tabs;`;
+
+export const TABS_WRAPPER_CODE = `'use client';
+import {
     Children,
     cloneElement,
     FC,
@@ -27,7 +30,7 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
     className?: string;
 }
 
-export const TabsWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
+const TabsWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
     const [activeIndex, setActiveIndex] = useState(0);
 
     return (
@@ -41,9 +44,13 @@ export const TabsWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(({ class
             })}
         </div>
     );
-});`;
+});
 
-export const TABS_LIST_CODE = `import {
+TabsWrapper.displayName = 'TabsWrapper';
+export default TabsWrapper;`;
+
+export const TABS_LIST_CODE = `'use client';
+import {
     Children,
     cloneElement,
     Dispatch,
@@ -62,7 +69,7 @@ interface Props extends HTMLAttributes<HTMLUListElement>, RefAttributes<HTMLULis
     setActiveIndex?: Dispatch<SetStateAction<number>>;
 }
 
-export const TabsList: FC<Props> = forwardRef<HTMLUListElement, Props>(
+const TabsList: FC<Props> = forwardRef<HTMLUListElement, Props>(
     ({ activeIndex, className = '', setActiveIndex = () => {}, ...props }, ref) => {
         return (
             <ul ref={ref} {...props} className={\`relative flex w-full border-b border-border \${className}\`}>
@@ -76,17 +83,13 @@ export const TabsList: FC<Props> = forwardRef<HTMLUListElement, Props>(
             </ul>
         );
     }
-);`;
+);
 
-export const TABS_TAB_CODE = `import {
-	Dispatch,
-	FC,
-	forwardRef,
-	LiHTMLAttributes,
-	RefAttributes,
-	SetStateAction,
-	useEffect,
-} from 'react';
+TabsList.displayName = 'TabsList';
+export default TabsList;`;
+
+export const TABS_TAB_CODE = `'use client';
+import { Dispatch, FC, forwardRef, LiHTMLAttributes, RefAttributes, SetStateAction, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import cn from 'classnames';
 
@@ -98,7 +101,7 @@ interface Props extends LiHTMLAttributes<HTMLLIElement>, RefAttributes<HTMLLIEle
     setActiveIndex?: Dispatch<SetStateAction<number>>;
 }
 
-export const TabsTab: FC<Props> = forwardRef<HTMLLIElement, Props>(
+const TabsTab: FC<Props> = forwardRef<HTMLLIElement, Props>(
     ({ tabIndex = 0, activeIndex, isActive, className = '', setActiveIndex = () => {}, ...props }, ref) => {
         useEffect(() => {
             isActive && setActiveIndex(tabIndex);
@@ -128,9 +131,13 @@ export const TabsTab: FC<Props> = forwardRef<HTMLLIElement, Props>(
             </li>
         );
     }
-);`;
+);
 
-export const TABS_PANELS_CODE = `import {
+TabsTab.displayName = 'TabsTab';
+export default TabsTab;`;
+
+export const TABS_PANELS_CODE = `'use client';
+import {
     Children,
     cloneElement,
     Dispatch,
@@ -150,7 +157,7 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
     setActiveIndex?: Dispatch<SetStateAction<number>>;
 }
 
-export const TabsPanels: FC<Props> = forwardRef<HTMLDivElement, Props>(
+const TabsPanels: FC<Props> = forwardRef<HTMLDivElement, Props>(
     ({ activeIndex, className = '', setActiveIndex = () => {}, ...props }, ref) => {
         return (
             <div ref={ref} {...props} className={\`relative w-full \${className}\`}>
@@ -168,9 +175,13 @@ export const TabsPanels: FC<Props> = forwardRef<HTMLDivElement, Props>(
             </div>
         );
     }
-);`;
+);
 
-export const TABS_PANEL_CODE = `import { FC, forwardRef, HTMLAttributes, RefAttributes } from 'react';
+TabsPanels.displayName = 'TabsPanels';
+export default TabsPanels;`;
+
+export const TABS_PANEL_CODE = `'use client';
+import { FC, forwardRef, HTMLAttributes, RefAttributes } from 'react';
 import { HTMLMotionProps, motion } from 'framer-motion';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
@@ -189,4 +200,7 @@ export const TabsPanel: FC<Props> = forwardRef<HTMLDivElement, Props>(({ classNa
             <motion.div {...animation}>{props.children}</motion.div>
         </div>
     );
-});`;
+});
+
+TabsPanel.displayName = 'TabsPanel';
+export default TabsPanel;`;

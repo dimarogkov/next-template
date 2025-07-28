@@ -7,14 +7,14 @@ import { useState } from 'react';
 import { Checkbox, Label } from '@/src/components/ui';
 
 const CheckboxPreview = () => {
-    const [isActive, setIsActive] = useState(false);
+    const [isChecked, setIsChecked] = useState(false);
 
     return (
         <Label>
             <Checkbox
                 label='Accept terms and conditions'
-                checked={isActive}
-                onChange={() => setIsActive(!isActive)}
+                checked={isChecked}
+                onChange={() => setIsChecked(!isChecked)}
             />
         </Label>
     );
