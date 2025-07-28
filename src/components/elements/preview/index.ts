@@ -16,6 +16,7 @@ import SeparatorPreview from './SeparatorPreview';
 import SimpleLinkPreview from './SimpleLinkPreview';
 import SwitchPreview from './SwitchPreview';
 import TabsPreview from './TabsPreview';
+import TextPreview from './TextPreview';
 
 export {
     AccordionPreview,
@@ -36,4 +37,5 @@ export {
     SimpleLinkPreview,
     SwitchPreview,
     TabsPreview,
+    TextPreview,
 };
