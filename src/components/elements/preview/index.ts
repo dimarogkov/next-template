@@ -18,6 +18,7 @@ import SwitchPreview from './SwitchPreview';
 import TabsPreview from './TabsPreview';
 import TextareaPreview from './TextareaPreview';
 import TextPreview from './TextPreview';
+import TitlePreview from './TitlePreview';
 
 export {
     AccordionPreview,
@@ -40,4 +41,5 @@ export {
     TabsPreview,
     TextPreview,
     TextareaPreview,
+    TitlePreview,
 };
