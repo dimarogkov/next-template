@@ -16,6 +16,7 @@ import SeparatorPreview from './SeparatorPreview';
 import SimpleLinkPreview from './SimpleLinkPreview';
 import SwitchPreview from './SwitchPreview';
 import TabsPreview from './TabsPreview';
+import TextareaPreview from './TextareaPreview';
 import TextPreview from './TextPreview';
 
 export {
@@ -38,4 +39,5 @@ export {
     SwitchPreview,
     TabsPreview,
     TextPreview,
+    TextareaPreview,
 };
