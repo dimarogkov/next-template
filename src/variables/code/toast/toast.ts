@@ -3,10 +3,11 @@ export const TOAST_TYPE_CODE = `export interface IToastData {
     text: string;
 }`;
 
-export const TOAST_CODE = `import toast, { type Toast as TostType } from 'react-hot-toast';
+export const TOAST_CODE = `'use client';
+import toast, { type Toast as TostType } from 'react-hot-toast';
 import { FC, forwardRef, HTMLAttributes, RefAttributes } from 'react';
-import { IToastData } from '../../types/interfaces/ToastData';
-import { Text } from './Text';
+import { IToastData } from '@/src/types/interfaces/ToastData';
+import Text from './Text';
 import { CircleAlert, CircleCheck, CircleX, Info, X } from 'lucide-react';
 import cn from 'classnames';
 
@@ -17,7 +18,7 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
     className?: string;
 }
 
-export const Toast: FC<Props> = forwardRef<HTMLDivElement, Props>(
+const Toast: FC<Props> = forwardRef<HTMLDivElement, Props>(
     ({ toast: t, type = 'info', data, className = '', ...props }, ref) => {
         const { title, text } = data;
 
@@ -76,4 +77,7 @@ export const Toast: FC<Props> = forwardRef<HTMLDivElement, Props>(
             </div>
         );
     }
-);`;
+);
+
+Toast.displayName = 'Toast';
+export default Toast;`;

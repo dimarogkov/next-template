@@ -1,6 +1,10 @@
 export const TOAST_MAIN_USAGE_CODE = `import { Toaster } from 'react-hot-toast';
 
-<Toaster position='bottom-right' reverseOrder={false} toastOptions={{ duration: 2000 }} />`;
+<Toaster
+	position='bottom-right'
+	reverseOrder={false}
+	toastOptions={{ duration: 2000 }}
+/>`;
 
 export const TOAST_USAGE_CODE = `{/* Info Type by default */}
 const toggleToast = () => {
