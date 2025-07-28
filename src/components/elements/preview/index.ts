@@ -20,6 +20,7 @@ import TextareaPreview from './TextareaPreview';
 import TextPreview from './TextPreview';
 import TitlePreview from './TitlePreview';
 import ToastPreview from './ToastPreview';
+import TooltipPreview from './TooltipPreview';
 
 export {
     AccordionPreview,
@@ -44,4 +45,5 @@ export {
     TextareaPreview,
     TitlePreview,
     ToastPreview,
+    TooltipPreview,
 };

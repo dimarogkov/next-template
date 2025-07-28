@@ -22,7 +22,7 @@ const TooltipContent: FC<Props> = forwardRef<HTMLDivElement, Props>(({ isOpen, c
                     ref={ref}
                     {...props}
                     {...animation}
-                    className={`absolute left-1/2 bottom-[calc(100%+12px)] flex justify-center z-10 w-max text-sm rounded-md px-1.5 py-1 border border-border bg-title text-bg will-change-transform ${className}`}
+                    className={`absolute left-1/2 bottom-[calc(100%+10px)] flex justify-center z-10 w-max text-sm rounded-md px-1.5 py-1 border border-border bg-title text-bg will-change-transform ${className}`}
                 >
                     <>
                         {props.children}

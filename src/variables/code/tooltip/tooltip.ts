@@ -1,64 +1,80 @@
-export const TOOLTIP_CODE = `import { TooltipWrapper } from './TooltipWrapper';
-import { TooltipTrigger } from './TooltipTrigger';
-import { TooltipContent } from './TooltipContent';
+export const TOOLTIP_CODE = `import TooltipWrapper from './TooltipWrapper';
+import TooltipTrigger from './TooltipTrigger';
+import TooltipContent from './TooltipContent';
 
-export const Tooltip = Object.assign(TooltipWrapper, {
-	Trigger: TooltipTrigger,
-	Content: TooltipContent,
-});`;
+const Tooltip = Object.assign(TooltipWrapper, {
+    Trigger: TooltipTrigger,
+    Content: TooltipContent,
+});
 
-export const TOOLTIP_WRAPPER_CODE = `import {
-	Children,
-	cloneElement,
-	FC,
-	forwardRef,
-	HTMLAttributes,
-	isValidElement,
-	ReactElement,
-	RefAttributes,
-	useState,
+export default Tooltip;`;
+
+export const TOOLTIP_WRAPPER_CODE = `'use client';
+import {
+    Children,
+    cloneElement,
+    FC,
+    forwardRef,
+    HTMLAttributes,
+    isValidElement,
+    ReactElement,
+    RefAttributes,
+    useState,
 } from 'react';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
-	className?: string;
+    className?: string;
 }
 
-export const TooltipWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
-	const [isOpen, setIsOpen] = useState(false);
+const TooltipWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
+    const [isOpen, setIsOpen] = useState(false);
 
-	return (
-		<div
-			ref={ref}
-			{...props}
-			onMouseEnter={() => setIsOpen(true)}
-			onMouseLeave={() => setIsOpen(false)}
-			className={\`relative w-fit \${className}\`}
-		>
-			{Children.map(props.children, (child) => {
-				if (isValidElement(child)) {
-					return cloneElement(child as ReactElement, { isOpen });
-				}
+    return (
+        <div
+            ref={ref}
+            {...props}
+            onMouseEnter={() => setIsOpen(true)}
+            onMouseLeave={() => setIsOpen(false)}
+            className={cn(
+                \`relative w-fit before:absolute before:content-[''] before:left-0 before:bottom-full before:w-full before:h-2.5 before:bg-transparent before:transition-all before:duration-200 \${className}\`,
+                {
+                    'before:opacity-100 before:visible': isOpen,
+                    'before:opacity-0 before:invisible': !isOpen,
+                }
+            )}
+        >
+            {Children.map(props.children, (child) => {
+                if (isValidElement(child)) {
+                    return cloneElement(child as ReactElement, { isOpen });
+                }
 
-				return child;
-			})}
-		</div>
-	);
-});`;
+                return child;
+            })}
+        </div>
+    );
+});
 
-export const TOOLTIP_TRIGGER_CODE = `import { FC, forwardRef, HTMLAttributes, RefAttributes } from 'react';
+TooltipWrapper.displayName = 'TooltipWrapper';
+export default TooltipWrapper;`;
+
+export const TOOLTIP_TRIGGER_CODE = `'use client';
+import { FC, forwardRef, HTMLAttributes, RefAttributes } from 'react';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
-	isOpen?: boolean;
-	className?: string;
+    isOpen?: boolean;
+    className?: string;
 }
 
-export const TooltipTrigger: FC<Props> = forwardRef<HTMLDivElement, Props>(
-	({ isOpen, className = '', ...props }, ref) => {
-		return <div ref={ref} {...props} className={\`relative cursor-pointer \${className}\`} />;
-	}
-);`;
+const TooltipTrigger: FC<Props> = forwardRef<HTMLDivElement, Props>(({ isOpen, className = '', ...props }, ref) => {
+    return <div ref={ref} {...props} className={\`relative cursor-pointer \${className}\`} />;
+});
 
-export const TOOLTIP_CONTENT_CODE = `import { FC, forwardRef, RefAttributes } from 'react';
+TooltipTrigger.displayName = 'TooltipTrigger';
+export default TooltipTrigger;`;
+
+export const TOOLTIP_CONTENT_CODE = `'use client';
+import { FC, forwardRef, RefAttributes } from 'react';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 import { Triangle } from 'lucide-react';
 
@@ -67,30 +83,31 @@ interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
     className?: string;
 }
 
-export const TooltipContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
-    ({ isOpen, className = '', ...props }, ref) => {
-        const animation: HTMLMotionProps<'div'> = {
-            initial: { x: '-50%', scale: 0.95, opacity: 0 },
-            animate: { x: '-50%', scale: 1, opacity: 1, transition: { ease: [0.215, 0.61, 0.355, 1] } },
-            exit: { x: '-50%', scale: 0.95, opacity: 0 },
-        };
+const TooltipContent: FC<Props> = forwardRef<HTMLDivElement, Props>(({ isOpen, className = '', ...props }, ref) => {
+    const animation: HTMLMotionProps<'div'> = {
+        initial: { x: '-50%', scale: 0.95, opacity: 0 },
+        animate: { x: '-50%', scale: 1, opacity: 1, transition: { ease: [0.215, 0.61, 0.355, 1] } },
+        exit: { x: '-50%', scale: 0.95, opacity: 0 },
+    };
 
-        return (
-            <AnimatePresence mode='wait'>
-                {isOpen && (
-                    <motion.div
-                        ref={ref}
-                        {...props}
-                        {...animation}
-                        className={\`absolute left-1/2 bottom-[calc(100%+12px)] flex justify-center z-10 w-max text-sm rounded-md px-1.5 py-1 border border-border bg-title text-bg will-change-transform \${className}\`}
-                    >
-                        <>
-                            {props.children}
-                            <Triangle className='absolute -bottom-2 size-3 text-title fill-title rotate-180' />
-                        </>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        );
-    }
-);`;
+    return (
+        <AnimatePresence mode='wait'>
+            {isOpen && (
+                <motion.div
+                    ref={ref}
+                    {...props}
+                    {...animation}
+                    className={\`absolute left-1/2 bottom-[calc(100%+10px)] flex justify-center z-10 w-max text-sm rounded-md px-1.5 py-1 border border-border bg-title text-bg will-change-transform \${className}\`}
+                >
+                    <>
+                        {props.children}
+                        <Triangle className='absolute -bottom-2 size-3 text-title fill-title rotate-180' />
+                    </>
+                </motion.div>
+            )}
+        </AnimatePresence>
+    );
+});
+
+TooltipContent.displayName = 'TooltipContent';
+export default TooltipContent;`;
