@@ -1,4 +1,4 @@
-export const ZUSTAND_USAGE_CODE = `'use client';
+'use client';
 import { useCount } from '@/src/store/zustand';
 import { Btn, Text, Title } from '@/src/components/ui';
 import { RotateCcw } from 'lucide-react';
@@ -29,4 +29,4 @@ const ZustandPreview = () => {
     );
 };
 
-export default ZustandPreview;`;
+export default ZustandPreview;
