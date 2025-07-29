@@ -14,6 +14,20 @@ export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch: () => AppDispatch = createDispatchHook<RootState>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = createSelectorHook();`;
 
+export const REDUX_TOOLKIT_PROVIDER_CODE = `import { FC, ReactNode } from 'react';
+import { Provider } from 'react-redux';
+import { store } from '.';
+
+type Props = {
+    children?: ReactNode;
+};
+
+const StoreProvider: FC<Props> = ({ children }) => {
+    return <Provider store={store}>{children}</Provider>;
+};
+
+export default StoreProvider;`;
+
 export const REDUX_TOOLKIT_COUNT_CODE = `import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface ICountState {

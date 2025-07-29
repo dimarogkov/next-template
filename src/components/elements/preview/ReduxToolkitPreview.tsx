@@ -1,10 +1,4 @@
-export const REDUX_TOOLKIT_PROVIDER_USAGE_CODE = `import StoreProvider from '@/src/store/redux-toolkit/StoreProvider';
-
-<StoreProvider>
-	<App />
-</StoreProvider>`;
-
-export const REDUX_TOOLKIT_USAGE_CODE = `'use client';
+'use client';
 import { useAppDispatch, useAppSelector } from '@/src/store/redux-toolkit';
 import { addCount, removeCount, resetCount } from '@/src/store/redux-toolkit/countSlice';
 import { Btn, Text, Title } from '@/src/components/ui';
@@ -37,4 +31,4 @@ const ReduxToolkitPreview = () => {
     );
 };
 
-export default ReduxToolkitPreview;`;
+export default ReduxToolkitPreview;
