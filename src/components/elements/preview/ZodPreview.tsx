@@ -1,4 +1,4 @@
-export const ZOD_USAGE_CODE = `'use client';
+'use client';
 import z from 'zod';
 import { useForm } from 'react-hook-form';
 import { formOptions, validationSchema } from '@/src/form-validation/zod';
@@ -111,4 +111,4 @@ const ZodPreview = () => {
     );
 };
 
-export default ZodPreview;`;
+export default ZodPreview;
