@@ -21,6 +21,7 @@ import TextPreview from './TextPreview';
 import TitlePreview from './TitlePreview';
 import ToastPreview from './ToastPreview';
 import TooltipPreview from './TooltipPreview';
+import YupPreview from './YupPreview';
 
 export {
     AccordionPreview,
@@ -46,4 +47,5 @@ export {
     TitlePreview,
     ToastPreview,
     TooltipPreview,
+    YupPreview,
 };

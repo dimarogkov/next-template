@@ -1,4 +1,4 @@
-export const YUP_USAGE_CODE = `'use client';
+'use client';
 import { InferType } from 'yup';
 import { useForm } from 'react-hook-form';
 import { formOptions, validationSchema } from '@/src/form-validation/yup';
@@ -111,4 +111,4 @@ const YupPreview = () => {
     );
 };
 
-export default YupPreview;`;
+export default YupPreview;

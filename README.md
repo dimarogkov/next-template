@@ -14,25 +14,25 @@ This is **Next Template** for development. Technolgies used: **Next.js, TypeScri
 ## File Structure
 
 -   app
-    -   pages
+    -   documentation
 -   src
--   components
-    -   blocks
-    -   elements
-        -   preview
-    -   other
-    -   root
-    -   ui
--   form-validation
-    -   yup
-    -   zod
--   helpers
--   hooks
--   services
--   store
-    -   redux-toolkit
-    -   zustand
--   types
-    -   interfaces
--   variables
-    -   code
+    -   components
+        -   blocks
+        -   elements
+            -   preview
+        -   other
+        -   root
+        -   ui
+    -   form-validation
+        -   yup
+        -   zod
+    -   helpers
+    -   hooks
+    -   services
+    -   store
+        -   redux-toolkit
+        -   zustand
+    -   types
+        -   interfaces
+    -   variables
+        -   code
