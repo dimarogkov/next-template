@@ -13,11 +13,11 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 export const useAppDispatch: () => AppDispatch = createDispatchHook<RootState>();
-export const useAppSelector: TypedUseSelectorHook<RootState> = createSelectorHook();`;
+export const useAppSelector: TypedUseSelectorHook<RootState> = createSelectorHook()`;
 
 export const RTK_QUERY_SLICE_CODE = `import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { API_URL } from '../../variables';
-import { ITodo } from '../../types/interfaces/Todo';
+import { API_URL } from '@/src/variables';
+import { ITodo } from '@/src/types/interfaces/Todo';
 
 export const todosApiSlice = createApi({
     reducerPath: 'todos',

@@ -1,4 +1,4 @@
-export const RTK_QUERY_USAGE_CODE = `'use client';
+'use client';
 import {
     useCreateTodoMutation,
     useGetTodosQuery,
@@ -65,4 +65,4 @@ const RtkQueryPreview = () => {
     );
 };
 
-export default RtkQueryPreview;`;
+export default RtkQueryPreview;

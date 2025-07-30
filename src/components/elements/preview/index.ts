@@ -13,6 +13,7 @@ import ProgressPreview from './ProgressPreview';
 import RadioPreview from './RadioPreview';
 import ReactQueryPreview from './ReactQueryPreview';
 import ReduxToolkitPreview from './ReduxToolkitPreview';
+import RtkQueryPreview from './RtkQueryPreview';
 import SelectPreview from './SelectPreview';
 import SeparatorPreview from './SeparatorPreview';
 import SimpleLinkPreview from './SimpleLinkPreview';
@@ -43,6 +44,7 @@ export {
     RadioPreview,
     ReactQueryPreview,
     ReduxToolkitPreview,
+    RtkQueryPreview,
     SelectPreview,
     SeparatorPreview,
     SimpleLinkPreview,
