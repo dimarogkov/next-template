@@ -1,7 +1,7 @@
 export const REACT_QUERY_CODE = `import { useMutation, useQuery } from '@tanstack/react-query';
-import { getTodos, createTodo, updateTodo, removeTodo } from '../services';
+import { getTodos, createTodo, updateTodo, removeTodo } from '@/src/services';
 
-export const useTodoQuery = () => {
+const useTodoQuery = () => {
     const {
         data: todos,
         refetch,
@@ -40,7 +40,9 @@ export const useTodoQuery = () => {
         removeTodoMutation,
         isLoadingRemoveTodo,
     };
-};`;
+};
+
+export default useTodoQuery;`;
 
 export const REACT_QUERY_TYPE_CODE = `export interface ITodo {
     userId: number;
@@ -49,15 +51,16 @@ export const REACT_QUERY_TYPE_CODE = `export interface ITodo {
     completed: boolean;
 }`;
 
-export const REACT_QUERY_ADD_TODO_CODE = `import { FC, useState } from 'react';
-import { Btn, Input } from '../ui';
+export const REACT_QUERY_ADD_TODO_CODE = `'use client';
+import { FC, useState } from 'react';
+import { Btn, Input } from '@/src/components/ui';
 
 type Props = {
     isLoading: boolean;
     createTodo: (title: string) => void;
 };
 
-export const AddTodo: FC<Props> = ({ isLoading, createTodo = () => {} }) => {
+const AddTodo: FC<Props> = ({ isLoading, createTodo = () => {} }) => {
     const [todoTitle, setTodoTitle] = useState('');
 
     const handleAddTodo = () => {
@@ -80,11 +83,14 @@ export const AddTodo: FC<Props> = ({ isLoading, createTodo = () => {} }) => {
             </Btn>
         </div>
     );
-};`;
+};
 
-export const REACT_QUERY_TODO_CODE = `import { FC } from 'react';
-import { ITodo } from '../../types/interfaces/Todo';
-import { Btn, Text, Title } from '../ui';
+export default AddTodo;`;
+
+export const REACT_QUERY_TODO_CODE = `'use client';
+import { FC } from 'react';
+import { ITodo } from '@/src/types/interfaces/Todo';
+import { Btn, Text, Title } from '@/src/components/ui';
 import { X } from 'lucide-react';
 import cn from 'classnames';
 
@@ -95,7 +101,7 @@ type Props = {
     removeTodo: (todoId: number) => void;
 };
 
-export const Todo: FC<Props> = ({ todo, isLoading, updateTodo = () => {}, removeTodo = () => {} }) => {
+const Todo: FC<Props> = ({ todo, isLoading, updateTodo = () => {}, removeTodo = () => {} }) => {
     const { id, title, userId, completed } = todo;
 
     return (
@@ -127,4 +133,6 @@ export const Todo: FC<Props> = ({ todo, isLoading, updateTodo = () => {}, remove
             </Btn>
         </div>
     );
-};`;
+};
+
+export default Todo;`;

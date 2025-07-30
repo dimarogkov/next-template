@@ -1,3 +1,4 @@
+'use client';
 import { FC } from 'react';
 import { ITodo } from '@/src/types/interfaces/Todo';
 import { Btn, Text, Title } from '@/src/components/ui';

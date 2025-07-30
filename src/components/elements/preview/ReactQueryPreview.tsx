@@ -1,4 +1,4 @@
-export const REACT_QUERY_USAGE_CODE = `'use client';
+'use client';
 import { useTodoQuery } from '@/src/hooks';
 import { ITodo } from '@/src/types/interfaces/Todo';
 import { AddTodo, Todo } from '@/src/components/elements';
@@ -66,12 +66,4 @@ const ReactQueryPreview = () => {
     );
 };
 
-export default ReactQueryPreview;`;
-
-export const REACT_QUERY_PROVIDER_USAGE_CODE = `import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
-const queryClient = new QueryClient();
-
-<QueryClientProvider client={queryClient}>
-	<App />
-</QueryClientProvider>`;
+export default ReactQueryPreview;

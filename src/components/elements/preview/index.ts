@@ -11,6 +11,7 @@ import LoaderPreview from './LoaderPreview';
 import ModalPreview from './ModalPreview';
 import ProgressPreview from './ProgressPreview';
 import RadioPreview from './RadioPreview';
+import ReactQueryPreview from './ReactQueryPreview';
 import ReduxToolkitPreview from './ReduxToolkitPreview';
 import SelectPreview from './SelectPreview';
 import SeparatorPreview from './SeparatorPreview';
@@ -40,6 +41,7 @@ export {
     ModalPreview,
     ProgressPreview,
     RadioPreview,
+    ReactQueryPreview,
     ReduxToolkitPreview,
     SelectPreview,
     SeparatorPreview,
