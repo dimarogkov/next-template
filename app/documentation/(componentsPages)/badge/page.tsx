@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { BADGE_CODE, BADGE_USAGE_CODE } from '@/src/variables/code';
+import { BADGE_CODE, BADGE_USAGE_CODE, BADGE_ICON_USAGE_CODE } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationClient } from '@/src/components/blocks';
 import { BadgePreview } from '@/src/components/elements/preview';
@@ -31,6 +31,19 @@ const BadgePage = () => {
             description: null,
             withAccordion: false,
             codeArr: [BADGE_USAGE_CODE],
+        },
+        {
+            id: 'icon',
+            title: 'Icon',
+            link: '',
+            description: (
+                <Text>
+                    Display an icon inside a <span className='badge-item'>Badge</span> component to highlight statuses
+                    or actions in a compact form.
+                </Text>
+            ),
+            withAccordion: false,
+            codeArr: [BADGE_ICON_USAGE_CODE],
         },
     ];
 

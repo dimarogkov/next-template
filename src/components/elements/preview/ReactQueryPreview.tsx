@@ -35,8 +35,8 @@ const ReactQueryPreview = () => {
 
     return (
         <div className='relative w-full'>
-            <div className='w-full mb-5 last:mb-0'>
-                <Title size='h3' className='mb-2.5 last:mb-0'>
+            <div className='w-full mb-6 last:mb-0'>
+                <Title size='h3' className='mb-3 last:mb-0'>
                     Todo List
                 </Title>
 
