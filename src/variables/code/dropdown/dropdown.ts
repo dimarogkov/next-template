@@ -31,12 +31,8 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
 
 const DropdownWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(
     ({ isOpen = false, className = '', ...props }, ref) => {
-        const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+        const [isDropdownOpen, setIsDropdownOpen] = useState(isOpen);
         const dropdownRef = useRef<HTMLDivElement>(null);
-
-        useEffect(() => {
-            setIsDropdownOpen(isOpen);
-        }, [isOpen]);
 
         const handleClickOutside = (e: MouseEvent) => {
             if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {

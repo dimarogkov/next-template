@@ -68,8 +68,8 @@ const TabsPage = () => {
             link: '',
             description: (
                 <Text>
-                    To make an <span className='badge-item'>Tabs.Tab</span> initially active, add the&nbsp;
-                    <span className='badge-item'>isActive</span> prop to it.
+                    To make an <span className='badge-item'>Tabs</span> initially active, add the&nbsp;
+                    <span className='badge-item'>defaultActiveIndex</span> prop to it.
                 </Text>
             ),
             withAccordion: false,

@@ -10,27 +10,18 @@ import {
     ReactElement,
     RefAttributes,
     SetStateAction,
-    useEffect,
 } from 'react';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     iconType?: 'arrow' | 'plus';
     accordionIndex?: number;
     activeIndex?: number;
-    isOpen?: boolean;
     className?: string;
     setActiveIndex?: Dispatch<SetStateAction<number | null>>;
 }
 
 const AccordionItem: FC<Props> = forwardRef<HTMLDivElement, Props>(
-    (
-        { iconType, accordionIndex = 0, activeIndex, isOpen, className = '', setActiveIndex = () => {}, ...props },
-        ref
-    ) => {
-        useEffect(() => {
-            isOpen && setActiveIndex(accordionIndex);
-        }, [accordionIndex, isOpen, setActiveIndex]);
-
+    ({ iconType, accordionIndex = 0, activeIndex, className = '', setActiveIndex = () => {}, ...props }, ref) => {
         return (
             <div
                 ref={ref}

@@ -13,12 +13,13 @@ import {
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     iconType?: 'arrow' | 'plus';
+    defaultActiveIndex?: number | null;
     className?: string;
 }
 
 const AccordionWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(
-    ({ iconType = 'arrow', className = '', ...props }, ref) => {
-        const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    ({ iconType = 'arrow', defaultActiveIndex = null, className = '', ...props }, ref) => {
+        const [activeIndex, setActiveIndex] = useState<number | null>(defaultActiveIndex);
 
         return (
             <div ref={ref} {...props} className={`relative w-full rounded-md border border-border ${className}`}>

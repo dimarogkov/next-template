@@ -23,7 +23,7 @@ export const ACCORDION_USAGE_CODE = `{/* Arrow iconType by default */}
 	</Accordion.Item>
 </Accordion>`;
 
-export const ACCORDION_ACTIVE_USAGE_CODE = `<Accordion>
+export const ACCORDION_ACTIVE_USAGE_CODE = `<Accordion defaultActiveIndex={0}>
 	<Accordion.Item>
 		<Accordion.Title>Accordion Title 1</Accordion.Title>
 		<Accordion.Content>
@@ -31,7 +31,7 @@ export const ACCORDION_ACTIVE_USAGE_CODE = `<Accordion>
 			eveniet.
 		</Accordion.Content>
 	</Accordion.Item>
-	<Accordion.Item isOpen>
+	<Accordion.Item>
 		<Accordion.Title>Accordion Title 2</Accordion.Title>
 		<Accordion.Content>
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque officia

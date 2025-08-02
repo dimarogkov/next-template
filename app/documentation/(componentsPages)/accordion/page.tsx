@@ -67,8 +67,8 @@ const AccordionPage = () => {
             link: '',
             description: (
                 <Text>
-                    To make an <span className='badge-item'>Accordion.Item</span> initially open, add the&nbsp;
-                    <span className='badge-item'>isOpen</span> prop to it.
+                    To make an <span className='badge-item'>Accordion</span> initially open, add the&nbsp;
+                    <span className='badge-item'>defaultActiveIndex</span> prop to it.
                 </Text>
             ),
             withAccordion: false,
