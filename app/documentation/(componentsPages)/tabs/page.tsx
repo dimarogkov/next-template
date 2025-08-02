@@ -2,14 +2,15 @@ import { Metadata } from 'next';
 import {
     NPM_CLASSNAMES_CODE,
     NPM_FRAMER_MOTION_CODE,
-    TABS_ACTIVE_USAGE_CODE,
     TABS_CODE,
-    TABS_LIST_CODE,
-    TABS_PANEL_CODE,
-    TABS_PANELS_CODE,
-    TABS_TAB_CODE,
-    TABS_USAGE_CODE,
     TABS_WRAPPER_CODE,
+    TABS_LIST_CODE,
+    TABS_TAB_CODE,
+    TABS_PANELS_CODE,
+    TABS_PANEL_CODE,
+    TABS_USAGE_CODE,
+    TABS_ACTIVE_USAGE_CODE,
+    TABS_ANIMATION_USAGE_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationClient } from '@/src/components/blocks';
@@ -73,6 +74,19 @@ const TabsPage = () => {
             ),
             withAccordion: false,
             codeArr: [TABS_ACTIVE_USAGE_CODE],
+        },
+        {
+            id: 'animation',
+            title: 'Animation',
+            link: '',
+            description: (
+                <Text>
+                    To enable animations for <span className='badge-item'>Tabs</span> — use the&nbsp;
+                    <span className='badge-item'>hasAnimation</span> prop.
+                </Text>
+            ),
+            withAccordion: false,
+            codeArr: [TABS_ANIMATION_USAGE_CODE],
         },
     ];
 
