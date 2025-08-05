@@ -11,6 +11,7 @@ import {
     useEffect,
     useState,
 } from 'react';
+import { usePathname } from 'next/navigation';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     className?: string;
@@ -18,6 +19,11 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
 
 const ModalWrapper: FC<Props> = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const pathname = usePathname();
+
+    useEffect(() => {
+        setIsModalOpen(false);
+    }, [pathname]);
 
     useEffect(() => {
         const bodyClassList = document.body.classList;

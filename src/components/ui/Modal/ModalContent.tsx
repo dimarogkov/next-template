@@ -6,13 +6,14 @@ import ModalClose from './ModalClose';
 
 interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
     isOpen?: boolean;
+    disableCloseBtn?: boolean;
     children: ReactNode;
     className?: string;
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 const ModalContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
-    ({ isOpen, children, className = '', setIsOpen = () => {}, ...props }, ref) => {
+    ({ isOpen, disableCloseBtn = false, children, className = '', setIsOpen = () => {}, ...props }, ref) => {
         const animation: HTMLMotionProps<'div'> = {
             initial: { opacity: 0 },
             animate: { opacity: 1, transition: { duration: 0.3, ease: [0.215, 0.61, 0.355, 1] } },
@@ -38,9 +39,9 @@ const ModalContent: FC<Props> = forwardRef<HTMLDivElement, Props>(
                             ref={ref}
                             {...props}
                             {...animationPopup}
-                            className={`relative md:w-[600px] max-w-[calc(100%-32px)] rounded-md border border-border bg-bg will-change-transform ${className}`}
+                            className={`relative md:w-[600px] max-w-[calc(100%-32px)] rounded-md border border-border bg-bg overflow-hidden will-change-transform ${className}`}
                         >
-                            <ModalClose onClick={() => setIsOpen(false)} />
+                            {!disableCloseBtn && <ModalClose onClick={() => setIsOpen(false)} />}
                             {children}
                         </motion.div>
                     </motion.div>
