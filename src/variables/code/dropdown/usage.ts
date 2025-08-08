@@ -20,7 +20,7 @@ export const DROPDOWN_USAGE_CODE = `<Dropdown>
 	</Dropdown.Content>
 </Dropdown>`;
 
-export const DROPDOWN_POSITION_USAGE_CODE = `{/* Bottom Position by default */}
+export const DROPDOWN_POSITION_USAGE_CODE = `{/* Bottom position by default */}
 <Dropdown>
 	<Dropdown.Trigger>
 		<Btn>Dropdown</Btn>
@@ -43,7 +43,7 @@ export const DROPDOWN_POSITION_USAGE_CODE = `{/* Bottom Position by default */}
 	</Dropdown.Content>
 </Dropdown>`;
 
-export const DROPDOWN_ALIGN_USAGE_CODE = `{/* Start Align by default */}
+export const DROPDOWN_ALIGN_USAGE_CODE = `{/* Start align by default */}
 <Dropdown>
 	<Dropdown.Trigger>
 		<Btn>Dropdown</Btn>

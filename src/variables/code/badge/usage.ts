@@ -1,4 +1,4 @@
-export const BADGE_USAGE_CODE = `{/* Default Type by default */}
+export const BADGE_USAGE_CODE = `{/* Default type by default */}
 <Badge type='default | secondary | outline'>Badge</Badge>`;
 
 export const BADGE_ICON_USAGE_CODE = `import { User } from 'lucide-react';

@@ -13,7 +13,7 @@ const ToastPreview = () => {
                         <Toast
                             toast={t}
                             data={{
-                                title: 'This is a Info notification.',
+                                title: 'This is a Default notification.',
                                 text: 'This toast message notifies you of something.',
                             }}
                         />
@@ -21,7 +21,7 @@ const ToastPreview = () => {
                 }
             >
                 <Info className='size-5' />
-                <span>Toast Info</span>
+                <span>Default Toast</span>
             </Btn>
 
             <Btn
@@ -40,7 +40,7 @@ const ToastPreview = () => {
                 }
             >
                 <CircleCheck className='size-5' />
-                <span>Toast Success</span>
+                <span>Success Toast</span>
             </Btn>
 
             <Btn
@@ -59,7 +59,7 @@ const ToastPreview = () => {
                 }
             >
                 <CircleAlert className='size-5' />
-                <span>Toast Warning</span>
+                <span>Warning Toast</span>
             </Btn>
 
             <Btn
@@ -78,7 +78,7 @@ const ToastPreview = () => {
                 }
             >
                 <CircleX className='size-5' />
-                <span>Toast Error</span>
+                <span>Error Toast</span>
             </Btn>
         </div>
     );

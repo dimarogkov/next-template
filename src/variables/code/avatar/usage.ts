@@ -1,4 +1,4 @@
-export const AVATAR_USAGE_CODE = `{/* Circle Type by default */}
+export const AVATAR_USAGE_CODE = `{/* Circle type by default */}
 <Avatar type='circle | square'>
 	<Avatar.Img src='/user.png' />
 </Avatar>

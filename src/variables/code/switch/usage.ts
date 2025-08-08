@@ -1,8 +1,8 @@
-export const SWITCH_USAGE_CODE = `{/* Default Switch */}
+export const SWITCH_USAGE_CODE = `{/* Default switch */}
 <Switch />
 
-{/* Active Switch */}
+{/* Active switch */}
 <Switch isActive />
 
-{/* Disabled Switch */}
+{/* Disabled switch */}
 <Switch disabled />`;

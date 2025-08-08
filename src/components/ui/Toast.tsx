@@ -8,24 +8,24 @@ import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     toast: TostType;
-    type?: 'info' | 'success' | 'warning' | 'error';
+    type?: 'default' | 'success' | 'warning' | 'error';
     data: IToastData;
     className?: string;
 }
 
 const Toast: FC<Props> = forwardRef<HTMLDivElement, Props>(
-    ({ toast: t, type = 'info', data, className = '', ...props }, ref) => {
+    ({ toast: t, type = 'default', data, className = '', ...props }, ref) => {
         const { title, text } = data;
 
         const toastClasses = {
             border: {
-                info: 'border-l-title',
+                default: 'border-l-title',
                 success: 'border-l-green',
                 warning: 'border-l-yellow',
                 error: 'border-l-red',
             },
             text: {
-                info: 'text-title',
+                default: 'text-title',
                 success: 'text-green',
                 warning: 'text-yellow',
                 error: 'text-red',
@@ -33,7 +33,7 @@ const Toast: FC<Props> = forwardRef<HTMLDivElement, Props>(
         };
 
         const icon = {
-            info: <Info className='hidden sm:block size-9 min-w-9 text-title stroke-1' />,
+            default: <Info className='hidden sm:block size-9 min-w-9 text-title stroke-1' />,
             success: <CircleCheck className='hidden sm:block size-9 min-w-9 text-green stroke-1' />,
             warning: <CircleAlert className='hidden sm:block size-9 min-w-9 text-yellow stroke-1' />,
             error: <CircleX className='hidden sm:block size-9 min-w-9 text-red stroke-1' />,
