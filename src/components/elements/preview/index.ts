@@ -1,4 +1,5 @@
 import AccordionPreview from './AccordionPreview';
+import AlertPreview from './AlertPreview';
 import AvatarPreview from './AvatarPreview';
 import BadgePreview from './BadgePreview';
 import BreadcrumbPreview from './BreadcrumbPreview';
@@ -30,6 +31,7 @@ import ZustandPreview from './ZustandPreview';
 
 export {
     AccordionPreview,
+    AlertPreview,
     AvatarPreview,
     BadgePreview,
     BreadcrumbPreview,

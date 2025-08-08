@@ -7,6 +7,7 @@ export const PATHS = {
         },
         COMPONENTS: {
             ACCORDION: '/accordion',
+            ALERT: '/alert',
             AVATAR: '/avatar',
             BADGE: '/badge',
             BREADCRUMB: '/breadcrumb',

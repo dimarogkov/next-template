@@ -1,4 +1,5 @@
 import Accordion from './Accordion';
+import Alert from './Alert';
 import { Avatar, AvatarGroup } from './Avatar';
 import Badge from './Badge';
 import Btn from './Btn';
@@ -25,6 +26,7 @@ import Tooltip from './Tooltip';
 
 export {
     Accordion,
+    Alert,
     Avatar,
     AvatarGroup,
     Badge,
