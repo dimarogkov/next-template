@@ -1,114 +1,56 @@
 'use client';
-import { FC, Fragment } from 'react';
+import { FC } from 'react';
 import Link from 'next/link';
 import { useSectionsRefs } from '@/src/hooks';
-import { IDocumentationCodeArr, IDocumentationData } from '@/src/types/interfaces/DocumentationData';
-import {
-    ComponentsCode,
-    ComponentsCodeWithAccordion,
-    ComponentsFooter,
-    ComponentsHead,
-    ComponentsNavigation,
-    ComponentsPreview,
-} from '@/src/components/blocks';
-import { Text, Title } from '@/src/components/ui';
-import { ArrowUpRight } from 'lucide-react';
-import cn from 'classnames';
+import { IDocumentationBodyItem } from '@/src/types/interfaces/DocumentationData';
+import { ComponentsFooter, ComponentsHead, ComponentsNavigation, ComponentsWrapper } from '@/src/components/blocks';
+import { IntroductionContent } from '@/src/components/elements';
+import { Separator, Text, Title } from '@/src/components/ui';
 
 type Props = {
-    data: IDocumentationData;
+    data: IDocumentationBodyItem[];
 };
 
 const DocumentationClient: FC<Props> = ({ data }) => {
     const { sectionsRef, registerRef } = useSectionsRefs();
-    const { title, description, preview, codeSections } = data;
 
-    const sectionsArr = codeSections.map(({ id, title }) => ({ id, text: title }));
+    const sectionsArr = data.map(({ title }) => ({ id: title.toLowerCase(), text: title }));
 
     return (
-        <section className='relative w-full'>
-            <div className='container'>
-                <div className='w-full'>
-                    <ComponentsNavigation sectionsRef={sectionsRef} sectionsArr={sectionsArr} />
+        <ComponentsWrapper navigation={<ComponentsNavigation sectionsRef={sectionsRef} sectionsArr={sectionsArr} />}>
+            <div className='w-full xl:px-[30px]'>
+                <ComponentsHead>
+                    <IntroductionContent />
+                </ComponentsHead>
 
-                    <ComponentsHead>
-                        <Title size='h2' className='mb-1 md:mb-2 last:mb-0'>
+                {data.map(({ title, text, links }) => (
+                    <div
+                        key={title}
+                        id={title.toLowerCase()}
+                        ref={registerRef(title.toLowerCase())}
+                        className='w-full py-6 md:py-12'
+                    >
+                        <Title size='h3' className='mb-1 md:mb-1.5 last:mb-0'>
                             {title}
                         </Title>
 
-                        <Text size='large'>{description}</Text>
-                    </ComponentsHead>
+                        <Text size='large'>{text}</Text>
 
-                    <ComponentsPreview>{preview}</ComponentsPreview>
+                        <Separator className='my-5' />
 
-                    {codeSections.map(({ id, title, link, description, withAccordion, codeArr }) => (
-                        <Fragment key={id}>
-                            {withAccordion ? (
-                                <ComponentsCodeWithAccordion
-                                    id={id}
-                                    ref={registerRef(id)}
-                                    {...(id === 'installation' && { type: id })}
-                                    codeArr={codeArr as IDocumentationCodeArr[]}
-                                >
-                                    <Title
-                                        size='h4'
-                                        className={cn({
-                                            'flex items-center gap-1': link,
-                                            'mb-1 md:mb-1.5 last:mb-0': description,
-                                        })}
-                                    >
-                                        {link ? <span>{title}</span> : title}
+                        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 w-full'>
+                            {links.map(({ name, href }) => (
+                                <Link key={name} href={href} className='font-medium text-lg text-text hover:underline'>
+                                    {name}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                ))}
 
-                                        {link && (
-                                            <Link
-                                                href={link}
-                                                target='_blank'
-                                                className='transition-colors duration-300 hover:text-text'
-                                            >
-                                                <ArrowUpRight />
-                                            </Link>
-                                        )}
-                                    </Title>
-
-                                    {description}
-                                </ComponentsCodeWithAccordion>
-                            ) : (
-                                <ComponentsCode
-                                    id={id}
-                                    ref={registerRef(id)}
-                                    {...(id === 'installation' && { type: id })}
-                                    codeArr={codeArr as string[]}
-                                >
-                                    <Title
-                                        size='h4'
-                                        className={cn({
-                                            'flex items-center gap-1': link,
-                                            'mb-1 md:mb-1.5 last:mb-0': description,
-                                        })}
-                                    >
-                                        {link ? <span>{title}</span> : title}
-
-                                        {link && (
-                                            <Link
-                                                href={link}
-                                                target='_blank'
-                                                className='transition-colors duration-300 hover:text-text'
-                                            >
-                                                <ArrowUpRight />
-                                            </Link>
-                                        )}
-                                    </Title>
-
-                                    {description}
-                                </ComponentsCode>
-                            )}
-                        </Fragment>
-                    ))}
-
-                    <ComponentsFooter />
-                </div>
+                <ComponentsFooter />
             </div>
-        </section>
+        </ComponentsWrapper>
     );
 };
 

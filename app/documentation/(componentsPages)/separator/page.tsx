@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { SEPARATOR_CODE, SEPARATOR_USAGE_CODE } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
-import { DocumentationClient } from '@/src/components/blocks';
+import { DocumentationDetailClient } from '@/src/components/blocks';
 import { SeparatorPreview } from '@/src/components/elements/preview';
 import { Text } from '@/src/components/ui';
 
@@ -41,7 +41,7 @@ const SeparatorPage = () => {
         codeSections,
     };
 
-    return <DocumentationClient data={data} />;
+    return <DocumentationDetailClient data={data} />;
 };
 
 export default SeparatorPage;

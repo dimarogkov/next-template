@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { BADGE_CODE, BADGE_USAGE_CODE, BADGE_ICON_USAGE_CODE } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
-import { DocumentationClient } from '@/src/components/blocks';
+import { DocumentationDetailClient } from '@/src/components/blocks';
 import { BadgePreview } from '@/src/components/elements/preview';
 import { Text } from '@/src/components/ui';
 
@@ -54,7 +54,7 @@ const BadgePage = () => {
         codeSections,
     };
 
-    return <DocumentationClient data={data} />;
+    return <DocumentationDetailClient data={data} />;
 };
 
 export default BadgePage;

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { NPM_CLASSNAMES_CODE, NPM_FRAMER_MOTION_CODE, SWITCH_CODE, SWITCH_USAGE_CODE } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
-import { DocumentationClient } from '@/src/components/blocks';
+import { DocumentationDetailClient } from '@/src/components/blocks';
 import { SwitchPreview } from '@/src/components/elements/preview';
 import { Text } from '@/src/components/ui';
 
@@ -52,7 +52,7 @@ const SwitchPage = () => {
         codeSections,
     };
 
-    return <DocumentationClient data={data} />;
+    return <DocumentationDetailClient data={data} />;
 };
 
 export default SwitchPage;

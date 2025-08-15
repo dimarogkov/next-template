@@ -1,7 +1,6 @@
-import Link from 'next/link';
 import { Metadata } from 'next';
 import { getLinks } from '@/src/helpers';
-import { Separator, Text, Title } from '@/src/components/ui';
+import { DocumentationClient } from '@/src/components/blocks';
 
 export const metadata: Metadata = {
     title: 'Documentation',
@@ -33,39 +32,7 @@ const DocumentationPage = () => {
         },
     ];
 
-    return (
-        <>
-            <section className='relative w-full'>
-                <div className='container'>
-                    <div className='flex flex-col gap-12 md:gap-20 w-full'>
-                        {documentationItemsArr.map(({ title, text, links }) => (
-                            <div key={title} className='w-full'>
-                                <Title size='h2' className='mb-2 last:mb-0'>
-                                    {title}
-                                </Title>
-
-                                <Text size='large'>{text}</Text>
-
-                                <Separator className='my-5' />
-
-                                <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 w-full'>
-                                    {links.map(({ name, href }) => (
-                                        <Link
-                                            key={name}
-                                            href={href}
-                                            className='font-medium text-lg text-text hover:underline'
-                                        >
-                                            {name}
-                                        </Link>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-        </>
-    );
+    return <DocumentationClient data={documentationItemsArr} />;
 };
 
 export default DocumentationPage;

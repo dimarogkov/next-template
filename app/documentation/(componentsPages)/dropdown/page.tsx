@@ -11,7 +11,7 @@ import {
     NPM_FRAMER_MOTION_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
-import { DocumentationClient } from '@/src/components/blocks';
+import { DocumentationDetailClient } from '@/src/components/blocks';
 import { DropdownPreview } from '@/src/components/elements/preview';
 import { Text } from '@/src/components/ui';
 
@@ -93,7 +93,7 @@ const DropdownPage = () => {
         codeSections,
     };
 
-    return <DocumentationClient data={data} />;
+    return <DocumentationDetailClient data={data} />;
 };
 
 export default DropdownPage;

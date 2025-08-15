@@ -9,7 +9,7 @@ import {
     YUP_USAGE_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
-import { DocumentationClient } from '@/src/components/blocks';
+import { DocumentationDetailClient } from '@/src/components/blocks';
 import { YupPreview } from '@/src/components/elements/preview';
 
 export const metadata: Metadata = {
@@ -60,7 +60,7 @@ const YupPage = () => {
         codeSections,
     };
 
-    return <DocumentationClient data={data} />;
+    return <DocumentationDetailClient data={data} />;
 };
 
 export default YupPage;

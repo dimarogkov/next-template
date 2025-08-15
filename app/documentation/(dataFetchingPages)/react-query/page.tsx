@@ -11,7 +11,7 @@ import {
     NPM_LUCIDE_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
-import { DocumentationClient } from '@/src/components/blocks';
+import { DocumentationDetailClient } from '@/src/components/blocks';
 import { ReactQueryPreview } from '@/src/components/elements/preview';
 
 export const metadata: Metadata = {
@@ -62,7 +62,7 @@ const ReactQueryPage = () => {
         codeSections,
     };
 
-    return <DocumentationClient data={data} />;
+    return <DocumentationDetailClient data={data} />;
 };
 
 export default ReactQueryPage;

@@ -1,5 +1,6 @@
 import AddTodo from './AddTodo';
 import DevIcon from './DevIcon';
+import IntroductionContent from './IntroductionContent';
 import HeaderLink from './HeaderLink';
 import HeaderSearch from './HeaderSearch';
 import HeaderSearchLink from './HeaderSearchLink';
@@ -18,6 +19,7 @@ export {
     HeaderSearchLink,
     HeaderSwitch,
     HomeBg,
+    IntroductionContent,
     ScrollTopBtn,
     SidebarBtn,
     SidebarLink,

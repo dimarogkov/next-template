@@ -18,3 +18,12 @@ export interface IDocumentationData {
     preview: JSX.Element;
     codeSections: IDocumentationCodeSection[];
 }
+
+export interface IDocumentationBodyItem {
+    title: string;
+    text: string;
+    links: {
+        name: string;
+        href: string;
+    }[];
+}

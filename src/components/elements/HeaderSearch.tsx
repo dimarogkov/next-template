@@ -47,7 +47,7 @@ const HeaderSearch = () => {
         <Modal>
             <Modal.Trigger>
                 <Label className='hidden md:block !w-44 pointer-events-none'>
-                    <Input placeholder='Search...' disabled className='!h-9 !px-2.5 !border-none !bg-border' />
+                    <Input placeholder='Search...' disabled className='!h-9 !px-3 !border-none !bg-border' />
                 </Label>
             </Modal.Trigger>
             <Modal.Content disableCloseBtn>

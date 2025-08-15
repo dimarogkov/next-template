@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { NPM_ZUSTAND_CODE, ZUSTAND_CODE, ZUSTAND_COUNT_CODE, ZUSTAND_USAGE_CODE } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
-import { DocumentationClient } from '@/src/components/blocks';
+import { DocumentationDetailClient } from '@/src/components/blocks';
 import { ZustandPreview } from '@/src/components/elements/preview';
 
 export const metadata: Metadata = {
@@ -46,7 +46,7 @@ const ZustandPage = () => {
         codeSections,
     };
 
-    return <DocumentationClient data={data} />;
+    return <DocumentationDetailClient data={data} />;
 };
 
 export default ZustandPage;

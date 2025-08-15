@@ -7,9 +7,10 @@ const usePrevNextComponentPath = () => {
     const { MAIN } = PATHS.PAGES;
     const { componentsLinks, dataFetchingLinks, formValidationLinks, storeLinks } = getLinks();
 
-    const mainLink = { href: MAIN.DOCUMENTATION, name: 'Documentation' };
+    const introductionLink = { href: MAIN.DOCUMENTATION, name: 'Introduction' };
 
     const linksArr = [
+        introductionLink,
         ...Object.values(componentsLinks),
         ...Object.values(dataFetchingLinks),
         ...Object.values(formValidationLinks),
@@ -17,10 +18,10 @@ const usePrevNextComponentPath = () => {
     ];
 
     const pathIndex = linksArr.findIndex(({ href }) => href === pathname);
-    const prevPath = linksArr[pathIndex - 1] || mainLink;
-    const nextPath = linksArr[pathIndex + 1] || mainLink;
+    const prevPath = linksArr[pathIndex - 1] || linksArr[linksArr.length - 1];
+    const nextPath = linksArr[pathIndex + 1] || linksArr[0];
 
-    return { prevPath, nextPath };
+    return [prevPath, nextPath];
 };
 
 export default usePrevNextComponentPath;

@@ -9,7 +9,7 @@ type Props = {
 
 const Error: FC<Props> = ({ error, reset = () => {} }) => {
     return (
-        <section className='relative flex items-center w-full h-[calc(100svh-120px)] md:h-[calc(100svh-144px)] lg:h-[calc(100svh-160px)] pb-16 lg:pb-20'>
+        <section className='relative flex items-center w-full h-[calc(100svh-164px)] md:h-[calc(100svh-188px)] lg:h-[calc(100svh-204px)] pb-16 lg:pb-20'>
             <div className='container'>
                 <div className='w-full text-center'>
                     <Title size='h2' className='mb-5 last:mb-0'>

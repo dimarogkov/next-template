@@ -41,7 +41,7 @@ const ComponentsNavigation: FC<Props> = ({ sectionsRef, sectionsArr }) => {
     };
 
     return (
-        <motion.section className='fixed z-10 top-[164px] right-0 hidden xl:block w-52 px-5'>
+        <motion.section className='sticky top-[164px] hidden xl:block w-52 pl-5'>
             <div className='w-full'>
                 <Text className='text-text/70 mb-2 last:mb-0'>On this Page</Text>
 

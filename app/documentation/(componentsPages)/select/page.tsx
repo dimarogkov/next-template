@@ -13,7 +13,7 @@ import {
     SELECT_CONTROLLING_USAGE_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
-import { DocumentationClient } from '@/src/components/blocks';
+import { DocumentationDetailClient } from '@/src/components/blocks';
 import { SelectPreview } from '@/src/components/elements/preview';
 import { Text } from '@/src/components/ui';
 
@@ -86,7 +86,7 @@ const SelectPage = () => {
         codeSections,
     };
 
-    return <DocumentationClient data={data} />;
+    return <DocumentationDetailClient data={data} />;
 };
 
 export default SelectPage;

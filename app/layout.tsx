@@ -15,7 +15,7 @@ type Props = {
     children: ReactNode;
 };
 
-const MainLayout: FC<Props> = ({ children }) => {
+const HomeLayout: FC<Props> = ({ children }) => {
     return (
         <Root>
             <RootProviders>
@@ -27,4 +27,4 @@ const MainLayout: FC<Props> = ({ children }) => {
     );
 };
 
-export default MainLayout;
+export default HomeLayout;
