@@ -19,6 +19,12 @@ body.lock {
     overflow: hidden;
 }
 
+@media (min-width: 1024px) {
+    body.lock {
+        margin-right: 15px;
+    }
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:hover,
@@ -44,7 +50,11 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .container {
-    @apply w-full max-w-4xl xl:max-w-[1372px] px-[30px] m-auto;
+    @apply w-full max-w-4xl xl:max-w-[1272px] px-[30px] m-auto;
+}
+
+.text-base {
+    line-height: 1.65rem;
 }
 
 .sidebar {
