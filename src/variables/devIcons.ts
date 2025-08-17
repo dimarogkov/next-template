@@ -3,7 +3,7 @@ import { IDevIcon } from '@/src/types/interfaces/DevIcon';
 export const DEV_ICONS: IDevIcon[] = [
     {
         icon: 'devicon-nextjs-plain',
-        text: 'Next JS',
+        text: 'Next.js',
     },
     {
         icon: 'devicon-typescript-plain',

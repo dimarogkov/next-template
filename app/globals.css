@@ -19,12 +19,6 @@ body.lock {
     overflow: hidden;
 }
 
-@media (min-width: 1024px) {
-    body.lock {
-        margin-right: 15px;
-    }
-}
-
 input:-webkit-autofill,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:hover,
