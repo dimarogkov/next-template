@@ -2,6 +2,7 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { PATHS } from '@/src/variables';
 import { convertUrlToString } from '@/src/helpers';
 import cn from 'classnames';
 
@@ -21,6 +22,7 @@ const HeaderLink: FC<Props> = ({ href }) => {
                 {
                     'text-title pointer-events-none': isActive,
                     'hover:bg-border': !isActive,
+                    'text-title': pathname === PATHS.HOME,
                 }
             )}
         >

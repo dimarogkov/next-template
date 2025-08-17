@@ -21,6 +21,7 @@ const config: Config = {
             animation: {
                 enter: 'enter 0.2s forwards',
                 leave: 'leave 0.2s forwards',
+                'loop-scroll': 'loop-scroll 24s linear infinite',
             },
             keyframes: {
                 enter: {
@@ -30,6 +31,10 @@ const config: Config = {
                 leave: {
                     '0%': { opacity: '1', visibility: 'visible', transform: 'translateY(0)' },
                     '100%': { opacity: '0', visibility: 'hidden', transform: 'translateY(20px)' },
+                },
+                'loop-scroll': {
+                    '0%': { transform: 'translateX(0)' },
+                    '100%': { transform: 'translateX(-101%)' },
                 },
             },
         },

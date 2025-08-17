@@ -1,14 +1,23 @@
+'use client';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { PATHS } from '@/src/variables';
 import { HeaderLink, HeaderSearch, HeaderSwitch } from '@/src/components/elements';
 import { Text } from '@/src/components/ui';
 import { Github } from 'lucide-react';
+import cn from 'classnames';
 
 const Header = () => {
+    const pathname = usePathname();
     const { MAIN } = PATHS.PAGES;
 
     return (
-        <header className='sticky top-0 left-0 z-30 flex items-center w-full h-16 lg:h-20 border-b border-border bg-bg'>
+        <header
+            className={cn('sticky top-0 left-0 z-30 flex items-center w-full h-16 lg:h-20 border-b border-border', {
+                'backdrop-blur-lg': pathname === PATHS.HOME,
+                'bg-bg': pathname !== PATHS.HOME,
+            })}
+        >
             <div className='container'>
                 <div className='flex items-center justify-between w-full'>
                     <Link

@@ -16,7 +16,7 @@ const Badge: FC<Props> = forwardRef<HTMLSpanElement, Props>(({ type = 'default',
         <span
             ref={ref}
             {...props}
-            className={`flex items-center gap-1.5 text-base px-3 py-1.5 rounded-md border ${badgeType[type]} ${className}`}
+            className={`flex items-center gap-1.5 w-fit text-base px-3 py-1.5 rounded-md border ${badgeType[type]} ${className}`}
         />
     );
 });

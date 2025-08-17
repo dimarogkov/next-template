@@ -2,10 +2,12 @@
 'use client';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { PATHS } from '@/src/variables';
 import { debounce, getLinks } from '@/src/helpers';
 import { HeaderSearchLink } from '@/src/components/elements';
 import { Input, Label, Modal, Text } from '../ui';
 import { Search } from 'lucide-react';
+import cn from 'classnames';
 
 const HeaderSearch = () => {
     const [appliedSearchValue, setAppliedSearchValue] = useState('');
@@ -47,7 +49,13 @@ const HeaderSearch = () => {
         <Modal>
             <Modal.Trigger>
                 <Label className='hidden md:block !w-44 pointer-events-none'>
-                    <Input placeholder='Search...' disabled className='!h-9 !px-3 !border-none !bg-border' />
+                    <Input
+                        placeholder='Search...'
+                        disabled
+                        className={cn('!h-9 !px-3 !border-none !bg-border', {
+                            'placeholder:text-title': pathname === PATHS.HOME,
+                        })}
+                    />
                 </Label>
             </Modal.Trigger>
             <Modal.Content disableCloseBtn>

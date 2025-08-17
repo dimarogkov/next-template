@@ -12,13 +12,10 @@ const DevIcon: FC<Props> = ({ devIcon, className = '' }) => {
 
     return (
         <div
-            className={`relative flex flex-col gap-2 w-full text-center p-5 rounded-md border border-border cursor-pointer transition-colors duration-300 hover:text-title hover:bg-border ${className}`}
+            className={`relative flex items-center gap-2 px-3.5 py-1 rounded-full border border-border whitespace-nowrap ${className}`}
         >
-            <i className={`text-[32px] sm:text-[40px] ${icon}`} />
-
-            <Text size='large' className='select-none'>
-                {text}
-            </Text>
+            <i className={`text-xl ${icon}`} />
+            <Text className='select-none !w-fit'>{text}</Text>
         </div>
     );
 };

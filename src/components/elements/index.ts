@@ -6,6 +6,7 @@ import HeaderSearch from './HeaderSearch';
 import HeaderSearchLink from './HeaderSearchLink';
 import HeaderSwitch from './HeaderSwitch';
 import HomeBg from './HomeBg';
+import HomeSlider from './HomeSlider';
 import ScrollTopBtn from './ScrollTopBtn';
 import SidebarBtn from './SidebarBtn';
 import SidebarLink from './SidebarLink';
@@ -19,6 +20,7 @@ export {
     HeaderSearchLink,
     HeaderSwitch,
     HomeBg,
+    HomeSlider,
     IntroductionContent,
     ScrollTopBtn,
     SidebarBtn,
