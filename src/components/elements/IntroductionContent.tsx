@@ -9,7 +9,7 @@ const IntroductionContent = () => {
 
             <div className='flex flex-col gap-4 w-full'>
                 <Text size='large'>
-                    React Template is a modern, production-ready starter kit for building web applications with React
+                    Next Template is a modern, production-ready starter kit for building web applications with Next.js
                     and TypeScript.
                 </Text>
 
