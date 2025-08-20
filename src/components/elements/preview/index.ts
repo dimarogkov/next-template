@@ -4,6 +4,7 @@ import AvatarPreview from './AvatarPreview';
 import BadgePreview from './BadgePreview';
 import BreadcrumbPreview from './BreadcrumbPreview';
 import BtnPreview from './BtnPreview';
+import CardPreview from './CardPreview';
 import CheckboxPreview from './CheckboxPreview';
 import DropdownPreview from './DropdownPreview';
 import InputPasswordPreview from './InputPasswordPreview';
@@ -36,6 +37,7 @@ export {
     BadgePreview,
     BreadcrumbPreview,
     BtnPreview,
+    CardPreview,
     CheckboxPreview,
     DropdownPreview,
     InputPasswordPreview,

@@ -12,6 +12,7 @@ export const PATHS = {
             BADGE: '/badge',
             BREADCRUMB: '/breadcrumb',
             BTN: '/button',
+            CARD: '/card',
             CHECKBOX: '/checkbox',
             DROPDOWN: '/dropdown',
             INPUT: '/input',

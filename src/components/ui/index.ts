@@ -3,6 +3,7 @@ import Alert from './Alert';
 import { Avatar, AvatarGroup } from './Avatar';
 import Badge from './Badge';
 import Btn from './Btn';
+import Card from './Card';
 import Checkbox from './Checkbox';
 import Dropdown from './Dropdown';
 import ErrorMessage from './ErrorMessage';
@@ -31,6 +32,7 @@ export {
     AvatarGroup,
     Badge,
     Btn,
+    Card,
     Checkbox,
     Dropdown,
     ErrorMessage,

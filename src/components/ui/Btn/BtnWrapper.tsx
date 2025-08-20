@@ -13,6 +13,7 @@ const BtnWrapper: FC<Props> = forwardRef<HTMLButtonElement, Props>(
             <button
                 ref={ref}
                 {...props}
+                type={props.type || 'button'}
                 className={cn(
                     `flex items-center justify-center gap-1.5 w-full sm:w-fit h-10 rounded-md outline-none transition-all duration-300 will-change-transform active:scale-95 ${className}`,
                     {
