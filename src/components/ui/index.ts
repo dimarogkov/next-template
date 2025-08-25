@@ -12,6 +12,7 @@ import InputPassword from './InputPassword';
 import Label from './Label';
 import Loader from './Loader';
 import Modal from './Modal';
+import Pagination from './Pagination';
 import Progress from './Progress';
 import Radio from './Radio';
 import Select from './Select';
@@ -41,6 +42,7 @@ export {
     Label,
     Loader,
     Modal,
+    Pagination,
     Progress,
     Radio,
     Select,

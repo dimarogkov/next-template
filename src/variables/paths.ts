@@ -20,6 +20,7 @@ export const PATHS = {
             LABEL: '/label',
             LOADER: '/loader',
             MODAL: '/modal',
+            PAGINATION: '/pagination',
             PROGRESS: '/progress',
             RADIO: '/radio',
             SELECT: '/select',
