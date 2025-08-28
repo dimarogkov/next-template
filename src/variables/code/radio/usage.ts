@@ -1,10 +1,10 @@
 export const RADIO_USAGE_CODE = `<Radio name='radio' label='Radio' />`;
 
-export const RADIO_CONTROLLING_USAGE_CODE = `'use client';
+export const RADIO_CONTROLLED_USAGE_CODE = `'use client';
 import { useState } from 'react';
 import { Label, Radio } from '@/src/components/ui';
 
-const RadioPreview = () => {
+const RadioControlled = () => {
     const [selectedValue, setSelectedValue] = useState('');
 
     return (
@@ -32,4 +32,4 @@ const RadioPreview = () => {
     );
 };
 
-export default RadioPreview;`;
+export default RadioControlled;`;

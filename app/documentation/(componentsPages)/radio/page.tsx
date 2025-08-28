@@ -2,13 +2,14 @@ import { Metadata } from 'next';
 import {
     NPM_CLASSNAMES_CODE,
     NPM_LUCIDE_CODE,
+    RADIO_DEMO_CODE,
     RADIO_CODE,
     RADIO_USAGE_CODE,
-    RADIO_CONTROLLING_USAGE_CODE,
+    RADIO_CONTROLLED_USAGE_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { RadioPreview } from '@/src/components/elements/preview';
+import { RadioDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -50,8 +51,8 @@ const RadioPage = () => {
             codeArr: [RADIO_USAGE_CODE],
         },
         {
-            id: 'controlling',
-            title: 'Controlling',
+            id: 'controlled',
+            title: 'Controlled',
             link: '',
             description: (
                 <Text>
@@ -60,7 +61,7 @@ const RadioPage = () => {
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [RADIO_CONTROLLING_USAGE_CODE],
+            codeArr: [RADIO_CONTROLLED_USAGE_CODE],
         },
     ];
 
@@ -68,7 +69,10 @@ const RadioPage = () => {
         title: 'Radio',
         description:
             'A set of checkable buttons — known as radio buttons — where no more than one of the buttons can be checked at a time.',
-        preview: <RadioPreview />,
+        preview: {
+            demo: <RadioDemo />,
+            code: RADIO_DEMO_CODE,
+        },
         codeSections,
     };
 

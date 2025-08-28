@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import { INPUT_CODE, INPUT_USAGE_CODE, INPUT_CONTROLLING_USAGE_CODE } from '@/src/variables/code';
+import { INPUT_DEMO_CODE, INPUT_CODE, INPUT_USAGE_CODE, INPUT_CONTROLLED_USAGE_CODE } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { InputPreview } from '@/src/components/elements/preview';
+import { InputDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -33,8 +33,8 @@ const InputPage = () => {
             codeArr: [INPUT_USAGE_CODE],
         },
         {
-            id: 'controlling',
-            title: 'Controlling',
+            id: 'controlled',
+            title: 'Controlled',
             link: '',
             description: (
                 <Text>
@@ -43,14 +43,17 @@ const InputPage = () => {
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [INPUT_CONTROLLING_USAGE_CODE],
+            codeArr: [INPUT_CONTROLLED_USAGE_CODE],
         },
     ];
 
     const data: IDocumentationData = {
         title: 'Input',
         description: 'Displays a form input field or a component that looks like an input field.',
-        preview: <InputPreview />,
+        preview: {
+            demo: <InputDemo />,
+            code: INPUT_DEMO_CODE,
+        },
         codeSections,
     };
 

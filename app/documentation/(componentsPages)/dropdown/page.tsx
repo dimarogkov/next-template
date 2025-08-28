@@ -1,18 +1,19 @@
 import { Metadata } from 'next';
 import {
-    DROPDOWN_ALIGN_USAGE_CODE,
+    DROPDOWN_DEMO_CODE,
     DROPDOWN_CODE,
-    DROPDOWN_CONTENT_CODE,
-    DROPDOWN_POSITION_USAGE_CODE,
-    DROPDOWN_TRIGGER_CODE,
-    DROPDOWN_USAGE_CODE,
     DROPDOWN_WRAPPER_CODE,
+    DROPDOWN_TRIGGER_CODE,
+    DROPDOWN_CONTENT_CODE,
+    DROPDOWN_USAGE_CODE,
+    DROPDOWN_POSITION_USAGE_CODE,
+    DROPDOWN_ALIGN_USAGE_CODE,
     NPM_CLASSNAMES_CODE,
     NPM_FRAMER_MOTION_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { DropdownPreview } from '@/src/components/elements/preview';
+import { DropdownDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -89,7 +90,10 @@ const DropdownPage = () => {
     const data: IDocumentationData = {
         title: 'Dropdown',
         description: 'Displays a menu to the user — such as a set of actions or functions — triggered by a button.',
-        preview: <DropdownPreview />,
+        preview: {
+            demo: <DropdownDemo />,
+            code: DROPDOWN_DEMO_CODE,
+        },
         codeSections,
     };
 

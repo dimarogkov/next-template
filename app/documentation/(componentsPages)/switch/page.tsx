@@ -1,8 +1,14 @@
 import { Metadata } from 'next';
-import { NPM_CLASSNAMES_CODE, NPM_FRAMER_MOTION_CODE, SWITCH_CODE, SWITCH_USAGE_CODE } from '@/src/variables/code';
+import {
+    NPM_CLASSNAMES_CODE,
+    NPM_FRAMER_MOTION_CODE,
+    SWITCH_DEMO_CODE,
+    SWITCH_CODE,
+    SWITCH_USAGE_CODE,
+} from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { SwitchPreview } from '@/src/components/elements/preview';
+import { SwitchDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -48,7 +54,10 @@ const SwitchPage = () => {
     const data: IDocumentationData = {
         title: 'Switch',
         description: 'A control that allows the user to toggle between checked and not checked.',
-        preview: <SwitchPreview />,
+        preview: {
+            demo: <SwitchDemo />,
+            code: SWITCH_DEMO_CODE,
+        },
         codeSections,
     };
 

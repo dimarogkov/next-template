@@ -1,10 +1,10 @@
 export const TEXTAREA_USAGE_CODE = `<Textarea placeholder='Type your message here.' />`;
 
-export const TEXTAREA_CONTROLLING_USAGE_CODE = `'use client';
+export const TEXTAREA_CONTROLLED_USAGE_CODE = `'use client';
 import { useState } from 'react';
 import { Label, Textarea } from '@/src/components/ui';
 
-const TextareaPreview = () => {
+const TextareaControlled = () => {
     const [value, setValue] = useState('');
 
     return (
@@ -18,4 +18,4 @@ const TextareaPreview = () => {
     );
 };
 
-export default TextareaPreview;`;
+export default TextareaControlled;`;

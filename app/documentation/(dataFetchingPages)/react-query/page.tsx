@@ -1,18 +1,18 @@
 import { Metadata } from 'next';
 import {
+    NPM_CLASSNAMES_CODE,
+    NPM_LUCIDE_CODE,
     NPM_REACT_QUERY_CODE,
+    REACT_QUERY_DEMO_CODE,
     REACT_QUERY_CODE,
     REACT_QUERY_TYPE_CODE,
     REACT_QUERY_ADD_TODO_CODE,
     REACT_QUERY_TODO_CODE,
-    REACT_QUERY_USAGE_CODE,
     REACT_QUERY_PROVIDER_USAGE_CODE,
-    NPM_CLASSNAMES_CODE,
-    NPM_LUCIDE_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { ReactQueryPreview } from '@/src/components/elements/preview';
+import { ReactQueryDemo } from '@/src/components/elements/demo';
 
 export const metadata: Metadata = {
     title: 'React Query',
@@ -51,14 +51,17 @@ const ReactQueryPage = () => {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [REACT_QUERY_PROVIDER_USAGE_CODE, REACT_QUERY_USAGE_CODE],
+            codeArr: [REACT_QUERY_PROVIDER_USAGE_CODE, REACT_QUERY_DEMO_CODE],
         },
     ];
 
     const data: IDocumentationData = {
         title: 'React Query',
         description: 'Powerful asynchronous state management for TS/JS and React.',
-        preview: <ReactQueryPreview />,
+        preview: {
+            demo: <ReactQueryDemo />,
+            code: REACT_QUERY_DEMO_CODE,
+        },
         codeSections,
     };
 

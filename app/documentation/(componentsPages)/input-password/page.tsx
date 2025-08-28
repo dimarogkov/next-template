@@ -1,13 +1,14 @@
 import { Metadata } from 'next';
 import {
+    INPUT_PASSWORD_DEMO_CODE,
     INPUT_PASSWORD_CODE,
     INPUT_PASSWORD_USAGE_CODE,
-    INPUT_PASSWORD_CONTROLLING_USAGE_CODE,
+    INPUT_PASSWORD_CONTROLLED_USAGE_CODE,
     NPM_LUCIDE_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { InputPasswordPreview } from '@/src/components/elements/preview';
+import { InputPasswordDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -46,8 +47,8 @@ const InputPasswordPage = () => {
             codeArr: [INPUT_PASSWORD_USAGE_CODE],
         },
         {
-            id: 'controlling',
-            title: 'Controlling',
+            id: 'controlled',
+            title: 'Controlled',
             link: '',
             description: (
                 <Text>
@@ -56,14 +57,17 @@ const InputPasswordPage = () => {
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [INPUT_PASSWORD_CONTROLLING_USAGE_CODE],
+            codeArr: [INPUT_PASSWORD_CONTROLLED_USAGE_CODE],
         },
     ];
 
     const data: IDocumentationData = {
         title: 'Input Password',
         description: 'Displays a form input field or a component that looks like an input field.',
-        preview: <InputPasswordPreview />,
+        preview: {
+            demo: <InputPasswordDemo />,
+            code: INPUT_PASSWORD_DEMO_CODE,
+        },
         codeSections,
     };
 

@@ -5,6 +5,7 @@ import {
     ACCORDION_ITEM_CODE,
     ACCORDION_TITLE_CODE,
     ACCORDION_CONTENT_CODE,
+    ACCORDION_DEMO_CODE,
     ACCORDION_USAGE_CODE,
     ACCORDION_ACTIVE_USAGE_CODE,
     NPM_CLASSNAMES_CODE,
@@ -13,7 +14,7 @@ import {
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { AccordionPreview } from '@/src/components/elements/preview';
+import { AccordionDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -79,7 +80,10 @@ const AccordionPage = () => {
     const data: IDocumentationData = {
         title: 'Accordion',
         description: 'A vertically stacked set of interactive headings that each reveal a section of content.',
-        preview: <AccordionPreview />,
+        preview: {
+            demo: <AccordionDemo />,
+            code: ACCORDION_DEMO_CODE,
+        },
         codeSections,
     };
 

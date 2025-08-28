@@ -1,3 +1,8 @@
+export interface IDocumentationPreview {
+    demo: JSX.Element;
+    code: string;
+}
+
 export interface IDocumentationCodeArr {
     label: string;
     code: string;
@@ -15,7 +20,7 @@ export interface IDocumentationCodeSection {
 export interface IDocumentationData {
     title: string;
     description: string;
-    preview: JSX.Element;
+    preview: IDocumentationPreview;
     codeSections: IDocumentationCodeSection[];
 }
 

@@ -3,14 +3,14 @@ import {
     NPM_HOOK_FORM_CODE,
     NPM_HOOK_FORM_RESOLVERS_CODE,
     NPM_ZOD_CODE,
+    ZOD_DEMO_CODE,
     ZOD_CODE,
     ZOD_SCHEMA_CODE,
-    ZOD_USAGE_CODE,
     ZOP_OPTIONS_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { ZodPreview } from '@/src/components/elements/preview';
+import { ZodDemo } from '@/src/components/elements/demo';
 
 export const metadata: Metadata = {
     title: 'Zod',
@@ -48,7 +48,7 @@ const ZodPage = () => {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [ZOD_USAGE_CODE],
+            codeArr: [ZOD_DEMO_CODE],
         },
     ];
 
@@ -56,7 +56,10 @@ const ZodPage = () => {
         title: 'Validation with Zod',
         description:
             'A popular schema validation library seamlessly integrated with React Hook Form for building dynamic and reliable forms.',
-        preview: <ZodPreview />,
+        preview: {
+            demo: <ZodDemo />,
+            code: ZOD_DEMO_CODE,
+        },
         codeSections,
     };
 

@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import { SEPARATOR_CODE, SEPARATOR_USAGE_CODE } from '@/src/variables/code';
+import { SEPARATOR_DEMO_CODE, SEPARATOR_CODE, SEPARATOR_USAGE_CODE } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { SeparatorPreview } from '@/src/components/elements/preview';
+import { SeparatorDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -37,7 +37,10 @@ const SeparatorPage = () => {
     const data: IDocumentationData = {
         title: 'Separator',
         description: 'Visually or semantically separates content.',
-        preview: <SeparatorPreview />,
+        preview: {
+            demo: <SeparatorDemo />,
+            code: SEPARATOR_DEMO_CODE,
+        },
         codeSections,
     };
 

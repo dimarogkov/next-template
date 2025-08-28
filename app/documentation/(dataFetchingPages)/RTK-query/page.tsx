@@ -6,15 +6,15 @@ import {
     REACT_QUERY_TYPE_CODE,
     REACT_QUERY_ADD_TODO_CODE,
     REACT_QUERY_TODO_CODE,
+    REDUX_TOOLKIT_PROVIDER_CODE,
     REDUX_TOOLKIT_PROVIDER_USAGE_CODE,
+    RTK_QUERY_DEMO_CODE,
     RTK_QUERY_CODE,
     RTK_QUERY_SLICE_CODE,
-    RTK_QUERY_USAGE_CODE,
-    REDUX_TOOLKIT_PROVIDER_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { RtkQueryPreview } from '@/src/components/elements/preview';
+import { RtkQueryDemo } from '@/src/components/elements/demo';
 
 export const metadata: Metadata = {
     title: 'RTK Query',
@@ -55,7 +55,7 @@ const RtkQueryPage = () => {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [REDUX_TOOLKIT_PROVIDER_USAGE_CODE, RTK_QUERY_USAGE_CODE],
+            codeArr: [REDUX_TOOLKIT_PROVIDER_USAGE_CODE, RTK_QUERY_DEMO_CODE],
         },
     ];
 
@@ -63,7 +63,10 @@ const RtkQueryPage = () => {
         title: 'RTK Query',
         description:
             'Powerful data fetching and caching tool. It is designed to simplify common cases for loading data in a web application, eliminating the need to hand-write data fetching & caching logic yourself.',
-        preview: <RtkQueryPreview />,
+        preview: {
+            demo: <RtkQueryDemo />,
+            code: RTK_QUERY_DEMO_CODE,
+        },
         codeSections,
     };
 

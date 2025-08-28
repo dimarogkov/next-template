@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import { TITLE_CODE, TITLE_USAGE_CODE } from '@/src/variables/code';
+import { TITLE_DEMO_CODE, TITLE_CODE, TITLE_USAGE_CODE } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { TitlePreview } from '@/src/components/elements/preview';
+import { TitleDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -37,7 +37,10 @@ const TitlePage = () => {
     const data: IDocumentationData = {
         title: 'Title',
         description: 'Styles for headings.',
-        preview: <TitlePreview />,
+        preview: {
+            demo: <TitleDemo />,
+            code: TITLE_DEMO_CODE,
+        },
         codeSections,
     };
 

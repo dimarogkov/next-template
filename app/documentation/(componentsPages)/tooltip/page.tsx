@@ -1,17 +1,18 @@
 import { Metadata } from 'next';
 import {
+    NPM_CLASSNAMES_CODE,
+    NPM_LUCIDE_CODE,
+    NPM_FRAMER_MOTION_CODE,
+    TOOLTIP_DEMO_CODE,
     TOOLTIP_CODE,
     TOOLTIP_WRAPPER_CODE,
     TOOLTIP_TRIGGER_CODE,
     TOOLTIP_CONTENT_CODE,
     TOOLTIP_USAGE_CODE,
-    NPM_CLASSNAMES_CODE,
-    NPM_LUCIDE_CODE,
-    NPM_FRAMER_MOTION_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { TooltipPreview } from '@/src/components/elements/preview';
+import { TooltipDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -64,7 +65,10 @@ const TooltipPage = () => {
         title: 'Tooltip',
         description:
             'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
-        preview: <TooltipPreview />,
+        preview: {
+            demo: <TooltipDemo />,
+            code: TOOLTIP_DEMO_CODE,
+        },
         codeSections,
     };
 

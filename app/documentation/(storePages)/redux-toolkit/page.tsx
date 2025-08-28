@@ -1,15 +1,15 @@
 import { Metadata } from 'next';
 import {
     NPM_REDUX_TOOLKIT_CODE,
+    REDUX_TOOLKIT_DEMO_CODE,
     REDUX_TOOLKIT_CODE,
     REDUX_TOOLKIT_PROVIDER_CODE,
     REDUX_TOOLKIT_COUNT_CODE,
     REDUX_TOOLKIT_PROVIDER_USAGE_CODE,
-    REDUX_TOOLKIT_USAGE_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { ReduxToolkitPreview } from '@/src/components/elements/preview';
+import { ReduxToolkitDemo } from '@/src/components/elements/demo';
 
 export const metadata: Metadata = {
     title: 'Redux Toolkit',
@@ -43,14 +43,17 @@ const ReduxToolkitPage = () => {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [REDUX_TOOLKIT_PROVIDER_USAGE_CODE, REDUX_TOOLKIT_USAGE_CODE],
+            codeArr: [REDUX_TOOLKIT_PROVIDER_USAGE_CODE, REDUX_TOOLKIT_DEMO_CODE],
         },
     ];
 
     const data: IDocumentationData = {
         title: 'Redux Toolkit',
         description: 'The official, opinionated, batteries-included toolset for efficient Redux development.',
-        preview: <ReduxToolkitPreview />,
+        preview: {
+            demo: <ReduxToolkitDemo />,
+            code: REDUX_TOOLKIT_DEMO_CODE,
+        },
         codeSections,
     };
 

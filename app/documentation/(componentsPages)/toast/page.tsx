@@ -3,14 +3,15 @@ import {
     NPM_CLASSNAMES_CODE,
     NPM_LUCIDE_CODE,
     NPM_HOT_TOAST_CODE,
+    TOAST_DEMO_CODE,
     TOAST_TYPE_CODE,
     TOAST_CODE,
-    TOAST_MAIN_USAGE_CODE,
     TOAST_USAGE_CODE,
+    TOAST_MAIN_USAGE_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { ToastPreview } from '@/src/components/elements/preview';
+import { ToastDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -61,7 +62,10 @@ const ToastPage = () => {
     const data: IDocumentationData = {
         title: 'Toast',
         description: 'A succinct message that is displayed temporarily.',
-        preview: <ToastPreview />,
+        preview: {
+            demo: <ToastDemo />,
+            code: TOAST_DEMO_CODE,
+        },
         codeSections,
     };
 

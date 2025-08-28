@@ -1,14 +1,15 @@
 import { Metadata } from 'next';
 import {
+    CHECKBOX_CODE,
+    CHECKBOX_DEMO_CODE,
+    CHECKBOX_USAGE_CODE,
+    CHECKBOX_CONTROLLED_USAGE_CODE,
     NPM_CLASSNAMES_CODE,
     NPM_LUCIDE_CODE,
-    CHECKBOX_CODE,
-    CHECKBOX_USAGE_CODE,
-    CHECKBOX_CONTROLLING_USAGE_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { CheckboxPreview } from '@/src/components/elements/preview';
+import { CheckboxDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -50,8 +51,8 @@ const CheckboxPage = () => {
             codeArr: [CHECKBOX_USAGE_CODE],
         },
         {
-            id: 'controlling',
-            title: 'Controlling',
+            id: 'controlled',
+            title: 'Controlled',
             link: '',
             description: (
                 <Text>
@@ -60,14 +61,17 @@ const CheckboxPage = () => {
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [CHECKBOX_CONTROLLING_USAGE_CODE],
+            codeArr: [CHECKBOX_CONTROLLED_USAGE_CODE],
         },
     ];
 
     const data: IDocumentationData = {
         title: 'Checkbox',
         description: 'A control that allows the user to toggle between checked and not checked.',
-        preview: <CheckboxPreview />,
+        preview: {
+            demo: <CheckboxDemo />,
+            code: CHECKBOX_DEMO_CODE,
+        },
         codeSections,
     };
 

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import {
+    MODAL_DEMO_CODE,
     MODAL_CODE,
     MODAL_WRAPPER_CODE,
     MODAL_TRIGGER_CODE,
@@ -13,7 +14,7 @@ import {
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { ModalPreview } from '@/src/components/elements/preview';
+import { ModalDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -81,7 +82,10 @@ const ModalPage = () => {
         title: 'Modal',
         description:
             'A window overlaid on either the primary window or another modal window, rendering the content underneath inert.',
-        preview: <ModalPreview />,
+        preview: {
+            demo: <ModalDemo />,
+            code: MODAL_DEMO_CODE,
+        },
         codeSections,
     };
 

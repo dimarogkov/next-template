@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 import {
+    NPM_LUCIDE_CODE,
+    NPM_CLASSNAMES_CODE,
+    PAGINATION_DEMO_CODE,
     PAGINATION_CODE,
     PAGINATION_WRAPPER_CODE,
     PAGINATION_PREVIOUS_CODE,
@@ -9,13 +12,13 @@ import {
     PAGINATION_HOOK_CODE,
     PAGINATION_HELPER_CODE,
     PAGINATION_USAGE_CODE,
+    PAGINATION_HOOK_USAGE_CODE,
     PAGINATION_DATA_USAGE_CODE,
-    NPM_LUCIDE_CODE,
-    NPM_CLASSNAMES_CODE,
+    PAGINATION_PAGES_USAGE_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { PaginationPreview } from '@/src/components/elements/preview';
+import { PaginationDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -53,6 +56,8 @@ const PaginationPage = () => {
                 { label: 'ModalContent.tsx', code: PAGINATION_ITEM_CODE },
                 { label: 'ModalLayer.tsx', code: PAGINATION_NEXT_CODE },
                 { label: 'ModalClose.tsx', code: PAGINATION_ELLIPSIS_CODE },
+                { label: 'usePagination.tsx', code: PAGINATION_HOOK_CODE },
+                { label: 'getPaginationRange.ts', code: PAGINATION_HELPER_CODE },
             ],
         },
         {
@@ -72,19 +77,18 @@ const PaginationPage = () => {
                     Here&apos;s an example of controlling the pagination state and using the state to chunk the data.
                 </Text>
             ),
-            withAccordion: true,
-            codeArr: [
-                { label: 'PaginationPreview.tsx', code: PAGINATION_DATA_USAGE_CODE },
-                { label: 'usePagination.tsx', code: PAGINATION_HOOK_CODE },
-                { label: 'getPaginationRange.ts', code: PAGINATION_HELPER_CODE },
-            ],
+            withAccordion: false,
+            codeArr: [PAGINATION_HOOK_USAGE_CODE, PAGINATION_DATA_USAGE_CODE, PAGINATION_PAGES_USAGE_CODE],
         },
     ];
 
     const data: IDocumentationData = {
         title: 'Pagination',
         description: 'Pagination with page navigation, next and previous links.',
-        preview: <PaginationPreview />,
+        preview: {
+            demo: <PaginationDemo />,
+            code: PAGINATION_DEMO_CODE,
+        },
         codeSections,
     };
 

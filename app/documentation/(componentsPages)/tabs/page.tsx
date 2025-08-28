@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import {
     NPM_CLASSNAMES_CODE,
     NPM_FRAMER_MOTION_CODE,
+    TABS_DEMO_CODE,
     TABS_CODE,
     TABS_WRAPPER_CODE,
     TABS_LIST_CODE,
@@ -14,7 +15,7 @@ import {
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { TabsPreview } from '@/src/components/elements/preview';
+import { TabsDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -93,7 +94,10 @@ const TabsPage = () => {
     const data: IDocumentationData = {
         title: 'Tabs',
         description: 'A set of layered sections of content — known as tab panels — that are displayed one at a time.',
-        preview: <TabsPreview />,
+        preview: {
+            demo: <TabsDemo />,
+            code: TABS_DEMO_CODE,
+        },
         codeSections,
     };
 

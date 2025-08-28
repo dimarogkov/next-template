@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import { NPM_ZUSTAND_CODE, ZUSTAND_CODE, ZUSTAND_COUNT_CODE, ZUSTAND_USAGE_CODE } from '@/src/variables/code';
+import { NPM_ZUSTAND_CODE, ZUSTAND_DEMO_CODE, ZUSTAND_CODE, ZUSTAND_COUNT_CODE } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { ZustandPreview } from '@/src/components/elements/preview';
+import { ZustandDemo } from '@/src/components/elements/demo';
 
 export const metadata: Metadata = {
     title: 'Zustand',
@@ -35,14 +35,17 @@ const ZustandPage = () => {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [ZUSTAND_USAGE_CODE],
+            codeArr: [ZUSTAND_DEMO_CODE],
         },
     ];
 
     const data: IDocumentationData = {
         title: 'Zustand',
         description: 'A small, fast, and scalable bearbones state management solution.',
-        preview: <ZustandPreview />,
+        preview: {
+            demo: <ZustandDemo />,
+            code: ZUSTAND_DEMO_CODE,
+        },
         codeSections,
     };
 

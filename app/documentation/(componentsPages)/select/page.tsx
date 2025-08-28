@@ -3,6 +3,7 @@ import {
     NPM_CLASSNAMES_CODE,
     NPM_LUCIDE_CODE,
     NPM_FRAMER_MOTION_CODE,
+    SELECT_DEMO_CODE,
     SELECT_TYPE_CODE,
     SELECT_CODE,
     SELECT_WRAPPER_CODE,
@@ -10,11 +11,11 @@ import {
     SELECT_OPTIONS_CODE,
     SELECT_OPTION_CODE,
     SELECT_USAGE_CODE,
-    SELECT_CONTROLLING_USAGE_CODE,
+    SELECT_CONTROLLED_USAGE_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { SelectPreview } from '@/src/components/elements/preview';
+import { SelectDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -65,8 +66,8 @@ const SelectPage = () => {
             codeArr: [SELECT_USAGE_CODE],
         },
         {
-            id: 'controlling',
-            title: 'Controlling',
+            id: 'controlled',
+            title: 'Controlled',
             link: '',
             description: (
                 <Text>
@@ -75,14 +76,17 @@ const SelectPage = () => {
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [SELECT_CONTROLLING_USAGE_CODE],
+            codeArr: [SELECT_CONTROLLED_USAGE_CODE],
         },
     ];
 
     const data: IDocumentationData = {
         title: 'Select',
         description: 'Displays a list of options for the user to pick from — triggered by a button.',
-        preview: <SelectPreview />,
+        preview: {
+            demo: <SelectDemo />,
+            code: SELECT_DEMO_CODE,
+        },
         codeSections,
     };
 

@@ -4,13 +4,15 @@ import {
     ALERT_WRAPPER_CODE,
     ALERT_TITLE_CODE,
     ALERT_DESCRIPTION_CODE,
+    ALERT_DEMO_CODE,
     ALERT_USAGE_CODE,
+    ALERT_ICON_USAGE_CODE,
     NPM_CLASSNAMES_CODE,
     NPM_LUCIDE_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { AlertPreview } from '@/src/components/elements/preview';
+import { AlertDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -54,14 +56,17 @@ const AlertPage = () => {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [ALERT_USAGE_CODE],
+            codeArr: [ALERT_ICON_USAGE_CODE, ALERT_USAGE_CODE],
         },
     ];
 
     const data: IDocumentationData = {
         title: 'Alert',
         description: 'Displays a callout for user attention.',
-        preview: <AlertPreview />,
+        preview: {
+            demo: <AlertDemo />,
+            code: ALERT_DEMO_CODE,
+        },
         codeSections,
     };
 

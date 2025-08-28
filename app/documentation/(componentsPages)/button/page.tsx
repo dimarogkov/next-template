@@ -1,15 +1,16 @@
 import { Metadata } from 'next';
 import {
-    BTN_LINK_CODE,
     BTN_CODE,
-    BTN_USAGE_CODE,
-    NPM_CLASSNAMES_CODE,
-    BTN_LINK_USAGE_CODE,
     BTN_WRAPPER_CODE,
+    BTN_LINK_CODE,
+    BTN_DEMO_CODE,
+    BTN_USAGE_CODE,
+    BTN_LINK_USAGE_CODE,
+    NPM_CLASSNAMES_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { BtnPreview } from '@/src/components/elements/preview';
+import { BtnDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -70,7 +71,10 @@ const BtnPage = () => {
     const data: IDocumentationData = {
         title: 'Button',
         description: 'Displays a button or a component that looks like a button.',
-        preview: <BtnPreview />,
+        preview: {
+            demo: <BtnDemo />,
+            code: BTN_DEMO_CODE,
+        },
         codeSections,
     };
 

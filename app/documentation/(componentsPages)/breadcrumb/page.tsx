@@ -1,8 +1,14 @@
 import { Metadata } from 'next';
-import { BREADCRUMB_CODE, BREADCRUMB_HELPERS_CODE, BREADCRUMB_USAGE_CODE, NPM_LUCIDE_CODE } from '@/src/variables/code';
+import {
+    BREADCRUMB_CODE,
+    BREADCRUMB_HELPERS_CODE,
+    BREADCRUMB_DEMO_CODE,
+    BREADCRUMB_USAGE_CODE,
+    NPM_LUCIDE_CODE,
+} from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { BreadcrumbPreview } from '@/src/components/elements/preview';
+import { BreadcrumbDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -48,7 +54,10 @@ const BreadcrumbPage = () => {
     const data: IDocumentationData = {
         title: 'Breadcrumb',
         description: 'Displays the path to the current resource using a hierarchy of links.',
-        preview: <BreadcrumbPreview />,
+        preview: {
+            demo: <BreadcrumbDemo />,
+            code: BREADCRUMB_DEMO_CODE,
+        },
         codeSections,
     };
 

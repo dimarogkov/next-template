@@ -37,7 +37,7 @@ const DocumentationDetailClient: FC<Props> = ({ data }) => {
                     <Text size='large'>{description}</Text>
                 </ComponentsHead>
 
-                <ComponentsPreview>{preview}</ComponentsPreview>
+                <ComponentsPreview preview={preview} />
 
                 {codeSections.map(({ id, title, link, description, withAccordion, codeArr }) => (
                     <Fragment key={id}>

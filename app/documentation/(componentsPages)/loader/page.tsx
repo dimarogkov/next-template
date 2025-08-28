@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import { LOADER_CODE, LOADER_USAGE_CODE } from '@/src/variables/code';
+import { LOADER_DEMO_CODE, LOADER_CODE, LOADER_USAGE_CODE } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { LoaderPreview } from '@/src/components/elements/preview';
+import { LoaderDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -37,7 +37,10 @@ const LoaderPage = () => {
     const data: IDocumentationData = {
         title: 'Loader',
         description: 'A reusable component for indicating loading or processing states.',
-        preview: <LoaderPreview />,
+        preview: {
+            demo: <LoaderDemo />,
+            code: LOADER_DEMO_CODE,
+        },
         codeSections,
     };
 

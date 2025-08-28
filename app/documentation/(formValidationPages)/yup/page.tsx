@@ -3,14 +3,14 @@ import {
     NPM_HOOK_FORM_CODE,
     NPM_HOOK_FORM_RESOLVERS_CODE,
     NPM_YUP_CODE,
+    YUP_DEMO_CODE,
     YUP_CODE,
-    YUP_OPTIONS_CODE,
     YUP_SCHEMA_CODE,
-    YUP_USAGE_CODE,
+    YUP_OPTIONS_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { YupPreview } from '@/src/components/elements/preview';
+import { YupDemo } from '@/src/components/elements/demo';
 
 export const metadata: Metadata = {
     title: 'Yup',
@@ -48,7 +48,7 @@ const YupPage = () => {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [YUP_USAGE_CODE],
+            codeArr: [YUP_DEMO_CODE],
         },
     ];
 
@@ -56,7 +56,10 @@ const YupPage = () => {
         title: 'Validation with Yup',
         description:
             'A popular schema validation library seamlessly integrated with React Hook Form for building dynamic and reliable forms.',
-        preview: <YupPreview />,
+        preview: {
+            demo: <YupDemo />,
+            code: YUP_DEMO_CODE,
+        },
         codeSections,
     };
 

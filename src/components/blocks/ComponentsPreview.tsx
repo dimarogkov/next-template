@@ -1,18 +1,30 @@
-import { FC, ReactNode } from 'react';
-import { Title } from '@/src/components/ui';
+import { FC } from 'react';
+import { IDocumentationPreview } from '@/src/types/interfaces/DocumentationData';
+import ComponentsCodeDetail from './ComponentsCodeDetail';
+import { Tabs } from '@/src/components/ui';
 
 type Props = {
-    children?: ReactNode;
+    preview: IDocumentationPreview;
 };
 
-const ComponentsPreview: FC<Props> = ({ children }) => {
+const ComponentsPreview: FC<Props> = ({ preview }) => {
+    const { demo, code } = preview;
+
     return (
         <div className='relative w-full py-4 md:py-5'>
-            <Title size='h4' className='mb-3 md:mb-5 last:mb-0'>
-                Preview
-            </Title>
+            <Tabs>
+                <Tabs.TabList>
+                    <Tabs.Tab>Preview</Tabs.Tab>
+                    <Tabs.Tab>Code</Tabs.Tab>
+                </Tabs.TabList>
+                <Tabs.Panels>
+                    <Tabs.Panel>{demo}</Tabs.Panel>
 
-            <div className='relative w-full rounded-md border border-border p-3 md:p-4'>{children}</div>
+                    <Tabs.Panel className='!p-0'>
+                        <ComponentsCodeDetail code={code} type='code' />
+                    </Tabs.Panel>
+                </Tabs.Panels>
+            </Tabs>
         </div>
     );
 };

@@ -1,19 +1,20 @@
 import { Metadata } from 'next';
 import {
-    NPM_CLASSNAMES_CODE,
-    NPM_FRAMER_MOTION_CODE,
     AVATAR_CODE,
     AVATAR_WRAPPER_CODE,
     AVATAR_LINK_CODE,
     AVATAR_IMG_CODE,
     AVATAR_GROUP_CODE,
+    AVATAR_DEMO_CODE,
     AVATAR_USAGE_CODE,
     AVATAR_LINK_USAGE_CODE,
     AVATAR_GROUP_USAGE_CODE,
+    NPM_CLASSNAMES_CODE,
+    NPM_FRAMER_MOTION_CODE,
 } from '@/src/variables/code';
 import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
-import { AvatarPreview } from '@/src/components/elements/preview';
+import { AvatarDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
 
 export const metadata: Metadata = {
@@ -93,7 +94,10 @@ const AvatarPage = () => {
     const data: IDocumentationData = {
         title: 'Avatar',
         description: 'An image element with a fallback for representing the user.',
-        preview: <AvatarPreview />,
+        preview: {
+            demo: <AvatarDemo />,
+            code: AVATAR_DEMO_CODE,
+        },
         codeSections,
     };
 
