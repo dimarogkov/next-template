@@ -1,6 +1,10 @@
 import { Metadata } from 'next';
 import { INPUT_DEMO_CODE, LABEL_CODE, LABEL_USAGE_CODE } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { InputDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -10,6 +14,11 @@ export const metadata: Metadata = {
 };
 
 const LabelPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <InputDemo />,
+        code: INPUT_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'code',
@@ -37,10 +46,7 @@ const LabelPage = () => {
     const data: IDocumentationData = {
         title: 'Label',
         description: 'A reusable component for wrapping Form elements.',
-        preview: {
-            demo: <InputDemo />,
-            code: INPUT_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

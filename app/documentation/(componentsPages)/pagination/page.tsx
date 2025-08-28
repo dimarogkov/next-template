@@ -16,7 +16,11 @@ import {
     PAGINATION_DATA_USAGE_CODE,
     PAGINATION_PAGES_USAGE_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { PaginationDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -26,6 +30,11 @@ export const metadata: Metadata = {
 };
 
 const PaginationPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <PaginationDemo />,
+        code: PAGINATION_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -85,10 +94,7 @@ const PaginationPage = () => {
     const data: IDocumentationData = {
         title: 'Pagination',
         description: 'Pagination with page navigation, next and previous links.',
-        preview: {
-            demo: <PaginationDemo />,
-            code: PAGINATION_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

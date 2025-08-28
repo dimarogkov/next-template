@@ -1,6 +1,10 @@
 import { Metadata } from 'next';
 import { INPUT_DEMO_CODE, INPUT_CODE, INPUT_USAGE_CODE, INPUT_CONTROLLED_USAGE_CODE } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { InputDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -10,6 +14,11 @@ export const metadata: Metadata = {
 };
 
 const InputPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <InputDemo />,
+        code: INPUT_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'code',
@@ -50,10 +59,7 @@ const InputPage = () => {
     const data: IDocumentationData = {
         title: 'Input',
         description: 'Displays a form input field or a component that looks like an input field.',
-        preview: {
-            demo: <InputDemo />,
-            code: INPUT_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

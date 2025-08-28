@@ -1,6 +1,10 @@
 import { Metadata } from 'next';
 import { NPM_CLASSNAMES_CODE, TEXT_DEMO_CODE, TEXT_CODE, TEXT_USAGE_CODE } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { TextDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -10,6 +14,11 @@ export const metadata: Metadata = {
 };
 
 const TextPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <TextDemo />,
+        code: TEXT_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -45,10 +54,7 @@ const TextPage = () => {
     const data: IDocumentationData = {
         title: 'Text',
         description: 'Styles for text.',
-        preview: {
-            demo: <TextDemo />,
-            code: TEXT_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

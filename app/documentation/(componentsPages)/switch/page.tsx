@@ -6,7 +6,11 @@ import {
     SWITCH_CODE,
     SWITCH_USAGE_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { SwitchDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -16,6 +20,11 @@ export const metadata: Metadata = {
 };
 
 const SwitchPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <SwitchDemo />,
+        code: SWITCH_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -54,10 +63,7 @@ const SwitchPage = () => {
     const data: IDocumentationData = {
         title: 'Switch',
         description: 'A control that allows the user to toggle between checked and not checked.',
-        preview: {
-            demo: <SwitchDemo />,
-            code: SWITCH_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

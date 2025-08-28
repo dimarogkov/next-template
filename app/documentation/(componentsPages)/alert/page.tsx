@@ -10,7 +10,11 @@ import {
     NPM_CLASSNAMES_CODE,
     NPM_LUCIDE_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { AlertDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -20,6 +24,11 @@ export const metadata: Metadata = {
 };
 
 const AlertPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <AlertDemo />,
+        code: ALERT_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -63,10 +72,7 @@ const AlertPage = () => {
     const data: IDocumentationData = {
         title: 'Alert',
         description: 'Displays a callout for user attention.',
-        preview: {
-            demo: <AlertDemo />,
-            code: ALERT_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

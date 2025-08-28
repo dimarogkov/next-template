@@ -9,7 +9,11 @@ import {
     TOAST_USAGE_CODE,
     TOAST_MAIN_USAGE_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { ToastDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -19,6 +23,11 @@ export const metadata: Metadata = {
 };
 
 const ToastPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <ToastDemo />,
+        code: TOAST_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -62,10 +71,7 @@ const ToastPage = () => {
     const data: IDocumentationData = {
         title: 'Toast',
         description: 'A succinct message that is displayed temporarily.',
-        preview: {
-            demo: <ToastDemo />,
-            code: TOAST_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

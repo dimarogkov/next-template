@@ -1,6 +1,10 @@
 import { Metadata } from 'next';
 import { SEPARATOR_DEMO_CODE, SEPARATOR_CODE, SEPARATOR_USAGE_CODE } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { SeparatorDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -10,6 +14,11 @@ export const metadata: Metadata = {
 };
 
 const SeparatorPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <SeparatorDemo />,
+        code: SEPARATOR_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'code',
@@ -37,10 +46,7 @@ const SeparatorPage = () => {
     const data: IDocumentationData = {
         title: 'Separator',
         description: 'Visually or semantically separates content.',
-        preview: {
-            demo: <SeparatorDemo />,
-            code: SEPARATOR_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

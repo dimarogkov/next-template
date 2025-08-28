@@ -8,7 +8,11 @@ import {
     YUP_SCHEMA_CODE,
     YUP_OPTIONS_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { YupDemo } from '@/src/components/elements/demo';
 
@@ -17,6 +21,11 @@ export const metadata: Metadata = {
 };
 
 const YupPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <YupDemo />,
+        code: YUP_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -56,10 +65,7 @@ const YupPage = () => {
         title: 'Validation with Yup',
         description:
             'A popular schema validation library seamlessly integrated with React Hook Form for building dynamic and reliable forms.',
-        preview: {
-            demo: <YupDemo />,
-            code: YUP_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

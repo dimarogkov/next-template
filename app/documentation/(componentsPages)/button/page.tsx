@@ -8,7 +8,11 @@ import {
     BTN_LINK_USAGE_CODE,
     NPM_CLASSNAMES_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { BtnDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -18,6 +22,11 @@ export const metadata: Metadata = {
 };
 
 const BtnPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <BtnDemo />,
+        code: BTN_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -71,10 +80,7 @@ const BtnPage = () => {
     const data: IDocumentationData = {
         title: 'Button',
         description: 'Displays a button or a component that looks like a button.',
-        preview: {
-            demo: <BtnDemo />,
-            code: BTN_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

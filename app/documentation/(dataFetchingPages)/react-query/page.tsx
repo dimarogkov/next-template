@@ -10,7 +10,11 @@ import {
     REACT_QUERY_TODO_CODE,
     REACT_QUERY_PROVIDER_USAGE_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { ReactQueryDemo } from '@/src/components/elements/demo';
 
@@ -19,6 +23,11 @@ export const metadata: Metadata = {
 };
 
 const ReactQueryPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <ReactQueryDemo />,
+        code: REACT_QUERY_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -58,10 +67,7 @@ const ReactQueryPage = () => {
     const data: IDocumentationData = {
         title: 'React Query',
         description: 'Powerful asynchronous state management for TS/JS and React.',
-        preview: {
-            demo: <ReactQueryDemo />,
-            code: REACT_QUERY_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

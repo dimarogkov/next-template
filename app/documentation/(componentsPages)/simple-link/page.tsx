@@ -1,6 +1,10 @@
 import { Metadata } from 'next';
 import { SIMPLE_LINK_DEMO_CODE, SIMPLE_LINK_CODE, SIMPLE_LINK_USAGE_CODE } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { SimpleLinkDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -10,6 +14,11 @@ export const metadata: Metadata = {
 };
 
 const SimpleLinkPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <SimpleLinkDemo />,
+        code: SIMPLE_LINK_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'code',
@@ -38,10 +47,7 @@ const SimpleLinkPage = () => {
         title: 'Simple Link',
         description:
             'A simple text link styled for use inside components or previews. Useful for inline documentation, examples, or interactive UI snippets.',
-        preview: {
-            demo: <SimpleLinkDemo />,
-            code: SIMPLE_LINK_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

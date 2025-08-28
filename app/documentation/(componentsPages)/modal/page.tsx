@@ -12,7 +12,11 @@ import {
     NPM_FRAMER_MOTION_CODE,
     NPM_LUCIDE_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { ModalDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -22,6 +26,11 @@ export const metadata: Metadata = {
 };
 
 const ModalPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <ModalDemo />,
+        code: MODAL_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -82,10 +91,7 @@ const ModalPage = () => {
         title: 'Modal',
         description:
             'A window overlaid on either the primary window or another modal window, rendering the content underneath inert.',
-        preview: {
-            demo: <ModalDemo />,
-            code: MODAL_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

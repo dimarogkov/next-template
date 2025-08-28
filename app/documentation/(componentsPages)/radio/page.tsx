@@ -7,7 +7,11 @@ import {
     RADIO_USAGE_CODE,
     RADIO_CONTROLLED_USAGE_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { RadioDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -17,6 +21,11 @@ export const metadata: Metadata = {
 };
 
 const RadioPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <RadioDemo />,
+        code: RADIO_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -69,10 +78,7 @@ const RadioPage = () => {
         title: 'Radio',
         description:
             'A set of checkable buttons — known as radio buttons — where no more than one of the buttons can be checked at a time.',
-        preview: {
-            demo: <RadioDemo />,
-            code: RADIO_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

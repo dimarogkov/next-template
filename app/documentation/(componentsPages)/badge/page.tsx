@@ -1,6 +1,10 @@
 import { Metadata } from 'next';
 import { BADGE_CODE, BADGE_DEMO_CODE, BADGE_USAGE_CODE, BADGE_ICON_USAGE_CODE } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { BadgeDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -10,6 +14,11 @@ export const metadata: Metadata = {
 };
 
 const BadgePage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <BadgeDemo />,
+        code: BADGE_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'code',
@@ -50,10 +59,7 @@ const BadgePage = () => {
     const data: IDocumentationData = {
         title: 'Badge',
         description: 'Displays a badge or a component that looks like a badge.',
-        preview: {
-            demo: <BadgeDemo />,
-            code: BADGE_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

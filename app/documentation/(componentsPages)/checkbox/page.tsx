@@ -7,7 +7,11 @@ import {
     NPM_CLASSNAMES_CODE,
     NPM_LUCIDE_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { CheckboxDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -17,6 +21,11 @@ export const metadata: Metadata = {
 };
 
 const CheckboxPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <CheckboxDemo />,
+        code: CHECKBOX_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -68,10 +77,7 @@ const CheckboxPage = () => {
     const data: IDocumentationData = {
         title: 'Checkbox',
         description: 'A control that allows the user to toggle between checked and not checked.',
-        preview: {
-            demo: <CheckboxDemo />,
-            code: CHECKBOX_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

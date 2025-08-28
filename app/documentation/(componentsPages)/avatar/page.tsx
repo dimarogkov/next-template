@@ -12,7 +12,11 @@ import {
     NPM_CLASSNAMES_CODE,
     NPM_FRAMER_MOTION_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { AvatarDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -22,6 +26,11 @@ export const metadata: Metadata = {
 };
 
 const AvatarPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <AvatarDemo />,
+        code: AVATAR_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -94,10 +103,7 @@ const AvatarPage = () => {
     const data: IDocumentationData = {
         title: 'Avatar',
         description: 'An image element with a fallback for representing the user.',
-        preview: {
-            demo: <AvatarDemo />,
-            code: AVATAR_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

@@ -12,7 +12,11 @@ import {
     NPM_FRAMER_MOTION_CODE,
     NPM_LUCIDE_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { AccordionDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -22,6 +26,11 @@ export const metadata: Metadata = {
 };
 
 const AccordionPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <AccordionDemo />,
+        code: ACCORDION_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -80,10 +89,7 @@ const AccordionPage = () => {
     const data: IDocumentationData = {
         title: 'Accordion',
         description: 'A vertically stacked set of interactive headings that each reveal a section of content.',
-        preview: {
-            demo: <AccordionDemo />,
-            code: ACCORDION_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

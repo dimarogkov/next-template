@@ -10,7 +10,11 @@ import {
     TOOLTIP_CONTENT_CODE,
     TOOLTIP_USAGE_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { TooltipDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -20,6 +24,11 @@ export const metadata: Metadata = {
 };
 
 const TooltipPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <TooltipDemo />,
+        code: TOOLTIP_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -65,10 +74,7 @@ const TooltipPage = () => {
         title: 'Tooltip',
         description:
             'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
-        preview: {
-            demo: <TooltipDemo />,
-            code: TOOLTIP_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

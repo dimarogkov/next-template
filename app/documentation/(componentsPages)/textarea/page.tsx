@@ -5,7 +5,11 @@ import {
     TEXTAREA_USAGE_CODE,
     TEXTAREA_CONTROLLED_USAGE_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { TextareaDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -15,6 +19,11 @@ export const metadata: Metadata = {
 };
 
 const TextareaPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <TextareaDemo />,
+        code: TEXTAREA_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'code',
@@ -55,10 +64,7 @@ const TextareaPage = () => {
     const data: IDocumentationData = {
         title: 'Textarea',
         description: 'Displays a form textarea or a component that looks like a textarea.',
-        preview: {
-            demo: <TextareaDemo />,
-            code: TEXTAREA_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

@@ -11,7 +11,11 @@ import {
     NPM_CLASSNAMES_CODE,
     NPM_FRAMER_MOTION_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { DropdownDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -21,6 +25,11 @@ export const metadata: Metadata = {
 };
 
 const DropdownPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <DropdownDemo />,
+        code: DROPDOWN_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -90,10 +99,7 @@ const DropdownPage = () => {
     const data: IDocumentationData = {
         title: 'Dropdown',
         description: 'Displays a menu to the user — such as a set of actions or functions — triggered by a button.',
-        preview: {
-            demo: <DropdownDemo />,
-            code: DROPDOWN_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

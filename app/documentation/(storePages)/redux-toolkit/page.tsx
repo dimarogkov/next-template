@@ -7,7 +7,11 @@ import {
     REDUX_TOOLKIT_COUNT_CODE,
     REDUX_TOOLKIT_PROVIDER_USAGE_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { ReduxToolkitDemo } from '@/src/components/elements/demo';
 
@@ -16,6 +20,11 @@ export const metadata: Metadata = {
 };
 
 const ReduxToolkitPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <ReduxToolkitDemo />,
+        code: REDUX_TOOLKIT_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -50,10 +59,7 @@ const ReduxToolkitPage = () => {
     const data: IDocumentationData = {
         title: 'Redux Toolkit',
         description: 'The official, opinionated, batteries-included toolset for efficient Redux development.',
-        preview: {
-            demo: <ReduxToolkitDemo />,
-            code: REDUX_TOOLKIT_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

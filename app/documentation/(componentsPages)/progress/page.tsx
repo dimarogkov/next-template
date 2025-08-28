@@ -1,6 +1,10 @@
 import { Metadata } from 'next';
 import { NPM_CLASSNAMES_CODE, PROGRESS_DEMO_CODE, PROGRESS_CODE, PROGRESS_USAGE_CODE } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { ProgressDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -10,6 +14,11 @@ export const metadata: Metadata = {
 };
 
 const ProgressPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <ProgressDemo />,
+        code: PROGRESS_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -46,10 +55,7 @@ const ProgressPage = () => {
         title: 'Progress',
         description:
             'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
-        preview: {
-            demo: <ProgressDemo />,
-            code: PROGRESS_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

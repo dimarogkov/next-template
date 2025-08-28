@@ -12,7 +12,11 @@ import {
     RTK_QUERY_CODE,
     RTK_QUERY_SLICE_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { RtkQueryDemo } from '@/src/components/elements/demo';
 
@@ -21,6 +25,11 @@ export const metadata: Metadata = {
 };
 
 const RtkQueryPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <RtkQueryDemo />,
+        code: RTK_QUERY_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -63,10 +72,7 @@ const RtkQueryPage = () => {
         title: 'RTK Query',
         description:
             'Powerful data fetching and caching tool. It is designed to simplify common cases for loading data in a web application, eliminating the need to hand-write data fetching & caching logic yourself.',
-        preview: {
-            demo: <RtkQueryDemo />,
-            code: RTK_QUERY_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

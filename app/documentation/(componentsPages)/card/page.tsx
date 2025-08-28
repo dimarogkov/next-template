@@ -8,7 +8,11 @@ import {
     CARD_DEMO_CODE,
     CARD_USAGE_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { CardDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -18,6 +22,11 @@ export const metadata: Metadata = {
 };
 
 const CardPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <CardDemo />,
+        code: CARD_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'code',
@@ -51,10 +60,7 @@ const CardPage = () => {
     const data: IDocumentationData = {
         title: 'Card',
         description: 'Displays a card with header, body and footer.',
-        preview: {
-            demo: <CardDemo />,
-            code: CARD_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

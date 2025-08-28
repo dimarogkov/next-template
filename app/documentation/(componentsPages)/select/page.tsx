@@ -13,7 +13,11 @@ import {
     SELECT_USAGE_CODE,
     SELECT_CONTROLLED_USAGE_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { SelectDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -23,6 +27,11 @@ export const metadata: Metadata = {
 };
 
 const SelectPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <SelectDemo />,
+        code: SELECT_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -83,10 +92,7 @@ const SelectPage = () => {
     const data: IDocumentationData = {
         title: 'Select',
         description: 'Displays a list of options for the user to pick from — triggered by a button.',
-        preview: {
-            demo: <SelectDemo />,
-            code: SELECT_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 

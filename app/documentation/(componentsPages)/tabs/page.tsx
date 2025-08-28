@@ -13,7 +13,11 @@ import {
     TABS_ACTIVE_USAGE_CODE,
     TABS_ANIMATION_USAGE_CODE,
 } from '@/src/variables/code';
-import { IDocumentationData, IDocumentationCodeSection } from '@/src/types/interfaces/DocumentationData';
+import {
+    IDocumentationData,
+    IDocumentationCodeSection,
+    IDocumentationPreview,
+} from '@/src/types/interfaces/DocumentationData';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { TabsDemo } from '@/src/components/elements/demo';
 import { Text } from '@/src/components/ui';
@@ -23,6 +27,11 @@ export const metadata: Metadata = {
 };
 
 const TabsPage = () => {
+    const preview: IDocumentationPreview = {
+        demo: <TabsDemo />,
+        code: TABS_DEMO_CODE,
+    };
+
     const codeSections: IDocumentationCodeSection[] = [
         {
             id: 'installation',
@@ -94,10 +103,7 @@ const TabsPage = () => {
     const data: IDocumentationData = {
         title: 'Tabs',
         description: 'A set of layered sections of content — known as tab panels — that are displayed one at a time.',
-        preview: {
-            demo: <TabsDemo />,
-            code: TABS_DEMO_CODE,
-        },
+        preview,
         codeSections,
     };
 
