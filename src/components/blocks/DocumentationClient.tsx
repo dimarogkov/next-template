@@ -2,7 +2,7 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { useSectionsRefs } from '@/src/hooks';
-import { IDocumentationBodyItem } from '@/src/types/interfaces/DocumentationData';
+import { IDocumentationBodyItem } from '@/src/types/interfaces/Documentation';
 import { ComponentsFooter, ComponentsHead, ComponentsNavigation, ComponentsWrapper } from '@/src/components/blocks';
 import { IntroductionContent } from '@/src/components/elements';
 import { Separator, Text, Title } from '@/src/components/ui';

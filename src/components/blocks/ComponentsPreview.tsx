@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { IDocumentationPreview } from '@/src/types/interfaces/DocumentationData';
+import { IDocumentationPreview } from '@/src/types/interfaces/Documentation';
 import ComponentsCodeDetail from './ComponentsCodeDetail';
 import { Tabs } from '@/src/components/ui';
 

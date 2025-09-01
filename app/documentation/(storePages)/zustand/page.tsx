@@ -4,7 +4,7 @@ import {
     IDocumentationData,
     IDocumentationCodeSection,
     IDocumentationPreview,
-} from '@/src/types/interfaces/DocumentationData';
+} from '@/src/types/interfaces/Documentation';
 import { DocumentationDetailClient } from '@/src/components/blocks';
 import { ZustandDemo } from '@/src/components/elements/demo';
 

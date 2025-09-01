@@ -2,7 +2,7 @@
 import { FC, Fragment } from 'react';
 import Link from 'next/link';
 import { useSectionsRefs } from '@/src/hooks';
-import { IDocumentationCodeArr, IDocumentationData } from '@/src/types/interfaces/DocumentationData';
+import { IDocumentationCodeArr, IDocumentationData } from '@/src/types/interfaces/Documentation';
 import {
     ComponentsCode,
     ComponentsCodeWithAccordion,

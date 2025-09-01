@@ -7,8 +7,8 @@ import BtnDemo from './BtnDemo';
 import CardDemo from './CardDemo';
 import CheckboxDemo from './CheckboxDemo';
 import DropdownDemo from './DropdownDemo';
-import InputPasswordDemo from './InputPasswordDemo';
 import InputDemo from './InputDemo';
+import InputPasswordDemo from './InputPasswordDemo';
 import LoaderDemo from './LoaderDemo';
 import ModalDemo from './ModalDemo';
 import PaginationDemo from './PaginationDemo';
@@ -41,8 +41,8 @@ export {
     CardDemo,
     CheckboxDemo,
     DropdownDemo,
-    InputPasswordDemo,
     InputDemo,
+    InputPasswordDemo,
     LoaderDemo,
     ModalDemo,
     PaginationDemo,

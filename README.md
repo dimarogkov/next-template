@@ -19,7 +19,7 @@ This is **Next Template** for development. Technolgies used: **Next.js, TypeScri
     -   components
         -   blocks
         -   elements
-            -   preview
+            -   demo
         -   other
         -   root
         -   ui
