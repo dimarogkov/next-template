@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { SIMPLE_LINK_DEMO_CODE, SIMPLE_LINK_CODE, SIMPLE_LINK_USAGE_CODE } from '@/src/variables/code';
+import { SIMPLE_LINK_CODE, SIMPLE_LINK_DEMO_CODE, SIMPLE_LINK_USAGE_CODE } from '@/src/variables/code';
 import {
     IDocumentationData,
     IDocumentationCodeSection,

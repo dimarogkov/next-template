@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { NPM_CLASSNAMES_CODE, TEXT_DEMO_CODE, TEXT_CODE, TEXT_USAGE_CODE } from '@/src/variables/code';
+import { NPM_CLASSNAMES_CODE, TEXT_CODE, TEXT_DEMO_CODE, TEXT_USAGE_CODE } from '@/src/variables/code';
 import {
     IDocumentationData,
     IDocumentationCodeSection,

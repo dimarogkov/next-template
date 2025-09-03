@@ -1,4 +1,3 @@
-import { SELECT_DEMO_CODE } from './demo';
 import {
     SELECT_TYPE_CODE,
     SELECT_CODE,
@@ -6,17 +5,18 @@ import {
     SELECT_TRIGGER_CODE,
     SELECT_OPTIONS_CODE,
     SELECT_OPTION_CODE,
-} from './select';
+} from './code';
+import { SELECT_DEMO_CODE } from './demo';
 import { SELECT_USAGE_CODE, SELECT_CONTROLLED_USAGE_CODE } from './usage';
 
 export {
-    SELECT_DEMO_CODE,
     SELECT_TYPE_CODE,
     SELECT_CODE,
     SELECT_WRAPPER_CODE,
     SELECT_TRIGGER_CODE,
     SELECT_OPTIONS_CODE,
     SELECT_OPTION_CODE,
+    SELECT_DEMO_CODE,
     SELECT_USAGE_CODE,
     SELECT_CONTROLLED_USAGE_CODE,
 };

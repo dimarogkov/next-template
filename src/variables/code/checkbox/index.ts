@@ -1,4 +1,4 @@
-import { CHECKBOX_CODE } from './checkbox';
+import { CHECKBOX_CODE } from './code';
 import { CHECKBOX_DEMO_CODE } from './demo';
 import { CHECKBOX_USAGE_CODE, CHECKBOX_CONTROLLED_USAGE_CODE } from './usage';
 

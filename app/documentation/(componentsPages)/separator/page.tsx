@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { SEPARATOR_DEMO_CODE, SEPARATOR_CODE, SEPARATOR_USAGE_CODE } from '@/src/variables/code';
+import { SEPARATOR_CODE, SEPARATOR_DEMO_CODE, SEPARATOR_USAGE_CODE } from '@/src/variables/code';
 import {
     IDocumentationData,
     IDocumentationCodeSection,

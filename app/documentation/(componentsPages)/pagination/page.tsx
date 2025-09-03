@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import {
     NPM_LUCIDE_CODE,
     NPM_CLASSNAMES_CODE,
-    PAGINATION_DEMO_CODE,
     PAGINATION_CODE,
     PAGINATION_WRAPPER_CODE,
     PAGINATION_PREVIOUS_CODE,
@@ -11,10 +10,9 @@ import {
     PAGINATION_ELLIPSIS_CODE,
     PAGINATION_HOOK_CODE,
     PAGINATION_HELPER_CODE,
+    PAGINATION_DEMO_CODE,
     PAGINATION_USAGE_CODE,
-    PAGINATION_HOOK_USAGE_CODE,
     PAGINATION_DATA_USAGE_CODE,
-    PAGINATION_PAGES_USAGE_CODE,
 } from '@/src/variables/code';
 import {
     IDocumentationData,
@@ -60,11 +58,11 @@ const PaginationPage = () => {
             withAccordion: true,
             codeArr: [
                 { label: 'index.ts', code: PAGINATION_CODE },
-                { label: 'ModalWrapper.tsx', code: PAGINATION_WRAPPER_CODE },
-                { label: 'ModalTrigger.tsx', code: PAGINATION_PREVIOUS_CODE },
-                { label: 'ModalContent.tsx', code: PAGINATION_ITEM_CODE },
-                { label: 'ModalLayer.tsx', code: PAGINATION_NEXT_CODE },
-                { label: 'ModalClose.tsx', code: PAGINATION_ELLIPSIS_CODE },
+                { label: 'PaginationWrapper.tsx', code: PAGINATION_WRAPPER_CODE },
+                { label: 'PaginationPrevious.tsx', code: PAGINATION_PREVIOUS_CODE },
+                { label: 'PaginationItem.tsx', code: PAGINATION_ITEM_CODE },
+                { label: 'PaginationNext.tsx', code: PAGINATION_NEXT_CODE },
+                { label: 'PaginationEllipsis.tsx', code: PAGINATION_ELLIPSIS_CODE },
                 { label: 'usePagination.tsx', code: PAGINATION_HOOK_CODE },
                 { label: 'getPaginationRange.ts', code: PAGINATION_HELPER_CODE },
             ],
@@ -87,7 +85,7 @@ const PaginationPage = () => {
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [PAGINATION_HOOK_USAGE_CODE, PAGINATION_DATA_USAGE_CODE, PAGINATION_PAGES_USAGE_CODE],
+            codeArr: [PAGINATION_DATA_USAGE_CODE],
         },
     ];
 

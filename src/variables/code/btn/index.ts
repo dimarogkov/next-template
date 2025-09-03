@@ -1,4 +1,4 @@
-import { BTN_CODE, BTN_WRAPPER_CODE, BTN_LINK_CODE } from './btn';
+import { BTN_CODE, BTN_WRAPPER_CODE, BTN_LINK_CODE } from './code';
 import { BTN_DEMO_CODE } from './demo';
 import { BTN_USAGE_CODE, BTN_LINK_USAGE_CODE } from './usage';
 

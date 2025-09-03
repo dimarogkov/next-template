@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { NPM_CLASSNAMES_CODE, PROGRESS_DEMO_CODE, PROGRESS_CODE, PROGRESS_USAGE_CODE } from '@/src/variables/code';
+import { NPM_CLASSNAMES_CODE, PROGRESS_CODE, PROGRESS_DEMO_CODE, PROGRESS_USAGE_CODE } from '@/src/variables/code';
 import {
     IDocumentationData,
     IDocumentationCodeSection,

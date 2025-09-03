@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import {
-    TEXTAREA_DEMO_CODE,
     TEXTAREA_CODE,
+    TEXTAREA_DEMO_CODE,
     TEXTAREA_USAGE_CODE,
     TEXTAREA_CONTROLLED_USAGE_CODE,
 } from '@/src/variables/code';

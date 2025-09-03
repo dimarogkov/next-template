@@ -1,4 +1,3 @@
-import { MODAL_DEMO_CODE } from './demo';
 import {
     MODAL_CODE,
     MODAL_WRAPPER_CODE,
@@ -6,17 +5,18 @@ import {
     MODAL_CONTENT_CODE,
     MODAL_LAYER_CODE,
     MODAL_CLOSE_CODE,
-} from './modal';
+} from './code';
+import { MODAL_DEMO_CODE } from './demo';
 import { MODAL_USAGE_CODE, MODAL_DISABLE_CLOSE_BTN_USAGE_CODE } from './usage';
 
 export {
-    MODAL_DEMO_CODE,
     MODAL_CODE,
     MODAL_WRAPPER_CODE,
     MODAL_TRIGGER_CODE,
     MODAL_CONTENT_CODE,
     MODAL_LAYER_CODE,
     MODAL_CLOSE_CODE,
+    MODAL_DEMO_CODE,
     MODAL_USAGE_CODE,
     MODAL_DISABLE_CLOSE_BTN_USAGE_CODE,
 };

@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import {
     NPM_REDUX_TOOLKIT_CODE,
-    REDUX_TOOLKIT_DEMO_CODE,
     REDUX_TOOLKIT_CODE,
     REDUX_TOOLKIT_PROVIDER_CODE,
     REDUX_TOOLKIT_COUNT_CODE,
+    REDUX_TOOLKIT_DEMO_CODE,
     REDUX_TOOLKIT_PROVIDER_USAGE_CODE,
 } from '@/src/variables/code';
 import {

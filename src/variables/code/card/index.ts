@@ -1,4 +1,4 @@
-import { CARD_CODE, CARD_WRAPPER_CODE, CARD_HEAD_CODE, CARD_BODY_CODE, CARD_FOOTER_CODE } from './card';
+import { CARD_CODE, CARD_WRAPPER_CODE, CARD_HEAD_CODE, CARD_BODY_CODE, CARD_FOOTER_CODE } from './code';
 import { CARD_DEMO_CODE } from './demo';
 import { CARD_USAGE_CODE } from './usage';
 

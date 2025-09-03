@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { TITLE_DEMO_CODE, TITLE_CODE, TITLE_USAGE_CODE } from '@/src/variables/code';
+import { TITLE_CODE, TITLE_DEMO_CODE, TITLE_USAGE_CODE } from '@/src/variables/code';
 import {
     IDocumentationData,
     IDocumentationCodeSection,

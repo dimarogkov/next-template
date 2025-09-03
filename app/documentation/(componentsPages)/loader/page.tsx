@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { LOADER_DEMO_CODE, LOADER_CODE, LOADER_USAGE_CODE } from '@/src/variables/code';
+import { LOADER_CODE, LOADER_DEMO_CODE, LOADER_USAGE_CODE } from '@/src/variables/code';
 import {
     IDocumentationData,
     IDocumentationCodeSection,

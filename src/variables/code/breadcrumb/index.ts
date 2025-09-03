@@ -1,4 +1,4 @@
-import { BREADCRUMB_CODE, BREADCRUMB_HELPERS_CODE } from './breadcrumb';
+import { BREADCRUMB_CODE, BREADCRUMB_HELPERS_CODE } from './code';
 import { BREADCRUMB_DEMO_CODE } from './demo';
 import { BREADCRUMB_USAGE_CODE } from './usage';
 

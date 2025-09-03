@@ -3,9 +3,9 @@ import {
     NPM_CLASSNAMES_CODE,
     NPM_LUCIDE_CODE,
     NPM_HOT_TOAST_CODE,
-    TOAST_DEMO_CODE,
-    TOAST_TYPE_CODE,
     TOAST_CODE,
+    TOAST_TYPE_CODE,
+    TOAST_DEMO_CODE,
     TOAST_USAGE_CODE,
     TOAST_MAIN_USAGE_CODE,
 } from '@/src/variables/code';

@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { INPUT_DEMO_CODE, INPUT_CODE, INPUT_USAGE_CODE, INPUT_CONTROLLED_USAGE_CODE } from '@/src/variables/code';
+import { INPUT_CODE, INPUT_DEMO_CODE, INPUT_USAGE_CODE, INPUT_CONTROLLED_USAGE_CODE } from '@/src/variables/code';
 import {
     IDocumentationData,
     IDocumentationCodeSection,

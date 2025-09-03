@@ -4,7 +4,7 @@ import {
     ACCORDION_ITEM_CODE,
     ACCORDION_TITLE_CODE,
     ACCORDION_CONTENT_CODE,
-} from './accordion';
+} from './code';
 import { ACCORDION_DEMO_CODE } from './demo';
 import { ACCORDION_USAGE_CODE, ACCORDION_ACTIVE_USAGE_CODE } from './usage';
 
