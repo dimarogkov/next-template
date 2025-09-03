@@ -60,7 +60,7 @@ import {
     INPUT_CONTROLLED_USAGE_CODE,
     INPUT_PASSWORD_USAGE_CODE,
     INPUT_PASSWORD_CONTROLLED_USAGE_CODE,
-} from './input_new';
+} from './input';
 import { LABEL_CODE, LABEL_USAGE_CODE } from './label';
 import { LOADER_CODE, LOADER_DEMO_CODE, LOADER_USAGE_CODE } from './loader';
 import {
