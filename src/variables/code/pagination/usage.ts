@@ -16,7 +16,7 @@ import { Pagination } from '@/src/components/ui';
 
 const items = Array.from({ length: 100 }, (_, index) => index + 1);
 
-const PaginationDemo = () => {
+const PaginationWithData = () => {
     const { data, pagesArr, options } = usePagination(items);
 
     return (
