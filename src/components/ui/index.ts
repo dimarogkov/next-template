@@ -2,6 +2,7 @@ import Accordion from './Accordion';
 import Alert from './Alert';
 import { Avatar, AvatarGroup } from './Avatar';
 import Badge from './Badge';
+import Blockquote from './Blockquote';
 import Btn from './Btn';
 import Card from './Card';
 import Checkbox from './Checkbox';
@@ -32,6 +33,7 @@ export {
     Avatar,
     AvatarGroup,
     Badge,
+    Blockquote,
     Btn,
     Card,
     Checkbox,

@@ -2,6 +2,7 @@ import AccordionDemo from './AccordionDemo';
 import AlertDemo from './AlertDemo';
 import AvatarDemo from './AvatarDemo';
 import BadgeDemo from './BadgeDemo';
+import BlockquoteDemo from './BlockquoteDemo';
 import BreadcrumbDemo from './BreadcrumbDemo';
 import BtnDemo from './BtnDemo';
 import CardDemo from './CardDemo';
@@ -36,6 +37,7 @@ export {
     AlertDemo,
     AvatarDemo,
     BadgeDemo,
+    BlockquoteDemo,
     BreadcrumbDemo,
     BtnDemo,
     CardDemo,

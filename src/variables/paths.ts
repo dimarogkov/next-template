@@ -10,6 +10,7 @@ export const PATHS = {
             ALERT: '/alert',
             AVATAR: '/avatar',
             BADGE: '/badge',
+            BLOCKQUOTE: '/blockquote',
             BREADCRUMB: '/breadcrumb',
             BTN: '/button',
             CARD: '/card',

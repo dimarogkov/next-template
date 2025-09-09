@@ -18,7 +18,7 @@ const ComponentsPreview: FC<Props> = ({ preview }) => {
                     <Tabs.Tab>Code</Tabs.Tab>
                 </Tabs.TabList>
                 <Tabs.Panels>
-                    <Tabs.Panel>{demo}</Tabs.Panel>
+                    <Tabs.Panel className='!p-4'>{demo}</Tabs.Panel>
 
                     <Tabs.Panel className='!p-0'>
                         <ComponentsCodeDetail code={code} type='code' />

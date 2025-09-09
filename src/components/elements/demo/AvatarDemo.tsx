@@ -7,7 +7,7 @@ const AvatarDemo = () => {
     const imgSrc = 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp';
 
     return (
-        <div className='relative flex flex-col gap-4'>
+        <div className='relative flex flex-col gap-4 w-full'>
             <div className='flex w-full gap-2.5'>
                 <Avatar>
                     <Avatar.Img src={imgSrc} />
@@ -17,7 +17,7 @@ const AvatarDemo = () => {
                     <Avatar.Img src={imgSrc} />
                 </Avatar>
 
-                <Avatar isOnline>
+                <Avatar>
                     <Avatar.Link href={pathname}>
                         <Avatar.Img src={imgSrc} hasHover />
                     </Avatar.Link>
@@ -33,7 +33,7 @@ const AvatarDemo = () => {
                     <Avatar.Img src={imgSrc} />
                 </Avatar>
 
-                <Avatar type='square' isOnline>
+                <Avatar type='square'>
                     <Avatar.Link href={pathname}>
                         <Avatar.Img src={imgSrc} hasHover />
                     </Avatar.Link>

@@ -32,7 +32,7 @@ const ComponentsCodeDetail: FC<Props> = ({ code, type, className = '' }) => {
                     <button
                         type='button'
                         onClick={handleCopy}
-                        className='absolute top-2 right-2 flex items-center justify-center size-8 rounded-md bg-bg'
+                        className='absolute top-2 right-2 flex items-center justify-center size-8 rounded-md transition-colors duration-300 hover:bg-border'
                     >
                         {copied ? (
                             <ClipboardCheck className='size-5 text-text' />
