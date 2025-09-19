@@ -14,6 +14,7 @@ import Label from './Label';
 import Loader from './Loader';
 import Modal from './Modal';
 import Pagination from './Pagination';
+import PinInput from './PinInput';
 import Progress from './Progress';
 import Radio from './Radio';
 import Select from './Select';
@@ -45,6 +46,7 @@ export {
     Loader,
     Modal,
     Pagination,
+    PinInput,
     Progress,
     Radio,
     Select,

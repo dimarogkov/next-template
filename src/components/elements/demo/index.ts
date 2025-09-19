@@ -13,6 +13,7 @@ import InputPasswordDemo from './InputPasswordDemo';
 import LoaderDemo from './LoaderDemo';
 import ModalDemo from './ModalDemo';
 import PaginationDemo from './PaginationDemo';
+import PinInputDemo from './PinInputDemo';
 import ProgressDemo from './ProgressDemo';
 import RadioDemo from './RadioDemo';
 import ReactQueryDemo from './ReactQueryDemo';
@@ -48,6 +49,7 @@ export {
     LoaderDemo,
     ModalDemo,
     PaginationDemo,
+    PinInputDemo,
     ProgressDemo,
     RadioDemo,
     ReactQueryDemo,

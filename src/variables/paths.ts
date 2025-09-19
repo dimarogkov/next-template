@@ -22,6 +22,7 @@ export const PATHS = {
             LOADER: '/loader',
             MODAL: '/modal',
             PAGINATION: '/pagination',
+            PIN_INPUT: '/pin-input',
             PROGRESS: '/progress',
             RADIO: '/radio',
             SELECT: '/select',
