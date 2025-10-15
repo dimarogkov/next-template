@@ -13,6 +13,7 @@ This is **Next Template** for development. Technolgies used: **Next.js, TypeScri
 
 ## File Structure
 
+```bash
 ├── app
 │   └── documentation
 └── src
@@ -36,3 +37,4 @@ This is **Next Template** for development. Technolgies used: **Next.js, TypeScri
     ├── types
     │   └── interfaces
     └── utils
+```
