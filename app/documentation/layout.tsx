@@ -1,11 +1,11 @@
-import { FC, ReactNode } from 'react';
-import { Sidebar } from '@/src/components/blocks';
+import { ReactNode } from 'react';
+import { Sidebar } from '@components/organisms';
 
 type Props = {
     children: ReactNode;
 };
 
-const DocumentationLayout: FC<Props> = ({ children }) => {
+export default function DocumentationLayout({ children }: Props) {
     return (
         <section className='relative w-full'>
             <div className='container'>
@@ -16,6 +16,4 @@ const DocumentationLayout: FC<Props> = ({ children }) => {
             </div>
         </section>
     );
-};
-
-export default DocumentationLayout;
+}

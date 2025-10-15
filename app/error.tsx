@@ -1,13 +1,12 @@
 'use client';
-import { FC } from 'react';
-import { Btn, Title } from '@/src/components/ui';
+import { Btn, Title } from '@components/atoms';
 
 type Props = {
     error?: Error;
     reset?: () => void;
 };
 
-const Error: FC<Props> = ({ error, reset = () => {} }) => {
+export default function Error({ error, reset = () => {} }: Props) {
     return (
         <section className='relative flex items-center w-full h-[calc(100svh-164px)] md:h-[calc(100svh-188px)] lg:h-[calc(100svh-204px)] pb-16 lg:pb-20'>
             <div className='container'>
@@ -23,6 +22,4 @@ const Error: FC<Props> = ({ error, reset = () => {} }) => {
             </div>
         </section>
     );
-};
-
-export default Error;
+}

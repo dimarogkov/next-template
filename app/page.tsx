@@ -1,11 +1,9 @@
-import { PATHS } from '@/src/variables';
-import { HomeBg, HomeSlider } from '@/src/components/elements';
-import { Btn, Text, Title } from '@/src/components/ui';
+import { PATHS } from '@constants';
+import { HomeBg, HomeSlider } from '@components/molecules';
+import { Btn, Text, Title } from '@components/atoms';
 import { ArrowUpRight } from 'lucide-react';
 
-const HomePage = () => {
-    const { MAIN } = PATHS.PAGES;
-
+export default function HomePage() {
     return (
         <section className='relative flex items-center justify-center w-full sm:h-[calc(100svh-64px)] min-h-[calc(100svh-64px)] lg:h-[calc(100svh-80px)] lg:min-h-[calc(100svh-80px)] pb-16 lg:pb-20'>
             <HomeBg />
@@ -23,7 +21,7 @@ const HomePage = () => {
 
                     <div className='flex flex-wrap justify-center gap-2 w-full'>
                         <Btn isLink>
-                            <Btn.Link href={MAIN.DOCUMENTATION}>Get Started</Btn.Link>
+                            <Btn.Link href={PATHS.DOCUMENTATION}>Get Started</Btn.Link>
                         </Btn>
 
                         <Btn variant='outline' isLink>
@@ -37,6 +35,4 @@ const HomePage = () => {
             </div>
         </section>
     );
-};
-
-export default HomePage;
+}

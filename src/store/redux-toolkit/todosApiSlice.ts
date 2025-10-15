@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { API_URL } from '@/src/variables';
-import { ITodo } from '@/src/types/interfaces/Todo';
+import { API_URL } from '@constants';
+import { ITodo } from '@interfaces/Todo';
 
 export const todosApiSlice = createApi({
     reducerPath: 'todos',

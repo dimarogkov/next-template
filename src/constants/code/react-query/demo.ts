@@ -1,0 +1,63 @@
+export const REACT_QUERY_DEMO_CODE = `'use client';
+import { useTodoQuery } from '@hooks';
+import { ITodo } from '@interfaces/Todo';
+import { AddTodo, Todo } from '@components/molecules';
+import { Loader } from '@components/atoms';
+
+export default function ReactQueryDemo() {
+    const {
+        todos,
+        isLoading,
+        createTodoMutation,
+        isLoadingCreateTodo,
+        updateTodoMutation,
+        isLoadingUpdateTodo,
+        removeTodoMutation,
+        isLoadingRemoveTodo,
+    } = useTodoQuery();
+
+    const createTodo = (title: string) => {
+        if (title.trim() === '') {
+            return;
+        }
+
+        const newTodo = {
+            userId: 1,
+            title: title.trim(),
+            completed: false,
+        };
+
+        createTodoMutation(newTodo);
+    };
+
+    const updateTodo = (todo: ITodo) => updateTodoMutation({ ...todo, completed: !todo.completed });
+    const removeTodo = (todoId: number) => removeTodoMutation(todoId);
+
+    return (
+        <div className='relative w-full'>
+            <div className='w-full mb-6 last:mb-0'>
+                <AddTodo isLoading={isLoadingCreateTodo} createTodo={createTodo} />
+            </div>
+
+            {isLoading && (
+                <div className='relative flex items-center justify-center w-full h-24'>
+                    <Loader />
+                </div>
+            )}
+
+            {todos && (
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 w-full'>
+                    {todos.map((todo) => (
+                        <Todo
+                            key={todo.id}
+                            todo={todo}
+                            isLoading={isLoadingUpdateTodo || isLoadingRemoveTodo}
+                            updateTodo={updateTodo}
+                            removeTodo={removeTodo}
+                        />
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+}`;

@@ -1,13 +1,13 @@
 import { Metadata } from 'next';
-import { PATHS } from '@/src/variables';
-import { Btn, Text, Title } from '@/src/components/ui';
+import { PATHS } from '@constants';
+import { Btn, Text, Title } from '@components/atoms';
 import { ArrowUpRight } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: '404',
 };
 
-const NotFoundPage = () => {
+export default function NotFoundPage() {
     return (
         <section className='relative flex items-center w-full h-[calc(100svh-120px)] md:h-[calc(100svh-144px)] lg:h-[calc(100svh-160px)] pb-16 lg:pb-20'>
             <div className='container'>
@@ -30,6 +30,4 @@ const NotFoundPage = () => {
             </div>
         </section>
     );
-};
-
-export default NotFoundPage;
+}
