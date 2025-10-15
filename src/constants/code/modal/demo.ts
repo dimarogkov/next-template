@@ -20,7 +20,6 @@ export default function ModalDemo() {
                             sint optio cum ducimus vitae placeat veritatis vero deleniti, voluptatibus fugit. Laudantium
                             error cum earum rem hic!
                         </Text>
-
                         <Text>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima eum dolor nulla delectus
                             sint optio cum ducimus vitae placeat veritatis vero deleniti, voluptatibus fugit. Laudantium

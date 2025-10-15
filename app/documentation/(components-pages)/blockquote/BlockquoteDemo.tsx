@@ -37,7 +37,6 @@ export default function BlockquoteDemo() {
                     <Avatar className='size-10'>
                         <Avatar.Img src={IMG_SRC} />
                     </Avatar>
-
                     <Text className='!w-fit'>Emily Jones</Text>
                 </Blockquote.Author>
             </Blockquote>
