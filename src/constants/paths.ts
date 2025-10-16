@@ -23,6 +23,7 @@ export const PATHS = {
             PIN_INPUT: '/pin-input',
             PROGRESS: '/progress',
             RADIO: '/radio',
+            REORDER: '/reorder',
             SELECT: '/select',
             SEPARATOR: '/separator',
             SIMPLE_LINK: '/simple-link',
