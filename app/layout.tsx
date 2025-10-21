@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
-import { RootProviders } from '@providers';
+import { RootProvider } from '@providers';
 import { Root, RootLayout, RootMain } from '@root';
 import './globals.css';
 
@@ -19,11 +19,11 @@ type Props = {
 export default function HomeLayout({ children }: Props) {
     return (
         <Root>
-            <RootProviders>
+            <RootProvider>
                 <RootLayout>
                     <RootMain>{children}</RootMain>
                 </RootLayout>
-            </RootProviders>
+            </RootProvider>
         </Root>
     );
 }

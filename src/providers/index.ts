@@ -1,3 +1,4 @@
-import RootProviders from './RootProviders';
+import { MainContext } from './MainProvider';
+import RootProvider from './RootProvider';
 
-export { RootProviders };
+export { MainContext, RootProvider };

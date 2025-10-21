@@ -3,14 +3,15 @@ import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { DATA } from './data';
+import { useMain } from '@hooks';
 import { SidebarBtn, SidebarLink } from '@components/molecules';
 import { Text } from '@components/atoms';
 import cn from 'classnames';
 
 export default function Sidebar() {
-    const [isOpen, setIsOpen] = useState(false);
     const [isStart, setIsStart] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
+    const { isSidebarOpen, setIsSidebarOpen } = useMain();
 
     const sidebarRef = useRef<HTMLElement>(null);
     const sidebarListRef = useRef<HTMLDivElement>(null);
@@ -18,13 +19,13 @@ export default function Sidebar() {
     const pathname = usePathname();
 
     useEffect(() => {
-        setIsOpen(false);
-    }, [pathname]);
+        setIsSidebarOpen(false);
+    }, [pathname, setIsSidebarOpen]);
 
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
             if (sidebarRef.current && !sidebarRef.current.contains(e.target as Node)) {
-                setIsOpen(false);
+                setIsSidebarOpen(false);
             }
         };
 
@@ -33,7 +34,7 @@ export default function Sidebar() {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, []);
+    }, [setIsSidebarOpen]);
 
     const { scrollYProgress } = useScroll({
         container: sidebarListRef,
@@ -44,21 +45,19 @@ export default function Sidebar() {
         setIsEnd(latest >= 0.99);
     });
 
-    const toggleSidebar = () => setIsOpen(!isOpen);
-
     return (
         <section
             ref={sidebarRef}
             className={cn(
                 'fixed xl:sticky z-20 left-0 top-[108px] lg:top-[124px] xl:top-[164px] block w-56 border-r xl:border-none border-border bg-bg transition-transform duration-300 after:bg-bg',
                 {
-                    '-translate-x-56 xl:translate-x-0': !isOpen,
-                    'translate-x-0': isOpen,
+                    '-translate-x-56 xl:translate-x-0': !isSidebarOpen,
+                    'translate-x-0': isSidebarOpen,
                 }
             )}
         >
             <div className='relative w-full h-[calc(100svh-108px)] lg:h-[calc(100svh-124px)] xl:h-[calc(100svh-204px)] px-5 xl:px-0 py-5 md:py-10 xl:py-0'>
-                <SidebarBtn isOpen={isOpen} toggleSidebar={toggleSidebar} />
+                <SidebarBtn />
 
                 <motion.div
                     ref={sidebarListRef}
