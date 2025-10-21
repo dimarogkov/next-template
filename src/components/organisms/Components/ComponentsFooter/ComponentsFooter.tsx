@@ -11,10 +11,10 @@ export default function ComponentsFooter() {
     const openSidebar = () => setIsSidebarOpen(true);
 
     return (
-        <div className='fixed bottom-0 left-0 md:relative z-10 flex justify-between w-full px-5 md:px-0 py-3 sm:py-4 md:py-0 md:pt-5 border-t border-border md:border-none bg-bg'>
+        <div className='fixed bottom-0 left-0 md:relative z-10 flex justify-between w-full px-5 md:px-0 py-4 md:py-0 md:pt-5 border-t border-border md:border-none bg-bg'>
             <button
                 onClick={openSidebar}
-                className='flex md:hidden items-center justify-center gap-1 w-fit h-8 px-3 rounded-md bg-border transition-colors duration-300 hover:text-title'
+                className='flex md:hidden items-center justify-center gap-1.5 w-fit h-8 px-3 rounded-md bg-border transition-colors duration-300 hover:text-title'
             >
                 <Text className='!w-fit'>Menu</Text>
                 <AlignJustify className='size-5' />
