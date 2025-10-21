@@ -50,9 +50,9 @@ export default function Sidebar() {
         <section
             ref={sidebarRef}
             className={cn(
-                'fixed xl:sticky z-20 left-0 top-[108px] lg:top-[124px] xl:top-[164px] block w-52 border-r xl:border-none border-border bg-bg transition-transform duration-300 after:bg-bg',
+                'fixed xl:sticky z-20 left-0 top-[108px] lg:top-[124px] xl:top-[164px] block w-56 border-r xl:border-none border-border bg-bg transition-transform duration-300 after:bg-bg',
                 {
-                    '-translate-x-52 xl:translate-x-0': !isOpen,
+                    '-translate-x-56 xl:translate-x-0': !isOpen,
                     'translate-x-0': isOpen,
                 }
             )}

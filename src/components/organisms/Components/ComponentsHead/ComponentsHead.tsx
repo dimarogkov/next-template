@@ -15,7 +15,7 @@ export default function ComponentsHead({ children }: Props) {
         <div className='relative w-full pb-2'>
             <div className='w-full md:pr-16'>{children}</div>
 
-            <div className='absolute top-0 right-0 flex gap-2'>
+            <div className='absolute top-0 right-0 hidden md:flex gap-2'>
                 {links.map(({ href }, index) => (
                     <Link
                         key={href}

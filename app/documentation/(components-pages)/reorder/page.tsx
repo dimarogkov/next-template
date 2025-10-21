@@ -33,7 +33,7 @@ export default function ReorderPage() {
         {
             id: 'usage',
             title: 'Usage',
-            link: 'https://motion.dev/docs/react-reorder',
+            link: '',
             description: null,
             withAccordion: false,
             codeArr: [REORDER_USAGE_CODE],

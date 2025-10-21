@@ -18,7 +18,7 @@ export default function ComponentsPreview({ preview }: Props) {
                 </Tabs.TabList>
 
                 <Tabs.Panels>
-                    <Tabs.Panel className='!p-4'>{demo}</Tabs.Panel>
+                    <Tabs.Panel className='!p-2.5 sm:!p-4'>{demo}</Tabs.Panel>
 
                     <Tabs.Panel className='!p-0'>
                         <ComponentsCodeDetail code={code} type='code' />
