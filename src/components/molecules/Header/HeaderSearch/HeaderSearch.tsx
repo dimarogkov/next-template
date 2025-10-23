@@ -68,7 +68,7 @@ export default function HeaderSearch() {
                                 placeholder='Search documentation...'
                                 value={searchValue}
                                 onChange={({ target }) => toggleSearch(target.value)}
-                                className='!pl-10'
+                                className='!pl-10 !border-border !bg-border'
                                 autoFocus
                             />
                             <Search className='absolute left-3 size-5' />

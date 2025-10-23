@@ -140,7 +140,7 @@ const SelectTrigger = forwardRef<HTMLDivElement, Props>(
                 onClick={() => setIsOpen((prevState) => !prevState)}
                 className={\`relative flex items-center w-full h-10 px-4 pr-12 rounded-md cursor-pointer select-none border border-border \${className}\`}
             >
-                <Text className={cn({ 'text-white': selectedItem?.value !== '' })}>
+                <Text className={cn({ 'text-title': selectedItem?.value !== '' })}>
                     {selectedItem?.label || placeholder}
                 </Text>
 

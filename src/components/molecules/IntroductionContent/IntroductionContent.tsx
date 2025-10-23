@@ -20,12 +20,12 @@ export default function IntroductionContent() {
 
                 <Text size='large'>
                     Unlike traditional boilerplates, this template comes with a clean project structure, a&nbsp;
-                    <span className='text-white'>Tailwind CSS</span> design system, state management via&nbsp;
-                    <span className='text-white'>Redux Toolkit/Zustand</span>, built-in&nbsp;
-                    <span className='text-white'>Axios</span> integration,&nbsp;
-                    <span className='text-white'>React Router</span> for navigation, and smooth animations powered
+                    <span className='text-title font-medium'>Tailwind CSS</span> design system, state management
+                    via&nbsp;
+                    <span className='text-title font-medium'>Redux Toolkit/Zustand</span>, built-in&nbsp;
+                    <span className='text-title font-medium'>Axios</span> integration and smooth animations powered
                     by&nbsp;
-                    <span className='text-white'>Framer Motion</span>.
+                    <span className='text-title font-medium'>Framer Motion</span>.
                 </Text>
 
                 <div>
@@ -34,32 +34,32 @@ export default function IntroductionContent() {
                     <ul className='list-disc pl-5 mt-2 space-y-1.5'>
                         <li>
                             <Text size='large'>
-                                <span className='text-white'>Open Code</span> – Every component is fully editable to
-                                match your needs.
+                                <span className='text-title font-medium'>Open Code</span> – Every component is fully
+                                editable to match your needs.
                             </Text>
                         </li>
                         <li>
                             <Text size='large'>
-                                <span className='text-white'>Composable</span> – Designed to be predictable and easy to
-                                combine.
+                                <span className='text-title font-medium'>Composable</span> – Designed to be predictable
+                                and easy to combine.
                             </Text>
                         </li>
                         <li>
                             <Text size='large'>
-                                <span className='text-white'>Fast Setup</span> – Preconfigured with API handling,
-                                routing, and styling.
+                                <span className='text-title font-medium'>Fast Setup</span> – Preconfigured with API
+                                handling, routing, and styling.
                             </Text>
                         </li>
                         <li>
                             <Text size='large'>
-                                <span className='text-white'>Beautiful Defaults</span> – Thoughtfully chosen styles that
-                                look great out of the box.
+                                <span className='text-title font-medium'>Beautiful Defaults</span> – Thoughtfully chosen
+                                styles that look great out of the box.
                             </Text>
                         </li>
                         <li>
                             <Text size='large'>
-                                <span className='text-white'>Performance-Driven</span> – Optimized structure with modern
-                                tooling.
+                                <span className='text-title font-medium'>Performance-Driven</span> – Optimized structure
+                                with modern tooling.
                             </Text>
                         </li>
                     </ul>
@@ -67,9 +67,9 @@ export default function IntroductionContent() {
 
                 <Text size='large'>
                     Stop wasting time configuring your stack —&nbsp;
-                    <span className='text-white'>clone</span>,&nbsp;
-                    <span className='text-white'>run</span>, and&nbsp;
-                    <span className='text-white'>start building</span>.
+                    <span className='text-title font-medium'>clone</span>,&nbsp;
+                    <span className='text-title font-medium'>run</span>, and&nbsp;
+                    <span className='text-title font-medium'>start building</span>.
                 </Text>
             </div>
         </>

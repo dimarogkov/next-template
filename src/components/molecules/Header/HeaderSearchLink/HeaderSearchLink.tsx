@@ -28,7 +28,7 @@ export default function HeaderSearchLink({ link }: Props) {
             )}
         >
             <div className='w-full'>
-                <Text size='large' className='text-white'>
+                <Text size='large' className='text-title'>
                     {name}
                 </Text>
 
