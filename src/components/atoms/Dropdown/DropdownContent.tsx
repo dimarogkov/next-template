@@ -1,5 +1,15 @@
 'use client';
-import { Dispatch, forwardRef, RefAttributes, SetStateAction } from 'react';
+import {
+    Children,
+    cloneElement,
+    Dispatch,
+    forwardRef,
+    isValidElement,
+    ReactElement,
+    ReactNode,
+    RefAttributes,
+    SetStateAction,
+} from 'react';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 import cn from 'classnames';
 
@@ -8,11 +18,15 @@ interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
     position?: 'bottom' | 'left' | 'right' | 'top';
     isOpen?: boolean;
     className?: string;
+    children?: ReactNode;
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 const DropdownContent = forwardRef<HTMLDivElement, Props>(
-    ({ align = 'start', position = 'bottom', isOpen, className = '', setIsOpen = () => {}, ...props }, ref) => {
+    (
+        { align = 'start', position = 'bottom', isOpen, className = '', children, setIsOpen = () => {}, ...props },
+        ref
+    ) => {
         const isVerticalPosition = position === 'top' || position === 'bottom';
         const isHorizontalPosition = position === 'left' || position === 'right';
 
@@ -59,7 +73,13 @@ const DropdownContent = forwardRef<HTMLDivElement, Props>(
                         )}
                         style={dropdownContentStyle}
                     >
-                        {props.children}
+                        {Children.map(children, (child) => {
+                            if (isValidElement(child)) {
+                                return cloneElement(child as ReactElement, { isOpen, setIsOpen });
+                            }
+
+                            return child;
+                        })}
                     </motion.div>
                 )}
             </AnimatePresence>

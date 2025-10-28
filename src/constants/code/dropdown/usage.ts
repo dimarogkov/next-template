@@ -3,12 +3,12 @@ export const DROPDOWN_USAGE_CODE = `<Dropdown>
 		<Btn>Dropdown</Btn>
 	</Dropdown.Trigger>
 	<Dropdown.Content>
-		<ul>
-			<li>Profile</li>
-			<li>Billing</li>
-			<li>Settings</li>
-			<li>Log out</li>
-		</ul>
+		<Dropdown.Menu>
+			<Dropdown.Item>Profile</Dropdown.Item>
+			<Dropdown.Item>Billing</Dropdown.Item>
+			<Dropdown.Item>Settings</Dropdown.Item>
+			<Dropdown.Item>Log out</Dropdown.Item>
+		</Dropdown.Menu>
 	</Dropdown.Content>
 </Dropdown>`;
 
@@ -18,12 +18,12 @@ export const DROPDOWN_POSITION_USAGE_CODE = `{/* Bottom position by default */}
 		<Btn>Dropdown</Btn>
 	</Dropdown.Trigger>
 	<Dropdown.Content position='bottom | left | right | top'>
-		<ul>
-			<li>Profile</li>
-			<li>Billing</li>
-			<li>Settings</li>
-			<li>Log out</li>
-		</ul>
+		<Dropdown.Menu>
+			<Dropdown.Item>Profile</Dropdown.Item>
+			<Dropdown.Item>Billing</Dropdown.Item>
+			<Dropdown.Item>Settings</Dropdown.Item>
+			<Dropdown.Item>Log out</Dropdown.Item>
+		</Dropdown.Menu>
 	</Dropdown.Content>
 </Dropdown>`;
 
@@ -33,11 +33,11 @@ export const DROPDOWN_ALIGN_USAGE_CODE = `{/* Start align by default */}
 		<Btn>Dropdown</Btn>
 	</Dropdown.Trigger>
 	<Dropdown.Content align='start | end'>
-		<ul>
-			<li>Profile</li>
-			<li>Billing</li>
-			<li>Settings</li>
-			<li>Log out</li>
-		</ul>
+		<Dropdown.Menu>
+			<Dropdown.Item>Profile</Dropdown.Item>
+			<Dropdown.Item>Billing</Dropdown.Item>
+			<Dropdown.Item>Settings</Dropdown.Item>
+			<Dropdown.Item>Log out</Dropdown.Item>
+		</Dropdown.Menu>
 	</Dropdown.Content>
 </Dropdown>`;

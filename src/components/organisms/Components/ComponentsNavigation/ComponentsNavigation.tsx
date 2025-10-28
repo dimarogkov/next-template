@@ -44,9 +44,9 @@ export default function ComponentsNavigation({ sectionsRef, sectionsArr }: Props
     return (
         <motion.section className='sticky top-[164px] hidden xl:block w-52 pl-5'>
             <div className='w-full'>
-                <Text className='text-text/70 mb-2 last:mb-0'>On this Page</Text>
+                <Text className='text-text/70'>On this Page</Text>
 
-                <ul className='flex flex-col gap-1.5 w-full'>
+                <ul className='flex flex-col gap-1.5 w-full my-2'>
                     {sectionsArr.map(({ id, text }) => (
                         <li key={id}>
                             <Text>
