@@ -4,14 +4,19 @@ import {
     NPM_LUCIDE_CODE,
     NPM_FRAMER_MOTION_CODE,
     SELECT_TYPE_CODE,
+    SELECT_UTILS_CODE,
     SELECT_CODE,
     SELECT_WRAPPER_CODE,
     SELECT_TRIGGER_CODE,
     SELECT_OPTIONS_CODE,
+    SELECT_GROUP_CODE,
+    SELECT_LABEL_CODE,
     SELECT_OPTION_CODE,
     SELECT_DEMO_CODE,
     SELECT_USAGE_CODE,
     SELECT_CONTROLLED_USAGE_CODE,
+    SELECT_ICON_USAGE_CODE,
+    SELECT_MULTIPLE_USAGE_CODE,
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
@@ -55,10 +60,13 @@ export default function SelectPage() {
             withAccordion: true,
             codeArr: [
                 { label: 'SelectItem.ts', code: SELECT_TYPE_CODE },
+                { label: 'assignRefs.ts', code: SELECT_UTILS_CODE },
                 { label: 'index.ts', code: SELECT_CODE },
                 { label: 'SelectWrapper.tsx', code: SELECT_WRAPPER_CODE },
                 { label: 'SelectTrigger.tsx', code: SELECT_TRIGGER_CODE },
                 { label: 'SelectOptions.tsx', code: SELECT_OPTIONS_CODE },
+                { label: 'SelectGroup.tsx', code: SELECT_GROUP_CODE },
+                { label: 'SelectLabel.tsx', code: SELECT_LABEL_CODE },
                 { label: 'SelectOption.tsx', code: SELECT_OPTION_CODE },
             ],
         },
@@ -82,6 +90,32 @@ export default function SelectPage() {
             ),
             withAccordion: false,
             codeArr: [SELECT_CONTROLLED_USAGE_CODE],
+        },
+        {
+            id: 'icon',
+            title: 'Icon',
+            link: '',
+            description: (
+                <Text>
+                    To change the default icon in the trigger, pass a custom <span className='badge-item'>icon</span>
+                    &nbsp;component to <span className='badge-item'>Select.Trigger</span>.
+                </Text>
+            ),
+            withAccordion: false,
+            codeArr: [SELECT_ICON_USAGE_CODE],
+        },
+        {
+            id: 'multiple',
+            title: 'Multiple',
+            link: '',
+            description: (
+                <Text>
+                    To enable multiple selection, add the <span className='badge-item'>multiple</span> attribute to
+                    the&nbsp;<span className='badge-item'>Select</span> component.
+                </Text>
+            ),
+            withAccordion: false,
+            codeArr: [SELECT_MULTIPLE_USAGE_CODE],
         },
     ];
 

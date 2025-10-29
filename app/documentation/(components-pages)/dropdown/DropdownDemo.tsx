@@ -12,7 +12,6 @@ export default function DropdownDemo() {
                     <Dropdown.Label>My Account</Dropdown.Label>
                     <Dropdown.Separator />
                     <Dropdown.Item>Profile</Dropdown.Item>
-                    <Dropdown.Item>Billing</Dropdown.Item>
 
                     <Dropdown.SubMenu>
                         <Dropdown.SubTrigger>Team</Dropdown.SubTrigger>
@@ -24,8 +23,9 @@ export default function DropdownDemo() {
                         </Dropdown.SubContent>
                     </Dropdown.SubMenu>
 
-                    <Dropdown.Item>Settings</Dropdown.Item>
+                    <Dropdown.Item>Billing</Dropdown.Item>
                     <Dropdown.Separator />
+                    <Dropdown.Item>Settings</Dropdown.Item>
                     <Dropdown.Item>Log out</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown.Content>

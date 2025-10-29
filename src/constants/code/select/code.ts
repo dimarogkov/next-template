@@ -3,14 +3,36 @@ export const SELECT_TYPE_CODE = `export interface ISelectItem {
     label: string;
 }`;
 
+export const SELECT_UTILS_CODE = `import { MutableRefObject, Ref } from 'react';
+
+export const assignRefs =
+    (...refs: (Ref<HTMLSelectElement> | undefined)[]) =>
+    (node: HTMLSelectElement) => {
+        refs.forEach((r) => {
+            if (!r) {
+                return;
+            }
+
+            if (typeof r === 'function') {
+                r(node);
+            } else {
+                (r as MutableRefObject<HTMLSelectElement | null>).current = node;
+            }
+        });
+    };`;
+
 export const SELECT_CODE = `import SelectWrapper from './SelectWrapper';
 import SelectTrigger from './SelectTrigger';
 import SelectOptions from './SelectOptions';
+import SelectGroup from './SelectGroup';
+import SelectLabel from './SelectLabel';
 import SelectOption from './SelectOption';
 
 export const Select = Object.assign(SelectWrapper, {
     Trigger: SelectTrigger,
     Options: SelectOptions,
+    Group: SelectGroup,
+    Label: SelectLabel,
     Option: SelectOption,
 });`;
 
@@ -24,9 +46,11 @@ import {
     RefAttributes,
     SelectHTMLAttributes,
     useEffect,
+    useMemo,
     useRef,
     useState,
 } from 'react';
+import { assignRefs } from '@utils';
 import { ISelectItem } from '@interfaces/SelectItem';
 
 interface Props extends SelectHTMLAttributes<HTMLSelectElement>, RefAttributes<HTMLSelectElement> {
@@ -34,17 +58,34 @@ interface Props extends SelectHTMLAttributes<HTMLSelectElement>, RefAttributes<H
 }
 
 const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className = '', ...props }, ref) => {
-    const [selectedItem, setSelectedItem] = useState<ISelectItem>({ value: '', label: '' });
+    const [selectedItems, setSelectedItems] = useState<ISelectItem[]>([]);
     const [isSelectOpen, setIsSelectOpen] = useState(false);
     const wrapperRef = useRef<HTMLDivElement>(null);
     const selectRef = useRef<HTMLSelectElement>(null);
 
-    useEffect(() => {
-        const optionsArr = (Children.toArray(props.children) as ReactElement[])[1]?.props?.children ?? [];
-        const currentOption = optionsArr.find((child: ReactElement) => child.props.value === props.value);
+    const mergedRef = assignRefs(ref, selectRef);
+    const isMultiple = !!props.multiple;
 
-        currentOption && setSelectedItem({ value: currentOption.props.value, label: currentOption.props.children });
-    }, [props.value, props.children]);
+    const optionsArr = useMemo(() => {
+        const getOptions = (node: React.ReactNode): ReactElement[] =>
+            Children.toArray(node).flatMap((child) =>
+                isValidElement(child)
+                    ? (child.type as any)?.displayName === 'SelectOption'
+                        ? [child]
+                        : getOptions(child.props?.children)
+                    : []
+            );
+
+        return getOptions(props.children).map((el) => el.props);
+    }, [props.children]);
+
+    useEffect(() => {
+        const currentOption = optionsArr.find((option) => option.value === props.value);
+
+        if (currentOption) {
+            setSelectedItems([{ value: currentOption.value, label: currentOption.children }]);
+        }
+    }, [props.value, optionsArr]);
 
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
@@ -54,44 +95,50 @@ const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className = '', ..
         };
 
         document.addEventListener('mousedown', handleClickOutside);
-
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
+        return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
+
+    const handleSelectedItems = (item: ISelectItem) => {
+        setSelectedItems((prevState) => {
+            if (!isMultiple) {
+                return [item];
+            }
+
+            const isItemExist = prevState.some(({ value }) => value === item.value);
+            return isItemExist ? prevState.filter(({ value }) => value !== item.value) : [...prevState, item];
+        });
+
+        if (selectRef.current) {
+            selectRef.current.value = item.value;
+            selectRef.current.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+    };
 
     return (
         <div ref={wrapperRef} className={\`relative w-full \${className}\`}>
-            <select ref={ref || selectRef} {...props} className='hidden' tabIndex={-1} aria-hidden>
-                {Children.map(props.children, (child) => {
-                    if (isValidElement(child)) {
-                        return Children.map(child.props.children, (option: ReactElement) => (
-                            <option key={option.props.value} value={option.props.value}>
-                                {option.props.children}
-                            </option>
-                        ));
-                    }
-
-                    return null;
-                })}
+            <select
+                ref={mergedRef}
+                {...props}
+                name={props.name || 'select'}
+                className='hidden'
+                tabIndex={-1}
+                aria-hidden
+            >
+                {optionsArr.map((option) => (
+                    <option key={option.value} value={option.value}>
+                        {option.children}
+                    </option>
+                ))}
             </select>
 
             {Children.map(props.children, (child) => {
                 if (isValidElement(child)) {
                     return cloneElement(child as ReactElement, {
                         isOpen: isSelectOpen,
-                        selectedItem,
+                        isMultiple,
+                        selectedItems,
                         setIsOpen: setIsSelectOpen,
-                        setSelectedItem: (item: ISelectItem) => {
-                            setSelectedItem(item);
-                            props.onChange?.({
-                                ...new Event('change', { bubbles: true }),
-                                target: {
-                                    name: props.name,
-                                    value: item.value,
-                                },
-                            } as unknown as React.ChangeEvent<HTMLSelectElement>);
-                        },
+                        setSelectedItems: handleSelectedItems,
                     });
                 }
 
@@ -105,19 +152,21 @@ SelectWrapper.displayName = 'SelectWrapper';
 export default SelectWrapper;`;
 
 export const SELECT_TRIGGER_CODE = `'use client';
-import { Dispatch, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
+import { Dispatch, forwardRef, ForwardRefExoticComponent, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
 import { ISelectItem } from '@interfaces/SelectItem';
 import { Text } from '@components/atoms';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, LucideProps } from 'lucide-react';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     placeholder?: string;
     isOpen?: boolean;
-    selectedItem?: ISelectItem;
+    isMultiple?: boolean;
+    selectedItems?: ISelectItem[];
     className?: string;
+    icon?: ForwardRefExoticComponent<Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>>;
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
-    setSelectedItem?: Dispatch<SetStateAction<ISelectItem>>;
+    setSelectedItems?: (item: ISelectItem) => void;
 }
 
 const SelectTrigger = forwardRef<HTMLDivElement, Props>(
@@ -125,14 +174,20 @@ const SelectTrigger = forwardRef<HTMLDivElement, Props>(
         {
             placeholder = 'Select',
             isOpen,
-            selectedItem,
+            isMultiple,
+            selectedItems,
+            icon,
             setIsOpen = () => {},
-            setSelectedItem = () => {},
+            setSelectedItems = () => {},
             className = '',
             ...props
         },
         ref
     ) => {
+        const selectedText = selectedItems?.map((item) => item.label).join(', ');
+        const hasValue = !!selectedItems?.length;
+        const Icon = icon || ChevronDown;
+
         return (
             <div
                 ref={ref}
@@ -140,11 +195,8 @@ const SelectTrigger = forwardRef<HTMLDivElement, Props>(
                 onClick={() => setIsOpen((prevState) => !prevState)}
                 className={\`relative flex items-center w-full h-10 px-4 pr-12 rounded-md cursor-pointer select-none border border-border \${className}\`}
             >
-                <Text className={cn({ 'text-title': selectedItem?.value !== '' })}>
-                    {selectedItem?.label || placeholder}
-                </Text>
-
-                <ChevronDown className='absolute right-4 size-5' />
+                <Text className={cn({ 'text-title': hasValue })}>{hasValue ? selectedText : placeholder}</Text>
+                <Icon className='absolute right-4 size-5' />
             </div>
         );
     }
@@ -170,16 +222,26 @@ import { ISelectItem } from '@interfaces/SelectItem';
 
 interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
     isOpen?: boolean;
-    selectedItem?: ISelectItem;
+    isMultiple?: boolean;
+    selectedItems?: ISelectItem[];
     className?: string;
-    setIsOpen?: Dispatch<SetStateAction<boolean>>;
-    setSelectedItem?: Dispatch<SetStateAction<ISelectItem>>;
     children?: ReactNode;
+    setIsOpen?: Dispatch<SetStateAction<boolean>>;
+    setSelectedItems?: (item: ISelectItem) => void;
 }
 
 const SelectOptions = forwardRef<HTMLDivElement, Props>(
     (
-        { isOpen, selectedItem, setIsOpen = () => {}, setSelectedItem = () => {}, className = '', children, ...props },
+        {
+            isOpen,
+            isMultiple,
+            selectedItems,
+            setIsOpen = () => {},
+            setSelectedItems = () => {},
+            className = '',
+            children,
+            ...props
+        },
         ref
     ) => {
         const animation: HTMLMotionProps<'div'> = {
@@ -195,15 +257,16 @@ const SelectOptions = forwardRef<HTMLDivElement, Props>(
                         ref={ref}
                         {...props}
                         {...animation}
-                        className={\`absolute top-[calc(100%+4px)] z-10 flex flex-col gap-1 min-w-full max-w-[calc(100vw-32px)] w-max rounded-md p-1 border border-border bg-bg will-change-transform \${className}\`}
+                        className={\`absolute top-[calc(100%+4px)] z-10 flex flex-col gap-1 min-w-full max-w-[calc(100vw-32px)] w-max max-h-[292px] overflow-auto rounded-md p-1 border border-border bg-bg will-change-transform \${className}\`}
                     >
                         {Children.map(children, (child) => {
                             if (isValidElement(child)) {
                                 return cloneElement(child as ReactElement, {
                                     isOpen,
-                                    selectedItem,
+                                    isMultiple,
+                                    selectedItems,
                                     setIsOpen,
-                                    setSelectedItem,
+                                    setSelectedItems,
                                 });
                             }
 
@@ -219,6 +282,130 @@ const SelectOptions = forwardRef<HTMLDivElement, Props>(
 SelectOptions.displayName = 'SelectOptions';
 export default SelectOptions;`;
 
+export const SELECT_GROUP_CODE = `'use client';
+import {
+    Children,
+    cloneElement,
+    Dispatch,
+    forwardRef,
+    HTMLAttributes,
+    isValidElement,
+    ReactElement,
+    ReactNode,
+    RefAttributes,
+    SetStateAction,
+} from 'react';
+import { ISelectItem } from '@interfaces/SelectItem';
+
+interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+    isOpen?: boolean;
+    isMultiple?: boolean;
+    selectedItems?: ISelectItem[];
+    className?: string;
+    children?: ReactNode;
+    setIsOpen?: Dispatch<SetStateAction<boolean>>;
+    setSelectedItems?: (item: ISelectItem) => void;
+}
+
+const SelectGroup = forwardRef<HTMLDivElement, Props>(
+    (
+        {
+            isOpen,
+            isMultiple,
+            selectedItems,
+            setIsOpen = () => {},
+            setSelectedItems = () => {},
+            className = '',
+            children,
+            ...props
+        },
+        ref
+    ) => {
+        return (
+            <div ref={ref} {...props} className={\`relative flex flex-col gap-1 \${className}\`}>
+                {Children.map(children, (child) => {
+                    if (isValidElement(child)) {
+                        return cloneElement(child as ReactElement, {
+                            isOpen,
+                            isMultiple,
+                            selectedItems,
+                            setIsOpen,
+                            setSelectedItems,
+                        });
+                    }
+
+                    return child;
+                })}
+            </div>
+        );
+    }
+);
+
+SelectGroup.displayName = 'SelectGroup';
+export default SelectGroup;`;
+
+export const SELECT_LABEL_CODE = `'use client';
+import {
+    Children,
+    cloneElement,
+    Dispatch,
+    forwardRef,
+    HTMLAttributes,
+    isValidElement,
+    ReactElement,
+    ReactNode,
+    RefAttributes,
+    SetStateAction,
+} from 'react';
+import { ISelectItem } from '@interfaces/SelectItem';
+
+interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+    isOpen?: boolean;
+    isMultiple?: boolean;
+    selectedItems?: ISelectItem[];
+    className?: string;
+    children?: ReactNode;
+    setIsOpen?: Dispatch<SetStateAction<boolean>>;
+    setSelectedItems?: (item: ISelectItem) => void;
+}
+
+const SelectLabel = forwardRef<HTMLDivElement, Props>(
+    (
+        {
+            isOpen,
+            isMultiple,
+            selectedItems,
+            setIsOpen = () => {},
+            setSelectedItems = () => {},
+            className = '',
+            children,
+            ...props
+        },
+        ref
+    ) => {
+        return (
+            <div ref={ref} {...props} className={\`relative text-sm px-2 py-1 \${className}\`}>
+                {Children.map(children, (child) => {
+                    if (isValidElement(child)) {
+                        return cloneElement(child as ReactElement, {
+                            isOpen,
+                            isMultiple,
+                            selectedItems,
+                            setIsOpen,
+                            setSelectedItems,
+                        });
+                    }
+
+                    return child;
+                })}
+            </div>
+        );
+    }
+);
+
+SelectLabel.displayName = 'SelectLabel';
+export default SelectLabel;`;
+
 export const SELECT_OPTION_CODE = `'use client';
 import { Dispatch, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
 import { ISelectItem } from '@interfaces/SelectItem';
@@ -226,42 +413,46 @@ import { Check } from 'lucide-react';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLSpanElement>, RefAttributes<HTMLSpanElement> {
-    value?: string;
+    value: string;
     isOpen?: boolean;
-    selectedItem?: ISelectItem;
+    isMultiple?: boolean;
+    selectedItems?: ISelectItem[];
     className?: string;
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
-    setSelectedItem?: Dispatch<SetStateAction<ISelectItem>>;
+    setSelectedItems?: (item: ISelectItem) => void;
 }
 
 const SelectOption = forwardRef<HTMLSpanElement, Props>(
     (
         {
-            value = '',
+            value,
             isOpen,
-            selectedItem,
+            isMultiple,
+            selectedItems,
             setIsOpen = () => {},
-            setSelectedItem = () => {},
+            setSelectedItems = () => {},
             className = '',
             ...props
         },
         ref
     ) => {
-        const SelectItem = () => {
-            setSelectedItem({ value, label: props.children as string });
-            setIsOpen(false);
+        const isActive = selectedItems?.some((item) => value === item.value) || false;
+
+        const selectItem = () => {
+            setSelectedItems({ value, label: props.children as string });
+            !isMultiple && setIsOpen(false);
         };
 
         return (
             <span
                 ref={ref}
                 {...props}
-                onClick={SelectItem}
+                onClick={selectItem}
                 className={cn(
                     \`relative flex items-center w-full rounded-md pr-8 px-2 py-1 text-title cursor-pointer \${className}\`,
                     {
-                        'transition-colors duration-300 hover:bg-border': value !== selectedItem?.value,
-                        'bg-border pointer-events-none': value === selectedItem?.value,
+                        'transition-colors duration-300 hover:bg-border': !isActive || (isActive && isMultiple),
+                        'bg-border pointer-events-none': isActive && !isMultiple,
                     }
                 )}
             >
@@ -269,8 +460,8 @@ const SelectOption = forwardRef<HTMLSpanElement, Props>(
 
                 <Check
                     className={cn('absolute right-2 size-4 text-text transition-all duration-300', {
-                        'opacity-0 invisible': value !== selectedItem?.value,
-                        'opacity-100 visible': value === selectedItem?.value,
+                        'opacity-0 invisible': !isActive,
+                        'opacity-100 visible': isActive,
                     })}
                 />
             </span>

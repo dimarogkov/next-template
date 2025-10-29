@@ -1,17 +1,19 @@
 'use client';
-import { Dispatch, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
+import { Dispatch, forwardRef, ForwardRefExoticComponent, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
 import { ISelectItem } from '@interfaces/SelectItem';
 import { Text } from '@components/atoms';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, LucideProps } from 'lucide-react';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     placeholder?: string;
     isOpen?: boolean;
-    selectedItem?: ISelectItem;
+    isMultiple?: boolean;
+    selectedItems?: ISelectItem[];
     className?: string;
+    icon?: ForwardRefExoticComponent<Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>>;
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
-    setSelectedItem?: Dispatch<SetStateAction<ISelectItem>>;
+    setSelectedItems?: (item: ISelectItem) => void;
 }
 
 const SelectTrigger = forwardRef<HTMLDivElement, Props>(
@@ -19,14 +21,20 @@ const SelectTrigger = forwardRef<HTMLDivElement, Props>(
         {
             placeholder = 'Select',
             isOpen,
-            selectedItem,
+            isMultiple,
+            selectedItems,
+            icon,
             setIsOpen = () => {},
-            setSelectedItem = () => {},
+            setSelectedItems = () => {},
             className = '',
             ...props
         },
         ref
     ) => {
+        const selectedText = selectedItems?.map((item) => item.label).join(', ');
+        const hasValue = !!selectedItems?.length;
+        const Icon = icon || ChevronDown;
+
         return (
             <div
                 ref={ref}
@@ -34,11 +42,8 @@ const SelectTrigger = forwardRef<HTMLDivElement, Props>(
                 onClick={() => setIsOpen((prevState) => !prevState)}
                 className={`relative flex items-center w-full h-10 px-4 pr-12 rounded-md cursor-pointer select-none border border-border ${className}`}
             >
-                <Text className={cn({ 'text-title': selectedItem?.value !== '' })}>
-                    {selectedItem?.label || placeholder}
-                </Text>
-
-                <ChevronDown className='absolute right-4 size-5' />
+                <Text className={cn({ 'text-title': hasValue })}>{hasValue ? selectedText : placeholder}</Text>
+                <Icon className='absolute right-4 size-5' />
             </div>
         );
     }

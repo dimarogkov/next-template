@@ -15,16 +15,26 @@ import { ISelectItem } from '@interfaces/SelectItem';
 
 interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
     isOpen?: boolean;
-    selectedItem?: ISelectItem;
+    isMultiple?: boolean;
+    selectedItems?: ISelectItem[];
     className?: string;
-    setIsOpen?: Dispatch<SetStateAction<boolean>>;
-    setSelectedItem?: Dispatch<SetStateAction<ISelectItem>>;
     children?: ReactNode;
+    setIsOpen?: Dispatch<SetStateAction<boolean>>;
+    setSelectedItems?: (item: ISelectItem) => void;
 }
 
 const SelectOptions = forwardRef<HTMLDivElement, Props>(
     (
-        { isOpen, selectedItem, setIsOpen = () => {}, setSelectedItem = () => {}, className = '', children, ...props },
+        {
+            isOpen,
+            isMultiple,
+            selectedItems,
+            setIsOpen = () => {},
+            setSelectedItems = () => {},
+            className = '',
+            children,
+            ...props
+        },
         ref
     ) => {
         const animation: HTMLMotionProps<'div'> = {
@@ -40,15 +50,16 @@ const SelectOptions = forwardRef<HTMLDivElement, Props>(
                         ref={ref}
                         {...props}
                         {...animation}
-                        className={`absolute top-[calc(100%+4px)] z-10 flex flex-col gap-1 min-w-full max-w-[calc(100vw-32px)] w-max rounded-md p-1 border border-border bg-bg will-change-transform ${className}`}
+                        className={`absolute top-[calc(100%+4px)] z-10 flex flex-col gap-1 min-w-full max-w-[calc(100vw-32px)] w-max max-h-[292px] overflow-auto rounded-md p-1 border border-border bg-bg will-change-transform ${className}`}
                     >
                         {Children.map(children, (child) => {
                             if (isValidElement(child)) {
                                 return cloneElement(child as ReactElement, {
                                     isOpen,
-                                    selectedItem,
+                                    isMultiple,
+                                    selectedItems,
                                     setIsOpen,
-                                    setSelectedItem,
+                                    setSelectedItems,
                                 });
                             }
 

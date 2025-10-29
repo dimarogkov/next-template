@@ -1,3 +1,4 @@
+import { assignRefs } from './assignRefs';
 import { convertUrlToString } from './convertUrlToString';
 import { debounce } from './debounce';
 import { getHighlightCode } from './getHighlightCode';
@@ -6,6 +7,7 @@ import { getPaginationRange } from './getPaginationRange';
 import { setDataToLocalStorage, getDataFromLocalStorage } from './localStorage';
 
 export {
+    assignRefs,
     convertUrlToString,
     debounce,
     getHighlightCode,
