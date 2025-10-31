@@ -1,2 +1,4 @@
-export const LOADER_USAGE_CODE = `{/* Light variant by default */}
+export const LOADER_USAGE_CODE = `import { Loader } from '@components/atoms';
+
+{/* Light variant by default */}
 <Loader variant='light | darks' />`;

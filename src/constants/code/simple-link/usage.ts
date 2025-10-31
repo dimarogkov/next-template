@@ -1,1 +1,3 @@
-export const SIMPLE_LINK_USAGE_CODE = `<SimpleLink href='/'>Simple Link</SimpleLink>`;
+export const SIMPLE_LINK_USAGE_CODE = `import { SimpleLink } from '@components/atoms';
+
+<SimpleLink href='/'>Simple Link</SimpleLink>`;

@@ -1,4 +1,6 @@
-export const PAGINATION_USAGE_CODE = `<Pagination>
+export const PAGINATION_USAGE_CODE = `import { Pagination } from '@components/atoms';
+
+<Pagination>
 	<Pagination.Previous />
 	<Pagination.Item page={1} />
 	<Pagination.Item page={2} />

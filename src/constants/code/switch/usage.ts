@@ -1,4 +1,6 @@
-export const SWITCH_USAGE_CODE = `{/* Default switch */}
+export const SWITCH_USAGE_CODE = `import { Switch } from '@components/atoms';
+
+{/* Default switch */}
 <Switch />
 
 {/* Active switch */}

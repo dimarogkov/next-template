@@ -1,4 +1,6 @@
-export const TEXTAREA_USAGE_CODE = `<Textarea placeholder='Type your message here.' />`;
+export const TEXTAREA_USAGE_CODE = `import { Textarea } from '@components/atoms';
+
+<Textarea placeholder='Type your message here.' />`;
 
 export const TEXTAREA_CONTROLLED_USAGE_CODE = `'use client';
 import { useState } from 'react';

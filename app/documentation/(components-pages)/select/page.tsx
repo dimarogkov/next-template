@@ -59,9 +59,9 @@ export default function SelectPage() {
             ),
             withAccordion: true,
             codeArr: [
+                { label: 'index.ts', code: SELECT_CODE },
                 { label: 'SelectItem.ts', code: SELECT_TYPE_CODE },
                 { label: 'assignRefs.ts', code: SELECT_UTILS_CODE },
-                { label: 'index.ts', code: SELECT_CODE },
                 { label: 'SelectWrapper.tsx', code: SELECT_WRAPPER_CODE },
                 { label: 'SelectTrigger.tsx', code: SELECT_TRIGGER_CODE },
                 { label: 'SelectOptions.tsx', code: SELECT_OPTIONS_CODE },

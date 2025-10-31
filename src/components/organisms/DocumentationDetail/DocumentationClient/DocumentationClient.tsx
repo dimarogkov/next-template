@@ -29,7 +29,7 @@ export default function DocumentationClient({ data }: Props) {
                         ref={registerRef(title.toLowerCase())}
                         className='w-full py-6 md:py-12 scroll-mt-[116px]'
                     >
-                        <Title size='h3' className='mb-1 md:mb-1.5 last:mb-0'>
+                        <Title size='h3' className='mb-1 md:mb-2 last:mb-0'>
                             {title}
                         </Title>
 

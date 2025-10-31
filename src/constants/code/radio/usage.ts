@@ -1,4 +1,6 @@
-export const RADIO_USAGE_CODE = `<Radio name='radio' label='Radio' />`;
+export const RADIO_USAGE_CODE = `import { Radio } from '@components/atoms';
+
+<Radio name='radio' label='Radio' />`;
 
 export const RADIO_CONTROLLED_USAGE_CODE = `'use client';
 import { useState } from 'react';

@@ -6,7 +6,6 @@ import {
     ALERT_DESCRIPTION_CODE,
     ALERT_DEMO_CODE,
     ALERT_USAGE_CODE,
-    ALERT_ICON_USAGE_CODE,
     NPM_CLASSNAMES_CODE,
     NPM_LUCIDE_CODE,
 } from '@code';
@@ -61,7 +60,7 @@ export default function AlertPage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [ALERT_ICON_USAGE_CODE, ALERT_USAGE_CODE],
+            codeArr: [ALERT_USAGE_CODE],
         },
     ];
 

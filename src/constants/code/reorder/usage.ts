@@ -17,10 +17,14 @@ export default function ReorderDemo() {
 	);
 }`;
 
-export const REORDER_TYPE_USAGE_CODE = `{/* <ul> by default */}
+export const REORDER_TYPE_USAGE_CODE = `import { Reorder } from 'framer-motion';
+
+{/* <ul> by default */}
 <Reorder.Group as='ul | ol | div'></Reorder.Group>`;
 
-export const REORDER_AXIS_USAGE_CODE = `{/* Y axis by default */}
+export const REORDER_AXIS_USAGE_CODE = `import { Reorder } from 'framer-motion';
+
+{/* Y axis by default */}
 <Reorder.Group axis='y | x'>
 	<Reorder.Item drag></Reorder.Item>
 </Reorder.Group>`;

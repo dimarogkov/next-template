@@ -15,7 +15,7 @@ export default function SidebarLink({ link, isActive }: Props) {
     return (
         <Link
             href={href}
-            className={cn('relative flex w-fit font-media transition-all duration-300 hover:text-title hover:pl-0.5', {
+            className={cn('relative flex w-fit font-media transition-colors duration-300 hover:text-title', {
                 'text-title pointer-events-none': isActive,
                 'text-text/80': !isActive,
             })}

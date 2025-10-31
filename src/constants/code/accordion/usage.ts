@@ -1,4 +1,6 @@
-export const ACCORDION_USAGE_CODE = `{/* Arrow iconType by default */}
+export const ACCORDION_USAGE_CODE = `import { Accordion } from '@components/atoms';
+
+{/* Arrow iconType by default */}
 <Accordion iconType='arrow | plus'>
 	<Accordion.Item>
 		<Accordion.Title>Accordion Title 1</Accordion.Title>
@@ -25,7 +27,9 @@ export const ACCORDION_USAGE_CODE = `{/* Arrow iconType by default */}
 	</Accordion.Item>
 </Accordion>`;
 
-export const ACCORDION_ACTIVE_USAGE_CODE = `<Accordion defaultActiveIndex={0}>
+export const ACCORDION_ACTIVE_USAGE_CODE = `import { Accordion } from '@components/atoms';
+
+<Accordion defaultActiveIndex={0}>
 	<Accordion.Item>
 		<Accordion.Title>Accordion Title 1</Accordion.Title>
 		<Accordion.Content>

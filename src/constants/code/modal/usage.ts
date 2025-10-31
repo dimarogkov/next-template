@@ -1,4 +1,6 @@
-export const MODAL_USAGE_CODE = `<Modal>
+export const MODAL_USAGE_CODE = `import { Btn, Modal } from '@components/atoms';
+
+<Modal>
 	<Modal.Trigger>
 		<Btn>Modal</Btn>
 	</Modal.Trigger>
@@ -7,7 +9,9 @@ export const MODAL_USAGE_CODE = `<Modal>
 	</Modal.Content>
 </Modal>`;
 
-export const MODAL_DISABLE_CLOSE_BTN_USAGE_CODE = `<Modal>
+export const MODAL_DISABLE_CLOSE_BTN_USAGE_CODE = `import { Btn, Modal } from '@components/atoms';
+
+<Modal>
 	<Modal.Trigger>
 		<Btn>Modal</Btn>
 	</Modal.Trigger>

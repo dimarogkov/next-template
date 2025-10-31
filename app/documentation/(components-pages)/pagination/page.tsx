@@ -47,20 +47,22 @@ export default function PaginationPage() {
             link: 'https://github.com/dimarogkov/next-template/tree/master/src/components/atoms/Pagination',
             description: (
                 <Text>
-                    Include a custom <span className='badge-item'>Pagination</span> component for consistent and
-                    maintainable usage throughout the project.
+                    Include a custom <span className='badge-item'>usePagination</span>,&nbsp;
+                    <span className='badge-item'>getPaginationRange</span> and&nbsp;
+                    <span className='badge-item'>Pagination</span> component for consistent and maintainable usage
+                    throughout the project.
                 </Text>
             ),
             withAccordion: true,
             codeArr: [
                 { label: 'index.ts', code: PAGINATION_CODE },
+                { label: 'usePagination.tsx', code: PAGINATION_HOOK_CODE },
+                { label: 'getPaginationRange.ts', code: PAGINATION_UTILS_CODE },
                 { label: 'PaginationWrapper.tsx', code: PAGINATION_WRAPPER_CODE },
                 { label: 'PaginationPrevious.tsx', code: PAGINATION_PREVIOUS_CODE },
                 { label: 'PaginationItem.tsx', code: PAGINATION_ITEM_CODE },
                 { label: 'PaginationNext.tsx', code: PAGINATION_NEXT_CODE },
                 { label: 'PaginationEllipsis.tsx', code: PAGINATION_ELLIPSIS_CODE },
-                { label: 'usePagination.tsx', code: PAGINATION_HOOK_CODE },
-                { label: 'getPaginationRange.ts', code: PAGINATION_UTILS_CODE },
             ],
         },
         {

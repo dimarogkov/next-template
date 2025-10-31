@@ -6,7 +6,9 @@ export const TOAST_MAIN_USAGE_CODE = `import { Toaster } from 'react-hot-toast';
 	toastOptions={{ duration: 2000 }}
 />`;
 
-export const TOAST_USAGE_CODE = `{/* Default type by default */}
+export const TOAST_USAGE_CODE = `import { Btn, Toast } from '@components/atoms';
+
+{/* Default type by default */}
 const toggleToast = () => {
 	toast.custom((t) => (
 		<Toast

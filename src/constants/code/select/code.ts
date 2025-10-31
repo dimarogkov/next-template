@@ -60,6 +60,7 @@ interface Props extends SelectHTMLAttributes<HTMLSelectElement>, RefAttributes<H
 const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className = '', ...props }, ref) => {
     const [selectedItems, setSelectedItems] = useState<ISelectItem[]>([]);
     const [isSelectOpen, setIsSelectOpen] = useState(false);
+    
     const wrapperRef = useRef<HTMLDivElement>(null);
     const selectRef = useRef<HTMLSelectElement>(null);
 

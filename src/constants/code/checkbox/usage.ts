@@ -1,4 +1,6 @@
-export const CHECKBOX_USAGE_CODE = `<Checkbox label='Accept terms and conditions' />`;
+export const CHECKBOX_USAGE_CODE = `import { Checkbox } from '@components/atoms';
+
+<Checkbox label='Accept terms and conditions' />`;
 
 export const CHECKBOX_CONTROLLED_USAGE_CODE = `'use client';
 import { useState } from 'react';
