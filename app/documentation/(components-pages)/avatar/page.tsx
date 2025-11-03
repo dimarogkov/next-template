@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import {
     AVATAR_CODE,
+    AVATAR_STYLE_CODE,
     AVATAR_WRAPPER_CODE,
     AVATAR_LINK_CODE,
     AVATAR_IMG_CODE,
@@ -52,6 +53,7 @@ export default function AvatarPage() {
             withAccordion: true,
             codeArr: [
                 { label: 'index.ts', code: AVATAR_CODE },
+                { label: 'main.css', code: AVATAR_STYLE_CODE },
                 { label: 'AvatarWrapper.tsx', code: AVATAR_WRAPPER_CODE },
                 { label: 'AvatarLink.tsx', code: AVATAR_LINK_CODE },
                 { label: 'AvatarImg.tsx', code: AVATAR_IMG_CODE },

@@ -10,6 +10,25 @@ export const Avatar = Object.assign(AvatarWrapper, {
 
 export { AvatarGroup };`;
 
+export const AVATAR_STYLE_CODE = `.online::before,
+.online-square::before {
+    position: absolute;
+    z-index: 1;
+    content: '';
+    top: 3%;
+    right: 3%;
+    width: 20%;
+    height: 20%;
+    border-radius: 50%;
+    outline: 3px solid var(--fallback-b1);
+    background-color: oklch(64.8% 0.15 160 / 1);
+}
+
+.online-square::before {
+    top: -10%;
+    right: -10%;
+}`;
+
 export const AVATAR_WRAPPER_CODE = `'use client';
 import {
     Children,

@@ -33,7 +33,7 @@ const AvatarGroup = forwardRef<HTMLDivElement, Props>(({ visibleCount, className
     const groupStyle = {
         ...(visibleCount && {
             left: `${visibleCount * Math.round(currentWidth / 4) * -1}px`,
-            outline: '3px solid #0a0a0a',
+            outline: '3px solid var(--fallback-b1)',
         }),
     };
 

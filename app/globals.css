@@ -111,7 +111,7 @@ input[type='number']::-webkit-outer-spin-button {
     width: 20%;
     height: 20%;
     border-radius: 50%;
-    outline: 3px solid #0a0a0a;
+    outline: 3px solid var(--fallback-b1);
     background-color: oklch(64.8% 0.15 160 / 1);
 }
 
