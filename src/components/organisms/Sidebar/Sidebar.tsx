@@ -13,7 +13,7 @@ export default function Sidebar() {
     const [isEnd, setIsEnd] = useState(false);
     const { isSidebarOpen, setIsSidebarOpen } = useMain();
 
-    const sidebarRef = useRef<HTMLElement>(null);
+    const sidebarRef = useRef<HTMLDivElement>(null);
     const sidebarListRef = useRef<HTMLDivElement>(null);
 
     const pathname = usePathname();
@@ -49,7 +49,7 @@ export default function Sidebar() {
         <>
             <SidebarLayer />
 
-            <section
+            <div
                 ref={sidebarRef}
                 className={cn(
                     'fixed xl:sticky z-20 left-0 top-[108px] lg:top-[124px] xl:top-[164px] block w-56 border-r xl:border-none border-border bg-bg transition-transform duration-300 after:bg-bg',
@@ -59,7 +59,7 @@ export default function Sidebar() {
                     }
                 )}
             >
-                <div className='relative w-full h-[calc(100svh-108px)] lg:h-[calc(100svh-124px)] xl:h-[calc(100svh-204px)] px-5 xl:px-0 py-5 md:py-10 xl:py-0'>
+                <div className='relative w-full h-full lg:h-[calc(100svh-124px)] xl:h-[calc(100svh-204px)] px-5 xl:px-0 py-5 md:py-10 xl:py-0'>
                     <SidebarBtn />
 
                     <motion.div
@@ -86,7 +86,7 @@ export default function Sidebar() {
                         </div>
                     </motion.div>
                 </div>
-            </section>
+            </div>
         </>
     );
 }
