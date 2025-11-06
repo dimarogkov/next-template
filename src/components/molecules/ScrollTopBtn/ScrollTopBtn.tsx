@@ -32,8 +32,11 @@ export default function ScrollTopBtn() {
                     <Separator className='my-1.5' />
 
                     <button type='button' onClick={scrollTop} className='group flex items-center gap-2'>
-                        <Text className='transition-colors duration-200 group-hover:text-title'>Scroll to top</Text>
-                        <CircleArrowUp className='size-6 text-text transition-colors duration-200 group-hover:text-title' />
+                        <Text className='!w-fit transition-colors duration-200 group-hover:text-title'>
+                            Scroll to top
+                        </Text>
+
+                        <CircleArrowUp className='size-5 text-text transition-colors duration-200 group-hover:text-title' />
                     </button>
                 </motion.div>
             )}

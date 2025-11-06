@@ -19,7 +19,7 @@ export default function BreadcrumbWrapper({ className = '' }: Props) {
         <>
             {isBreadcrumbVisible && (
                 <section
-                    className={`sticky z-20 top-16 lg:top-20 left-0 w-full h-11 border-b border-border bg-bg ${className}`}
+                    className={`sticky z-30 top-16 lg:top-20 left-0 w-full h-11 border-b border-border bg-bg ${className}`}
                 >
                     <div className='container h-full'>
                         <Breadcrumb />
