@@ -29,7 +29,7 @@ export default function ScrollTopBtn() {
         <AnimatePresence>
             {scrollPosition > 100 && (
                 <motion.div {...animation} className='relative w-full'>
-                    <Separator className='my-1.5' />
+                    <Separator className='my-2' />
 
                     <button type='button' onClick={scrollTop} className='group flex items-center gap-2'>
                         <Text className='!w-fit transition-colors duration-200 group-hover:text-title'>

@@ -1,3 +1,5 @@
+'use client';
+import { useEffect, useState } from 'react';
 import { IDevIcon } from '@interfaces/DevIcon';
 import { Text } from '@components/atoms';
 
@@ -8,12 +10,17 @@ type Props = {
 
 export default function DevIcon({ devIcon, className = '' }: Props) {
     const { icon, text } = devIcon;
+    const [isMount, setIsMount] = useState(false);
+
+    useEffect(() => {
+        setIsMount(true);
+    }, []);
 
     return (
         <div
             className={`relative flex items-center gap-2 px-3.5 py-1 rounded-full border border-border whitespace-nowrap ${className}`}
         >
-            <i className={`text-xl ${icon}`} />
+            {!isMount ? <span className='size-5 rounded-full bg-text'></span> : <i className={`text-xl ${icon}`} />}
             <Text className='select-none !w-fit'>{text}</Text>
         </div>
     );
