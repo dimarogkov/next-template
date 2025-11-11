@@ -13,7 +13,7 @@ export default function RootMain({ children }: Props) {
 
     return (
         <>
-            <main className={cn('relative w-full', { 'pt-5 md:py-10': pathname !== PATHS.HOME })}>{children}</main>
+            <main className={cn('relative w-full', { 'py-5 md:py-10': pathname !== PATHS.HOME })}>{children}</main>
         </>
     );
 }

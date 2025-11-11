@@ -8,7 +8,7 @@ type Props = {
 export default function HomeSlider({ className = '' }: Props) {
     return (
         <div
-            className={`relative left-0 md:left-auto flex space-x-2 w-[calc(100%+40px)] sm:w-[calc(100%+60px)] md:w-full overflow-hidden ${className}`}
+            className={`relative left-0 md:left-auto hidden sm:flex space-x-2 w-full sm:w-[calc(100%+60px)] md:w-full overflow-hidden ${className}`}
         >
             <div className='flex space-x-2 animate-loop-scroll will-change-transform'>
                 {DEV_ICONS.map((icon, text) => (

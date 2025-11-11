@@ -52,7 +52,7 @@ export default function Sidebar() {
             <div
                 ref={sidebarRef}
                 className={cn(
-                    'fixed xl:sticky z-20 left-0 top-[108px] lg:top-[124px] xl:top-[164px] block w-56 border-r xl:border-none border-border bg-bg transition-transform duration-300 after:bg-bg',
+                    'fixed xl:sticky z-20 left-0 top-[108px] lg:top-[124px] xl:top-[164px] block w-56 h-[calc(100%-108px)] lg:h-auto border-r xl:border-none border-border bg-bg transition-transform duration-300 after:bg-bg',
                     {
                         '-translate-x-56 xl:translate-x-0': !isSidebarOpen,
                         'translate-x-0': isSidebarOpen,

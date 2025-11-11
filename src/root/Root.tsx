@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-head-element */
 import { ReactNode } from 'react';
 import { Geist } from 'next/font/google';
 

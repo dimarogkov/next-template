@@ -15,7 +15,7 @@ const TabsPanel = forwardRef<HTMLDivElement, Props>(({ hasAnimation, className =
     };
 
     return (
-        <div ref={ref} {...props} className={`relative w-full text-base p-2.5 sm:p-4 ${className}`}>
+        <div ref={ref} {...props} className={`relative w-full text-base p-3 sm:p-4 ${className}`}>
             {hasAnimation ? <motion.div {...animation}>{props.children}</motion.div> : <div>{props.children}</div>}
         </div>
     );

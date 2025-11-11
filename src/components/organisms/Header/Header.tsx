@@ -13,7 +13,7 @@ export default function Header() {
     return (
         <header
             className={cn('sticky top-0 left-0 z-30 flex items-center w-full h-16 lg:h-20 border-b border-border', {
-                'backdrop-blur-lg': isHomePage,
+                'backdrop-blur-[20px]': isHomePage,
                 'bg-bg': !isHomePage,
             })}
         >
