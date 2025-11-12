@@ -28,16 +28,14 @@ const AccordionItem = forwardRef<HTMLDivElement, Props>(
                 className={`relative w-full border-b border-border last:border-b-0 overflow-hidden ${className}`}
             >
                 {Children.map(props.children, (child) => {
-                    if (isValidElement(child)) {
-                        return cloneElement(child as ReactElement, {
-                            iconType,
-                            accordionIndex,
-                            activeIndex,
-                            setActiveIndex,
-                        });
-                    }
-
-                    return child;
+                    return isValidElement(child)
+                        ? cloneElement(child as ReactElement, {
+                              iconType,
+                              accordionIndex,
+                              activeIndex,
+                              setActiveIndex,
+                          })
+                        : child;
                 })}
             </div>
         );

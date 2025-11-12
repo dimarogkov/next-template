@@ -23,11 +23,7 @@ const TabsPanels = forwardRef<HTMLDivElement, Props>(
     ({ hasAnimation, activeIndex, className = '', setActiveIndex = () => {}, ...props }, ref) => {
         const childrenToRender = Children.map(props.children, (child, index) => {
             if (index === activeIndex) {
-                if (isValidElement(child)) {
-                    return cloneElement(child as ReactElement, { hasAnimation });
-                }
-
-                return child;
+                return isValidElement(child) ? cloneElement(child as ReactElement, { hasAnimation }) : child;
             }
         });
 

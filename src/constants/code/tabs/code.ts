@@ -36,11 +36,9 @@ const TabsWrapper = forwardRef<HTMLDivElement, Props>(
         return (
             <div ref={ref} {...props} className={\`relative w-full rounded-md border border-border \${className}\`}>
                 {Children.map(props.children, (child) => {
-                    if (isValidElement(child)) {
-                        return cloneElement(child as ReactElement, { hasAnimation, activeIndex, setActiveIndex });
-                    }
-
-                    return child;
+                    return isValidElement(child)
+                        ? cloneElement(child as ReactElement, { hasAnimation, activeIndex, setActiveIndex })
+                        : child;
                 })}
             </div>
         );
@@ -75,16 +73,14 @@ const TabsList = forwardRef<HTMLUListElement, Props>(
         return (
             <ul ref={ref} {...props} className={\`relative flex w-full border-b border-border \${className}\`}>
                 {Children.map(props.children, (child, index) => {
-                    if (isValidElement(child)) {
-                        return cloneElement(child as ReactElement, {
-                            hasAnimation,
-                            tabIndex: index,
-                            activeIndex,
-                            setActiveIndex,
-                        });
-                    }
-
-                    return child;
+                    return isValidElement(child)
+                        ? cloneElement(child as ReactElement, {
+                              hasAnimation,
+                              tabIndex: index,
+                              activeIndex,
+                              setActiveIndex,
+                          })
+                        : child;
                 })}
             </ul>
         );
@@ -170,11 +166,7 @@ const TabsPanels = forwardRef<HTMLDivElement, Props>(
     ({ hasAnimation, activeIndex, className = '', setActiveIndex = () => {}, ...props }, ref) => {
         const childrenToRender = Children.map(props.children, (child, index) => {
             if (index === activeIndex) {
-                if (isValidElement(child)) {
-                    return cloneElement(child as ReactElement, { hasAnimation });
-                }
-
-                return child;
+                return isValidElement(child) ? cloneElement(child as ReactElement, { hasAnimation }) : child;
             }
         });
 

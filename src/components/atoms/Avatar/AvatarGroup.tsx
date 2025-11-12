@@ -40,11 +40,7 @@ const AvatarGroup = forwardRef<HTMLDivElement, Props>(({ visibleCount, className
     return (
         <div ref={ref || groupRef} {...props} className={`relative flex items-center ${className}`}>
             {childArray.slice(0, visibleCount).map((child, index) => {
-                if (isValidElement(child)) {
-                    return cloneElement(child as ReactElement, { currentIndex: index });
-                }
-
-                return child;
+                return isValidElement(child) ? cloneElement(child as ReactElement, { currentIndex: index }) : child;
             })}
 
             {visibleCount && childArray.length > visibleCount && (

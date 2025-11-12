@@ -95,17 +95,15 @@ const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className = '', ..
             </select>
 
             {Children.map(props.children, (child) => {
-                if (isValidElement(child)) {
-                    return cloneElement(child as ReactElement, {
-                        isOpen: isSelectOpen,
-                        isMultiple,
-                        selectedItems,
-                        setIsOpen: setIsSelectOpen,
-                        setSelectedItems: handleSelectedItems,
-                    });
-                }
-
-                return child;
+                return isValidElement(child)
+                    ? cloneElement(child as ReactElement, {
+                          isOpen: isSelectOpen,
+                          isMultiple,
+                          selectedItems,
+                          setIsOpen: setIsSelectOpen,
+                          setSelectedItems: handleSelectedItems,
+                      })
+                    : child;
             })}
         </div>
     );

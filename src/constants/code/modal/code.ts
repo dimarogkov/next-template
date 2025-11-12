@@ -41,11 +41,9 @@ const ModalWrapper = forwardRef<HTMLDivElement, Props>(({ className = '', ...pro
     return (
         <div ref={ref} {...props} className={\`relative w-fit \${className}\`}>
             {Children.map(props.children, (child) => {
-                if (isValidElement(child)) {
-                    return cloneElement(child as ReactElement, { isOpen: isModalOpen, setIsOpen: setIsModalOpen });
-                }
-
-                return child;
+                return isValidElement(child)
+                    ? cloneElement(child as ReactElement, { isOpen: isModalOpen, setIsOpen: setIsModalOpen })
+                    : child;
             })}
         </div>
     );

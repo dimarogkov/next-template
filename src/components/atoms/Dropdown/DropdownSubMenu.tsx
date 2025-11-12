@@ -32,15 +32,13 @@ const DropdownSubMenu = forwardRef<HTMLDivElement, Props>(
                 className={`relative ${className}`}
             >
                 {Children.map(props.children, (child) => {
-                    if (isValidElement(child)) {
-                        return cloneElement(child as ReactElement, {
-                            isOpen,
-                            isSubOpen: isSubDropdownOpen,
-                            setIsOpen,
-                        });
-                    }
-
-                    return child;
+                    return isValidElement(child)
+                        ? cloneElement(child as ReactElement, {
+                              isOpen,
+                              isSubOpen: isSubDropdownOpen,
+                              setIsOpen,
+                          })
+                        : child;
                 })}
             </div>
         );

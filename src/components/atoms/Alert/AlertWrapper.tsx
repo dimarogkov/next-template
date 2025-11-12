@@ -49,11 +49,7 @@ const AlertWrapper = forwardRef<HTMLDivElement, Props>(
                     )}
 
                     {Children.map(props.children, (child) => {
-                        if (isValidElement(child)) {
-                            return cloneElement(child as ReactElement, { variant });
-                        }
-
-                        return child;
+                        return isValidElement(child) ? cloneElement(child as ReactElement, { variant }) : child;
                     })}
                 </div>
             </div>

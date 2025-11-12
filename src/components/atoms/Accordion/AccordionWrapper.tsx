@@ -23,16 +23,14 @@ const AccordionWrapper = forwardRef<HTMLDivElement, Props>(
         return (
             <div ref={ref} {...props} className={`relative w-full rounded-md border border-border ${className}`}>
                 {Children.map(props.children, (child, index) => {
-                    if (isValidElement(child)) {
-                        return cloneElement(child as ReactElement, {
-                            iconType,
-                            accordionIndex: index,
-                            activeIndex,
-                            setActiveIndex,
-                        });
-                    }
-
-                    return child;
+                    return isValidElement(child)
+                        ? cloneElement(child as ReactElement, {
+                              iconType,
+                              accordionIndex: index,
+                              activeIndex,
+                              setActiveIndex,
+                          })
+                        : child;
                 })}
             </div>
         );

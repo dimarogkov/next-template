@@ -34,16 +34,14 @@ const AccordionWrapper = forwardRef<HTMLDivElement, Props>(
         return (
             <div ref={ref} {...props} className={\`relative w-full rounded-md border border-border \${className}\`}>
                 {Children.map(props.children, (child, index) => {
-                    if (isValidElement(child)) {
-                        return cloneElement(child as ReactElement, {
-                            iconType,
-                            accordionIndex: index,
-                            activeIndex,
-                            setActiveIndex,
-                        });
-                    }
-
-                    return child;
+                    return isValidElement(child)
+                        ? cloneElement(child as ReactElement, {
+                              iconType,
+                              accordionIndex: index,
+                              activeIndex,
+                              setActiveIndex,
+                          })
+                        : child;
                 })}
             </div>
         );
@@ -83,16 +81,14 @@ const AccordionItem = forwardRef<HTMLDivElement, Props>(
                 className={\`relative w-full border-b border-border last:border-b-0 overflow-hidden \${className}\`}
             >
                 {Children.map(props.children, (child) => {
-                    if (isValidElement(child)) {
-                        return cloneElement(child as ReactElement, {
-                            iconType,
-                            accordionIndex,
-                            activeIndex,
-                            setActiveIndex,
-                        });
-                    }
-
-                    return child;
+                    return isValidElement(child)
+                        ? cloneElement(child as ReactElement, {
+                              iconType,
+                              accordionIndex,
+                              activeIndex,
+                              setActiveIndex,
+                          })
+                        : child;
                 })}
             </div>
         );

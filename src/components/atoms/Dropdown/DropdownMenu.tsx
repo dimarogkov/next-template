@@ -22,11 +22,7 @@ const DropdownMenu = forwardRef<HTMLDivElement, Props>(
         return (
             <div ref={ref} {...props} className={`relative flex flex-col gap-1 w-full ${className}`}>
                 {Children.map(props.children, (child) => {
-                    if (isValidElement(child)) {
-                        return cloneElement(child as ReactElement, { isOpen, setIsOpen });
-                    }
-
-                    return child;
+                    return isValidElement(child) ? cloneElement(child as ReactElement, { isOpen, setIsOpen }) : child;
                 })}
             </div>
         );

@@ -38,14 +38,12 @@ const DropdownWrapper = forwardRef<HTMLDivElement, Props>(({ isOpen = false, cla
     return (
         <div ref={ref || dropdownRef} {...props} className={`relative ${className}`}>
             {Children.map(props.children, (child) => {
-                if (isValidElement(child)) {
-                    return cloneElement(child as ReactElement, {
-                        isOpen: isDropdownOpen,
-                        setIsOpen: setIsDropdownOpen,
-                    });
-                }
-
-                return child;
+                return isValidElement(child)
+                    ? cloneElement(child as ReactElement, {
+                          isOpen: isDropdownOpen,
+                          setIsOpen: setIsDropdownOpen,
+                      })
+                    : child;
             })}
         </div>
     );

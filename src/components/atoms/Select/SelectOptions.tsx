@@ -53,17 +53,15 @@ const SelectOptions = forwardRef<HTMLDivElement, Props>(
                         className={`absolute top-[calc(100%+4px)] z-10 flex flex-col gap-1 min-w-full max-w-[calc(100vw-32px)] w-max max-h-[292px] overflow-auto rounded-md p-1 border border-border bg-bg will-change-transform ${className}`}
                     >
                         {Children.map(children, (child) => {
-                            if (isValidElement(child)) {
-                                return cloneElement(child as ReactElement, {
-                                    isOpen,
-                                    isMultiple,
-                                    selectedItems,
-                                    setIsOpen,
-                                    setSelectedItems,
-                                });
-                            }
-
-                            return child;
+                            return isValidElement(child)
+                                ? cloneElement(child as ReactElement, {
+                                      isOpen,
+                                      isMultiple,
+                                      selectedItems,
+                                      setIsOpen,
+                                      setSelectedItems,
+                                  })
+                                : child;
                         })}
                     </motion.div>
                 )}

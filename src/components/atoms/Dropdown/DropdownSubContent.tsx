@@ -38,11 +38,9 @@ const DropdownSubContent = forwardRef<HTMLDivElement, Props>(
                         className={`absolute top-[calc(100%+4px)] sm:-top-[1px] sm:left-[calc(100%+4px)] z-10 min-w-full max-w-[calc(100vw-32px)] w-max rounded-md p-1 border border-border bg-bg origin-top-left will-change-transform ${className}`}
                     >
                         {Children.map(children, (child) => {
-                            if (isValidElement(child)) {
-                                return cloneElement(child as ReactElement, { isOpen, setIsOpen });
-                            }
-
-                            return child;
+                            return isValidElement(child)
+                                ? cloneElement(child as ReactElement, { isOpen, setIsOpen })
+                                : child;
                         })}
                     </motion.div>
                 )}

@@ -52,11 +52,7 @@ const AvatarWrapper = forwardRef<HTMLDivElement, Props>(
                 style={avatarStyle}
             >
                 {Children.map(props.children, (child) => {
-                    if (isValidElement(child)) {
-                        return cloneElement(child as ReactElement, { type });
-                    }
-
-                    return child;
+                    return isValidElement(child) ? cloneElement(child as ReactElement, { type }) : child;
                 })}
             </div>
         );

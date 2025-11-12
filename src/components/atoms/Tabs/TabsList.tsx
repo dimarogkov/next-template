@@ -23,16 +23,14 @@ const TabsList = forwardRef<HTMLUListElement, Props>(
         return (
             <ul ref={ref} {...props} className={`relative flex w-full border-b border-border ${className}`}>
                 {Children.map(props.children, (child, index) => {
-                    if (isValidElement(child)) {
-                        return cloneElement(child as ReactElement, {
-                            hasAnimation,
-                            tabIndex: index,
-                            activeIndex,
-                            setActiveIndex,
-                        });
-                    }
-
-                    return child;
+                    return isValidElement(child)
+                        ? cloneElement(child as ReactElement, {
+                              hasAnimation,
+                              tabIndex: index,
+                              activeIndex,
+                              setActiveIndex,
+                          })
+                        : child;
                 })}
             </ul>
         );
