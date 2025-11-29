@@ -50,6 +50,7 @@ export default function TextPage() {
     const data: IDocumentationData = {
         title: 'Text',
         description: 'Styles for text.',
+        links: [],
         preview,
         codeSections,
     };

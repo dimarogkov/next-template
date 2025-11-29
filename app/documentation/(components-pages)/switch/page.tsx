@@ -52,7 +52,8 @@ export default function SwitchPage() {
 
     const data: IDocumentationData = {
         title: 'Switch',
-        description: 'A control that allows the user to toggle between checked and not checked.',
+        description: 'A control that allows the user to toggle between checked and not checked using Framer Motion.',
+        links: [{ href: 'https://motion.dev/docs/react', name: 'Docs' }],
         preview,
         codeSections,
     };

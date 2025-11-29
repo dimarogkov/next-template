@@ -42,6 +42,7 @@ export default function PinInputPage() {
     const data: IDocumentationData = {
         title: 'Pin Input',
         description: 'Used to capture a pin code or otp from the user.',
+        links: [],
         preview,
         codeSections,
     };

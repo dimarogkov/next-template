@@ -67,6 +67,7 @@ export default function AlertPage() {
     const data: IDocumentationData = {
         title: 'Alert',
         description: 'Displays a callout for user attention.',
+        links: [],
         preview,
         codeSections,
     };

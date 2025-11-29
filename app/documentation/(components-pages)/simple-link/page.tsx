@@ -43,6 +43,7 @@ export default function SimpleLinkPage() {
         title: 'Simple Link',
         description:
             'A simple text link styled for use inside components or previews. Useful for inline documentation, examples, or interactive UI snippets.',
+        links: [],
         preview,
         codeSections,
     };

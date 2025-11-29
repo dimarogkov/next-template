@@ -38,9 +38,14 @@ export default function DocumentationClient({ data }: Props) {
                         <Separator className='my-5' />
 
                         <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 w-full'>
-                            {links.map(({ name, href }) => (
-                                <Link key={name} href={href} className='font-medium text-lg text-text hover:underline'>
-                                    {name}
+                            {links.map(({ name, href, isNew }) => (
+                                <Link
+                                    key={name}
+                                    href={href}
+                                    className='flex items-center gap-2.5 font-medium text-lg text-text hover:underline'
+                                >
+                                    <span>{name}</span>
+                                    {isNew && <span className='flex size-2 rounded-full bg-blue' />}
                                 </Link>
                             ))}
                         </div>

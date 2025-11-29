@@ -100,7 +100,8 @@ export default function AvatarPage() {
 
     const data: IDocumentationData = {
         title: 'Avatar',
-        description: 'An image element with a fallback for representing the user.',
+        description: 'An image element with a fallback for representing the user using Framer Motion.',
+        links: [{ href: 'https://motion.dev/docs/react', name: 'Docs' }],
         preview,
         codeSections,
     };

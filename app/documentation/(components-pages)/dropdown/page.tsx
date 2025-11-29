@@ -108,7 +108,9 @@ export default function DropdownPage() {
 
     const data: IDocumentationData = {
         title: 'Dropdown',
-        description: 'Displays a menu to the user — such as a set of actions or functions — triggered by a button.',
+        description:
+            'Displays a menu to the user such as a set of actions or functions triggered by a button using Framer Motion.',
+        links: [{ href: 'https://motion.dev/docs/react', name: 'Docs' }],
         preview,
         codeSections,
     };

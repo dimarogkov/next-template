@@ -3,14 +3,14 @@ import {
     NPM_CLASSNAMES_CODE,
     NPM_LUCIDE_CODE,
     NPM_REDUX_TOOLKIT_CODE,
-    REACT_QUERY_TYPE_CODE,
-    REACT_QUERY_ADD_TODO_CODE,
-    REACT_QUERY_TODO_CODE,
     REDUX_TOOLKIT_PROVIDER_CODE,
     REDUX_TOOLKIT_PROVIDER_USAGE_CODE,
     RTK_QUERY_CODE,
     RTK_QUERY_SLICE_CODE,
     RTK_QUERY_DEMO_CODE,
+    TANSTACK_QUERY_TYPE_CODE,
+    TANSTACK_QUERY_ADD_TODO_CODE,
+    TANSTACK_QUERY_TODO_CODE,
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
@@ -46,12 +46,12 @@ export default function RtkQueryPage() {
             description: null,
             withAccordion: true,
             codeArr: [
-                { label: 'Todo.ts', code: REACT_QUERY_TYPE_CODE },
+                { label: 'Todo.ts', code: TANSTACK_QUERY_TYPE_CODE },
                 { label: 'index.ts', code: RTK_QUERY_CODE },
                 { label: 'StoreProvider.tsx', code: REDUX_TOOLKIT_PROVIDER_CODE },
                 { label: 'todosApiSlice.ts', code: RTK_QUERY_SLICE_CODE },
-                { label: 'AddTodo.tsx', code: REACT_QUERY_ADD_TODO_CODE },
-                { label: 'Todo.tsx', code: REACT_QUERY_TODO_CODE },
+                { label: 'AddTodo.tsx', code: TANSTACK_QUERY_ADD_TODO_CODE },
+                { label: 'Todo.tsx', code: TANSTACK_QUERY_TODO_CODE },
             ],
         },
         {
@@ -68,6 +68,7 @@ export default function RtkQueryPage() {
         title: 'RTK Query',
         description:
             'Powerful data fetching and caching tool. It is designed to simplify common cases for loading data in a web application, eliminating the need to hand-write data fetching & caching logic yourself.',
+        links: [{ href: 'https://redux-toolkit.js.org/rtk-query/overview', name: 'Docs' }],
         preview,
         codeSections,
     };

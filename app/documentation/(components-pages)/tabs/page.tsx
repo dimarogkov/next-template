@@ -98,7 +98,9 @@ export default function TabsPage() {
 
     const data: IDocumentationData = {
         title: 'Tabs',
-        description: 'A set of layered sections of content — known as tab panels — that are displayed one at a time.',
+        description:
+            'A set of layered sections of content known as tab panels that are displayed one at a time using Framer Motion.',
+        links: [{ href: 'https://motion.dev/docs/react', name: 'Docs' }],
         preview,
         codeSections,
     };

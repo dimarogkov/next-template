@@ -86,7 +86,8 @@ export default function ModalPage() {
     const data: IDocumentationData = {
         title: 'Modal',
         description:
-            'A window overlaid on either the primary window or another modal window, rendering the content underneath inert.',
+            'A window overlaid on either the primary window or another modal window, rendering the content underneath inert using Framer Motion.',
+        links: [{ href: 'https://motion.dev/docs/react', name: 'Docs' }],
         preview,
         codeSections,
     };

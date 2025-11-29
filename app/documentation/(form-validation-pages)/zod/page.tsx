@@ -58,9 +58,15 @@ export default function ZodPage() {
     ];
 
     const data: IDocumentationData = {
-        title: 'Validation with Zod',
+        title: 'Zod',
         description:
             'A popular schema validation library seamlessly integrated with React Hook Form for building dynamic and reliable forms.',
+        links: [
+            { href: 'https://zod.dev/', name: 'Zod Docs' },
+            { href: 'https://odocs-zod.vercel.app/', name: 'Zod API Reference' },
+            { href: 'https://react-hook-form.com/get-started', name: 'React Hook Form Docs' },
+            { href: 'https://react-hook-form.com/docs', name: 'React Hook Form API Reference' },
+        ],
         preview,
         codeSections,
     };

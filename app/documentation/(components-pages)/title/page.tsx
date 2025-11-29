@@ -42,6 +42,7 @@ export default function TitlePage() {
     const data: IDocumentationData = {
         title: 'Title',
         description: 'Styles for headings.',
+        links: [],
         preview,
         codeSections,
     };

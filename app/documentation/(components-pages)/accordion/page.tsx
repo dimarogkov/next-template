@@ -84,7 +84,9 @@ export default function AccordionPage() {
 
     const data: IDocumentationData = {
         title: 'Accordion',
-        description: 'A vertically stacked set of interactive headings that each reveal a section of content.',
+        description:
+            'A vertically stacked set of interactive headings that each reveal a section of content using Framer Motion.',
+        links: [{ href: 'https://motion.dev/docs/react', name: 'Docs' }],
         preview,
         codeSections,
     };

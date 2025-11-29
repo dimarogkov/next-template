@@ -76,6 +76,7 @@ export default function BtnPage() {
     const data: IDocumentationData = {
         title: 'Button',
         description: 'Displays a button or a component that looks like a button.',
+        links: [],
         preview,
         codeSections,
     };

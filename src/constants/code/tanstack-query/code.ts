@@ -1,4 +1,4 @@
-export const REACT_QUERY_CODE = `import { useMutation, useQuery } from '@tanstack/react-query';
+export const TANSTACK_QUERY_CODE = `import { useMutation, useQuery } from '@tanstack/react-query';
 import { getTodos, createTodo, updateTodo, removeTodo } from '@services/todo';
 
 export default function useTodoQuery() {
@@ -42,14 +42,14 @@ export default function useTodoQuery() {
     };
 }`;
 
-export const REACT_QUERY_TYPE_CODE = `export interface ITodo {
+export const TANSTACK_QUERY_TYPE_CODE = `export interface ITodo {
     userId: number;
     id: number;
     title: string;
     completed: boolean;
 }`;
 
-export const REACT_QUERY_ADD_TODO_CODE = `'use client';
+export const TANSTACK_QUERY_ADD_TODO_CODE = `'use client';
 import { useState } from 'react';
 import { Btn, Input } from '@components/atoms';
 
@@ -83,7 +83,7 @@ export default function AddTodo({ isLoading, createTodo = () => {} }: Props) {
     );
 }`;
 
-export const REACT_QUERY_TODO_CODE = `'use client';
+export const TANSTACK_QUERY_TODO_CODE = `'use client';
 import { ITodo } from '@interfaces/Todo';
 import { Btn, Text, Title } from '@components/atoms';
 import { X } from 'lucide-react';

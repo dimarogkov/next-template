@@ -60,6 +60,7 @@ export default function BreadcrumbPage() {
     const data: IDocumentationData = {
         title: 'Breadcrumb',
         description: 'Displays the path to the current resource using a hierarchy of links.',
+        links: [],
         preview,
         codeSections,
     };

@@ -34,7 +34,7 @@ export default function ToastPage() {
             codeArr: [
                 { label: 'Classnames', code: NPM_CLASSNAMES_CODE },
                 { label: 'Lucide', code: NPM_LUCIDE_CODE },
-                { label: 'Hot Toast', code: NPM_HOT_TOAST_CODE },
+                { label: 'React Hot Toast', code: NPM_HOT_TOAST_CODE },
             ],
         },
         {
@@ -66,7 +66,8 @@ export default function ToastPage() {
 
     const data: IDocumentationData = {
         title: 'Toast',
-        description: 'A succinct message that is displayed temporarily.',
+        description: 'A succinct message that is displayed temporarily using React Hot Toast.',
+        links: [{ href: 'https://react-hot-toast.com/docs', name: 'Docs' }],
         preview,
         codeSections,
     };

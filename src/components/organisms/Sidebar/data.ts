@@ -10,6 +10,7 @@ export const DATA = [
             {
                 name: 'Introduction',
                 href: PATHS.DOCUMENTATION,
+                isNew: false,
             },
         ],
     },

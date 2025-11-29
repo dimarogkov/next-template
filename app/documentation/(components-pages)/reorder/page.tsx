@@ -71,7 +71,8 @@ export default function ReorderPage() {
     const data: IDocumentationData = {
         title: 'Reorder',
         description:
-            'The Reorder components can be used to create drag-to-reorder lists, like reorderable tabs or todo items.',
+            'The Reorder components can be used to create drag-to-reorder lists, like reorderable tabs or todo items using Framer Motion.',
+        links: [{ href: 'https://motion.dev/docs/react', name: 'Docs' }],
         preview,
         codeSections,
     };

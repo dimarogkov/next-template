@@ -1,13 +1,15 @@
 import { PATHS } from '@constants';
+import { IPath } from '@interfaces/Path';
 import { convertUrlToString } from './convertUrlToString';
 
 export const getLinks = () => {
     const { COMPONENTS, DATA_FETCHING, FORM_VALIDATION, STORE } = PATHS.PAGES;
 
-    const generateLinks = (paths: string[]) => {
-        return paths.map((path) => ({
+    const generateLinks = (paths: IPath[]) => {
+        return paths.map(({ path, isNew }) => ({
             name: convertUrlToString(path),
             href: `${PATHS.DOCUMENTATION}${path}`,
+            isNew,
         }));
     };
 

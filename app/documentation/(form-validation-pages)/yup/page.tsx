@@ -58,9 +58,14 @@ export default function YupPage() {
     ];
 
     const data: IDocumentationData = {
-        title: 'Validation with Yup',
+        title: 'Yup',
         description:
             'A popular schema validation library seamlessly integrated with React Hook Form for building dynamic and reliable forms.',
+        links: [
+            { href: 'https://github.com/jquense/yup', name: 'Yup Docs' },
+            { href: 'https://react-hook-form.com/get-started', name: 'React Hook Form Docs' },
+            { href: 'https://react-hook-form.com/docs', name: 'React Hook Form API Reference' },
+        ],
         preview,
         codeSections,
     };

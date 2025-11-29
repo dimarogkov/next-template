@@ -90,6 +90,7 @@ export default function PaginationPage() {
     const data: IDocumentationData = {
         title: 'Pagination',
         description: 'Pagination with page navigation, next and previous links.',
+        links: [],
         preview,
         codeSections,
     };

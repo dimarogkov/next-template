@@ -55,6 +55,7 @@ export default function BadgePage() {
     const data: IDocumentationData = {
         title: 'Badge',
         description: 'Displays a badge or a component that looks like a badge.',
+        links: [],
         preview,
         codeSections,
     };

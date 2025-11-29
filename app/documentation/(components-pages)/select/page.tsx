@@ -121,7 +121,8 @@ export default function SelectPage() {
 
     const data: IDocumentationData = {
         title: 'Select',
-        description: 'Displays a list of options for the user to pick from — triggered by a button.',
+        description: 'Displays a list of options for the user to pick from triggered by a button using Framer Motion.',
+        links: [{ href: 'https://motion.dev/docs/react', name: 'Docs' }],
         preview,
         codeSections,
     };

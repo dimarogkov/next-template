@@ -69,6 +69,7 @@ export default function InputPasswordPage() {
     const data: IDocumentationData = {
         title: 'Input Password',
         description: 'Displays a form input field or a component that looks like an input field.',
+        links: [],
         preview,
         codeSections,
     };

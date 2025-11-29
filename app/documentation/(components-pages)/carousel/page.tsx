@@ -138,6 +138,10 @@ export default function CarouselPage() {
     const data: IDocumentationData = {
         title: 'Carousel',
         description: 'A carousel with motion and swipe built using Embla.',
+        links: [
+            { href: 'https://www.embla-carousel.com/get-started/react/', name: 'Docs' },
+            { href: 'https://www.embla-carousel.com/api/', name: 'API Reference' },
+        ],
         preview,
         codeSections,
     };

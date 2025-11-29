@@ -1,4 +1,4 @@
-'use client';
+export const TANSTACK_QUERY_DEMO_CODE = `'use client';
 import { useTodoQuery } from '@hooks';
 import { ITodo } from '@interfaces/Todo';
 import { AddTodo, Todo } from '@components/molecules';
@@ -60,4 +60,4 @@ export default function ReactQueryDemo() {
             )}
         </div>
     );
-}
+}`;

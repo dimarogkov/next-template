@@ -55,6 +55,7 @@ export default function TextareaPage() {
     const data: IDocumentationData = {
         title: 'Textarea',
         description: 'Displays a form textarea or a component that looks like a textarea.',
+        links: [],
         preview,
         codeSections,
     };

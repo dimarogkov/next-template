@@ -54,6 +54,7 @@ export default function BlockquotePage() {
     const data: IDocumentationData = {
         title: 'Blockquote',
         description: 'Used to quote text content from an external source.',
+        links: [],
         preview,
         codeSections,
     };

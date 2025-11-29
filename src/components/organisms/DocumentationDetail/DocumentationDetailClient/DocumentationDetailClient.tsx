@@ -8,6 +8,7 @@ import {
     ComponentsCodeWithAccordion,
     ComponentsFooter,
     ComponentsHead,
+    ComponentsLinks,
     ComponentsNavigation,
     ComponentsPreview,
     ComponentsWrapper,
@@ -22,7 +23,7 @@ type Props = {
 
 export default function DocumentationDetailClient({ data }: Props) {
     const { sectionsRef, registerRef } = useSectionsRefs();
-    const { title, description, preview, codeSections } = data;
+    const { title, description, links, preview, codeSections } = data;
 
     const sectionsArr = codeSections.map(({ id, title }) => ({ id, text: title }));
 
@@ -37,6 +38,7 @@ export default function DocumentationDetailClient({ data }: Props) {
                     <Text size='large'>{description}</Text>
                 </ComponentsHead>
 
+                <ComponentsLinks links={links} />
                 <ComponentsPreview preview={preview} />
 
                 {codeSections.map(({ id, title, link, description, withAccordion, codeArr }) => (
