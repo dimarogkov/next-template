@@ -6,14 +6,8 @@ import { DEV_ICONS } from '@constants';
 import { DevIcon } from '@components/molecules';
 import { Carousel } from '@components/atoms';
 
-const OPTIONS: EmblaOptionsType = { loop: true, align: 'start' };
-const AUTO_SCROLL_OPTIONS = {
-    speed: 0.8,
-    playOnInit: true,
-    startDelay: 700,
-    stopOnMouseEnter: true,
-    stopOnInteraction: false,
-};
+const OPTIONS: EmblaOptionsType = { loop: true, align: 'start', watchDrag: false };
+const AUTO_SCROLL_OPTIONS = { speed: 0.8, playOnInit: true };
 
 type Props = {
     className?: string;
