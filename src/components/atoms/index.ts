@@ -6,6 +6,7 @@ import { Blockquote } from './Blockquote';
 import { Breadcrumb } from './Breadcrumb';
 import { Btn } from './Btn';
 import { Card } from './Card';
+import { Carousel } from './Carousel';
 import { Checkbox } from './Checkbox';
 import { Dropdown } from './Dropdown';
 import { ErrorMessage } from './ErrorMessage';
@@ -39,6 +40,7 @@ export {
     Breadcrumb,
     Btn,
     Card,
+    Carousel,
     Checkbox,
     Dropdown,
     ErrorMessage,

@@ -46,7 +46,7 @@ export default function ComponentsNavigation({ sectionsRef, sectionsArr }: Props
             <div className='w-full'>
                 <Text className='text-text/70'>On this Page</Text>
 
-                <ul className='flex flex-col gap-2 w-full my-2'>
+                <ul className='flex flex-col gap-1.5 w-full my-1.5'>
                     {sectionsArr.map(({ id, text }) => (
                         <li key={id}>
                             <Text>

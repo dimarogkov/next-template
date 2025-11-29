@@ -12,6 +12,7 @@ export const PATHS = {
             BREADCRUMB: '/breadcrumb',
             BTN: '/button',
             CARD: '/card',
+            CAROUSEL: '/carousel',
             CHECKBOX: '/checkbox',
             DROPDOWN: '/dropdown',
             INPUT: '/input',
