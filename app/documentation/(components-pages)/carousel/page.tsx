@@ -61,7 +61,7 @@ export default function CarouselPage() {
             withAccordion: true,
             codeArr: [
                 { label: 'index.ts', code: CAROUSEL_CODE },
-                { label: 'usePagination.tsx', code: CAROUSEL_HOOK_CODE },
+                { label: 'useCarousel.tsx', code: CAROUSEL_HOOK_CODE },
                 { label: 'CarouselWrapper.tsx', code: CAROUSEL_WRAPPER_CODE },
                 { label: 'CarouselViewport.tsx', code: CAROUSEL_VIEWPORT_CODE },
                 { label: 'CarouselContainer.tsx', code: CAROUSEL_CONTAINER_CODE },

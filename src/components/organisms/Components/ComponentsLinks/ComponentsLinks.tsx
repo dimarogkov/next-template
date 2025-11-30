@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ILink } from '@interfaces/Links';
+import { ILink } from '@interfaces/Link';
 import { ArrowUpRight } from 'lucide-react';
 
 type Props = {

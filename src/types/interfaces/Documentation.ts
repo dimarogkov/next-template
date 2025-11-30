@@ -1,4 +1,4 @@
-import { ILink } from './Links';
+import { ILink } from './Link';
 
 export interface IDocumentationPreview {
     demo: JSX.Element;

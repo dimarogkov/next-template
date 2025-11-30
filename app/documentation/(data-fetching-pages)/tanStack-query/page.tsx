@@ -34,7 +34,7 @@ export default function TanStackQueryPage() {
             codeArr: [
                 { label: 'Classnames', code: NPM_CLASSNAMES_CODE },
                 { label: 'Lucide', code: NPM_LUCIDE_CODE },
-                { label: 'React Query', code: NPM_TANSTACK_QUERY_CODE },
+                { label: 'TanStack Query', code: NPM_TANSTACK_QUERY_CODE },
             ],
         },
         {
