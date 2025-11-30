@@ -17,7 +17,7 @@ export default function HomeSlider({ className = '' }: Props) {
     const [emblaRef] = useEmblaCarousel(OPTIONS, [AutoScroll(AUTO_SCROLL_OPTIONS)]);
 
     return (
-        <Carousel className={className}>
+        <Carousel className={`hidden sm:block ${className}`}>
             <Carousel.Viewport ref={emblaRef}>
                 <Carousel.Container className='-ml-2 min-h-9'>
                     {[...DEV_ICONS, ...DEV_ICONS].map((icon, text) => (
