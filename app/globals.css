@@ -16,7 +16,8 @@ body {
 }
 
 body.lock {
-    overflow: hidden;
+    overflow: hidden !important;
+    touch-action: none;
 }
 
 input:-webkit-autofill,
@@ -138,6 +139,8 @@ pre {
     max-height: 450px;
     overflow-x: auto;
     scrollbar-width: none;
+    font-variant-ligatures: none !important;
+    text-rendering: optimizeSpeed;
     background-color: #161616 !important;
     padding: 12px 0;
 }

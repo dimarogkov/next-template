@@ -53,13 +53,13 @@ const PinInput = forwardRef<HTMLDivElement, Props>(({ className = '', onComplete
                 <input
                     key={i}
                     ref={(el) => setInputRef(el, i)}
-                    type='text'
-                    inputMode='numeric'
+                    type="text"
+                    inputMode="numeric"
                     maxLength={1}
                     value={value}
                     onChange={({ target }) => handleChange(target.value, i)}
                     onKeyDown={(e) => handleKeyDown(e, i)}
-                    className='size-12 text-center text-xl text-title rounded-md border border-border bg-border outline-none transition-all duration-300 focus:border-text placeholder:text-text'
+                    className="size-12 text-center text-xl text-title rounded-md border border-border bg-border outline-none transition-all duration-300 focus:border-text placeholder:text-text"
                     required
                 />
             ))}

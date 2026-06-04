@@ -9,12 +9,12 @@ export default function ReorderDemo() {
 
     return (
         <>
-            <Reorder.Group values={itemsY} onReorder={setItemsY} axis='y' className='grid grid-cols-1 gap-2.5 mb-2.5'>
+            <Reorder.Group values={itemsY} onReorder={setItemsY} axis="y" className="grid grid-cols-1 gap-2.5 mb-2.5">
                 {itemsY.map((item) => (
-                    <Reorder.Item key={item} value={item} className='relative'>
-                        <Card className='p-2.5 !bg-bg'>
+                    <Reorder.Item key={item} value={item} className="relative">
+                        <Card className="p-2.5 !bg-bg">
                             <Card.Body>
-                                <Title size='h4' className='mb-0.5 last:mb-0'>
+                                <Title size="h4" className="mb-0.5 last:mb-0">
                                     Item {item}
                                 </Title>
 
@@ -25,12 +25,12 @@ export default function ReorderDemo() {
                 ))}
             </Reorder.Group>
 
-            <Reorder.Group values={itemsX} onReorder={setItemsX} axis='x' className='grid grid-cols-3 gap-2.5'>
+            <Reorder.Group values={itemsX} onReorder={setItemsX} axis="x" className="grid grid-cols-3 gap-2.5">
                 {itemsX.map((item) => (
-                    <Reorder.Item key={item} value={item} drag className='relative'>
-                        <Card className='p-2.5 !bg-bg'>
+                    <Reorder.Item key={item} value={item} drag className="relative">
+                        <Card className="p-2.5 !bg-bg">
                             <Card.Body>
-                                <Title size='h4' className='mb-0.5 last:mb-0'>
+                                <Title size="h4" className="mb-0.5 last:mb-0">
                                     Item {item}
                                 </Title>
 

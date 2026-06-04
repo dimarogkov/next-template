@@ -30,7 +30,7 @@ const AccordionContent = forwardRef<HTMLDivElement, Props>(
             initial: { height: 0 },
             animate: { height: 'auto' },
             exit: { height: 0 },
-            transition: { type: 'spring', duration: 0.4, bounce: 0 },
+            transition: { type: 'spring', duration: 0.4, bounce: 0 }
         };
 
         return (

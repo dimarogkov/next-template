@@ -16,6 +16,6 @@ export default function usePagination<T extends any[]>(arr: T, perPage: number =
     return {
         data,
         pagesArr,
-        options,
+        options
     };
 }

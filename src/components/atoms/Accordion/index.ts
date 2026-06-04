@@ -6,5 +6,5 @@ import AccordionContent from './AccordionContent';
 export const Accordion = Object.assign(AccordionWrapper, {
     Item: AccordionItem,
     Title: AccordionTitle,
-    Content: AccordionContent,
+    Content: AccordionContent
 });

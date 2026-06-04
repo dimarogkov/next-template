@@ -7,7 +7,7 @@ import {
     isValidElement,
     ReactElement,
     ReactNode,
-    RefAttributes,
+    RefAttributes
 } from 'react';
 import Link from 'next/link';
 import cn from 'classnames';
@@ -31,7 +31,7 @@ const AvatarLink = forwardRef<HTMLAnchorElement, Props>(
                 href={href}
                 className={cn(`relative block w-full h-full overflow-hidden ${className}`, {
                     'rounded-full': isTypeCircle,
-                    'rounded-md': isTypeSquare,
+                    'rounded-md': isTypeSquare
                 })}
             >
                 {Children.map(children, (child) => {

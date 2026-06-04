@@ -8,7 +8,7 @@ import {
     isValidElement,
     ReactElement,
     RefAttributes,
-    SetStateAction,
+    SetStateAction
 } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
@@ -30,7 +30,7 @@ const TabsPanels = forwardRef<HTMLDivElement, Props>(
         return (
             <div ref={ref} {...props} className={`relative w-full ${className}`}>
                 {hasAnimation ? (
-                    <AnimatePresence mode='wait' initial={false}>
+                    <AnimatePresence mode="wait" initial={false}>
                         {childrenToRender}
                     </AnimatePresence>
                 ) : (

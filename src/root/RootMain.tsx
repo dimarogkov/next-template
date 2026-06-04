@@ -11,9 +11,5 @@ type Props = {
 export default function RootMain({ children }: Props) {
     const pathname = usePathname();
 
-    return (
-        <>
-            <main className={cn('relative w-full', { 'py-5 md:py-10': pathname !== PATHS.HOME })}>{children}</main>
-        </>
-    );
+    return <main className={cn('relative w-full', { 'py-5 md:py-10': pathname !== PATHS.HOME })}>{children}</main>;
 }

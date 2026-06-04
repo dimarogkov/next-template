@@ -9,7 +9,7 @@ import {
     ReactElement,
     ReactNode,
     RefAttributes,
-    SetStateAction,
+    SetStateAction
 } from 'react';
 import { ISelectItem } from '@interfaces/SelectItem';
 
@@ -46,7 +46,7 @@ const SelectGroup = forwardRef<HTMLDivElement, Props>(
                               isMultiple,
                               selectedItems,
                               setIsOpen,
-                              setSelectedItems,
+                              setSelectedItems
                           })
                         : child;
                 })}

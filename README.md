@@ -6,10 +6,10 @@ This is **Next Template** for development. Technolgies used: **Next.js, TypeScri
 
 ## Installation Steps
 
--   Download the repository
--   Use the v18.20.2 version of Node.js
--   Run `npm i`
--   Run `npm run dev`
+- Download the repository
+- Use the v18.20.2 version of Node.js
+- Run `npm i`
+- Run `npm run dev`
 
 ## File Structure
 

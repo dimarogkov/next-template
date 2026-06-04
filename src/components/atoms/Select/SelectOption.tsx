@@ -44,7 +44,7 @@ const SelectOption = forwardRef<HTMLSpanElement, Props>(
                     `relative flex items-center w-full rounded-md pr-8 px-2 py-1 text-title cursor-pointer ${className}`,
                     {
                         'transition-colors duration-300 hover:bg-border': !isActive || (isActive && isMultiple),
-                        'bg-border pointer-events-none': isActive && !isMultiple,
+                        'bg-border pointer-events-none': isActive && !isMultiple
                     }
                 )}
             >
@@ -53,7 +53,7 @@ const SelectOption = forwardRef<HTMLSpanElement, Props>(
                 <Check
                     className={cn('absolute right-2 size-4 text-text transition-all duration-300', {
                         'opacity-0 invisible': !isActive,
-                        'opacity-100 visible': isActive,
+                        'opacity-100 visible': isActive
                     })}
                 />
             </span>

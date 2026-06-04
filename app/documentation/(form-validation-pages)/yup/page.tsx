@@ -6,20 +6,20 @@ import {
     YUP_CODE,
     YUP_SCHEMA_CODE,
     YUP_OPTIONS_CODE,
-    YUP_DEMO_CODE,
+    YUP_DEMO_CODE
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import YupDemo from './YupDemo';
 
 export const metadata: Metadata = {
-    title: 'Yup',
+    title: 'Yup'
 };
 
 export default function YupPage() {
     const preview: IDocumentationPreview = {
         demo: <YupDemo />,
-        code: YUP_DEMO_CODE,
+        code: YUP_DEMO_CODE
     };
 
     const codeSections: IDocumentationCodeSection[] = [
@@ -32,8 +32,8 @@ export default function YupPage() {
             codeArr: [
                 { label: 'Yup', code: NPM_YUP_CODE },
                 { label: 'React Hook Form', code: NPM_HOOK_FORM_CODE },
-                { label: 'Resolvers', code: NPM_HOOK_FORM_RESOLVERS_CODE },
-            ],
+                { label: 'Resolvers', code: NPM_HOOK_FORM_RESOLVERS_CODE }
+            ]
         },
         {
             id: 'code',
@@ -44,8 +44,8 @@ export default function YupPage() {
             codeArr: [
                 { label: 'index.ts', code: YUP_CODE },
                 { label: 'formOptions.ts', code: YUP_OPTIONS_CODE },
-                { label: 'schema.ts', code: YUP_SCHEMA_CODE },
-            ],
+                { label: 'schema.ts', code: YUP_SCHEMA_CODE }
+            ]
         },
         {
             id: 'usage',
@@ -53,8 +53,8 @@ export default function YupPage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [YUP_DEMO_CODE],
-        },
+            codeArr: [YUP_DEMO_CODE]
+        }
     ];
 
     const data: IDocumentationData = {
@@ -64,10 +64,10 @@ export default function YupPage() {
         links: [
             { href: 'https://github.com/jquense/yup', name: 'Yup Docs' },
             { href: 'https://react-hook-form.com/get-started', name: 'React Hook Form Docs' },
-            { href: 'https://react-hook-form.com/docs', name: 'React Hook Form API Reference' },
+            { href: 'https://react-hook-form.com/docs', name: 'React Hook Form API Reference' }
         ],
         preview,
-        codeSections,
+        codeSections
     };
 
     return <DocumentationDetailClient data={data} />;

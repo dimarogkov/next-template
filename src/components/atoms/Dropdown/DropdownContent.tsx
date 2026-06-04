@@ -8,7 +8,7 @@ import {
     ReactElement,
     ReactNode,
     RefAttributes,
-    SetStateAction,
+    SetStateAction
 } from 'react';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 import cn from 'classnames';
@@ -33,30 +33,30 @@ const DropdownContent = forwardRef<HTMLDivElement, Props>(
         const animation: HTMLMotionProps<'div'> = {
             initial: { scale: 0.95, opacity: 0 },
             animate: { scale: 1, opacity: 1, transition: { ease: [0.215, 0.61, 0.355, 1] } },
-            exit: { scale: 0.95, opacity: 0 },
+            exit: { scale: 0.95, opacity: 0 }
         };
 
         const dropdownContentStyle = {
             ...(position === 'top' && {
                 bottom: 'calc(100% + 4px)',
-                transformOrigin: 'bottom left',
+                transformOrigin: 'bottom left'
             }),
             ...(position === 'right' && {
                 left: 'calc(100% + 4px)',
-                transformOrigin: 'top left',
+                transformOrigin: 'top left'
             }),
             ...(position === 'bottom' && {
                 top: 'calc(100% + 4px)',
-                transformOrigin: 'top left',
+                transformOrigin: 'top left'
             }),
             ...(position === 'left' && {
                 right: 'calc(100% + 4px)',
-                transformOrigin: 'top right',
-            }),
+                transformOrigin: 'top right'
+            })
         };
 
         return (
-            <AnimatePresence mode='wait'>
+            <AnimatePresence mode="wait">
                 {isOpen && (
                     <motion.div
                         ref={ref}
@@ -68,7 +68,7 @@ const DropdownContent = forwardRef<HTMLDivElement, Props>(
                                 'left-0': align === 'start' && isVerticalPosition,
                                 'top-0': align === 'start' && isHorizontalPosition,
                                 'right-0': align === 'end' && isVerticalPosition,
-                                'bottom-0': align === 'end' && isHorizontalPosition,
+                                'bottom-0': align === 'end' && isHorizontalPosition
                             }
                         )}
                         style={dropdownContentStyle}

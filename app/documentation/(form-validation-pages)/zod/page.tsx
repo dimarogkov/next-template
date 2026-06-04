@@ -6,20 +6,20 @@ import {
     ZOD_CODE,
     ZOD_SCHEMA_CODE,
     ZOP_OPTIONS_CODE,
-    ZOD_DEMO_CODE,
+    ZOD_DEMO_CODE
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import ZodDemo from './ZodDemo';
 
 export const metadata: Metadata = {
-    title: 'Zod',
+    title: 'Zod'
 };
 
 export default function ZodPage() {
     const preview: IDocumentationPreview = {
         demo: <ZodDemo />,
-        code: ZOD_DEMO_CODE,
+        code: ZOD_DEMO_CODE
     };
 
     const codeSections: IDocumentationCodeSection[] = [
@@ -32,8 +32,8 @@ export default function ZodPage() {
             codeArr: [
                 { label: 'Zod', code: NPM_ZOD_CODE },
                 { label: 'React Hook Form', code: NPM_HOOK_FORM_CODE },
-                { label: 'Resolvers', code: NPM_HOOK_FORM_RESOLVERS_CODE },
-            ],
+                { label: 'Resolvers', code: NPM_HOOK_FORM_RESOLVERS_CODE }
+            ]
         },
         {
             id: 'code',
@@ -44,8 +44,8 @@ export default function ZodPage() {
             codeArr: [
                 { label: 'index.ts', code: ZOD_CODE },
                 { label: 'formOptions.ts', code: ZOP_OPTIONS_CODE },
-                { label: 'schema.ts', code: ZOD_SCHEMA_CODE },
-            ],
+                { label: 'schema.ts', code: ZOD_SCHEMA_CODE }
+            ]
         },
         {
             id: 'usage',
@@ -53,8 +53,8 @@ export default function ZodPage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [ZOD_DEMO_CODE],
-        },
+            codeArr: [ZOD_DEMO_CODE]
+        }
     ];
 
     const data: IDocumentationData = {
@@ -65,10 +65,10 @@ export default function ZodPage() {
             { href: 'https://zod.dev/', name: 'Zod Docs' },
             { href: 'https://odocs-zod.vercel.app/', name: 'Zod API Reference' },
             { href: 'https://react-hook-form.com/get-started', name: 'React Hook Form Docs' },
-            { href: 'https://react-hook-form.com/docs', name: 'React Hook Form API Reference' },
+            { href: 'https://react-hook-form.com/docs', name: 'React Hook Form API Reference' }
         ],
         preview,
-        codeSections,
+        codeSections
     };
 
     return <DocumentationDetailClient data={data} />;

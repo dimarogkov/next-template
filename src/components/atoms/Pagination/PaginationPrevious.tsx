@@ -21,17 +21,17 @@ const PaginationPrevious = forwardRef<HTMLButtonElement, Props>(({ options, clas
         <button
             ref={ref}
             {...props}
-            type='button'
+            type="button"
             disabled={currentPage === 1}
             onClick={togglePrevious}
             className={cn(
                 `relative flex items-center justify-center size-9 text-title rounded-md transition-colors duration-300 hover:bg-border ${className}`,
                 {
-                    'opacity-60 pointer-events-none select-none': currentPage === 1,
+                    'opacity-60 pointer-events-none select-none': currentPage === 1
                 }
             )}
         >
-            <ChevronLeft className='size-5' />
+            <ChevronLeft className="size-5" />
         </button>
     );
 });

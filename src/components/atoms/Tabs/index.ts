@@ -8,5 +8,5 @@ export const Tabs = Object.assign(TabsWrapper, {
     TabList: TabsList,
     Tab: TabsTab,
     Panels: TabsPanels,
-    Panel: TabsPanel,
+    Panel: TabsPanel
 });

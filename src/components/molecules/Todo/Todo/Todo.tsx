@@ -19,26 +19,26 @@ export default function Todo({ todo, isLoading, updateTodo = () => {}, removeTod
             className={cn('relative flex flex-col w-full rounded-md border p-4 transition-opacity duration-300', {
                 'border-border': !completed,
                 'border-green bg-green/10': completed,
-                'opacity-70 pointer-events-none': isLoading,
+                'opacity-70 pointer-events-none': isLoading
             })}
         >
             <button
-                type='button'
+                type="button"
                 onClick={() => removeTodo(id)}
-                className='absolute top-1.5 right-1.5 outline-none transition-opacity duration-300 hover:opacity-65'
+                className="absolute top-1.5 right-1.5 outline-none transition-opacity duration-300 hover:opacity-65"
             >
-                <X className='size-5' />
+                <X className="size-5" />
             </button>
 
-            <div className='flex-grow w-full pr-8 mb-5 last:mb-0'>
-                <Title size='h4' className='truncate mb-1 last:mb-0'>
+            <div className="flex-grow w-full pr-8 mb-5 last:mb-0">
+                <Title size="h4" className="truncate mb-1 last:mb-0">
                     {title}
                 </Title>
 
                 <Text>User ID - {userId}</Text>
             </div>
 
-            <Btn variant='secondary' onClick={() => updateTodo(todo)} className='sm:!w-full'>
+            <Btn variant="secondary" onClick={() => updateTodo(todo)} className="sm:!w-full">
                 {completed ? 'Uncomplete' : 'Complete'}
             </Btn>
         </div>

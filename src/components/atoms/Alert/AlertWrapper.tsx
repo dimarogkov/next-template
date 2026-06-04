@@ -6,7 +6,7 @@ import {
     HTMLAttributes,
     isValidElement,
     ReactElement,
-    RefAttributes,
+    RefAttributes
 } from 'react';
 import { LucideProps } from 'lucide-react';
 import cn from 'classnames';
@@ -23,14 +23,14 @@ const AlertWrapper = forwardRef<HTMLDivElement, Props>(
             default: 'border-border bg-border',
             success: 'border-green bg-green/10',
             warning: 'border-yellow bg-yellow/10',
-            error: 'border-red bg-red/10',
+            error: 'border-red bg-red/10'
         };
 
         const iconClasses = {
             default: 'text-title',
             success: 'text-green',
             warning: 'text-yellow',
-            error: 'text-red',
+            error: 'text-red'
         };
 
         return (
@@ -41,7 +41,7 @@ const AlertWrapper = forwardRef<HTMLDivElement, Props>(
             >
                 <div
                     className={cn('relative w-full', {
-                        'pl-6 md:pl-7': Icon,
+                        'pl-6 md:pl-7': Icon
                     })}
                 >
                     {Icon && (

@@ -5,15 +5,15 @@ const FRAMEWORKS = [
     { value: 'react', label: 'React.js' },
     { value: 'vue', label: 'Vue.js' },
     { value: 'angular', label: 'Angular' },
-    { value: 'svelte', label: 'Svelte' },
+    { value: 'svelte', label: 'Svelte' }
 ];
 
 export default function SelectDemo() {
     return (
-        <div className='relative flex flex-col gap-2.5'>
+        <div className="relative flex flex-col gap-2.5">
             <Label>
                 <Select>
-                    <Select.Trigger placeholder='Default select' />
+                    <Select.Trigger placeholder="Default select" />
                     <Select.Options>
                         <Select.Group>
                             <Select.Label>Frameworks</Select.Label>
@@ -30,7 +30,7 @@ export default function SelectDemo() {
 
             <Label>
                 <Select multiple>
-                    <Select.Trigger placeholder='Multiple select' />
+                    <Select.Trigger placeholder="Multiple select" />
                     <Select.Options>
                         <Select.Group>
                             <Select.Label>Frameworks</Select.Label>

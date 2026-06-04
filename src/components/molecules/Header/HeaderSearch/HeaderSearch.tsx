@@ -27,7 +27,7 @@ export default function HeaderSearch() {
         ...componentsLinks.map((link) => ({ ...link, label: 'Component' })),
         ...dataFetchingLinks.map((link) => ({ ...link, label: 'Data Fetching' })),
         ...formValidationLinks.map((link) => ({ ...link, label: 'Form Validation' })),
-        ...storeLinks.map((link) => ({ ...link, label: 'Store' })),
+        ...storeLinks.map((link) => ({ ...link, label: 'Store' }))
     ].sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
 
     const filteredLinks = useMemo(() => {
@@ -48,42 +48,42 @@ export default function HeaderSearch() {
     return (
         <Modal>
             <Modal.Trigger>
-                <Label className='hidden md:block !w-44 pointer-events-none'>
+                <Label className="hidden md:block !w-44 pointer-events-none">
                     <Input
-                        placeholder='Search...'
+                        placeholder="Search..."
                         disabled
                         className={cn('!h-9 !px-3 !border-none !bg-border', {
-                            'placeholder:text-title': pathname === PATHS.HOME,
+                            'placeholder:text-title': pathname === PATHS.HOME
                         })}
                     />
                 </Label>
             </Modal.Trigger>
 
             <Modal.Content disableCloseBtn>
-                <div className='flex flex-col w-full h-[420px]'>
-                    <div className='w-full p-2'>
-                        <Label className='!flex items-center'>
+                <div className="flex flex-col w-full h-[420px]">
+                    <div className="w-full p-2">
+                        <Label className="!flex items-center">
                             <Input
-                                name='search'
-                                placeholder='Search documentation...'
+                                name="search"
+                                placeholder="Search documentation..."
                                 value={searchValue}
                                 onChange={({ target }) => toggleSearch(target.value)}
-                                className='!pl-10 !border-border !bg-border'
+                                className="!pl-10 !border-border !bg-border"
                                 autoFocus
                             />
-                            <Search className='absolute left-3 size-5' />
+                            <Search className="absolute left-3 size-5" />
                         </Label>
                     </div>
 
                     {filteredLinks.length > 0 ? (
-                        <div className='w-full p-2 pt-1 overflow-auto'>
+                        <div className="w-full p-2 pt-1 overflow-auto">
                             {filteredLinks.map((link) => (
                                 <HeaderSearchLink key={link.name} link={link} />
                             ))}
                         </div>
                     ) : (
-                        <div className='flex items-center grow w-full p-2 pt-1'>
-                            <Text className='text-center'>No results found.</Text>
+                        <div className="flex items-center grow w-full p-2 pt-1">
+                            <Text className="text-center">No results found.</Text>
                         </div>
                     )}
                 </div>

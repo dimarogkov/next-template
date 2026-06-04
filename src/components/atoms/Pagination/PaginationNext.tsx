@@ -21,17 +21,17 @@ const PaginationNext = forwardRef<HTMLButtonElement, Props>(({ options, classNam
         <button
             ref={ref}
             {...props}
-            type='button'
+            type="button"
             disabled={currentPage === endPage}
             onClick={toggleNext}
             className={cn(
                 `relative flex items-center justify-center size-9 text-title rounded-md transition-colors duration-300 hover:bg-border ${className}`,
                 {
-                    'opacity-60 pointer-events-none select-none': currentPage === endPage,
+                    'opacity-60 pointer-events-none select-none': currentPage === endPage
                 }
             )}
         >
-            <ChevronRight className='size-5' />
+            <ChevronRight className="size-5" />
         </button>
     );
 });

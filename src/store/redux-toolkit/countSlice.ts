@@ -5,7 +5,7 @@ interface ICountState {
 }
 
 const initialState: ICountState = {
-    count: 0,
+    count: 0
 };
 
 const countSlice = createSlice({
@@ -18,8 +18,8 @@ const countSlice = createSlice({
         removeCount: (state, action: PayloadAction<number>) => {
             state.count = state.count !== 0 ? state.count - action.payload : 0;
         },
-        resetCount: () => initialState,
-    },
+        resetCount: () => initialState
+    }
 });
 
 export const { addCount, removeCount, resetCount } = countSlice.actions;

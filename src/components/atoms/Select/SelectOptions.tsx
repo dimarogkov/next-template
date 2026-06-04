@@ -8,7 +8,7 @@ import {
     ReactElement,
     ReactNode,
     RefAttributes,
-    SetStateAction,
+    SetStateAction
 } from 'react';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 import { ISelectItem } from '@interfaces/SelectItem';
@@ -40,11 +40,11 @@ const SelectOptions = forwardRef<HTMLDivElement, Props>(
         const animation: HTMLMotionProps<'div'> = {
             initial: { scale: 0.95, opacity: 0 },
             animate: { scale: 1, opacity: 1, transition: { ease: [0.215, 0.61, 0.355, 1] } },
-            exit: { scale: 0.95, opacity: 0 },
+            exit: { scale: 0.95, opacity: 0 }
         };
 
         return (
-            <AnimatePresence mode='wait'>
+            <AnimatePresence mode="wait">
                 {isOpen && (
                     <motion.div
                         ref={ref}
@@ -59,7 +59,7 @@ const SelectOptions = forwardRef<HTMLDivElement, Props>(
                                       isMultiple,
                                       selectedItems,
                                       setIsOpen,
-                                      setSelectedItems,
+                                      setSelectedItems
                                   })
                                 : child;
                         })}

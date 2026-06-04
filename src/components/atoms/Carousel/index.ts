@@ -12,5 +12,5 @@ export const Carousel = Object.assign(CarouselWrapper, {
     Previous: CarouselPrevious,
     Item: CarouselItem,
     Next: CarouselNext,
-    Dot: CarouselDot,
+    Dot: CarouselDot
 });

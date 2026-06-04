@@ -6,9 +6,9 @@ import { todosApiSlice } from './todosApiSlice';
 export const store = configureStore({
     reducer: {
         count: countSlice,
-        [todosApiSlice.reducerPath]: todosApiSlice.reducer,
+        [todosApiSlice.reducerPath]: todosApiSlice.reducer
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(todosApiSlice.middleware),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(todosApiSlice.middleware)
 });
 
 export type RootState = ReturnType<typeof store.getState>;

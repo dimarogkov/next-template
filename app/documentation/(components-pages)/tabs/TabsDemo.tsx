@@ -7,9 +7,9 @@ export default function TabsDemo() {
 
     return (
         <>
-            <Label className='mb-5 last:mb-0'>
+            <Label className="mb-5 last:mb-0">
                 <Checkbox
-                    label='Add Animation'
+                    label="Add Animation"
                     checked={hasAnimation}
                     onChange={() => setHasAnimation(!hasAnimation)}
                 />

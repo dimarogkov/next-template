@@ -20,7 +20,7 @@ export default function HomeDarkVeil({
     speed = 0.5,
     scanlineFrequency = 0,
     warpAmount = 0,
-    resolutionScale = 1,
+    resolutionScale = 1
 }: Props) {
     const ref = useRef<HTMLCanvasElement>(null);
 
@@ -30,7 +30,7 @@ export default function HomeDarkVeil({
 
         const renderer = new Renderer({
             dpr: Math.min(window.devicePixelRatio, 2),
-            canvas,
+            canvas
         });
 
         const gl = renderer.gl;
@@ -46,8 +46,8 @@ export default function HomeDarkVeil({
                 uNoise: { value: noiseIntensity },
                 uScan: { value: scanlineIntensity },
                 uScanFreq: { value: scanlineFrequency },
-                uWarp: { value: warpAmount },
-            },
+                uWarp: { value: warpAmount }
+            }
         });
 
         const mesh = new Mesh(gl, { geometry, program });
@@ -85,5 +85,5 @@ export default function HomeDarkVeil({
         };
     }, [hueShift, noiseIntensity, scanlineIntensity, speed, scanlineFrequency, warpAmount, resolutionScale]);
 
-    return <canvas ref={ref} className='block w-full h-full' />;
+    return <canvas ref={ref} className="block w-full h-full" />;
 }

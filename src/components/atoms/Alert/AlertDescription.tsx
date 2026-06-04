@@ -12,7 +12,7 @@ const AlertDescription = forwardRef<HTMLParagraphElement, Props>(
             default: 'text-text/80',
             success: 'text-green/80',
             warning: 'text-yellow/80',
-            error: 'text-red/80',
+            error: 'text-red/80'
         };
 
         return (

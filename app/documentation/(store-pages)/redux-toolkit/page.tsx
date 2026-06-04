@@ -5,20 +5,20 @@ import {
     REDUX_TOOLKIT_PROVIDER_CODE,
     REDUX_TOOLKIT_COUNT_CODE,
     REDUX_TOOLKIT_DEMO_CODE,
-    REDUX_TOOLKIT_PROVIDER_USAGE_CODE,
+    REDUX_TOOLKIT_PROVIDER_USAGE_CODE
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import ReduxToolkitDemo from './ReduxToolkitDemo';
 
 export const metadata: Metadata = {
-    title: 'Redux Toolkit',
+    title: 'Redux Toolkit'
 };
 
 export default function ReduxToolkitPage() {
     const preview: IDocumentationPreview = {
         demo: <ReduxToolkitDemo />,
-        code: REDUX_TOOLKIT_DEMO_CODE,
+        code: REDUX_TOOLKIT_DEMO_CODE
     };
 
     const codeSections: IDocumentationCodeSection[] = [
@@ -28,7 +28,7 @@ export default function ReduxToolkitPage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [NPM_REDUX_TOOLKIT_CODE],
+            codeArr: [NPM_REDUX_TOOLKIT_CODE]
         },
         {
             id: 'code',
@@ -39,8 +39,8 @@ export default function ReduxToolkitPage() {
             codeArr: [
                 { label: 'index.ts', code: REDUX_TOOLKIT_CODE },
                 { label: 'StoreProvider.tsx', code: REDUX_TOOLKIT_PROVIDER_CODE },
-                { label: 'countSlice.ts', code: REDUX_TOOLKIT_COUNT_CODE },
-            ],
+                { label: 'countSlice.ts', code: REDUX_TOOLKIT_COUNT_CODE }
+            ]
         },
         {
             id: 'usage',
@@ -48,8 +48,8 @@ export default function ReduxToolkitPage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [REDUX_TOOLKIT_PROVIDER_USAGE_CODE, REDUX_TOOLKIT_DEMO_CODE],
-        },
+            codeArr: [REDUX_TOOLKIT_PROVIDER_USAGE_CODE, REDUX_TOOLKIT_DEMO_CODE]
+        }
     ];
 
     const data: IDocumentationData = {
@@ -57,10 +57,10 @@ export default function ReduxToolkitPage() {
         description: 'The official, opinionated, batteries-included toolset for efficient Redux development.',
         links: [
             { href: 'https://redux-toolkit.js.org/introduction/getting-started', name: 'Docs' },
-            { href: 'https://redux-toolkit.js.org/api/configureStore', name: 'API Reference' },
+            { href: 'https://redux-toolkit.js.org/api/configureStore', name: 'API Reference' }
         ],
         preview,
-        codeSections,
+        codeSections
     };
 
     return <DocumentationDetailClient data={data} />;

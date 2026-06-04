@@ -17,21 +17,21 @@ const ModalContent = forwardRef<HTMLDivElement, Props>(
         const animation: HTMLMotionProps<'div'> = {
             initial: { opacity: 0 },
             animate: { opacity: 1, transition: { duration: 0.3, ease: [0.215, 0.61, 0.355, 1] } },
-            exit: { opacity: 0 },
+            exit: { opacity: 0 }
         };
 
         const animationPopup: HTMLMotionProps<'div'> = {
             initial: { scale: 0.95, opacity: 0 },
             animate: { scale: 1, opacity: 1, transition: { ease: [0.215, 0.61, 0.355, 1] } },
-            exit: { scale: 0.95, opacity: 0 },
+            exit: { scale: 0.95, opacity: 0 }
         };
 
         return (
-            <AnimatePresence mode='wait'>
+            <AnimatePresence mode="wait">
                 {isOpen && (
                     <motion.div
                         {...animation}
-                        className='fixed z-20 top-0 left-0 flex items-center justify-center w-full h-svh'
+                        className="fixed z-20 top-0 left-0 flex items-center justify-center w-full h-svh"
                     >
                         <ModalLayer setIsOpen={setIsOpen} />
 

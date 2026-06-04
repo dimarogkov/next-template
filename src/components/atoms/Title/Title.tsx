@@ -11,7 +11,7 @@ const Title = forwardRef<HTMLHeadingElement, Props>(({ children, size = 'h1', cl
         h1: '!leading-tight text-4xl md:text-5xl',
         h2: '!leading-tight text-3xl md:text-4xl',
         h3: '!leading-tight text-2xl md:text-3xl',
-        h4: '!leading-tight text-xl md:text-2xl',
+        h4: '!leading-tight text-xl md:text-2xl'
     };
 
     return (

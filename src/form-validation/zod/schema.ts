@@ -8,7 +8,7 @@ export const validationSchema = z
         age: z
             .number({
                 required_error: 'Missing age',
-                invalid_type_error: 'Age must be a number',
+                invalid_type_error: 'Age must be a number'
             })
             .min(18, 'Your age must be minimum 18'),
         email: z.string().trim().nonempty('Missing email').email('Invalid email format'),
@@ -22,10 +22,10 @@ export const validationSchema = z
         confirmPassword: z.string().trim().nonempty('Missing confirm password'),
         radioType: z.string().nonempty('Radio Type is required'),
         rememberMe: z.literal(true as boolean, {
-            errorMap: () => ({ message: 'Remember me is required' }),
-        }),
+            errorMap: () => ({ message: 'Remember me is required' })
+        })
     })
     .refine((data) => data.password === data.confirmPassword, {
         path: ['confirmPassword'],
-        message: 'Passwords must match',
+        message: 'Passwords must match'
     });

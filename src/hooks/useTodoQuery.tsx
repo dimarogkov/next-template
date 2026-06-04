@@ -5,29 +5,29 @@ export default function useTodoQuery() {
     const {
         data: todos,
         refetch,
-        isLoading,
+        isLoading
     } = useQuery({
         queryFn: () => getTodos(),
         select: (data) => data.data,
-        queryKey: ['todos'],
+        queryKey: ['todos']
     });
 
     const { mutate: createTodoMutation, isPending: isLoadingCreateTodo } = useMutation({
         mutationFn: createTodo,
         mutationKey: ['create todo'],
-        onSuccess: () => refetch(),
+        onSuccess: () => refetch()
     });
 
     const { mutate: updateTodoMutation, isPending: isLoadingUpdateTodo } = useMutation({
         mutationFn: updateTodo,
         mutationKey: ['update todo'],
-        onSuccess: () => refetch(),
+        onSuccess: () => refetch()
     });
 
     const { mutate: removeTodoMutation, isPending: isLoadingRemoveTodo } = useMutation({
         mutationFn: removeTodo,
         mutationKey: ['remove todo'],
-        onSuccess: () => refetch(),
+        onSuccess: () => refetch()
     });
 
     return {
@@ -38,6 +38,6 @@ export default function useTodoQuery() {
         updateTodoMutation,
         isLoadingUpdateTodo,
         removeTodoMutation,
-        isLoadingRemoveTodo,
+        isLoadingRemoveTodo
     };
 }

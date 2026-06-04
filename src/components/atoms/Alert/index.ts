@@ -4,5 +4,5 @@ import AlertDescription from './AlertDescription';
 
 export const Alert = Object.assign(AlertWrapper, {
     Title: AlertTitle,
-    Description: AlertDescription,
+    Description: AlertDescription
 });

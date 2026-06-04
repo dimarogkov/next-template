@@ -14,5 +14,5 @@ export {
     getLinks,
     getPaginationRange,
     setDataToLocalStorage,
-    getDataFromLocalStorage,
+    getDataFromLocalStorage
 };

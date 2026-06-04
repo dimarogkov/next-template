@@ -20,8 +20,8 @@ export default function DevIcon({ devIcon, className = '' }: Props) {
         <div
             className={`relative flex items-center gap-2 px-3.5 py-1 rounded-full border border-border whitespace-nowrap ${className}`}
         >
-            {!isMount ? <span className='size-5 rounded-full bg-text' /> : <i className={`text-xl ${icon}`} />}
-            <Text className='select-none !w-fit'>{text}</Text>
+            {!isMount ? <span className="size-5 rounded-full bg-text" /> : <i className={`text-xl ${icon}`} />}
+            <Text className="select-none !w-fit">{text}</Text>
         </div>
     );
 }

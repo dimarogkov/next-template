@@ -6,13 +6,13 @@ import { Text } from '@components/atoms';
 import LoaderDemo from './LoaderDemo';
 
 export const metadata: Metadata = {
-    title: 'Loader',
+    title: 'Loader'
 };
 
 export default function LoaderPage() {
     const preview: IDocumentationPreview = {
         demo: <LoaderDemo />,
-        code: LOADER_DEMO_CODE,
+        code: LOADER_DEMO_CODE
     };
 
     const codeSections: IDocumentationCodeSection[] = [
@@ -22,12 +22,12 @@ export default function LoaderPage() {
             link: 'https://github.com/dimarogkov/next-template/tree/master/src/components/atoms/Loader',
             description: (
                 <Text>
-                    Include a custom <span className='badge-item'>Loader</span> component for consistent and
+                    Include a custom <span className="badge-item">Loader</span> component for consistent and
                     maintainable usage throughout the project.
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [LOADER_CODE],
+            codeArr: [LOADER_CODE]
         },
         {
             id: 'usage',
@@ -35,8 +35,8 @@ export default function LoaderPage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [LOADER_USAGE_CODE],
-        },
+            codeArr: [LOADER_USAGE_CODE]
+        }
     ];
 
     const data: IDocumentationData = {
@@ -44,7 +44,7 @@ export default function LoaderPage() {
         description: 'A reusable component for indicating loading or processing states.',
         links: [],
         preview,
-        codeSections,
+        codeSections
     };
 
     return <DocumentationDetailClient data={data} />;

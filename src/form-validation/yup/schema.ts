@@ -25,6 +25,6 @@ export const validationSchema = yup
             .required('Missing confirm password')
             .oneOf([yup.ref('password')], 'Passwords must match'),
         radioType: yup.string().required('Radio Type is required'),
-        rememberMe: yup.bool().required().oneOf([true], 'Remember me is required'),
+        rememberMe: yup.bool().required().oneOf([true], 'Remember me is required')
     })
     .required();

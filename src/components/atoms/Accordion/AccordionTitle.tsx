@@ -17,17 +17,17 @@ const AccordionTitle = forwardRef<HTMLDivElement, Props>(
             arrow: (
                 <ChevronDown
                     className={cn('size-5 transition-transform duration-300 will-change-transform', {
-                        'rotate-180': accordionIndex === activeIndex,
+                        'rotate-180': accordionIndex === activeIndex
                     })}
                 />
             ),
             plus: (
                 <Plus
                     className={cn('size-5 transition-transform duration-300 will-change-transform', {
-                        'rotate-45': accordionIndex === activeIndex,
+                        'rotate-45': accordionIndex === activeIndex
                     })}
                 />
-            ),
+            )
         };
 
         const toggleAccordion = () => {

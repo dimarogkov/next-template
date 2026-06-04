@@ -10,7 +10,7 @@ export default function ComponentsPreview({ preview }: Props) {
     const { demo, code } = preview;
 
     return (
-        <div className='relative w-full py-4 md:py-5'>
+        <div className="relative w-full py-4 md:py-5">
             <Tabs>
                 <Tabs.TabList>
                     <Tabs.Tab>Preview</Tabs.Tab>
@@ -20,8 +20,8 @@ export default function ComponentsPreview({ preview }: Props) {
                 <Tabs.Panels>
                     <Tabs.Panel>{demo}</Tabs.Panel>
 
-                    <Tabs.Panel className='!p-0'>
-                        <ComponentsCodeDetail code={code} type='code' />
+                    <Tabs.Panel className="!p-0">
+                        <ComponentsCodeDetail code={code} type="code" />
                     </Tabs.Panel>
                 </Tabs.Panels>
             </Tabs>

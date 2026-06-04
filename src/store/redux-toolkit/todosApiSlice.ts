@@ -9,32 +9,32 @@ export const todosApiSlice = createApi({
     endpoints: (build) => ({
         getTodos: build.query<ITodo[], {}>({
             query: () => '/todos?limit=6',
-            providesTags: ['todos'],
+            providesTags: ['todos']
         }),
         createTodo: build.mutation<ITodo, Omit<ITodo, 'id'>>({
             query: (todo) => ({
                 url: '/todos',
                 method: 'POST',
-                body: todo,
+                body: todo
             }),
-            invalidatesTags: ['todos'],
+            invalidatesTags: ['todos']
         }),
         updateTodo: build.mutation<ITodo, ITodo>({
             query: (todo) => ({
                 url: `/todos/${todo.id}`,
                 method: 'PATCH',
-                body: todo,
+                body: todo
             }),
-            invalidatesTags: ['todos'],
+            invalidatesTags: ['todos']
         }),
         removeTodo: build.mutation<void, number>({
             query: (todoId) => ({
                 url: `/todos/${todoId}`,
-                method: 'DELETE',
+                method: 'DELETE'
             }),
-            invalidatesTags: ['todos'],
-        }),
-    }),
+            invalidatesTags: ['todos']
+        })
+    })
 });
 
 export const { useGetTodosQuery, useCreateTodoMutation, useUpdateTodoMutation, useRemoveTodoMutation } = todosApiSlice;

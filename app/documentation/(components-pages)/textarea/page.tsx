@@ -6,13 +6,13 @@ import { Text } from '@components/atoms';
 import TextareaDemo from './TextareaDemo';
 
 export const metadata: Metadata = {
-    title: 'Textarea',
+    title: 'Textarea'
 };
 
 export default function TextareaPage() {
     const preview: IDocumentationPreview = {
         demo: <TextareaDemo />,
-        code: TEXTAREA_DEMO_CODE,
+        code: TEXTAREA_DEMO_CODE
     };
 
     const codeSections: IDocumentationCodeSection[] = [
@@ -22,12 +22,12 @@ export default function TextareaPage() {
             link: 'https://github.com/dimarogkov/next-template/tree/master/src/components/atoms/Textarea',
             description: (
                 <Text>
-                    Include a custom <span className='badge-item'>Textarea</span> component for consistent and
+                    Include a custom <span className="badge-item">Textarea</span> component for consistent and
                     maintainable usage throughout the project.
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [TEXTAREA_CODE],
+            codeArr: [TEXTAREA_CODE]
         },
         {
             id: 'usage',
@@ -35,7 +35,7 @@ export default function TextareaPage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [TEXTAREA_USAGE_CODE],
+            codeArr: [TEXTAREA_USAGE_CODE]
         },
         {
             id: 'controlled',
@@ -43,13 +43,13 @@ export default function TextareaPage() {
             link: '',
             description: (
                 <Text>
-                    To control the Textarea, add <span className='badge-item'>value</span> and&nbsp;
-                    <span className='badge-item'>onChange</span> props to manage its state manually.
+                    To control the Textarea, add <span className="badge-item">value</span> and&nbsp;
+                    <span className="badge-item">onChange</span> props to manage its state manually.
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [TEXTAREA_CONTROLLED_USAGE_CODE],
-        },
+            codeArr: [TEXTAREA_CONTROLLED_USAGE_CODE]
+        }
     ];
 
     const data: IDocumentationData = {
@@ -57,7 +57,7 @@ export default function TextareaPage() {
         description: 'Displays a form textarea or a component that looks like a textarea.',
         links: [],
         preview,
-        codeSections,
+        codeSections
     };
 
     return <DocumentationDetailClient data={data} />;

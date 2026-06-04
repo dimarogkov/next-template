@@ -22,21 +22,21 @@ const Toast = forwardRef<HTMLDivElement, Props>(
                 default: 'border-l-title',
                 success: 'border-l-green',
                 warning: 'border-l-yellow',
-                error: 'border-l-red',
+                error: 'border-l-red'
             },
             text: {
                 default: 'text-title',
                 success: 'text-green',
                 warning: 'text-yellow',
-                error: 'text-red',
-            },
+                error: 'text-red'
+            }
         };
 
         const icon = {
-            default: <Info className='hidden sm:block size-9 min-w-9 text-title stroke-1' />,
-            success: <CircleCheck className='hidden sm:block size-9 min-w-9 text-green stroke-1' />,
-            warning: <CircleAlert className='hidden sm:block size-9 min-w-9 text-yellow stroke-1' />,
-            error: <CircleX className='hidden sm:block size-9 min-w-9 text-red stroke-1' />,
+            default: <Info className="hidden sm:block size-9 min-w-9 text-title stroke-1" />,
+            success: <CircleCheck className="hidden sm:block size-9 min-w-9 text-green stroke-1" />,
+            warning: <CircleAlert className="hidden sm:block size-9 min-w-9 text-yellow stroke-1" />,
+            error: <CircleX className="hidden sm:block size-9 min-w-9 text-red stroke-1" />
         };
 
         return (
@@ -48,14 +48,14 @@ const Toast = forwardRef<HTMLDivElement, Props>(
                     toastClasses.border[type],
                     {
                         'animate-leave': !t.visible,
-                        'animate-enter': t.visible,
+                        'animate-enter': t.visible
                     }
                 )}
             >
                 {icon[type]}
 
-                <div className='flex flex-col gap-1 w-full'>
-                    <Text size='large' className={toastClasses.text[type]}>
+                <div className="flex flex-col gap-1 w-full">
+                    <Text size="large" className={toastClasses.text[type]}>
                         {title}
                     </Text>
 
@@ -63,11 +63,11 @@ const Toast = forwardRef<HTMLDivElement, Props>(
                 </div>
 
                 <button
-                    type='button'
+                    type="button"
                     onClick={() => toast.dismiss(t.id)}
-                    className='absolute top-1.5 right-1.5 outline-none transition-opacity duration-300 hover:opacity-65'
+                    className="absolute top-1.5 right-1.5 outline-none transition-opacity duration-300 hover:opacity-65"
                 >
-                    <X className='size-5' />
+                    <X className="size-5" />
                 </button>
             </div>
         );

@@ -9,7 +9,7 @@ import {
     RefAttributes,
     useEffect,
     useRef,
-    useState,
+    useState
 } from 'react';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
@@ -41,7 +41,7 @@ const DropdownWrapper = forwardRef<HTMLDivElement, Props>(({ isOpen = false, cla
                 return isValidElement(child)
                     ? cloneElement(child as ReactElement, {
                           isOpen: isDropdownOpen,
-                          setIsOpen: setIsDropdownOpen,
+                          setIsOpen: setIsDropdownOpen
                       })
                     : child;
             })}

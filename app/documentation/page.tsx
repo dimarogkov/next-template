@@ -3,7 +3,7 @@ import { DocumentationClient } from '@components/organisms';
 import { DATA } from './data';
 
 export const metadata: Metadata = {
-    title: 'Documentation',
+    title: 'Documentation'
 };
 
 export default function DocumentationPage() {

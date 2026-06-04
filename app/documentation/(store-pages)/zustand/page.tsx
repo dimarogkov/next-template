@@ -5,13 +5,13 @@ import { DocumentationDetailClient } from '@components/organisms';
 import ZustandDemo from './ZustandDemo';
 
 export const metadata: Metadata = {
-    title: 'Zustand',
+    title: 'Zustand'
 };
 
 export default function ZustandPage() {
     const preview: IDocumentationPreview = {
         demo: <ZustandDemo />,
-        code: ZUSTAND_DEMO_CODE,
+        code: ZUSTAND_DEMO_CODE
     };
 
     const codeSections: IDocumentationCodeSection[] = [
@@ -21,7 +21,7 @@ export default function ZustandPage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [NPM_ZUSTAND_CODE],
+            codeArr: [NPM_ZUSTAND_CODE]
         },
         {
             id: 'code',
@@ -31,8 +31,8 @@ export default function ZustandPage() {
             withAccordion: true,
             codeArr: [
                 { label: 'index.ts', code: ZUSTAND_CODE },
-                { label: 'count.ts', code: ZUSTAND_COUNT_CODE },
-            ],
+                { label: 'count.ts', code: ZUSTAND_COUNT_CODE }
+            ]
         },
         {
             id: 'usage',
@@ -40,8 +40,8 @@ export default function ZustandPage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [ZUSTAND_DEMO_CODE],
-        },
+            codeArr: [ZUSTAND_DEMO_CODE]
+        }
     ];
 
     const data: IDocumentationData = {
@@ -49,10 +49,10 @@ export default function ZustandPage() {
         description: 'A small, fast, and scalable bearbones state management solution.',
         links: [
             { href: 'https://zustand.docs.pmnd.rs/getting-started/introduction', name: 'Docs' },
-            { href: 'https://zustand.docs.pmnd.rs/apis/create-store', name: 'API Reference' },
+            { href: 'https://zustand.docs.pmnd.rs/apis/create-store', name: 'API Reference' }
         ],
         preview,
-        codeSections,
+        codeSections
     };
 
     return <DocumentationDetailClient data={data} />;

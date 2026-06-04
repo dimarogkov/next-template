@@ -12,15 +12,15 @@ const CarouselPrevious = forwardRef<HTMLButtonElement, Props>(({ className = '',
         <button
             ref={ref}
             {...props}
-            type='button'
+            type="button"
             className={cn(
                 `relative flex items-center justify-center size-9 min-w-9 text-title outline-none rounded-md border border-border transition-colors duration-300 hover:bg-border ${className}`,
                 {
-                    'opacity-60 pointer-events-none select-none': props.disabled,
+                    'opacity-60 pointer-events-none select-none': props.disabled
                 }
             )}
         >
-            <ChevronLeft className='size-5' />
+            <ChevronLeft className="size-5" />
         </button>
     );
 });

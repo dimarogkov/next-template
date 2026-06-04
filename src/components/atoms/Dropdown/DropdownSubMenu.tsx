@@ -9,7 +9,7 @@ import {
     ReactElement,
     RefAttributes,
     SetStateAction,
-    useState,
+    useState
 } from 'react';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
@@ -36,7 +36,7 @@ const DropdownSubMenu = forwardRef<HTMLDivElement, Props>(
                         ? cloneElement(child as ReactElement, {
                               isOpen,
                               isSubOpen: isSubDropdownOpen,
-                              setIsOpen,
+                              setIsOpen
                           })
                         : child;
                 })}

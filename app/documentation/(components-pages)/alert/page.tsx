@@ -7,7 +7,7 @@ import {
     ALERT_DEMO_CODE,
     ALERT_USAGE_CODE,
     NPM_CLASSNAMES_CODE,
-    NPM_LUCIDE_CODE,
+    NPM_LUCIDE_CODE
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
@@ -15,13 +15,13 @@ import { Text } from '@components/atoms';
 import AlertDemo from './AlertDemo';
 
 export const metadata: Metadata = {
-    title: 'Alert',
+    title: 'Alert'
 };
 
 export default function AlertPage() {
     const preview: IDocumentationPreview = {
         demo: <AlertDemo />,
-        code: ALERT_DEMO_CODE,
+        code: ALERT_DEMO_CODE
     };
 
     const codeSections: IDocumentationCodeSection[] = [
@@ -33,8 +33,8 @@ export default function AlertPage() {
             withAccordion: true,
             codeArr: [
                 { label: 'Classnames', code: NPM_CLASSNAMES_CODE },
-                { label: 'Lucide', code: NPM_LUCIDE_CODE },
-            ],
+                { label: 'Lucide', code: NPM_LUCIDE_CODE }
+            ]
         },
         {
             id: 'code',
@@ -42,7 +42,7 @@ export default function AlertPage() {
             link: 'https://github.com/dimarogkov/next-template/tree/master/src/components/atoms/Alert',
             description: (
                 <Text>
-                    Include a custom <span className='badge-item'>Alert</span> component for consistent and maintainable
+                    Include a custom <span className="badge-item">Alert</span> component for consistent and maintainable
                     usage throughout the project.
                 </Text>
             ),
@@ -51,8 +51,8 @@ export default function AlertPage() {
                 { label: 'index.ts', code: ALERT_CODE },
                 { label: 'AlertWrapper.tsx', code: ALERT_WRAPPER_CODE },
                 { label: 'AlertTitle.tsx', code: ALERT_TITLE_CODE },
-                { label: 'AlertDescription.tsx', code: ALERT_DESCRIPTION_CODE },
-            ],
+                { label: 'AlertDescription.tsx', code: ALERT_DESCRIPTION_CODE }
+            ]
         },
         {
             id: 'usage',
@@ -60,8 +60,8 @@ export default function AlertPage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [ALERT_USAGE_CODE],
-        },
+            codeArr: [ALERT_USAGE_CODE]
+        }
     ];
 
     const data: IDocumentationData = {
@@ -69,7 +69,7 @@ export default function AlertPage() {
         description: 'Displays a callout for user attention.',
         links: [],
         preview,
-        codeSections,
+        codeSections
     };
 
     return <DocumentationDetailClient data={data} />;

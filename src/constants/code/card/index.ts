@@ -9,5 +9,5 @@ export {
     CARD_BODY_CODE,
     CARD_FOOTER_CODE,
     CARD_DEMO_CODE,
-    CARD_USAGE_CODE,
+    CARD_USAGE_CODE
 };

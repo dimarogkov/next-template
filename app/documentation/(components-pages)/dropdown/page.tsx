@@ -16,7 +16,7 @@ import {
     DROPDOWN_POSITION_USAGE_CODE,
     DROPDOWN_ALIGN_USAGE_CODE,
     NPM_CLASSNAMES_CODE,
-    NPM_FRAMER_MOTION_CODE,
+    NPM_FRAMER_MOTION_CODE
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
@@ -24,13 +24,13 @@ import { Text } from '@components/atoms';
 import DropdownDemo from './DropdownDemo';
 
 export const metadata: Metadata = {
-    title: 'Dropdown',
+    title: 'Dropdown'
 };
 
 export default function DropdownPage() {
     const preview: IDocumentationPreview = {
         demo: <DropdownDemo />,
-        code: DROPDOWN_DEMO_CODE,
+        code: DROPDOWN_DEMO_CODE
     };
 
     const codeSections: IDocumentationCodeSection[] = [
@@ -42,8 +42,8 @@ export default function DropdownPage() {
             withAccordion: true,
             codeArr: [
                 { label: 'Classnames', code: NPM_CLASSNAMES_CODE },
-                { label: 'Framer Motion', code: NPM_FRAMER_MOTION_CODE },
-            ],
+                { label: 'Framer Motion', code: NPM_FRAMER_MOTION_CODE }
+            ]
         },
         {
             id: 'code',
@@ -51,7 +51,7 @@ export default function DropdownPage() {
             link: 'https://github.com/dimarogkov/next-template/tree/master/src/components/atoms/Dropdown',
             description: (
                 <Text>
-                    Include a custom <span className='badge-item'>Dropdown</span> component for consistent and
+                    Include a custom <span className="badge-item">Dropdown</span> component for consistent and
                     maintainable usage throughout the project.
                 </Text>
             ),
@@ -67,8 +67,8 @@ export default function DropdownPage() {
                 { label: 'DropdownItem.tsx', code: DROPDOWN_ITEM_CODE },
                 { label: 'DropdownSubMenu.tsx', code: DROPDOWN_SUB_MENU_CODE },
                 { label: 'DropdownSubTrigger.tsx', code: DROPDOWN_SUB_TRIGGER_CODE },
-                { label: 'DropdownSubContent.tsx', code: DROPDOWN_SUB_CONTENT_CODE },
-            ],
+                { label: 'DropdownSubContent.tsx', code: DROPDOWN_SUB_CONTENT_CODE }
+            ]
         },
         {
             id: 'usage',
@@ -76,7 +76,7 @@ export default function DropdownPage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [DROPDOWN_USAGE_CODE],
+            codeArr: [DROPDOWN_USAGE_CODE]
         },
         {
             id: 'position',
@@ -84,12 +84,12 @@ export default function DropdownPage() {
             link: '',
             description: (
                 <Text>
-                    To change the position, add the <span className='badge-item'>position</span> prop to the&nbsp;
-                    <span className='badge-item'>Dropdown.Content</span> child component.
+                    To change the position, add the <span className="badge-item">position</span> prop to the&nbsp;
+                    <span className="badge-item">Dropdown.Content</span> child component.
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [DROPDOWN_POSITION_USAGE_CODE],
+            codeArr: [DROPDOWN_POSITION_USAGE_CODE]
         },
         {
             id: 'align',
@@ -97,13 +97,13 @@ export default function DropdownPage() {
             link: '',
             description: (
                 <Text>
-                    To change the align, add the <span className='badge-item'>align</span> prop to the&nbsp;
-                    <span className='badge-item'>Dropdown.Content</span> child component.
+                    To change the align, add the <span className="badge-item">align</span> prop to the&nbsp;
+                    <span className="badge-item">Dropdown.Content</span> child component.
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [DROPDOWN_ALIGN_USAGE_CODE],
-        },
+            codeArr: [DROPDOWN_ALIGN_USAGE_CODE]
+        }
     ];
 
     const data: IDocumentationData = {
@@ -112,7 +112,7 @@ export default function DropdownPage() {
             'Displays a menu to the user such as a set of actions or functions triggered by a button using Framer Motion.',
         links: [{ href: 'https://motion.dev/docs/react', name: 'Docs' }],
         preview,
-        codeSections,
+        codeSections
     };
 
     return <DocumentationDetailClient data={data} />;

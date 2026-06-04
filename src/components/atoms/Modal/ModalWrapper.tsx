@@ -8,7 +8,7 @@ import {
     ReactElement,
     RefAttributes,
     useEffect,
-    useState,
+    useState
 } from 'react';
 import { usePathname } from 'next/navigation';
 
@@ -25,8 +25,11 @@ const ModalWrapper = forwardRef<HTMLDivElement, Props>(({ className = '', ...pro
     }, [pathname]);
 
     useEffect(() => {
-        const bodyClassList = document.body.classList;
-        isModalOpen ? bodyClassList.add('lock') : bodyClassList.remove('lock');
+        document.body.classList.toggle('lock', isModalOpen);
+
+        return () => {
+            document.body.classList.remove('lock');
+        };
     }, [isModalOpen]);
 
     return (

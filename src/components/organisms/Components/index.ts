@@ -17,5 +17,5 @@ export {
     ComponentsLinks,
     ComponentsNavigation,
     ComponentsPreview,
-    ComponentsWrapper,
+    ComponentsWrapper
 };

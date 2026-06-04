@@ -22,7 +22,7 @@ const BtnWrapper = forwardRef<HTMLButtonElement, Props>(
                         'bg-yellow text-bg hover:opacity-80': !props.disabled && variant === 'secondary',
                         'border border-border text-title hover:opacity-80': !props.disabled && variant === 'outline',
                         'text-text hover:bg-border': !props.disabled && variant === 'ghost',
-                        'px-4': !isLink,
+                        'px-4': !isLink
                     }
                 )}
             />

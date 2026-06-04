@@ -17,7 +17,7 @@ const DropdownItem = forwardRef<HTMLDivElement, Props>(
                 onClick={() => setIsOpen(false)}
                 className={`relative cursor-pointer rounded-md px-2 py-1 transition-colors duration-300 hover:bg-border ${className}`}
             >
-                <Text className='!text-title'>{props.children}</Text>
+                <Text className="!text-title">{props.children}</Text>
             </div>
         );
     }

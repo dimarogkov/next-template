@@ -21,44 +21,44 @@ const Progress = forwardRef<HTMLDivElement, Props>(
                 ref={ref}
                 {...props}
                 className={cn(`relative rounded-md overflow-hidden ${className}`, {
-                    'w-full h-2 bg-border': type === 'line',
+                    'w-full h-2 bg-border': type === 'line'
                 })}
             >
                 {type === 'circle' ? (
-                    <div className='relative' style={{ width: size }}>
+                    <div className="relative" style={{ width: size }}>
                         <svg width={size} height={size}>
                             <circle
                                 cx={radius}
                                 cy={radius}
                                 r={normalizedRadius}
-                                fill='transparent'
+                                fill="transparent"
                                 strokeWidth={6}
-                                className='stroke-border'
+                                className="stroke-border"
                             />
                             <circle
                                 r={normalizedRadius}
                                 cx={radius}
                                 cy={radius}
-                                strokeLinecap='round'
-                                fill='transparent'
+                                strokeLinecap="round"
+                                fill="transparent"
                                 strokeWidth={6}
                                 strokeDasharray={`${circumference} ${circumference}`}
                                 strokeDashoffset={strokeDashoffset}
                                 transform={`rotate(-90 ${radius} ${radius})`}
-                                className='stroke-title transition-all duration-300'
+                                className="stroke-title transition-all duration-300"
                             />
                         </svg>
 
                         <Text
-                            size='large'
-                            className='absolute top-0 left-0 flex items-center justify-center w-full h-full'
+                            size="large"
+                            className="absolute top-0 left-0 flex items-center justify-center w-full h-full"
                         >
                             {value}%
                         </Text>
                     </div>
                 ) : (
                     <span
-                        className='absolute top-0 left-0 h-full rounded-md bg-title transition-all duration-300'
+                        className="absolute top-0 left-0 h-full rounded-md bg-title transition-all duration-300"
                         style={{ width: `${value}%` }}
                     />
                 )}

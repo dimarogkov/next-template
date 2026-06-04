@@ -18,5 +18,5 @@ export const Dropdown = Object.assign(DropdownWrapper, {
     Item: DropdownItem,
     SubMenu: DropdownSubMenu,
     SubTrigger: DropdownSubTrigger,
-    SubContent: DropdownSubContent,
+    SubContent: DropdownSubContent
 });

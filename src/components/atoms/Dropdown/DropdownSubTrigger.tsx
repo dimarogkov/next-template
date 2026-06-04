@@ -20,12 +20,12 @@ const DropdownSubTrigger = forwardRef<HTMLDivElement, Props>(
                 className={cn(
                     `relative flex items-center justify-between cursor-pointer rounded-md px-2 py-1 transition-colors duration-300 hover:bg-border ${className}`,
                     {
-                        'bg-border': isSubOpen,
+                        'bg-border': isSubOpen
                     }
                 )}
             >
-                <Text className='!w-fit !text-title'>{props.children}</Text>
-                <ChevronRight className='size-4' />
+                <Text className="!w-fit !text-title">{props.children}</Text>
+                <ChevronRight className="size-4" />
             </div>
         );
     }

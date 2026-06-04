@@ -15,7 +15,7 @@ const AvatarImg = forwardRef<HTMLImageElement, Props>(
         const isTypeSquare = type === 'square';
 
         const animation: HTMLMotionProps<'img'> = {
-            whileHover: { scale: 1.1, transition: { duration: 0.5, ease: [0.215, 0.61, 0.355, 1] } },
+            whileHover: { scale: 1.1, transition: { duration: 0.5, ease: [0.215, 0.61, 0.355, 1] } }
         };
 
         return (
@@ -27,7 +27,7 @@ const AvatarImg = forwardRef<HTMLImageElement, Props>(
                 className={cn(`absolute top-0 left-0 object-cover object-center ${className}`, {
                     'will-change-transform': hasHover,
                     'rounded-full': isTypeCircle,
-                    'rounded-md': isTypeSquare,
+                    'rounded-md': isTypeSquare
                 })}
             />
         );

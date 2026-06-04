@@ -8,14 +8,14 @@ type Props = {
 
 export default function Error({ error, reset = () => {} }: Props) {
     return (
-        <section className='relative flex items-center w-full h-[calc(100svh-164px)] md:h-[calc(100svh-188px)] lg:h-[calc(100svh-204px)] pb-16 lg:pb-20'>
-            <div className='container'>
-                <div className='w-full text-center'>
-                    <Title size='h2' className='mb-5 last:mb-0'>
+        <section className="relative flex items-center w-full h-[calc(100svh-164px)] md:h-[calc(100svh-188px)] lg:h-[calc(100svh-204px)] pb-16 lg:pb-20">
+            <div className="container">
+                <div className="w-full text-center">
+                    <Title size="h2" className="mb-5 last:mb-0">
                         {error?.message}
                     </Title>
 
-                    <Btn onClick={() => reset()} className='m-auto'>
+                    <Btn onClick={() => reset()} className="m-auto">
                         Retry
                     </Btn>
                 </div>

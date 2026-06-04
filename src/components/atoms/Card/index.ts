@@ -6,5 +6,5 @@ import CardFooter from './CardFooter';
 export const Card = Object.assign(CardWrapper, {
     Head: CardHead,
     Body: CardBody,
-    Footer: CardFooter,
+    Footer: CardFooter
 });

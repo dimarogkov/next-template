@@ -4,5 +4,5 @@ import ModalContent from './ModalContent';
 
 export const Modal = Object.assign(ModalWrapper, {
     Trigger: ModalTrigger,
-    Content: ModalContent,
+    Content: ModalContent
 });

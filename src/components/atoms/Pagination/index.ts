@@ -8,5 +8,5 @@ export const Pagination = Object.assign(PaginationWrapper, {
     Previous: PaginationPrevious,
     Item: PaginationItem,
     Next: PaginationNext,
-    Ellipsis: PaginationEllipsis,
+    Ellipsis: PaginationEllipsis
 });

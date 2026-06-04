@@ -9,7 +9,7 @@ const Badge = forwardRef<HTMLSpanElement, Props>(({ type = 'default', className 
     const badgeType = {
         default: 'border-border bg-border',
         secondary: 'border-white bg-white text-bg',
-        outline: 'border-border bg-transparent',
+        outline: 'border-border bg-transparent'
     };
 
     return (

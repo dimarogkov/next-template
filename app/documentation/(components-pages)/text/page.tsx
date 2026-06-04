@@ -6,13 +6,13 @@ import { Text } from '@components/atoms';
 import TextDemo from './TextDemo';
 
 export const metadata: Metadata = {
-    title: 'Text',
+    title: 'Text'
 };
 
 export default function TextPage() {
     const preview: IDocumentationPreview = {
         demo: <TextDemo />,
-        code: TEXT_DEMO_CODE,
+        code: TEXT_DEMO_CODE
     };
 
     const codeSections: IDocumentationCodeSection[] = [
@@ -22,7 +22,7 @@ export default function TextPage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [NPM_CLASSNAMES_CODE],
+            codeArr: [NPM_CLASSNAMES_CODE]
         },
         {
             id: 'code',
@@ -30,12 +30,12 @@ export default function TextPage() {
             link: 'https://github.com/dimarogkov/next-template/tree/master/src/components/atoms/Text',
             description: (
                 <Text>
-                    Include a custom <span className='badge-item'>Text</span> component for consistent and maintainable
+                    Include a custom <span className="badge-item">Text</span> component for consistent and maintainable
                     usage throughout the project.
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [TEXT_CODE],
+            codeArr: [TEXT_CODE]
         },
         {
             id: 'usage',
@@ -43,8 +43,8 @@ export default function TextPage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [TEXT_USAGE_CODE],
-        },
+            codeArr: [TEXT_USAGE_CODE]
+        }
     ];
 
     const data: IDocumentationData = {
@@ -52,7 +52,7 @@ export default function TextPage() {
         description: 'Styles for text.',
         links: [],
         preview,
-        codeSections,
+        codeSections
     };
 
     return <DocumentationDetailClient data={data} />;

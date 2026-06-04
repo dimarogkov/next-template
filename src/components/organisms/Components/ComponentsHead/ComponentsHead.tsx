@@ -12,17 +12,17 @@ export default function ComponentsHead({ children }: Props) {
     const links = usePrevNextComponentPath();
 
     return (
-        <div className='relative w-full pb-2'>
-            <div className='w-full md:pr-16'>{children}</div>
+        <div className="relative w-full pb-2">
+            <div className="w-full md:pr-16">{children}</div>
 
-            <div className='absolute top-0 right-0 hidden md:flex gap-2'>
+            <div className="absolute top-0 right-0 hidden md:flex gap-2">
                 {links.map(({ href }, index) => (
                     <Link
                         key={href}
                         href={href}
-                        className='flex items-center justify-center size-7 text-base rounded-md bg-border transition-colors duration-300 hover:text-title'
+                        className="flex items-center justify-center size-7 text-base rounded-md bg-border transition-colors duration-300 hover:text-title"
                     >
-                        {index === 0 ? <ChevronLeft className='size-5' /> : <ChevronRight className='size-5' />}
+                        {index === 0 ? <ChevronLeft className="size-5" /> : <ChevronRight className="size-5" />}
                     </Link>
                 ))}
             </div>

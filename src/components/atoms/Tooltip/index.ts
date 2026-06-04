@@ -4,5 +4,5 @@ import TooltipContent from './TooltipContent';
 
 export const Tooltip = Object.assign(TooltipWrapper, {
     Trigger: TooltipTrigger,
-    Content: TooltipContent,
+    Content: TooltipContent
 });

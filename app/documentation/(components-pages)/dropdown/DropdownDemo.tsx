@@ -3,11 +3,11 @@ import { Btn, Dropdown } from '@components/atoms';
 
 export default function DropdownDemo() {
     return (
-        <Dropdown className='w-full sm:w-fit'>
+        <Dropdown className="w-full sm:w-fit">
             <Dropdown.Trigger>
-                <Btn variant='outline'>Dropdown</Btn>
+                <Btn variant="outline">Dropdown</Btn>
             </Dropdown.Trigger>
-            <Dropdown.Content className='sm:w-[200px]'>
+            <Dropdown.Content className="sm:w-[200px]">
                 <Dropdown.Menu>
                     <Dropdown.Label>My Account</Dropdown.Label>
                     <Dropdown.Separator />

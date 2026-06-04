@@ -21,7 +21,7 @@ export default function BreadcrumbWrapper({ className = '' }: Props) {
                 <section
                     className={`sticky z-30 top-16 lg:top-20 left-0 w-full h-11 border-b border-border bg-bg ${className}`}
                 >
-                    <div className='container h-full'>
+                    <div className="container h-full">
                         <Breadcrumb />
                     </div>
                 </section>

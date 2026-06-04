@@ -7,7 +7,7 @@ import {
     isValidElement,
     ReactElement,
     RefAttributes,
-    useState,
+    useState
 } from 'react';
 import cn from 'classnames';
 
@@ -28,7 +28,7 @@ const TooltipWrapper = forwardRef<HTMLDivElement, Props>(({ className = '', ...p
                 `relative w-fit before:absolute before:content-[''] before:left-0 before:bottom-full before:w-full before:h-2.5 before:bg-transparent before:transition-all before:duration-200 ${className}`,
                 {
                     'before:opacity-100 before:visible': isOpen,
-                    'before:opacity-0 before:invisible': !isOpen,
+                    'before:opacity-0 before:invisible': !isOpen
                 }
             )}
         >

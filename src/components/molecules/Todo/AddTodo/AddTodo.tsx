@@ -16,10 +16,10 @@ export default function AddTodo({ isLoading, createTodo = () => {} }: Props) {
     };
 
     return (
-        <div className='flex flex-wrap w-full gap-2.5'>
+        <div className="flex flex-wrap w-full gap-2.5">
             <Input
-                name='search'
-                placeholder='Add Todo'
+                name="search"
+                placeholder="Add Todo"
                 disabled={isLoading}
                 value={todoTitle}
                 onChange={({ target }) => setTodoTitle(target.value)}

@@ -14,15 +14,15 @@ export default function Header() {
         <header
             className={cn('sticky top-0 left-0 z-30 flex items-center w-full h-16 lg:h-20 border-b border-border', {
                 'backdrop-blur-[20px]': isHomePage,
-                'bg-bg': !isHomePage,
+                'bg-bg': !isHomePage
             })}
         >
-            <div className='container'>
-                <div className='flex items-center justify-between w-full'>
+            <div className="container">
+                <div className="flex items-center justify-between w-full">
                     <HeaderLogo />
 
-                    <div className='flex items-center gap-2'>
-                        <ul className='hidden sm:flex w-fit'>
+                    <div className="flex items-center gap-2">
+                        <ul className="hidden sm:flex w-fit">
                             <li>
                                 <HeaderLink href={PATHS.DOCUMENTATION} />
                             </li>
@@ -32,11 +32,11 @@ export default function Header() {
                         <HeaderSwitch />
 
                         <Link
-                            href='https://github.com/dimarogkov/next-template'
-                            target='_blank'
-                            className='flex items-center justify-center size-9 rounded-md transition-colors duration-300 hover:bg-border'
+                            href="https://github.com/dimarogkov/next-template"
+                            target="_blank"
+                            className="flex items-center justify-center size-9 rounded-md transition-colors duration-300 hover:bg-border"
                         >
-                            <Github className='size-5 text-text' />
+                            <Github className="size-5 text-text" />
                         </Link>
                     </div>
                 </div>

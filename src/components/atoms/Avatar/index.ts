@@ -5,7 +5,7 @@ import AvatarImg from './AvatarImg';
 
 export const Avatar = Object.assign(AvatarWrapper, {
     Link: AvatarLink,
-    Img: AvatarImg,
+    Img: AvatarImg
 });
 
 export { AvatarGroup };

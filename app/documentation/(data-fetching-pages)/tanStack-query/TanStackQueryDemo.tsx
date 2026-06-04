@@ -13,7 +13,7 @@ export default function TanStackQueryDemo() {
         updateTodoMutation,
         isLoadingUpdateTodo,
         removeTodoMutation,
-        isLoadingRemoveTodo,
+        isLoadingRemoveTodo
     } = useTodoQuery();
 
     const createTodo = (title: string) => {
@@ -24,7 +24,7 @@ export default function TanStackQueryDemo() {
         const newTodo = {
             userId: 1,
             title: title.trim(),
-            completed: false,
+            completed: false
         };
 
         createTodoMutation(newTodo);
@@ -34,19 +34,19 @@ export default function TanStackQueryDemo() {
     const removeTodo = (todoId: number) => removeTodoMutation(todoId);
 
     return (
-        <div className='relative w-full'>
-            <div className='w-full mb-6 last:mb-0'>
+        <div className="relative w-full">
+            <div className="w-full mb-6 last:mb-0">
                 <AddTodo isLoading={isLoadingCreateTodo} createTodo={createTodo} />
             </div>
 
             {isLoading && (
-                <div className='relative flex items-center justify-center w-full h-24'>
+                <div className="relative flex items-center justify-center w-full h-24">
                     <Loader />
                 </div>
             )}
 
             {todos && (
-                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 w-full'>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 w-full">
                     {todos.map((todo) => (
                         <Todo
                             key={todo.id}

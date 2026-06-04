@@ -42,18 +42,18 @@ export default function ComponentsNavigation({ sectionsRef, sectionsArr }: Props
     };
 
     return (
-        <motion.section className='sticky top-[164px] hidden xl:block w-52 pl-5'>
-            <div className='w-full'>
-                <Text className='text-text/70'>On this Page</Text>
+        <motion.section className="sticky top-[164px] hidden xl:block w-52 pl-5">
+            <div className="w-full">
+                <Text className="text-text/70">On this Page</Text>
 
-                <ul className='flex flex-col gap-1.5 w-full my-1.5'>
+                <ul className="flex flex-col gap-1.5 w-full my-1.5">
                     {sectionsArr.map(({ id, text }) => (
                         <li key={id}>
                             <Text>
                                 <button
                                     onClick={() => handleScroll(id)}
                                     className={cn('transition-colors duration-200 hover:text-title', {
-                                        'text-title': activeSection === id,
+                                        'text-title': activeSection === id
                                     })}
                                 >
                                     {text}

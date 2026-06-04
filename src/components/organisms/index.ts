@@ -8,7 +8,7 @@ import {
     ComponentsLinks,
     ComponentsNavigation,
     ComponentsPreview,
-    ComponentsWrapper,
+    ComponentsWrapper
 } from './Components';
 import { DocumentationClient, DocumentationDetailClient } from './DocumentationDetail';
 import { Header } from './Header';
@@ -28,5 +28,5 @@ export {
     DocumentationClient,
     DocumentationDetailClient,
     Header,
-    Sidebar,
+    Sidebar
 };

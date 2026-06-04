@@ -10,7 +10,7 @@ import {
     useEffect,
     useMemo,
     useRef,
-    useState,
+    useState
 } from 'react';
 import { assignRefs } from '@utils';
 import { ISelectItem } from '@interfaces/SelectItem';
@@ -83,7 +83,7 @@ const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className = '', ..
                 ref={mergedRef}
                 {...props}
                 name={props.name || 'select'}
-                className='hidden'
+                className="hidden"
                 tabIndex={-1}
                 aria-hidden
             >
@@ -101,7 +101,7 @@ const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className = '', ..
                           isMultiple,
                           selectedItems,
                           setIsOpen: setIsSelectOpen,
-                          setSelectedItems: handleSelectedItems,
+                          setSelectedItems: handleSelectedItems
                       })
                     : child;
             })}

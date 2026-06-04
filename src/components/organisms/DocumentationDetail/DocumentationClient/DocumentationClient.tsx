@@ -17,7 +17,7 @@ export default function DocumentationClient({ data }: Props) {
 
     return (
         <ComponentsWrapper navigation={<ComponentsNavigation sectionsRef={sectionsRef} sectionsArr={sectionsArr} />}>
-            <div className='w-full xl:px-[30px]'>
+            <div className="w-full xl:px-[30px]">
                 <ComponentsHead>
                     <IntroductionContent />
                 </ComponentsHead>
@@ -27,25 +27,25 @@ export default function DocumentationClient({ data }: Props) {
                         key={title}
                         id={title.toLowerCase()}
                         ref={registerRef(title.toLowerCase())}
-                        className='w-full py-6 md:py-12 scroll-mt-[116px]'
+                        className="w-full py-6 md:py-12 scroll-mt-[116px]"
                     >
-                        <Title size='h3' className='mb-1 md:mb-2 last:mb-0'>
+                        <Title size="h3" className="mb-1 md:mb-2 last:mb-0">
                             {title}
                         </Title>
 
-                        <Text size='large'>{text}</Text>
+                        <Text size="large">{text}</Text>
 
-                        <Separator className='my-5' />
+                        <Separator className="my-5" />
 
-                        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 w-full'>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 w-full">
                             {links.map(({ name, href, isNew }) => (
                                 <Link
                                     key={name}
                                     href={href}
-                                    className='flex items-center gap-2.5 font-medium text-lg text-text hover:underline'
+                                    className="flex items-center gap-2.5 font-medium text-lg text-text hover:underline"
                                 >
                                     <span>{name}</span>
-                                    {isNew && <span className='flex size-2 rounded-full bg-blue' />}
+                                    {isNew && <span className="flex size-2 rounded-full bg-blue" />}
                                 </Link>
                             ))}
                         </div>

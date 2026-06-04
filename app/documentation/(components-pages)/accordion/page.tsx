@@ -10,7 +10,7 @@ import {
     ACCORDION_ACTIVE_USAGE_CODE,
     NPM_CLASSNAMES_CODE,
     NPM_FRAMER_MOTION_CODE,
-    NPM_LUCIDE_CODE,
+    NPM_LUCIDE_CODE
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
@@ -18,13 +18,13 @@ import { Text } from '@components/atoms';
 import AccordionDemo from './AccordionDemo';
 
 export const metadata: Metadata = {
-    title: 'Accordion',
+    title: 'Accordion'
 };
 
 export default function AccordionPage() {
     const preview: IDocumentationPreview = {
         demo: <AccordionDemo />,
-        code: ACCORDION_DEMO_CODE,
+        code: ACCORDION_DEMO_CODE
     };
 
     const codeSections: IDocumentationCodeSection[] = [
@@ -37,8 +37,8 @@ export default function AccordionPage() {
             codeArr: [
                 { label: 'Classnames', code: NPM_CLASSNAMES_CODE },
                 { label: 'Lucide', code: NPM_LUCIDE_CODE },
-                { label: 'Framer Motion', code: NPM_FRAMER_MOTION_CODE },
-            ],
+                { label: 'Framer Motion', code: NPM_FRAMER_MOTION_CODE }
+            ]
         },
         {
             id: 'code',
@@ -46,7 +46,7 @@ export default function AccordionPage() {
             link: 'https://github.com/dimarogkov/next-template/tree/master/src/components/atoms/Accordion',
             description: (
                 <Text>
-                    Include a custom <span className='badge-item'>Accordion</span> component for consistent and
+                    Include a custom <span className="badge-item">Accordion</span> component for consistent and
                     maintainable usage throughout the project.
                 </Text>
             ),
@@ -56,8 +56,8 @@ export default function AccordionPage() {
                 { label: 'AccordionWrapper.tsx', code: ACCORDION_WRAPPER_CODE },
                 { label: 'AccordionItem.tsx', code: ACCORDION_ITEM_CODE },
                 { label: 'AccordionTitle.tsx', code: ACCORDION_TITLE_CODE },
-                { label: 'AccordionContent.tsx', code: ACCORDION_CONTENT_CODE },
-            ],
+                { label: 'AccordionContent.tsx', code: ACCORDION_CONTENT_CODE }
+            ]
         },
         {
             id: 'usage',
@@ -65,7 +65,7 @@ export default function AccordionPage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [ACCORDION_USAGE_CODE],
+            codeArr: [ACCORDION_USAGE_CODE]
         },
         {
             id: 'active',
@@ -73,13 +73,13 @@ export default function AccordionPage() {
             link: '',
             description: (
                 <Text>
-                    To make an <span className='badge-item'>Accordion</span> initially open, add the&nbsp;
-                    <span className='badge-item'>defaultActiveIndex</span> prop to it.
+                    To make an <span className="badge-item">Accordion</span> initially open, add the&nbsp;
+                    <span className="badge-item">defaultActiveIndex</span> prop to it.
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [ACCORDION_ACTIVE_USAGE_CODE],
-        },
+            codeArr: [ACCORDION_ACTIVE_USAGE_CODE]
+        }
     ];
 
     const data: IDocumentationData = {
@@ -88,7 +88,7 @@ export default function AccordionPage() {
             'A vertically stacked set of interactive headings that each reveal a section of content using Framer Motion.',
         links: [{ href: 'https://motion.dev/docs/react', name: 'Docs' }],
         preview,
-        codeSections,
+        codeSections
     };
 
     return <DocumentationDetailClient data={data} />;

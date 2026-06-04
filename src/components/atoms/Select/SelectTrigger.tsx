@@ -43,7 +43,7 @@ const SelectTrigger = forwardRef<HTMLDivElement, Props>(
                 className={`relative flex items-center w-full h-10 px-4 pr-12 rounded-md cursor-pointer select-none border border-border ${className}`}
             >
                 <Text className={cn({ 'text-title': hasValue })}>{hasValue ? selectedText : placeholder}</Text>
-                <Icon className='absolute right-4 size-5' />
+                <Icon className="absolute right-4 size-5" />
             </div>
         );
     }

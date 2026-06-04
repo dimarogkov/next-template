@@ -34,19 +34,19 @@ export const PATHS = {
             TEXTAREA: { path: '/textarea', isNew: false },
             TITLE: { path: '/title', isNew: false },
             TOAST: { path: '/toast', isNew: false },
-            TOOLTIP: { path: '/tooltip', isNew: false },
+            TOOLTIP: { path: '/tooltip', isNew: false }
         },
         DATA_FETCHING: {
             RTK_QUERY: { path: '/RTK-query', isNew: false },
-            TANSTACK_QUERY: { path: '/tanStack-query', isNew: true },
+            TANSTACK_QUERY: { path: '/tanStack-query', isNew: true }
         },
         FORM_VALIDATION: {
             YUP: { path: '/yup', isNew: false },
-            ZOD: { path: '/zod', isNew: false },
+            ZOD: { path: '/zod', isNew: false }
         },
         STORE: {
             REDUX_TOOLKIT: { path: '/redux-toolkit', isNew: false },
-            ZUSTAND: { path: '/zustand', isNew: false },
-        },
-    },
+            ZUSTAND: { path: '/zustand', isNew: false }
+        }
+    }
 };

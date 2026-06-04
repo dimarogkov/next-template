@@ -5,7 +5,7 @@ import {
     CHECKBOX_USAGE_CODE,
     CHECKBOX_CONTROLLED_USAGE_CODE,
     NPM_CLASSNAMES_CODE,
-    NPM_LUCIDE_CODE,
+    NPM_LUCIDE_CODE
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
@@ -13,13 +13,13 @@ import { Text } from '@components/atoms';
 import CheckboxDemo from './CheckboxDemo';
 
 export const metadata: Metadata = {
-    title: 'Checkbox',
+    title: 'Checkbox'
 };
 
 export default function CheckboxPage() {
     const preview: IDocumentationPreview = {
         demo: <CheckboxDemo />,
-        code: CHECKBOX_DEMO_CODE,
+        code: CHECKBOX_DEMO_CODE
     };
 
     const codeSections: IDocumentationCodeSection[] = [
@@ -31,8 +31,8 @@ export default function CheckboxPage() {
             withAccordion: true,
             codeArr: [
                 { label: 'Classnames', code: NPM_CLASSNAMES_CODE },
-                { label: 'Lucide', code: NPM_LUCIDE_CODE },
-            ],
+                { label: 'Lucide', code: NPM_LUCIDE_CODE }
+            ]
         },
         {
             id: 'code',
@@ -40,12 +40,12 @@ export default function CheckboxPage() {
             link: 'https://github.com/dimarogkov/next-template/tree/master/src/components/atoms/Checkbox',
             description: (
                 <Text>
-                    Include a custom <span className='badge-item'>Checkbox</span> component for consistent and
+                    Include a custom <span className="badge-item">Checkbox</span> component for consistent and
                     maintainable usage throughout the project.
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [CHECKBOX_CODE],
+            codeArr: [CHECKBOX_CODE]
         },
         {
             id: 'usage',
@@ -53,7 +53,7 @@ export default function CheckboxPage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [CHECKBOX_USAGE_CODE],
+            codeArr: [CHECKBOX_USAGE_CODE]
         },
         {
             id: 'controlled',
@@ -61,13 +61,13 @@ export default function CheckboxPage() {
             link: '',
             description: (
                 <Text>
-                    To control the Checkbox, add <span className='badge-item'>checked</span> and&nbsp;
-                    <span className='badge-item'>onChange</span> props to manage its state manually.
+                    To control the Checkbox, add <span className="badge-item">checked</span> and&nbsp;
+                    <span className="badge-item">onChange</span> props to manage its state manually.
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [CHECKBOX_CONTROLLED_USAGE_CODE],
-        },
+            codeArr: [CHECKBOX_CONTROLLED_USAGE_CODE]
+        }
     ];
 
     const data: IDocumentationData = {
@@ -75,7 +75,7 @@ export default function CheckboxPage() {
         description: 'A control that allows the user to toggle between checked and not checked.',
         links: [],
         preview,
-        codeSections,
+        codeSections
     };
 
     return <DocumentationDetailClient data={data} />;

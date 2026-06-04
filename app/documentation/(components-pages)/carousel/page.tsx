@@ -17,7 +17,7 @@ import {
     CAROUSEL_DOTS_USAGE_CODE,
     NPM_CLASSNAMES_CODE,
     NPM_LUCIDE_CODE,
-    NPM_EMBLA_CAROUSEL_CODE,
+    NPM_EMBLA_CAROUSEL_CODE
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
@@ -25,13 +25,13 @@ import { Text } from '@components/atoms';
 import CarouselDemo from './CarouselDemo';
 
 export const metadata: Metadata = {
-    title: 'Carousel',
+    title: 'Carousel'
 };
 
 export default function CarouselPage() {
     const preview: IDocumentationPreview = {
         demo: <CarouselDemo />,
-        code: CAROUSEL_DEMO_CODE,
+        code: CAROUSEL_DEMO_CODE
     };
 
     const codeSections: IDocumentationCodeSection[] = [
@@ -44,8 +44,8 @@ export default function CarouselPage() {
             codeArr: [
                 { label: 'Classnames', code: NPM_CLASSNAMES_CODE },
                 { label: 'Lucide', code: NPM_LUCIDE_CODE },
-                { label: 'Embla Carousel', code: NPM_EMBLA_CAROUSEL_CODE },
-            ],
+                { label: 'Embla Carousel', code: NPM_EMBLA_CAROUSEL_CODE }
+            ]
         },
         {
             id: 'code',
@@ -53,8 +53,8 @@ export default function CarouselPage() {
             link: 'https://github.com/dimarogkov/next-template/tree/master/src/components/atoms/Carousel',
             description: (
                 <Text>
-                    Include a custom <span className='badge-item'>useCarousel</span> and&nbsp;
-                    <span className='badge-item'>Carousel</span> component for consistent and maintainable usage
+                    Include a custom <span className="badge-item">useCarousel</span> and&nbsp;
+                    <span className="badge-item">Carousel</span> component for consistent and maintainable usage
                     throughout the project.
                 </Text>
             ),
@@ -68,8 +68,8 @@ export default function CarouselPage() {
                 { label: 'CarouselPrevious.tsx', code: CAROUSEL_PREVIOUS_CODE },
                 { label: 'CarouselItem.tsx', code: CAROUSEL_ITEM_CODE },
                 { label: 'CarouselNext.tsx', code: CAROUSEL_NEXT_CODE },
-                { label: 'CarouselDot.tsx', code: CAROUSEL_DOT_CODE },
-            ],
+                { label: 'CarouselDot.tsx', code: CAROUSEL_DOT_CODE }
+            ]
         },
         {
             id: 'usage',
@@ -77,7 +77,7 @@ export default function CarouselPage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [CAROUSEL_USAGE_CODE],
+            codeArr: [CAROUSEL_USAGE_CODE]
         },
         {
             id: 'sizes',
@@ -85,12 +85,12 @@ export default function CarouselPage() {
             link: '',
             description: (
                 <Text>
-                    To set the size of the items, you can use the <span className='badge-item'>basis</span> utility
-                    class on the <span className='badge-item'>Carousel.Item</span>.
+                    To set the size of the items, you can use the <span className="badge-item">basis</span> utility
+                    class on the <span className="badge-item">Carousel.Item</span>.
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [CAROUSEL_SIZES_USAGE_CODE],
+            codeArr: [CAROUSEL_SIZES_USAGE_CODE]
         },
         {
             id: 'spacing',
@@ -98,14 +98,14 @@ export default function CarouselPage() {
             link: '',
             description: (
                 <Text>
-                    To set the spacing between the items, we use a <span className='badge-item'>pl-[VALUE]</span>&nbsp;
-                    utility on the <span className='badge-item'>Carousel.Item</span> and a negative&nbsp;
-                    <span className='badge-item'>-ml-[VALUE]</span> on the&nbsp;
-                    <span className='badge-item'>Carousel.Container</span>.
+                    To set the spacing between the items, we use a <span className="badge-item">pl-[VALUE]</span>&nbsp;
+                    utility on the <span className="badge-item">Carousel.Item</span> and a negative&nbsp;
+                    <span className="badge-item">-ml-[VALUE]</span> on the&nbsp;
+                    <span className="badge-item">Carousel.Container</span>.
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [CAROUSEL_SPACING_USAGE_CODE],
+            codeArr: [CAROUSEL_SPACING_USAGE_CODE]
         },
         {
             id: 'buttons',
@@ -113,12 +113,12 @@ export default function CarouselPage() {
             link: '',
             description: (
                 <Text>
-                    This example shows how to add <span className='badge-item'>Carousel.Previous</span> and&nbsp;
-                    <span className='badge-item'>Carousel.Next</span> for moving between carousel slides.
+                    This example shows how to add <span className="badge-item">Carousel.Previous</span> and&nbsp;
+                    <span className="badge-item">Carousel.Next</span> for moving between carousel slides.
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [CAROUSEL_BTNS_USAGE_CODE],
+            codeArr: [CAROUSEL_BTNS_USAGE_CODE]
         },
         {
             id: 'dots',
@@ -126,13 +126,13 @@ export default function CarouselPage() {
             link: '',
             description: (
                 <Text>
-                    This example shows how to add <span className='badge-item'>Carousel.Dot</span> for moving carousel
+                    This example shows how to add <span className="badge-item">Carousel.Dot</span> for moving carousel
                     slides.
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [CAROUSEL_DOTS_USAGE_CODE],
-        },
+            codeArr: [CAROUSEL_DOTS_USAGE_CODE]
+        }
     ];
 
     const data: IDocumentationData = {
@@ -140,10 +140,10 @@ export default function CarouselPage() {
         description: 'A carousel with motion and swipe built using Embla.',
         links: [
             { href: 'https://www.embla-carousel.com/get-started/react/', name: 'Docs' },
-            { href: 'https://www.embla-carousel.com/api/', name: 'API Reference' },
+            { href: 'https://www.embla-carousel.com/api/', name: 'API Reference' }
         ],
         preview,
-        codeSections,
+        codeSections
     };
 
     return <DocumentationDetailClient data={data} />;

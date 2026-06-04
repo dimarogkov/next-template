@@ -5,7 +5,7 @@ import {
     BLOCKQUOTE_AUTHOR_CODE,
     BLOCKQUOTE_CONTENT_CODE,
     BLOCKQUOTE_DEMO_CODE,
-    BLOCKQUOTE_USAGE_CODE,
+    BLOCKQUOTE_USAGE_CODE
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
@@ -13,13 +13,13 @@ import { Text } from '@components/atoms';
 import BlockquoteDemo from './BlockquoteDemo';
 
 export const metadata: Metadata = {
-    title: 'Blockquote',
+    title: 'Blockquote'
 };
 
 export default function BlockquotePage() {
     const preview: IDocumentationPreview = {
         demo: <BlockquoteDemo />,
-        code: BLOCKQUOTE_DEMO_CODE,
+        code: BLOCKQUOTE_DEMO_CODE
     };
 
     const codeSections: IDocumentationCodeSection[] = [
@@ -29,7 +29,7 @@ export default function BlockquotePage() {
             link: 'https://github.com/dimarogkov/next-template/tree/master/src/components/atoms/Blockquote',
             description: (
                 <Text>
-                    Include a custom <span className='badge-item'>Blockquote</span> component for consistent and
+                    Include a custom <span className="badge-item">Blockquote</span> component for consistent and
                     maintainable usage throughout the project.
                 </Text>
             ),
@@ -38,8 +38,8 @@ export default function BlockquotePage() {
                 { label: 'index.ts', code: BLOCKQUOTE_CODE },
                 { label: 'BlockquoteWrapper.tsx', code: BLOCKQUOTE_WRAPPER_CODE },
                 { label: 'BlockquoteAuthor.tsx', code: BLOCKQUOTE_AUTHOR_CODE },
-                { label: 'BlockquoteContent.tsx', code: BLOCKQUOTE_CONTENT_CODE },
-            ],
+                { label: 'BlockquoteContent.tsx', code: BLOCKQUOTE_CONTENT_CODE }
+            ]
         },
         {
             id: 'usage',
@@ -47,8 +47,8 @@ export default function BlockquotePage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [BLOCKQUOTE_USAGE_CODE],
-        },
+            codeArr: [BLOCKQUOTE_USAGE_CODE]
+        }
     ];
 
     const data: IDocumentationData = {
@@ -56,7 +56,7 @@ export default function BlockquotePage() {
         description: 'Used to quote text content from an external source.',
         links: [],
         preview,
-        codeSections,
+        codeSections
     };
 
     return <DocumentationDetailClient data={data} />;

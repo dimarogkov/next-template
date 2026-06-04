@@ -9,7 +9,7 @@ export const getLinks = () => {
         return paths.map(({ path, isNew }) => ({
             name: convertUrlToString(path),
             href: `${PATHS.DOCUMENTATION}${path}`,
-            isNew,
+            isNew
         }));
     };
 

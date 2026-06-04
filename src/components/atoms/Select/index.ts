@@ -10,5 +10,5 @@ export const Select = Object.assign(SelectWrapper, {
     Options: SelectOptions,
     Group: SelectGroup,
     Label: SelectLabel,
-    Option: SelectOption,
+    Option: SelectOption
 });

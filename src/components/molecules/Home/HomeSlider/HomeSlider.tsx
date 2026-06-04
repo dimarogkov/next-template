@@ -19,9 +19,9 @@ export default function HomeSlider({ className = '' }: Props) {
     return (
         <Carousel className={`hidden sm:block ${className}`}>
             <Carousel.Viewport ref={emblaRef}>
-                <Carousel.Container className='-ml-2 min-h-9'>
+                <Carousel.Container className="-ml-2 min-h-9">
                     {[...DEV_ICONS, ...DEV_ICONS].map((icon, text) => (
-                        <Carousel.Item key={text} className='pl-2 !basis-auto'>
+                        <Carousel.Item key={text} className="pl-2 !basis-auto">
                             <DevIcon devIcon={icon} />
                         </Carousel.Item>
                     ))}

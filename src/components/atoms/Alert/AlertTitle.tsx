@@ -11,7 +11,7 @@ const AlertTitle = forwardRef<HTMLParagraphElement, Props>(({ variant = 'default
         default: 'text-title',
         success: 'text-green',
         warning: 'text-yellow',
-        error: 'text-red',
+        error: 'text-red'
     };
 
     return (

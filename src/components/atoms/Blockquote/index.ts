@@ -4,5 +4,5 @@ import BlockquoteContent from './BlockquoteContent';
 
 export const Blockquote = Object.assign(BlockquoteWrapper, {
     Author: BlockquoteAuthor,
-    Content: BlockquoteContent,
+    Content: BlockquoteContent
 });

@@ -10,20 +10,20 @@ import {
     RTK_QUERY_DEMO_CODE,
     TANSTACK_QUERY_TYPE_CODE,
     TANSTACK_QUERY_ADD_TODO_CODE,
-    TANSTACK_QUERY_TODO_CODE,
+    TANSTACK_QUERY_TODO_CODE
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import RtkQueryDemo from './RtkQueryDemo';
 
 export const metadata: Metadata = {
-    title: 'RTK Query',
+    title: 'RTK Query'
 };
 
 export default function RtkQueryPage() {
     const preview: IDocumentationPreview = {
         demo: <RtkQueryDemo />,
-        code: RTK_QUERY_DEMO_CODE,
+        code: RTK_QUERY_DEMO_CODE
     };
 
     const codeSections: IDocumentationCodeSection[] = [
@@ -36,8 +36,8 @@ export default function RtkQueryPage() {
             codeArr: [
                 { label: 'Classnames', code: NPM_CLASSNAMES_CODE },
                 { label: 'Lucide', code: NPM_LUCIDE_CODE },
-                { label: 'Redux Toolkit', code: NPM_REDUX_TOOLKIT_CODE },
-            ],
+                { label: 'Redux Toolkit', code: NPM_REDUX_TOOLKIT_CODE }
+            ]
         },
         {
             id: 'code',
@@ -51,8 +51,8 @@ export default function RtkQueryPage() {
                 { label: 'StoreProvider.tsx', code: REDUX_TOOLKIT_PROVIDER_CODE },
                 { label: 'todosApiSlice.ts', code: RTK_QUERY_SLICE_CODE },
                 { label: 'AddTodo.tsx', code: TANSTACK_QUERY_ADD_TODO_CODE },
-                { label: 'Todo.tsx', code: TANSTACK_QUERY_TODO_CODE },
-            ],
+                { label: 'Todo.tsx', code: TANSTACK_QUERY_TODO_CODE }
+            ]
         },
         {
             id: 'usage',
@@ -60,8 +60,8 @@ export default function RtkQueryPage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [REDUX_TOOLKIT_PROVIDER_USAGE_CODE, RTK_QUERY_DEMO_CODE],
-        },
+            codeArr: [REDUX_TOOLKIT_PROVIDER_USAGE_CODE, RTK_QUERY_DEMO_CODE]
+        }
     ];
 
     const data: IDocumentationData = {
@@ -70,7 +70,7 @@ export default function RtkQueryPage() {
             'Powerful data fetching and caching tool. It is designed to simplify common cases for loading data in a web application, eliminating the need to hand-write data fetching & caching logic yourself.',
         links: [{ href: 'https://redux-toolkit.js.org/rtk-query/overview', name: 'Docs' }],
         preview,
-        codeSections,
+        codeSections
     };
 
     return <DocumentationDetailClient data={data} />;

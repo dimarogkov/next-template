@@ -17,16 +17,16 @@ const ComponentsCodeWithAccordion = forwardRef<HTMLDivElement, Props>(
             <div
                 ref={ref}
                 {...props}
-                className='relative flex flex-col gap-4 md:gap-5 w-full py-4 md:py-5 scroll-mt-36'
+                className="relative flex flex-col gap-4 md:gap-5 w-full py-4 md:py-5 scroll-mt-36"
             >
-                <div className='w-full'>{children}</div>
+                <div className="w-full">{children}</div>
 
                 <Accordion defaultActiveIndex={0}>
                     {codeArr.map(({ label, code }) => (
                         <Accordion.Item key={label}>
                             <Accordion.Title>{label}</Accordion.Title>
 
-                            <Accordion.Content classNameBlock='!p-0'>
+                            <Accordion.Content classNameBlock="!p-0">
                                 <ComponentsCodeDetail code={code} type={type} />
                             </Accordion.Content>
                         </Accordion.Item>

@@ -8,8 +8,8 @@ export default function AvatarDemo() {
     const pathname = usePathname();
 
     return (
-        <div className='relative flex flex-col gap-4 w-full'>
-            <div className='flex w-full gap-2.5'>
+        <div className="relative flex flex-col gap-4 w-full">
+            <div className="flex w-full gap-2.5">
                 <Avatar>
                     <Avatar.Img src={IMG_SRC} />
                 </Avatar>
@@ -25,23 +25,23 @@ export default function AvatarDemo() {
                 </Avatar>
             </div>
 
-            <div className='flex w-full gap-2.5'>
-                <Avatar type='square'>
+            <div className="flex w-full gap-2.5">
+                <Avatar type="square">
                     <Avatar.Img src={IMG_SRC} />
                 </Avatar>
 
-                <Avatar type='square' isOnline>
+                <Avatar type="square" isOnline>
                     <Avatar.Img src={IMG_SRC} />
                 </Avatar>
 
-                <Avatar type='square'>
+                <Avatar type="square">
                     <Avatar.Link href={pathname}>
                         <Avatar.Img src={IMG_SRC} hasHover />
                     </Avatar.Link>
                 </Avatar>
             </div>
 
-            <div className='flex w-full gap-2.5'>
+            <div className="flex w-full gap-2.5">
                 <AvatarGroup visibleCount={3}>
                     <Avatar>
                         <Avatar.Link href={pathname}>

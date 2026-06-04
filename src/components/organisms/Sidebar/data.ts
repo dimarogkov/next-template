@@ -10,24 +10,24 @@ export const DATA = [
             {
                 name: 'Introduction',
                 href: PATHS.DOCUMENTATION,
-                isNew: false,
-            },
-        ],
+                isNew: false
+            }
+        ]
     },
     {
         title: 'Components',
-        links: componentsLinks,
+        links: componentsLinks
     },
     {
         title: 'Data Fetching',
-        links: dataFetchingLinks,
+        links: dataFetchingLinks
     },
     {
         title: 'Form Validation',
-        links: formValidationLinks,
+        links: formValidationLinks
     },
     {
         title: 'Store',
-        links: storeLinks,
-    },
+        links: storeLinks
+    }
 ];

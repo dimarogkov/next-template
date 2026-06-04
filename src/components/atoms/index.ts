@@ -62,5 +62,5 @@ export {
     Textarea,
     Title,
     Toast,
-    Tooltip,
+    Tooltip
 };

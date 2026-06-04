@@ -18,14 +18,14 @@ const Switch = forwardRef<HTMLButtonElement, Props>(
             <button
                 ref={ref}
                 {...props}
-                type='button'
+                type="button"
                 onClick={toggleSwitch}
                 className={cn(
                     `relative flex w-12 h-[26px] rounded-full p-0.5 border outline-none transition-colors duration-300 ${className}`,
                     {
                         'opacity-60 pointer-events-none': props.disabled,
                         'justify-start border-text': !isActive,
-                        'justify-end border-title': isActive,
+                        'justify-end border-title': isActive
                     }
                 )}
             >
@@ -34,7 +34,7 @@ const Switch = forwardRef<HTMLButtonElement, Props>(
                     transition={{ type: 'spring', visualDuration: 0.3, bounce: 0.2 }}
                     className={cn('relative size-5 rounded-full transition-colors duration-300', {
                         'bg-title': isActive,
-                        'bg-text': !isActive,
+                        'bg-text': !isActive
                     })}
                 />
             </button>

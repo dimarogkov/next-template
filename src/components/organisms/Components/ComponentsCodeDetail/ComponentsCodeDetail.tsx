@@ -30,24 +30,24 @@ export default function ComponentsCodeDetail({ code, type, className = '' }: Pro
             {highlightCode ? (
                 <>
                     <button
-                        type='button'
+                        type="button"
                         onClick={handleCopy}
-                        className='absolute top-2 right-2 flex items-center justify-center size-8 rounded-md transition-colors duration-300 hover:bg-border'
+                        className="absolute top-2 right-2 flex items-center justify-center size-8 rounded-md transition-colors duration-300 hover:bg-border"
                     >
                         {copied ? (
-                            <ClipboardCheck className='size-5 text-text' />
+                            <ClipboardCheck className="size-5 text-text" />
                         ) : (
-                            <Clipboard className='size-5 text-text' />
+                            <Clipboard className="size-5 text-text" />
                         )}
                     </button>
 
-                    <div className='text-base' dangerouslySetInnerHTML={{ __html: highlightCode }} />
+                    <div className="text-base" dangerouslySetInnerHTML={{ __html: highlightCode }} />
                 </>
             ) : (
                 <div
                     className={cn('flex items-center justify-center w-full', {
                         'h-[52px]': type === 'installation',
-                        'h-24': type === 'code',
+                        'h-24': type === 'code'
                     })}
                 >
                     <Loader />

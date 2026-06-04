@@ -21,13 +21,13 @@ const PaginationItem = forwardRef<HTMLButtonElement, Props>(({ options, page, cl
         <button
             ref={ref}
             {...props}
-            type='button'
+            type="button"
             onClick={toggleItem}
             className={cn(
                 `relative flex items-center justify-center size-9 text-title rounded-md border ${className}`,
                 {
                     'border-transparent transition-colors duration-300 hover:bg-border': currentPage !== page,
-                    'border-border bg-border pointer-events-none': currentPage === page,
+                    'border-border bg-border pointer-events-none': currentPage === page
                 }
             )}
         >

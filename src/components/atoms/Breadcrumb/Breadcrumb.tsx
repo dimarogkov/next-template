@@ -15,7 +15,7 @@ const Breadcrumb = forwardRef<HTMLUListElement, Props>(({ className = '', ...pro
     const links = pathname.split('/').map((link) => ({
         id: crypto.randomUUID(),
         href: `/${link}`,
-        name: link ? convertUrlToString(link) : 'Home',
+        name: link ? convertUrlToString(link) : 'Home'
     }));
 
     return (
@@ -23,12 +23,12 @@ const Breadcrumb = forwardRef<HTMLUListElement, Props>(({ className = '', ...pro
             {links.map(({ id, href, name }, index) => (
                 <li key={id}>
                     {links.length - 1 !== index ? (
-                        <Link href={href} className='flex items-center line-clamp-1 hover:underline'>
-                            <span className='line-clamp-1'>{name}</span>
-                            <ChevronRight className='size-5 min-w-5 stroke-1 text-text' />
+                        <Link href={href} className="flex items-center line-clamp-1 hover:underline">
+                            <span className="line-clamp-1">{name}</span>
+                            <ChevronRight className="size-5 min-w-5 stroke-1 text-text" />
                         </Link>
                     ) : (
-                        <span className='line-clamp-1 text-title'>{name}</span>
+                        <span className="line-clamp-1 text-title">{name}</span>
                     )}
                 </li>
             ))}

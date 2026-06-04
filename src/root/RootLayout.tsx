@@ -12,7 +12,7 @@ export default function RootLayout({ children }: Props) {
             <Header />
             <BreadcrumbWrapper />
             {children}
-            <Toaster position='bottom-right' reverseOrder={false} toastOptions={{ duration: 2000 }} />
+            <Toaster position="bottom-right" reverseOrder={false} toastOptions={{ duration: 2000 }} />
         </>
     );
 }

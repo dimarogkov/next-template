@@ -8,20 +8,20 @@ import {
     TANSTACK_QUERY_ADD_TODO_CODE,
     TANSTACK_QUERY_TODO_CODE,
     TANSTACK_QUERY_DEMO_CODE,
-    TANSTACK_QUERY_PROVIDER_USAGE_CODE,
+    TANSTACK_QUERY_PROVIDER_USAGE_CODE
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import TanStackQueryDemo from './TanStackQueryDemo';
 
 export const metadata: Metadata = {
-    title: 'TanStack Query',
+    title: 'TanStack Query'
 };
 
 export default function TanStackQueryPage() {
     const preview: IDocumentationPreview = {
         demo: <TanStackQueryDemo />,
-        code: TANSTACK_QUERY_DEMO_CODE,
+        code: TANSTACK_QUERY_DEMO_CODE
     };
 
     const codeSections: IDocumentationCodeSection[] = [
@@ -34,8 +34,8 @@ export default function TanStackQueryPage() {
             codeArr: [
                 { label: 'Classnames', code: NPM_CLASSNAMES_CODE },
                 { label: 'Lucide', code: NPM_LUCIDE_CODE },
-                { label: 'TanStack Query', code: NPM_TANSTACK_QUERY_CODE },
-            ],
+                { label: 'TanStack Query', code: NPM_TANSTACK_QUERY_CODE }
+            ]
         },
         {
             id: 'code',
@@ -47,8 +47,8 @@ export default function TanStackQueryPage() {
                 { label: 'Todo.ts', code: TANSTACK_QUERY_TYPE_CODE },
                 { label: 'useTodoQuery.tsx', code: TANSTACK_QUERY_CODE },
                 { label: 'AddTodo.tsx', code: TANSTACK_QUERY_ADD_TODO_CODE },
-                { label: 'Todo.tsx', code: TANSTACK_QUERY_TODO_CODE },
-            ],
+                { label: 'Todo.tsx', code: TANSTACK_QUERY_TODO_CODE }
+            ]
         },
         {
             id: 'usage',
@@ -56,8 +56,8 @@ export default function TanStackQueryPage() {
             link: '',
             description: null,
             withAccordion: false,
-            codeArr: [TANSTACK_QUERY_PROVIDER_USAGE_CODE, TANSTACK_QUERY_DEMO_CODE],
-        },
+            codeArr: [TANSTACK_QUERY_PROVIDER_USAGE_CODE, TANSTACK_QUERY_DEMO_CODE]
+        }
     ];
 
     const data: IDocumentationData = {
@@ -65,7 +65,7 @@ export default function TanStackQueryPage() {
         description: 'Powerful asynchronous state management for TS/JS and React.',
         links: [{ href: 'https://tanstack.com/query/latest/docs/framework/react/overview', name: 'Docs' }],
         preview,
-        codeSections,
+        codeSections
     };
 
     return <DocumentationDetailClient data={data} />;

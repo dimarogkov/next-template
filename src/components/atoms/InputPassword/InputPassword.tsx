@@ -32,12 +32,12 @@ const InputPassword = forwardRef<HTMLInputElement, Props>(({ className = '', cla
             />
 
             <button
-                type='button'
+                type="button"
                 onClick={handleClick}
                 onMouseDown={handleMouseDown}
-                className='absolute right-0 flex items-center justify-center w-10 h-full outline-none'
+                className="absolute right-0 flex items-center justify-center w-10 h-full outline-none"
             >
-                {!isPasswordVisible ? <EyeOff className='size-5 stroke-1' /> : <Eye className='size-5 stroke-1' />}
+                {!isPasswordVisible ? <EyeOff className="size-5 stroke-1" /> : <Eye className="size-5 stroke-1" />}
             </button>
         </div>
     );
