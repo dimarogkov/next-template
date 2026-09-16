@@ -12,13 +12,13 @@ import {
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
-import TanStackQueryDemo from './TanStackQueryDemo';
+import { TanStackQueryDemo } from './TanStackQueryDemo';
 
 export const metadata: Metadata = {
     title: 'TanStack Query'
 };
 
-export default function TanStackQueryPage() {
+const TanStackQueryPage = () => {
     const preview: IDocumentationPreview = {
         demo: <TanStackQueryDemo />,
         code: TANSTACK_QUERY_DEMO_CODE
@@ -69,4 +69,6 @@ export default function TanStackQueryPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default TanStackQueryPage;

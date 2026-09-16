@@ -8,11 +8,11 @@ interface Props extends InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTM
     className?: string;
 }
 
-const Checkbox = forwardRef<HTMLInputElement, Props>(({ label, className = '', ...props }, ref) => {
+export const Checkbox = forwardRef<HTMLInputElement, Props>(({ label, className = '', ...props }, ref) => {
     return (
         <div
-            className={cn(`flex items-center gap-2 cursor-pointer select-none ${className}`, {
-                'opacity-70 pointer-events-none': props.disabled
+            className={cn('flex cursor-pointer items-center gap-2 select-none', className, {
+                'pointer-events-none opacity-70': props.disabled
             })}
         >
             <div className="relative size-5 min-w-5">
@@ -20,19 +20,19 @@ const Checkbox = forwardRef<HTMLInputElement, Props>(({ label, className = '', .
                     ref={ref}
                     {...props}
                     type="checkbox"
-                    className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+                    className="absolute top-0 left-0 h-full w-full cursor-pointer opacity-0"
                 />
 
                 <span
-                    className={cn('flex items-center justify-center w-full h-full rounded-md border', {
+                    className={cn('flex h-full w-full items-center justify-center rounded-md border', {
                         'border-border bg-transparent': !props.checked,
                         'border-title bg-title': props.checked
                     })}
                 >
                     <Check
-                        className={cn('size-4 text-bg', {
-                            'opacity-0 invisible': !props.checked,
-                            'opacity-1 visible': props.checked
+                        className={cn('text-bg size-4', {
+                            'invisible opacity-0': !props.checked,
+                            'visible opacity-100': props.checked
                         })}
                     />
                 </span>
@@ -44,4 +44,3 @@ const Checkbox = forwardRef<HTMLInputElement, Props>(({ label, className = '', .
 });
 
 Checkbox.displayName = 'Checkbox';
-export default Checkbox;

@@ -1,3 +1,3 @@
-import SimpleLink from './SimpleLink';
+import { SimpleLink } from './SimpleLink';
 
 export { SimpleLink };

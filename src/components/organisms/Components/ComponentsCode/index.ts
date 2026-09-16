@@ -1,3 +1,3 @@
-import ComponentsCode from './ComponentsCode';
+import { ComponentsCode } from './ComponentsCode';
 
 export { ComponentsCode };

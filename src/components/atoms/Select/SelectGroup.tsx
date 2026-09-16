@@ -12,6 +12,7 @@ import {
     SetStateAction
 } from 'react';
 import { ISelectItem } from '@interfaces/SelectItem';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     isOpen?: boolean;
@@ -23,7 +24,7 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
     setSelectedItems?: (item: ISelectItem) => void;
 }
 
-const SelectGroup = forwardRef<HTMLDivElement, Props>(
+export const SelectGroup = forwardRef<HTMLDivElement, Props>(
     (
         {
             isOpen,
@@ -38,10 +39,10 @@ const SelectGroup = forwardRef<HTMLDivElement, Props>(
         ref
     ) => {
         return (
-            <div ref={ref} {...props} className={`relative flex flex-col gap-1 ${className}`}>
+            <div ref={ref} {...props} className={cn('relative flex flex-col gap-1', className)}>
                 {Children.map(children, (child) => {
                     return isValidElement(child)
-                        ? cloneElement(child as ReactElement, {
+                        ? cloneElement(child as ReactElement<any>, {
                               isOpen,
                               isMultiple,
                               selectedItems,
@@ -56,4 +57,3 @@ const SelectGroup = forwardRef<HTMLDivElement, Props>(
 );
 
 SelectGroup.displayName = 'SelectGroup';
-export default SelectGroup;

@@ -16,13 +16,13 @@ import {
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import AvatarDemo from './AvatarDemo';
+import { AvatarDemo } from './AvatarDemo';
 
 export const metadata: Metadata = {
     title: 'Avatar'
 };
 
-export default function AvatarPage() {
+const AvatarPage = () => {
     const preview: IDocumentationPreview = {
         demo: <AvatarDemo />,
         code: AVATAR_DEMO_CODE
@@ -64,7 +64,12 @@ export default function AvatarPage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">Avatar</span> component and use its subcomponents to build
+                    your UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [AVATAR_USAGE_CODE]
         },
@@ -107,4 +112,6 @@ export default function AvatarPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default AvatarPage;

@@ -1,5 +1,5 @@
 import { Breadcrumb } from '@components/atoms';
 
-export default function BreadcrumbDemo() {
+export const BreadcrumbDemo = () => {
     return <Breadcrumb />;
-}
+};

@@ -5,15 +5,17 @@ type Props = {
     children: ReactNode;
 };
 
-export default function DocumentationLayout({ children }: Props) {
+const DocumentationLayout = ({ children }: Props) => {
     return (
         <section className="relative w-full">
-            <div className="container">
-                <div className="grid grid-cols-1 xl:grid-cols-[208px,796px,208px] xl:items-start w-full pb-16 md:pb-0">
+            <div className="page-container">
+                <div className="grid w-full grid-cols-1 pb-16 md:pb-0 xl:grid-cols-[208px_796px_208px] xl:items-start">
                     <Sidebar />
                     {children}
                 </div>
             </div>
         </section>
     );
-}
+};
+
+export default DocumentationLayout;

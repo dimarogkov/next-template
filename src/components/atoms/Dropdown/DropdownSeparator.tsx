@@ -1,5 +1,6 @@
 'use client';
 import { Dispatch, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
+import cn from 'classnames';
 import { Separator } from '../Separator';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
@@ -8,11 +9,10 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
-const DropdownSeparator = forwardRef<HTMLDivElement, Props>(
-    ({ isOpen, className = '', setIsOpen = () => {}, ...props }, ref) => {
-        return <Separator ref={ref} {...props} className={`!w-auto -mx-1 ${className}`} />;
+export const DropdownSeparator = forwardRef<HTMLDivElement, Props>(
+    ({ isOpen, className = '', setIsOpen, ...props }, ref) => {
+        return <Separator ref={ref} {...props} className={cn('-mx-1 w-auto!', className)} />;
     }
 );
 
 DropdownSeparator.displayName = 'DropdownSeparator';
-export default DropdownSeparator;

@@ -1,10 +1,7 @@
 export const SWITCH_USAGE_CODE = `import { Switch } from '@components/atoms';
 
-{/* Default switch */}
-<Switch />
+<Switch />`;
 
-{/* Active switch */}
-<Switch isActive />
+export const SWITCH_ACTIVE_USAGE_CODE = `<Switch isActive />`;
 
-{/* Disabled switch */}
-<Switch disabled />`;
+export const SWITCH_DISABLED_USAGE_CODE = `<Switch disabled />`;

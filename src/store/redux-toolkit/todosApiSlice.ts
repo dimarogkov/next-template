@@ -2,13 +2,15 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { API_URL } from '@constants';
 import { ITodo } from '@interfaces/Todo';
 
+const LIMIT_COUNT = 6;
+
 export const todosApiSlice = createApi({
     reducerPath: 'todos',
     tagTypes: ['todos'],
     baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
     endpoints: (build) => ({
-        getTodos: build.query<ITodo[], {}>({
-            query: () => '/todos?limit=6',
+        getTodos: build.query<ITodo[], void>({
+            query: () => `/todos?limit=${LIMIT_COUNT}`,
             providesTags: ['todos']
         }),
         createTodo: build.mutation<ITodo, Omit<ITodo, 'id'>>({

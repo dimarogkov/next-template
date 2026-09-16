@@ -11,6 +11,7 @@ import {
     ComponentsWrapper
 } from './Components';
 import { DocumentationClient, DocumentationDetailClient } from './DocumentationDetail';
+import { Footer } from './Footer';
 import { Header } from './Header';
 import { Sidebar } from './Sidebar';
 
@@ -27,6 +28,7 @@ export {
     ComponentsWrapper,
     DocumentationClient,
     DocumentationDetailClient,
+    Footer,
     Header,
     Sidebar
 };

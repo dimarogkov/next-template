@@ -7,10 +7,10 @@ export const metadata: Metadata = {
     title: '404'
 };
 
-export default function NotFoundPage() {
+const NotFoundPage = () => {
     return (
-        <section className="relative flex items-center w-full h-[calc(100svh-120px)] md:h-[calc(100svh-144px)] lg:h-[calc(100svh-160px)] pb-16 lg:pb-20">
-            <div className="container">
+        <section className="relative flex h-[calc(100svh-120px)] w-full items-center pb-16 md:h-[calc(100svh-144px)] lg:h-[calc(100svh-160px)] lg:pb-20">
+            <div className="page-container">
                 <div className="w-full text-center">
                     <Title size="h2" className="mb-1 last:mb-0">
                         Ooops! Page Not Found
@@ -30,4 +30,6 @@ export default function NotFoundPage() {
             </div>
         </section>
     );
-}
+};
+
+export default NotFoundPage;

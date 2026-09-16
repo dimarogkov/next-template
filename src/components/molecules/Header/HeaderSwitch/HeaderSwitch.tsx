@@ -2,24 +2,24 @@ import Link from 'next/link';
 import { HEADER_SWITCH_ITEMS } from '@constants';
 import cn from 'classnames';
 
-export default function HeaderSwitch() {
+export const HeaderSwitch = () => {
     return (
-        <div className="relative flex items-center h-9 gap-1 p-0.5 rounded-md border border-border">
+        <div className="border-border relative flex h-9 items-center gap-1 rounded-md border p-0.5">
             {HEADER_SWITCH_ITEMS.map(({ link, icon, isActive }) => (
                 <Link
                     key={icon}
                     href={link}
-                    className={cn('group flex items-center justify-center size-[30px] rounded-md select-none', {
+                    className={cn('group flex size-7.5 items-center justify-center rounded-md select-none', {
                         'bg-border pointer-events-none': isActive
                     })}
                 >
                     <i
                         className={cn(`text-[22px] ${icon}`, {
-                            'transition-colors duration-300 group-hover:text-title': !isActive
+                            'group-hover:text-title transition-colors duration-300': !isActive
                         })}
                     />
                 </Link>
             ))}
         </div>
     );
-}
+};

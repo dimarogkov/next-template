@@ -3,52 +3,51 @@ import { validationSchema } from './schema';
 
 export { formOptions, validationSchema };`;
 
-export const ZOD_SCHEMA_CODE = `import * as z from 'zod';
+export const ZOD_SCHEMA_CODE = `import * as yup from 'yup';
 
 const phoneRegex = /(?=.*\\+[0-9]{3}\\s?[0-9]{2}\\s?[0-9]{3}\\s?[0-9]{4,5}$)/;
 
-export const validationSchema = z
-	.object({
-		username: z.string().trim().nonempty('Missing name'),
-		age: z
-			.number({
-				required_error: 'Missing age',
-				invalid_type_error: 'Age must be a number',
-			})
-			.min(18, 'Your age must be minimum 18'),
-		email: z.string().trim().nonempty('Missing email').email('Invalid email format'),
-		phone: z
-			.string()
-			.trim()
-			.nonempty('Missing phone')
-			.regex(phoneRegex, 'Phone number must be in correct format - +380 XX XXX XX XX'),
-		select: z.string().trim().nonempty('Select any option'),
-		password: z.string().trim().nonempty('Missing password').min(4, 'Your password must be minimum 4'),
-		confirmPassword: z.string().trim().nonempty('Missing confirm password'),
-		radioType: z.string().nonempty('Radio Type is required'),
-		rememberMe: z.literal(true as boolean, {
-			errorMap: () => ({ message: 'Remember me is required' }),
-		}),
-	})
-	.refine((data) => data.password === data.confirmPassword, {
-		path: ['confirmPassword'],
-		message: 'Passwords must match',
-	});`;
+export const validationSchema = yup
+  .object({
+    username: yup.string().trim().required('Missing name'),
+    age: yup
+      .number()
+      .required('Missing age')
+      .positive('Age must be an positive number')
+      .integer('Age must be an integer')
+      .min(18, 'Your age must be minimum 18'),
+    email: yup.string().trim().required('Missing email').email('Invalid email format'),
+    phone: yup
+      .string()
+      .trim()
+      .required('Missing phone')
+      .matches(phoneRegex, 'Phone number must be in correct format - +380 XX XXX XX XX'),
+    select: yup.string().required().oneOf(['option_1', 'option_2', 'option_3'], 'Select any option'),
+    password: yup.string().trim().required('Missing password').min(4, 'Your password must be minimum 4'),
+    confirmPassword: yup
+      .string()
+      .trim()
+      .required('Missing confirm password')
+      .oneOf([yup.ref('password')], 'Passwords must match'),
+    radioType: yup.string().required('Radio Type is required'),
+    rememberMe: yup.bool().required().oneOf([true], 'Remember me is required')
+  })
+  .required();`;
 
-export const ZOP_OPTIONS_CODE = `import { zodResolver } from '@hookform/resolvers/zod';
+export const ZOP_OPTIONS_CODE = `import { yupResolver } from '@hookform/resolvers/yup';
 import { validationSchema } from './schema';
 
 export const formOptions = {
-	resolver: zodResolver(validationSchema),
-	defaultValues: {
-		username: '',
-		age: 18,
-		email: '',
-		phone: '',
-		select: '',
-		password: '',
-		confirmPassword: '',
-		radioType: '',
-		rememberMe: false,
-	},
+  resolver: yupResolver(validationSchema),
+  defaultValues: {
+    username: '',
+    age: 18,
+    email: '',
+    phone: '',
+    select: '',
+    password: '',
+    confirmPassword: '',
+    radioType: '',
+    rememberMe: false
+  }
 };`;

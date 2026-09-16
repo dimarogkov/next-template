@@ -10,13 +10,13 @@ import {
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import BlockquoteDemo from './BlockquoteDemo';
+import { BlockquoteDemo } from './BlockquoteDemo';
 
 export const metadata: Metadata = {
     title: 'Blockquote'
 };
 
-export default function BlockquotePage() {
+const BlockquotePage = () => {
     const preview: IDocumentationPreview = {
         demo: <BlockquoteDemo />,
         code: BLOCKQUOTE_DEMO_CODE
@@ -45,7 +45,12 @@ export default function BlockquotePage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">Blockquote</span> component and its subcomponents to build
+                    your UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [BLOCKQUOTE_USAGE_CODE]
         }
@@ -60,4 +65,6 @@ export default function BlockquotePage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default BlockquotePage;

@@ -3,13 +3,13 @@ import { SIMPLE_LINK_CODE, SIMPLE_LINK_DEMO_CODE, SIMPLE_LINK_USAGE_CODE } from 
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import SimpleLinkDemo from './SimpleLinkDemo';
+import { SimpleLinkDemo } from './SimpleLinkDemo';
 
 export const metadata: Metadata = {
     title: 'Simple Link'
 };
 
-export default function SimpleLinkPage() {
+const SimpleLinkPage = () => {
     const preview: IDocumentationPreview = {
         demo: <SimpleLinkDemo />,
         code: SIMPLE_LINK_DEMO_CODE
@@ -33,7 +33,11 @@ export default function SimpleLinkPage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">SimpleLink</span> component to build your UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [SIMPLE_LINK_USAGE_CODE]
         }
@@ -49,4 +53,6 @@ export default function SimpleLinkPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default SimpleLinkPage;

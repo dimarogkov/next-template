@@ -22,13 +22,13 @@ import {
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import CarouselDemo from './CarouselDemo';
+import { CarouselDemo } from './CarouselDemo';
 
 export const metadata: Metadata = {
     title: 'Carousel'
 };
 
-export default function CarouselPage() {
+const CarouselPage = () => {
     const preview: IDocumentationPreview = {
         demo: <CarouselDemo />,
         code: CAROUSEL_DEMO_CODE
@@ -75,7 +75,12 @@ export default function CarouselPage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">Carousel</span> component and use its subcomponents to build
+                    your UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [CAROUSEL_USAGE_CODE]
         },
@@ -98,9 +103,9 @@ export default function CarouselPage() {
             link: '',
             description: (
                 <Text>
-                    To set the spacing between the items, we use a <span className="badge-item">pl-[VALUE]</span>&nbsp;
-                    utility on the <span className="badge-item">Carousel.Item</span> and a negative&nbsp;
-                    <span className="badge-item">-ml-[VALUE]</span> on the&nbsp;
+                    To set the spacing between the items, we use a <span className="badge-item">pl-{'{value}'}</span>
+                    &nbsp; utility on the <span className="badge-item">Carousel.Item</span> and a negative&nbsp;
+                    <span className="badge-item">-ml-{'{value}'}</span> on the&nbsp;
                     <span className="badge-item">Carousel.Container</span>.
                 </Text>
             ),
@@ -147,4 +152,6 @@ export default function CarouselPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default CarouselPage;

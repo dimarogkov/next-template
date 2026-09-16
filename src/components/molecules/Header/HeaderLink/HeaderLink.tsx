@@ -9,7 +9,7 @@ type Props = {
     href: string;
 };
 
-export default function HeaderLink({ href }: Props) {
+export const HeaderLink = ({ href }: Props) => {
     const pathname = usePathname();
     const isActive = pathname === href;
 
@@ -17,7 +17,7 @@ export default function HeaderLink({ href }: Props) {
         <Link
             href={href}
             className={cn(
-                `flex items-center justify-center gap-2 w-full sm:w-fit h-9 font-media px-3 rounded-md transition-colors duration-300`,
+                'flex h-9 w-full items-center justify-center gap-2 rounded-md px-3 font-medium transition-colors duration-300 sm:w-fit',
                 {
                     'text-title pointer-events-none': isActive,
                     'hover:bg-border': !isActive,
@@ -25,7 +25,7 @@ export default function HeaderLink({ href }: Props) {
                 }
             )}
         >
-            {convertUrlToString(href)}
+            {convertUrlToString(PATHS.DOCUMENTATION)}
         </Link>
     );
-}
+};

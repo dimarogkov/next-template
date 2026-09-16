@@ -6,14 +6,15 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, RefAttributes<H
     className?: string;
 }
 
-const CarouselDot = forwardRef<HTMLButtonElement, Props>(({ isActive, className = '', ...props }, ref) => {
+export const CarouselDot = forwardRef<HTMLButtonElement, Props>(({ isActive, className = '', ...props }, ref) => {
     return (
         <button
             ref={ref}
             {...props}
             type="button"
             className={cn(
-                `relative size-4 md:size-5 outline-none rounded-full border-2 transition-colors duration-300 ${className}`,
+                'relative size-4 cursor-pointer rounded-full border-2 outline-hidden transition-colors duration-300 md:size-5',
+                className,
                 {
                     'border-title pointer-events-none': isActive,
                     'border-border': !isActive
@@ -24,4 +25,3 @@ const CarouselDot = forwardRef<HTMLButtonElement, Props>(({ isActive, className 
 });
 
 CarouselDot.displayName = 'CarouselDot';
-export default CarouselDot;

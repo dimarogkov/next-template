@@ -3,13 +3,13 @@ import { TEXTAREA_CODE, TEXTAREA_DEMO_CODE, TEXTAREA_USAGE_CODE, TEXTAREA_CONTRO
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import TextareaDemo from './TextareaDemo';
+import { TextareaDemo } from './TextareaDemo';
 
 export const metadata: Metadata = {
     title: 'Textarea'
 };
 
-export default function TextareaPage() {
+const TextareaPage = () => {
     const preview: IDocumentationPreview = {
         demo: <TextareaDemo />,
         code: TEXTAREA_DEMO_CODE
@@ -33,7 +33,11 @@ export default function TextareaPage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">Textarea</span> component to build your UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [TEXTAREA_USAGE_CODE]
         },
@@ -61,4 +65,6 @@ export default function TextareaPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default TextareaPage;

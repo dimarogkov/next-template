@@ -10,6 +10,7 @@ import {
     RefAttributes,
     SetStateAction
 } from 'react';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     options: {
@@ -21,14 +22,16 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
     className?: string;
 }
 
-const PaginationWrapper = forwardRef<HTMLDivElement, Props>(
+export const PaginationWrapper = forwardRef<HTMLDivElement, Props>(
     ({ options, disabled = false, className = '', ...props }, ref) => {
         return (
             <>
                 {!disabled && (
-                    <div ref={ref} {...props} className={`relative flex justify-center gap-1 w-full ${className}`}>
+                    <div ref={ref} {...props} className={cn('relative flex w-full justify-center gap-1', className)}>
                         {Children.map(props.children, (child) => {
-                            return isValidElement(child) ? cloneElement(child as ReactElement, { options }) : child;
+                            return isValidElement(child)
+                                ? cloneElement(child as ReactElement<any>, { options })
+                                : child;
                         })}
                     </div>
                 )}
@@ -38,4 +41,3 @@ const PaginationWrapper = forwardRef<HTMLDivElement, Props>(
 );
 
 PaginationWrapper.displayName = 'PaginationWrapper';
-export default PaginationWrapper;

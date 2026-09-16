@@ -1,3 +1,3 @@
-import SidebarLink from './SidebarLink';
+import { SidebarLink } from './SidebarLink';
 
 export { SidebarLink };

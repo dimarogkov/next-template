@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-export default function useSectionsRefs() {
+export const useSectionsRefs = () => {
     const sectionsRef = useRef<Record<string, HTMLDivElement | null>>({});
 
     const registerRef = (id: string) => (el: HTMLDivElement | null) => {
@@ -8,4 +8,4 @@ export default function useSectionsRefs() {
     };
 
     return { sectionsRef, registerRef };
-}
+};

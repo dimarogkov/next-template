@@ -3,9 +3,9 @@ import toast from 'react-hot-toast';
 import { Btn, Toast } from '@components/atoms';
 import { CircleAlert, CircleCheck, CircleX, Info } from 'lucide-react';
 
-export default function ToastDemo() {
+export const ToastDemo = () => {
     return (
-        <div className="relative flex flex-wrap w-full gap-2.5">
+        <div className="relative flex w-full flex-wrap gap-2.5">
             <Btn
                 variant="outline"
                 onClick={() =>
@@ -26,6 +26,7 @@ export default function ToastDemo() {
 
             <Btn
                 variant="outline"
+                className="border-green"
                 onClick={() =>
                     toast.custom((t) => (
                         <Toast
@@ -39,12 +40,13 @@ export default function ToastDemo() {
                     ))
                 }
             >
-                <CircleCheck className="size-5" />
-                <span>Success Toast</span>
+                <CircleCheck className="text-green size-5" />
+                <span className="text-green">Success Toast</span>
             </Btn>
 
             <Btn
                 variant="outline"
+                className="border-yellow"
                 onClick={() =>
                     toast.custom((t) => (
                         <Toast
@@ -58,12 +60,13 @@ export default function ToastDemo() {
                     ))
                 }
             >
-                <CircleAlert className="size-5" />
-                <span>Warning Toast</span>
+                <CircleAlert className="text-yellow size-5" />
+                <span className="text-yellow">Warning Toast</span>
             </Btn>
 
             <Btn
                 variant="outline"
+                className="border-red"
                 onClick={() =>
                     toast.custom((t) => (
                         <Toast
@@ -77,9 +80,9 @@ export default function ToastDemo() {
                     ))
                 }
             >
-                <CircleX className="size-5" />
-                <span>Error Toast</span>
+                <CircleX className="text-red size-5" />
+                <span className="text-red">Error Toast</span>
             </Btn>
         </div>
     );
-}
+};

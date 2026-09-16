@@ -9,13 +9,13 @@ import {
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import BreadcrumbDemo from './BreadcrumbDemo';
+import { BreadcrumbDemo } from './BreadcrumbDemo';
 
 export const metadata: Metadata = {
     title: 'Breadcrumb'
 };
 
-export default function BreadcrumbPage() {
+const BreadcrumbPage = () => {
     const preview: IDocumentationPreview = {
         demo: <BreadcrumbDemo />,
         code: BREADCRUMB_DEMO_CODE
@@ -51,7 +51,11 @@ export default function BreadcrumbPage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">Breadcrumb</span> component to build your UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [BREADCRUMB_USAGE_CODE]
         }
@@ -66,4 +70,6 @@ export default function BreadcrumbPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default BreadcrumbPage;

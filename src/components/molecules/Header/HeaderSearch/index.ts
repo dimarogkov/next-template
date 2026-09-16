@@ -1,3 +1,3 @@
-import HeaderSearch from './HeaderSearch';
+import { HeaderSearch } from './HeaderSearch';
 
 export { HeaderSearch };

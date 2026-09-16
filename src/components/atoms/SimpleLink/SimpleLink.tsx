@@ -1,5 +1,6 @@
 import { forwardRef, HTMLAttributes, RefAttributes } from 'react';
 import Link from 'next/link';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLAnchorElement>, RefAttributes<HTMLAnchorElement> {
     href: string;
@@ -7,17 +8,19 @@ interface Props extends HTMLAttributes<HTMLAnchorElement>, RefAttributes<HTMLAnc
     className?: string;
 }
 
-const SimpleLink = forwardRef<HTMLAnchorElement, Props>(({ href, target, className = '', ...props }, ref) => {
+export const SimpleLink = forwardRef<HTMLAnchorElement, Props>(({ href, target, className = '', ...props }, ref) => {
     return (
         <Link
             ref={ref}
             {...props}
             href={href}
             target={target}
-            className={`relative w-auto font-medium text-title underline transition-opacity duration-300 hover:opacity-75 ${className}`}
+            className={cn(
+                'text-title relative w-auto font-medium underline transition-opacity duration-300 hover:opacity-75',
+                className
+            )}
         />
     );
 });
 
 SimpleLink.displayName = 'SimpleLink';
-export default SimpleLink;

@@ -16,13 +16,13 @@ import {
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import TabsDemo from './TabsDemo';
+import { TabsDemo } from './TabsDemo';
 
 export const metadata: Metadata = {
     title: 'Tabs'
 };
 
-export default function TabsPage() {
+const TabsPage = () => {
     const preview: IDocumentationPreview = {
         demo: <TabsDemo />,
         code: TABS_DEMO_CODE
@@ -64,7 +64,12 @@ export default function TabsPage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">Tabs</span> component and use its subcomponents to build
+                    your UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [TABS_USAGE_CODE]
         },
@@ -87,7 +92,7 @@ export default function TabsPage() {
             link: '',
             description: (
                 <Text>
-                    To enable animations for <span className="badge-item">Tabs</span> — use the&nbsp;
+                    To enable animations for <span className="badge-item">Tabs</span> use the&nbsp;
                     <span className="badge-item">hasAnimation</span> prop.
                 </Text>
             ),
@@ -106,4 +111,6 @@ export default function TabsPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default TabsPage;

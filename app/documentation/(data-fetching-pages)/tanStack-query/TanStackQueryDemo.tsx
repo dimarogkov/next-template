@@ -4,7 +4,7 @@ import { ITodo } from '@interfaces/Todo';
 import { AddTodo, Todo } from '@components/molecules';
 import { Loader } from '@components/atoms';
 
-export default function TanStackQueryDemo() {
+export const TanStackQueryDemo = () => {
     const {
         todos,
         isLoading,
@@ -35,18 +35,18 @@ export default function TanStackQueryDemo() {
 
     return (
         <div className="relative w-full">
-            <div className="w-full mb-6 last:mb-0">
+            <div className="mb-6 w-full last:mb-0">
                 <AddTodo isLoading={isLoadingCreateTodo} createTodo={createTodo} />
             </div>
 
             {isLoading && (
-                <div className="relative flex items-center justify-center w-full h-24">
+                <div className="relative flex h-24 w-full items-center justify-center">
                     <Loader />
                 </div>
             )}
 
             {todos && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 w-full">
+                <div className="grid w-full grid-cols-1 gap-2.5 sm:grid-cols-2 md:grid-cols-3">
                     {todos.map((todo) => (
                         <Todo
                             key={todo.id}
@@ -60,4 +60,4 @@ export default function TanStackQueryDemo() {
             )}
         </div>
     );
-}
+};

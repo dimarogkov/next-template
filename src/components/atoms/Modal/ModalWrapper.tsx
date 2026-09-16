@@ -11,12 +11,13 @@ import {
     useState
 } from 'react';
 import { usePathname } from 'next/navigation';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     className?: string;
 }
 
-const ModalWrapper = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
+export const ModalWrapper = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const pathname = usePathname();
 
@@ -33,10 +34,10 @@ const ModalWrapper = forwardRef<HTMLDivElement, Props>(({ className = '', ...pro
     }, [isModalOpen]);
 
     return (
-        <div ref={ref} {...props} className={`relative w-fit ${className}`}>
+        <div ref={ref} {...props} className={cn('relative w-fit', className)}>
             {Children.map(props.children, (child) => {
                 return isValidElement(child)
-                    ? cloneElement(child as ReactElement, { isOpen: isModalOpen, setIsOpen: setIsModalOpen })
+                    ? cloneElement(child as ReactElement<any>, { isOpen: isModalOpen, setIsOpen: setIsModalOpen })
                     : child;
             })}
         </div>
@@ -44,4 +45,3 @@ const ModalWrapper = forwardRef<HTMLDivElement, Props>(({ className = '', ...pro
 });
 
 ModalWrapper.displayName = 'ModalWrapper';
-export default ModalWrapper;

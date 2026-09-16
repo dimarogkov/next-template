@@ -11,6 +11,7 @@ import {
     SetStateAction
 } from 'react';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
+import cn from 'classnames';
 
 interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
     isOpen?: boolean;
@@ -20,7 +21,7 @@ interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
-const DropdownSubContent = forwardRef<HTMLDivElement, Props>(
+export const DropdownSubContent = forwardRef<HTMLDivElement, Props>(
     ({ isOpen, isSubOpen, className = '', children, setIsOpen = () => {}, ...props }, ref) => {
         const animation: HTMLMotionProps<'div'> = {
             initial: { scale: 0.95, opacity: 0 },
@@ -35,11 +36,14 @@ const DropdownSubContent = forwardRef<HTMLDivElement, Props>(
                         ref={ref}
                         {...props}
                         {...animation}
-                        className={`absolute top-[calc(100%+4px)] sm:-top-[1px] sm:left-[calc(100%+4px)] z-10 min-w-full max-w-[calc(100vw-32px)] w-max rounded-md p-1 border border-border bg-bg origin-top-left will-change-transform ${className}`}
+                        className={cn(
+                            'border-border bg-bg absolute top-[calc(100%+4px)] z-10 w-max max-w-[calc(100vw-32px)] min-w-full origin-top-left rounded-md border p-1 will-change-transform sm:-top-px sm:left-[calc(100%+4px)]',
+                            className
+                        )}
                     >
                         {Children.map(children, (child) => {
                             return isValidElement(child)
-                                ? cloneElement(child as ReactElement, { isOpen, setIsOpen })
+                                ? cloneElement(child as ReactElement<any>, { isOpen, setIsOpen })
                                 : child;
                         })}
                     </motion.div>
@@ -50,4 +54,3 @@ const DropdownSubContent = forwardRef<HTMLDivElement, Props>(
 );
 
 DropdownSubContent.displayName = 'DropdownSubContent';
-export default DropdownSubContent;

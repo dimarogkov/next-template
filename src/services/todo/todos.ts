@@ -2,8 +2,10 @@ import axios from 'axios';
 import { API_URL } from '@constants';
 import { ITodo } from '@interfaces/Todo';
 
+const LIMIT_COUNT = 6;
+
 export const getTodos = () => {
-    return axios.get<ITodo[]>(`${API_URL}/todos?limit=6`);
+    return axios.get<ITodo[]>(`${API_URL}/todos?limit=${LIMIT_COUNT}`);
 };
 
 export const createTodo = (todo: Omit<ITodo, 'id'>) => {

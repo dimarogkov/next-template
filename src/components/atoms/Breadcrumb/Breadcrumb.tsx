@@ -4,12 +4,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { convertUrlToString } from '@utils';
 import { ChevronRight } from 'lucide-react';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLUListElement>, RefAttributes<HTMLUListElement> {
     className?: string;
 }
 
-const Breadcrumb = forwardRef<HTMLUListElement, Props>(({ className = '', ...props }, ref) => {
+export const Breadcrumb = forwardRef<HTMLUListElement, Props>(({ className = '', ...props }, ref) => {
     const pathname = usePathname();
 
     const links = pathname.split('/').map((link) => ({
@@ -19,16 +20,16 @@ const Breadcrumb = forwardRef<HTMLUListElement, Props>(({ className = '', ...pro
     }));
 
     return (
-        <ul ref={ref} {...props} className={`flex items-center gap-1 w-full h-full ${className}`}>
+        <ul ref={ref} {...props} className={cn('relative flex h-full w-full items-center gap-1', className)}>
             {links.map(({ id, href, name }, index) => (
                 <li key={id}>
                     {links.length - 1 !== index ? (
-                        <Link href={href} className="flex items-center line-clamp-1 hover:underline">
+                        <Link href={href} className="line-clamp-1 flex items-center gap-1 hover:underline">
                             <span className="line-clamp-1">{name}</span>
-                            <ChevronRight className="size-5 min-w-5 stroke-1 text-text" />
+                            <ChevronRight className="text-text size-5 min-w-5 stroke-1" />
                         </Link>
                     ) : (
-                        <span className="line-clamp-1 text-title">{name}</span>
+                        <span className="text-title line-clamp-1">{name}</span>
                     )}
                 </li>
             ))}
@@ -37,4 +38,3 @@ const Breadcrumb = forwardRef<HTMLUListElement, Props>(({ className = '', ...pro
 });
 
 Breadcrumb.displayName = 'Breadcrumb';
-export default Breadcrumb;

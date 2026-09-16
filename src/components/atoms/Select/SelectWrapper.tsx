@@ -14,12 +14,13 @@ import {
 } from 'react';
 import { assignRefs } from '@utils';
 import { ISelectItem } from '@interfaces/SelectItem';
+import cn from 'classnames';
 
 interface Props extends SelectHTMLAttributes<HTMLSelectElement>, RefAttributes<HTMLSelectElement> {
     className?: string;
 }
 
-const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className = '', ...props }, ref) => {
+export const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className = '', ...props }, ref) => {
     const [selectedItems, setSelectedItems] = useState<ISelectItem[]>([]);
     const [isSelectOpen, setIsSelectOpen] = useState(false);
 
@@ -30,12 +31,12 @@ const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className = '', ..
     const isMultiple = !!props.multiple;
 
     const optionsArr = useMemo(() => {
-        const getOptions = (node: React.ReactNode): ReactElement[] =>
+        const getOptions = (node: React.ReactNode): ReactElement<any>[] =>
             Children.toArray(node).flatMap((child) =>
                 isValidElement(child)
                     ? (child.type as any)?.displayName === 'SelectOption'
                         ? [child]
-                        : getOptions(child.props?.children)
+                        : getOptions((child.props as any)?.children)
                     : []
             );
 
@@ -43,11 +44,13 @@ const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className = '', ..
     }, [props.children]);
 
     useEffect(() => {
+        if (props.value === undefined) {
+            return;
+        }
+
         const currentOption = optionsArr.find((option) => option.value === props.value);
 
-        if (currentOption) {
-            setSelectedItems([{ value: currentOption.value, label: currentOption.children }]);
-        }
+        setSelectedItems(currentOption ? [{ value: currentOption.value, label: currentOption.children }] : []);
     }, [props.value, optionsArr]);
 
     useEffect(() => {
@@ -78,7 +81,7 @@ const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className = '', ..
     };
 
     return (
-        <div ref={wrapperRef} className={`relative w-full ${className}`}>
+        <div ref={wrapperRef} className={cn('relative w-full', className)}>
             <select
                 ref={mergedRef}
                 {...props}
@@ -96,7 +99,7 @@ const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className = '', ..
 
             {Children.map(props.children, (child) => {
                 return isValidElement(child)
-                    ? cloneElement(child as ReactElement, {
+                    ? cloneElement(child as ReactElement<any>, {
                           isOpen: isSelectOpen,
                           isMultiple,
                           selectedItems,
@@ -110,4 +113,3 @@ const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className = '', ..
 });
 
 SelectWrapper.displayName = 'SelectWrapper';
-export default SelectWrapper;

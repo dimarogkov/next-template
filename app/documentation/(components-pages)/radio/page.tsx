@@ -10,13 +10,13 @@ import {
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import RadioDemo from './RadioDemo';
+import { RadioDemo } from './RadioDemo';
 
 export const metadata: Metadata = {
     title: 'Radio'
 };
 
-export default function RadioPage() {
+const RadioPage = () => {
     const preview: IDocumentationPreview = {
         demo: <RadioDemo />,
         code: RADIO_DEMO_CODE
@@ -51,7 +51,11 @@ export default function RadioPage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">Radio</span> component to build your UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [RADIO_USAGE_CODE]
         },
@@ -73,11 +77,13 @@ export default function RadioPage() {
     const data: IDocumentationData = {
         title: 'Radio',
         description:
-            'A set of checkable buttons — known as radio buttons — where no more than one of the buttons can be checked at a time.',
+            'A set of checkable buttons known as radio buttons where no more than one of the buttons can be checked at a time.',
         links: [],
         preview,
         codeSections
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default RadioPage;

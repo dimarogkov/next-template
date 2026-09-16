@@ -16,7 +16,7 @@ type Props = {
     children: ReactNode;
 };
 
-export default function HomeLayout({ children }: Props) {
+const HomeLayout = ({ children }: Props) => {
     return (
         <Root>
             <RootProvider>
@@ -26,4 +26,6 @@ export default function HomeLayout({ children }: Props) {
             </RootProvider>
         </Root>
     );
-}
+};
+
+export default HomeLayout;

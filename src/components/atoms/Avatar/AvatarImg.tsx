@@ -9,7 +9,7 @@ interface Props extends HTMLMotionProps<'img'>, RefAttributes<HTMLImageElement> 
     className?: string;
 }
 
-const AvatarImg = forwardRef<HTMLImageElement, Props>(
+export const AvatarImg = forwardRef<HTMLImageElement, Props>(
     ({ type = 'circle', hasHover = false, className = '', ...props }, ref) => {
         const isTypeCircle = type === 'circle';
         const isTypeSquare = type === 'square';
@@ -24,7 +24,7 @@ const AvatarImg = forwardRef<HTMLImageElement, Props>(
                 {...props}
                 {...(hasHover && animation)}
                 alt={props.alt}
-                className={cn(`absolute top-0 left-0 object-cover object-center ${className}`, {
+                className={cn('absolute top-0 left-0 object-cover object-center', className, {
                     'will-change-transform': hasHover,
                     'rounded-full': isTypeCircle,
                     'rounded-md': isTypeSquare
@@ -35,4 +35,3 @@ const AvatarImg = forwardRef<HTMLImageElement, Props>(
 );
 
 AvatarImg.displayName = 'AvatarImg';
-export default AvatarImg;

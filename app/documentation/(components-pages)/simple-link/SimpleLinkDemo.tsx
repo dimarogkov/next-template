@@ -2,7 +2,7 @@
 import { usePathname } from 'next/navigation';
 import { SimpleLink, Text } from '@components/atoms';
 
-export default function SimpleLinkDemo() {
+export const SimpleLinkDemo = () => {
     const pathname = usePathname();
 
     return (
@@ -12,4 +12,4 @@ export default function SimpleLinkDemo() {
             placeat ad mollitia. Itaque, debitis perferendis!
         </Text>
     );
-}
+};

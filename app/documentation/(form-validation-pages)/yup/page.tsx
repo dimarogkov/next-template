@@ -10,13 +10,13 @@ import {
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
-import YupDemo from './YupDemo';
+import { YupDemo } from './YupDemo';
 
 export const metadata: Metadata = {
     title: 'Yup'
 };
 
-export default function YupPage() {
+const YupPage = () => {
     const preview: IDocumentationPreview = {
         demo: <YupDemo />,
         code: YUP_DEMO_CODE
@@ -71,4 +71,6 @@ export default function YupPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default YupPage;

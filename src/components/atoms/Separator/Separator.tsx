@@ -1,12 +1,12 @@
 import { forwardRef, HTMLAttributes, RefAttributes } from 'react';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     className?: string;
 }
 
-const Separator = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
-    return <div ref={ref} {...props} className={`relative w-full border-t border-border ${className}`} />;
+export const Separator = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
+    return <div ref={ref} {...props} className={cn('border-border relative w-full border-t', className)} />;
 });
 
 Separator.displayName = 'Separator';
-export default Separator;

@@ -5,6 +5,7 @@ import { EmblaOptionsType } from 'embla-carousel';
 import { DEV_ICONS } from '@constants';
 import { DevIcon } from '@components/molecules';
 import { Carousel } from '@components/atoms';
+import cn from 'classnames';
 
 const OPTIONS: EmblaOptionsType = { loop: true, align: 'start', watchDrag: false };
 const AUTO_SCROLL_OPTIONS = { speed: 0.8, playOnInit: true };
@@ -13,15 +14,15 @@ type Props = {
     className?: string;
 };
 
-export default function HomeSlider({ className = '' }: Props) {
+export const HomeSlider = ({ className = '' }: Props) => {
     const [emblaRef] = useEmblaCarousel(OPTIONS, [AutoScroll(AUTO_SCROLL_OPTIONS)]);
 
     return (
-        <Carousel className={`hidden sm:block ${className}`}>
+        <Carousel className={cn('hidden sm:block', className)}>
             <Carousel.Viewport ref={emblaRef}>
                 <Carousel.Container className="-ml-2 min-h-9">
                     {[...DEV_ICONS, ...DEV_ICONS].map((icon, text) => (
-                        <Carousel.Item key={text} className="pl-2 !basis-auto">
+                        <Carousel.Item key={text} className="basis-auto! pl-2">
                             <DevIcon devIcon={icon} />
                         </Carousel.Item>
                     ))}
@@ -29,4 +30,4 @@ export default function HomeSlider({ className = '' }: Props) {
             </Carousel.Viewport>
         </Carousel>
     );
-}
+};

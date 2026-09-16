@@ -11,13 +11,13 @@ import {
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import CardDemo from './CardDemo';
+import { CardDemo } from './CardDemo';
 
 export const metadata: Metadata = {
     title: 'Card'
 };
 
-export default function CardPage() {
+const CardPage = () => {
     const preview: IDocumentationPreview = {
         demo: <CardDemo />,
         code: CARD_DEMO_CODE
@@ -47,7 +47,12 @@ export default function CardPage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">Card</span> component and use its subcomponents to build
+                    your UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [CARD_USAGE_CODE]
         }
@@ -62,4 +67,6 @@ export default function CardPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default CardPage;

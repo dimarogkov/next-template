@@ -1,6 +1,6 @@
 import { Accordion } from '@components/atoms';
 
-export default function AccordionDemo() {
+export const AccordionDemo = () => {
     return (
         <Accordion>
             <Accordion.Item>
@@ -25,4 +25,4 @@ export default function AccordionDemo() {
             </Accordion.Item>
         </Accordion>
     );
-}
+};

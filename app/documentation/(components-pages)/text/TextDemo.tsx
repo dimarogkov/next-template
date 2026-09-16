@@ -1,6 +1,6 @@
 import { Text } from '@components/atoms';
 
-export default function TextDemo() {
+export const TextDemo = () => {
     return (
         <>
             <Text size="large" className="mb-2.5 last:mb-0">
@@ -14,4 +14,4 @@ export default function TextDemo() {
             </Text>
         </>
     );
-}
+};

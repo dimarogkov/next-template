@@ -1,3 +1,3 @@
-import ScrollTopBtn from './ScrollTopBtn';
+import { ScrollTopBtn } from './ScrollTopBtn';
 
 export { ScrollTopBtn };

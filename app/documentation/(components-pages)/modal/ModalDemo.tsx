@@ -1,6 +1,6 @@
 import { Btn, Modal, Separator, Text, Title } from '@components/atoms';
 
-export default function ModalDemo() {
+export const ModalDemo = () => {
     return (
         <Modal>
             <Modal.Trigger>
@@ -14,7 +14,7 @@ export default function ModalDemo() {
 
                     <Separator />
 
-                    <div className="flex flex-col gap-2.5 w-full p-2.5 md:p-4">
+                    <div className="flex w-full flex-col gap-2.5 p-2.5 md:p-4">
                         <Text>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima eum dolor nulla delectus
                             sint optio cum ducimus vitae placeat veritatis vero deleniti, voluptatibus fugit. Laudantium
@@ -30,4 +30,4 @@ export default function ModalDemo() {
             </Modal.Content>
         </Modal>
     );
-}
+};

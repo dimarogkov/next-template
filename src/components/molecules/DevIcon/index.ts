@@ -1,3 +1,3 @@
-import DevIcon from './DevIcon';
+import { DevIcon } from './DevIcon';
 
 export { DevIcon };

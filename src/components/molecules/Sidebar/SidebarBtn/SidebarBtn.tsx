@@ -2,7 +2,7 @@
 import { useMain } from '@hooks';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-export default function SidebarBtn() {
+export const SidebarBtn = () => {
     const { isSidebarOpen, setIsSidebarOpen } = useMain();
 
     const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
@@ -11,13 +11,13 @@ export default function SidebarBtn() {
         <button
             type="button"
             onClick={toggleSidebar}
-            className="sidebar-btn absolute -right-7 lg:-right-8 hidden md:flex xl:hidden items-center justify-center size-7 lg:size-8 rounded-r border border-border bg-bg"
+            className="sidebar-btn border-border bg-bg absolute -right-7 hidden size-7 items-center justify-center rounded-r border md:flex lg:-right-8 lg:size-8 xl:hidden"
         >
             {isSidebarOpen ? (
-                <ChevronLeft className="size-5 text-text" />
+                <ChevronLeft className="text-text size-5" />
             ) : (
-                <ChevronRight className="size-5 text-text" />
+                <ChevronRight className="text-text size-5" />
             )}
         </button>
     );
-}
+};

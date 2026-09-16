@@ -1,3 +1,3 @@
-import DocumentationClient from './DocumentationClient';
+import { DocumentationClient } from './DocumentationClient';
 
 export { DocumentationClient };

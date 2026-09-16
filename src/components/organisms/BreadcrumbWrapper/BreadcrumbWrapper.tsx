@@ -3,12 +3,13 @@ import { usePathname } from 'next/navigation';
 import { PATHS } from '@constants';
 import { getLinks } from '@utils';
 import { Breadcrumb } from '@components/atoms';
+import cn from 'classnames';
 
 type Props = {
     className?: string;
 };
 
-export default function BreadcrumbWrapper({ className = '' }: Props) {
+export const BreadcrumbWrapper = ({ className = '' }: Props) => {
     const pathname = usePathname();
     const { links } = getLinks();
 
@@ -19,13 +20,16 @@ export default function BreadcrumbWrapper({ className = '' }: Props) {
         <>
             {isBreadcrumbVisible && (
                 <section
-                    className={`sticky z-30 top-16 lg:top-20 left-0 w-full h-11 border-b border-border bg-bg ${className}`}
+                    className={cn(
+                        'border-border bg-bg sticky top-16 left-0 z-30 h-11 w-full border-b lg:top-20',
+                        className
+                    )}
                 >
-                    <div className="container h-full">
+                    <div className="page-container h-full">
                         <Breadcrumb />
                     </div>
                 </section>
             )}
         </>
     );
-}
+};

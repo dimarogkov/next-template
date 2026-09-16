@@ -1,3 +1,3 @@
-import ComponentsCodeWithAccordion from './ComponentsCodeWithAccordion';
+import { ComponentsCodeWithAccordion } from './ComponentsCodeWithAccordion';
 
 export { ComponentsCodeWithAccordion };

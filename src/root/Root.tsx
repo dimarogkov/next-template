@@ -1,14 +1,11 @@
 /* eslint-disable @next/next/no-head-element */
 import { ReactNode } from 'react';
-import { Geist } from 'next/font/google';
-
-const geist = Geist({ subsets: ['latin'] });
 
 type Props = {
     children?: ReactNode;
 };
 
-export default function Root({ children }: Props) {
+export const Root = ({ children }: Props) => {
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
@@ -19,7 +16,7 @@ export default function Root({ children }: Props) {
                 />
             </head>
 
-            <body className={geist.className}>{children}</body>
+            <body>{children}</body>
         </html>
     );
-}
+};

@@ -1,5 +1,5 @@
 'use client';
-import { Dispatch, forwardRef, LiHTMLAttributes, RefAttributes, SetStateAction } from 'react';
+import { Dispatch, forwardRef, KeyboardEvent, LiHTMLAttributes, RefAttributes, SetStateAction } from 'react';
 import { motion } from 'framer-motion';
 import cn from 'classnames';
 
@@ -11,15 +11,29 @@ interface Props extends LiHTMLAttributes<HTMLLIElement>, RefAttributes<HTMLLIEle
     setActiveIndex?: Dispatch<SetStateAction<number>>;
 }
 
-const TabsTab = forwardRef<HTMLLIElement, Props>(
+export const TabsTab = forwardRef<HTMLLIElement, Props>(
     ({ hasAnimation, tabIndex = 0, activeIndex, className = '', setActiveIndex = () => {}, ...props }, ref) => {
+        const selectTab = () => setActiveIndex(tabIndex);
+
+        const onKeyDown = (e: KeyboardEvent<HTMLLIElement>) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                selectTab();
+            }
+        };
+
         return (
             <li
                 ref={ref}
                 {...props}
-                onClick={() => setActiveIndex(tabIndex)}
+                role="tab"
+                tabIndex={0}
+                aria-selected={tabIndex === activeIndex}
+                onClick={selectTab}
+                onKeyDown={onKeyDown}
                 className={cn(
-                    `relative w-full text-center text-base px-2.5 sm:px-3 py-1.5 border-r border-border last:border-none cursor-pointer ${className}`,
+                    'border-border relative w-full cursor-pointer border-r px-2.5 py-1.5 text-center text-base last:border-none sm:px-3',
+                    className,
                     {
                         'transition-colors duration-200': hasAnimation,
                         'text-title': tabIndex === activeIndex
@@ -34,10 +48,10 @@ const TabsTab = forwardRef<HTMLLIElement, Props>(
                             <motion.div
                                 id="underline"
                                 layoutId="underline"
-                                className="absolute left-0 -bottom-[1px] w-full h-0.5 bg-title"
+                                className="bg-title absolute -bottom-px left-0 h-0.5 w-full"
                             />
                         ) : (
-                            <div className="absolute left-0 -bottom-[1px] w-full h-0.5 bg-title" />
+                            <div className="bg-title absolute -bottom-px left-0 h-0.5 w-full" />
                         )}
                     </>
                 )}
@@ -47,4 +61,3 @@ const TabsTab = forwardRef<HTMLLIElement, Props>(
 );
 
 TabsTab.displayName = 'TabsTab';
-export default TabsTab;

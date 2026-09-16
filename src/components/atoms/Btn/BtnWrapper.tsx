@@ -7,7 +7,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, RefAttributes<H
     className?: string;
 }
 
-const BtnWrapper = forwardRef<HTMLButtonElement, Props>(
+export const BtnWrapper = forwardRef<HTMLButtonElement, Props>(
     ({ variant = 'default', isLink = false, className = '', ...props }, ref) => {
         return (
             <button
@@ -15,12 +15,13 @@ const BtnWrapper = forwardRef<HTMLButtonElement, Props>(
                 {...props}
                 type={props.type || 'button'}
                 className={cn(
-                    `flex items-center justify-center gap-1.5 w-full sm:w-fit h-10 rounded-md outline-none transition-all duration-300 will-change-transform active:scale-95 ${className}`,
+                    'flex h-10 w-full cursor-pointer items-center justify-center gap-1.5 rounded-md outline-hidden transition-all duration-300 will-change-transform active:scale-95 sm:w-fit',
+                    className,
                     {
                         'bg-border text-text pointer-events-none select-none': props.disabled,
                         'bg-title text-bg hover:opacity-80': !props.disabled && variant === 'default',
                         'bg-yellow text-bg hover:opacity-80': !props.disabled && variant === 'secondary',
-                        'border border-border text-title hover:opacity-80': !props.disabled && variant === 'outline',
+                        'border-border text-title border hover:opacity-80': !props.disabled && variant === 'outline',
                         'text-text hover:bg-border': !props.disabled && variant === 'ghost',
                         'px-4': !isLink
                     }
@@ -31,4 +32,3 @@ const BtnWrapper = forwardRef<HTMLButtonElement, Props>(
 );
 
 BtnWrapper.displayName = 'BtnWrapper';
-export default BtnWrapper;

@@ -5,16 +5,16 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
     setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const ModalLayer = forwardRef<HTMLDivElement, Props>(({ setIsOpen = () => {}, ...props }, ref) => {
+export const ModalLayer = forwardRef<HTMLDivElement, Props>(({ setIsOpen = () => {}, ...props }, ref) => {
     return (
         <div
             ref={ref}
             {...props}
             onClick={() => setIsOpen(false)}
-            className="absolute top-0 left-0 w-full h-full bg-black/60"
+            aria-hidden="true"
+            className="absolute top-0 left-0 h-full w-full bg-black/60"
         />
     );
 });
 
 ModalLayer.displayName = 'ModalLayer';
-export default ModalLayer;

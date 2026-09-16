@@ -11,7 +11,7 @@ type Props = {
     sectionsArr: IComponentsSection[];
 };
 
-export default function ComponentsNavigation({ sectionsRef, sectionsArr }: Props) {
+export const ComponentsNavigation = ({ sectionsRef, sectionsArr }: Props) => {
     const [activeSection, setActiveSection] = useState('');
     const { scrollY } = useScroll();
 
@@ -42,17 +42,17 @@ export default function ComponentsNavigation({ sectionsRef, sectionsArr }: Props
     };
 
     return (
-        <motion.section className="sticky top-[164px] hidden xl:block w-52 pl-5">
+        <motion.section className="sticky top-41 hidden w-52 pl-5 xl:block">
             <div className="w-full">
                 <Text className="text-text/70">On this Page</Text>
 
-                <ul className="flex flex-col gap-1.5 w-full my-1.5">
+                <ul className="my-1.5 flex w-full flex-col gap-1.5">
                     {sectionsArr.map(({ id, text }) => (
                         <li key={id}>
                             <Text>
                                 <button
                                     onClick={() => handleScroll(id)}
-                                    className={cn('transition-colors duration-200 hover:text-title', {
+                                    className={cn('hover:text-title cursor-pointer transition-colors duration-200', {
                                         'text-title': activeSection === id
                                     })}
                                 >
@@ -67,4 +67,4 @@ export default function ComponentsNavigation({ sectionsRef, sectionsArr }: Props
             </div>
         </motion.section>
     );
-}
+};

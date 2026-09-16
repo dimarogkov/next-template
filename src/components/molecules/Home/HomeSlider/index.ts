@@ -1,3 +1,3 @@
-import HomeSlider from './HomeSlider';
+import { HomeSlider } from './HomeSlider';
 
 export { HomeSlider };

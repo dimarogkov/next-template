@@ -6,7 +6,7 @@ type Props = {
     children?: ReactNode;
 };
 
-export default function RootLayout({ children }: Props) {
+export const RootLayout = ({ children }: Props) => {
     return (
         <>
             <Header />
@@ -15,4 +15,4 @@ export default function RootLayout({ children }: Props) {
             <Toaster position="bottom-right" reverseOrder={false} toastOptions={{ duration: 2000 }} />
         </>
     );
-}
+};

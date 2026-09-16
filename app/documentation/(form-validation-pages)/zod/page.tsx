@@ -10,13 +10,13 @@ import {
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
-import ZodDemo from './ZodDemo';
+import { ZodDemo } from './ZodDemo';
 
 export const metadata: Metadata = {
     title: 'Zod'
 };
 
-export default function ZodPage() {
+const ZodPage = () => {
     const preview: IDocumentationPreview = {
         demo: <ZodDemo />,
         code: ZOD_DEMO_CODE
@@ -72,4 +72,6 @@ export default function ZodPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default ZodPage;

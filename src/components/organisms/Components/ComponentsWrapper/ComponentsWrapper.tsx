@@ -5,11 +5,11 @@ type Props = {
     children?: ReactNode;
 };
 
-export default function ComponentsWrapper({ navigation, children }: Props) {
+export const ComponentsWrapper = ({ navigation, children }: Props) => {
     return (
         <>
             {children}
             {navigation}
         </>
     );
-}
+};

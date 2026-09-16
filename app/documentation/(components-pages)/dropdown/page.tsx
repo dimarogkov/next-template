@@ -21,13 +21,13 @@ import {
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import DropdownDemo from './DropdownDemo';
+import { DropdownDemo } from './DropdownDemo';
 
 export const metadata: Metadata = {
     title: 'Dropdown'
 };
 
-export default function DropdownPage() {
+const DropdownPage = () => {
     const preview: IDocumentationPreview = {
         demo: <DropdownDemo />,
         code: DROPDOWN_DEMO_CODE
@@ -74,7 +74,12 @@ export default function DropdownPage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">Dropdown</span> component and use its subcomponents to build
+                    your UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [DROPDOWN_USAGE_CODE]
         },
@@ -116,4 +121,6 @@ export default function DropdownPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default DropdownPage;

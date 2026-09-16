@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { MainContext } from '@providers';
 
-export default function useMain() {
+export const useMain = () => {
     const context = useContext(MainContext);
 
     if (!context) {
@@ -9,4 +9,4 @@ export default function useMain() {
     }
 
     return context;
-}
+};

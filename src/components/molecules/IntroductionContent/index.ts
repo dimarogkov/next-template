@@ -1,3 +1,3 @@
-import IntroductionContent from './IntroductionContent';
+import { IntroductionContent } from './IntroductionContent';
 
 export { IntroductionContent };

@@ -1,3 +1,3 @@
-import ComponentsHead from './ComponentsHead';
+import { ComponentsHead } from './ComponentsHead';
 
 export { ComponentsHead };

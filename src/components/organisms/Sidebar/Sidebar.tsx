@@ -8,7 +8,7 @@ import { SidebarBtn, SidebarLayer, SidebarLink } from '@components/molecules';
 import { Text } from '@components/atoms';
 import cn from 'classnames';
 
-export default function Sidebar() {
+export const Sidebar = () => {
     const [isStart, setIsStart] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
     const { isSidebarOpen, setIsSidebarOpen } = useMain();
@@ -52,29 +52,29 @@ export default function Sidebar() {
             <div
                 ref={sidebarRef}
                 className={cn(
-                    'fixed xl:sticky z-20 left-0 top-[108px] lg:top-[124px] xl:top-[164px] block w-56 h-[calc(100%-108px)] lg:h-auto border-r xl:border-none border-border bg-bg transition-transform duration-300 after:bg-bg',
+                    'border-border bg-bg after:bg-bg fixed top-27 left-0 z-20 block h-[calc(100%-108px)] w-56 border-r transition-transform duration-300 lg:top-31 lg:h-auto xl:sticky xl:top-41 xl:border-none',
                     {
                         '-translate-x-56 xl:translate-x-0': !isSidebarOpen,
                         'translate-x-0': isSidebarOpen
                     }
                 )}
             >
-                <div className="relative w-full h-full lg:h-[calc(100svh-124px)] xl:h-[calc(100svh-204px)] px-5 xl:px-0 py-5 md:py-10 xl:py-0">
+                <div className="relative h-full w-full px-5 py-5 md:py-10 lg:h-[calc(100svh-124px)] xl:h-[calc(100svh-204px)] xl:px-0 xl:py-0">
                     <SidebarBtn />
 
                     <motion.div
                         ref={sidebarListRef}
-                        className={cn('sidebar w-full h-full overflow-auto scroll-with-none', {
+                        className={cn('sidebar h-full w-full overflow-auto', {
                             'sidebar-bottom-no-fade': isEnd,
                             'sidebar-top-no-fade': isStart
                         })}
                     >
-                        <div className="flex flex-col gap-3.5 w-full">
+                        <div className="flex w-full flex-col gap-3.5">
                             {DATA.map(({ title, links }) => (
                                 <div key={title} className="w-full">
                                     <Text className="text-title mb-3 last:mb-0">{title}</Text>
 
-                                    <ul className="flex flex-col gap-3.5 w-full pl-4 border-l border-border">
+                                    <ul className="border-border flex w-full flex-col gap-3.5 border-l pl-4">
                                         {links.map((link) => (
                                             <li key={link.name} className="w-full">
                                                 <SidebarLink link={link} isActive={pathname === link.href} />
@@ -89,4 +89,4 @@ export default function Sidebar() {
             </div>
         </>
     );
-}
+};

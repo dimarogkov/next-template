@@ -1,5 +1,6 @@
 'use client';
-import { Dispatch, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
+import { Dispatch, forwardRef, HTMLAttributes, KeyboardEvent, RefAttributes, SetStateAction } from 'react';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     isOpen?: boolean;
@@ -7,18 +8,29 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
-const ModalTrigger = forwardRef<HTMLDivElement, Props>(
+export const ModalTrigger = forwardRef<HTMLDivElement, Props>(
     ({ isOpen, className = '', setIsOpen = () => {}, ...props }, ref) => {
+        const openModal = () => setIsOpen(true);
+
+        const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openModal();
+            }
+        };
+
         return (
             <div
                 ref={ref}
                 {...props}
-                onClick={() => setIsOpen(true)}
-                className={`relative cursor-pointer list-none ${className}`}
+                role="button"
+                tabIndex={0}
+                onClick={openModal}
+                onKeyDown={onKeyDown}
+                className={cn('relative cursor-pointer list-none', className)}
             />
         );
     }
 );
 
 ModalTrigger.displayName = 'ModalTrigger';
-export default ModalTrigger;

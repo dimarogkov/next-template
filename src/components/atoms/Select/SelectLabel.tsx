@@ -1,6 +1,7 @@
 'use client';
 import { Dispatch, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
 import { ISelectItem } from '@interfaces/SelectItem';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     isOpen?: boolean;
@@ -11,22 +12,10 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
     setSelectedItems?: (item: ISelectItem) => void;
 }
 
-const SelectLabel = forwardRef<HTMLDivElement, Props>(
-    (
-        {
-            isOpen,
-            isMultiple,
-            selectedItems,
-            setIsOpen = () => {},
-            setSelectedItems = () => {},
-            className = '',
-            ...props
-        },
-        ref
-    ) => {
-        return <div ref={ref} {...props} className={`relative text-sm px-2 py-1 ${className}`} />;
+export const SelectLabel = forwardRef<HTMLDivElement, Props>(
+    ({ isOpen, isMultiple, selectedItems, setIsOpen, setSelectedItems, className = '', ...props }, ref) => {
+        return <div ref={ref} {...props} className={cn('relative px-2 py-1 text-sm', className)} />;
     }
 );
 
 SelectLabel.displayName = 'SelectLabel';
-export default SelectLabel;

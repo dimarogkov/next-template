@@ -1,12 +1,13 @@
 import { forwardRef, HTMLAttributes, RefAttributes } from 'react';
 import { Text } from '@components/atoms';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLParagraphElement>, RefAttributes<HTMLParagraphElement> {
     variant?: 'default' | 'success' | 'warning' | 'error';
     className?: string;
 }
 
-const AlertDescription = forwardRef<HTMLParagraphElement, Props>(
+export const AlertDescription = forwardRef<HTMLParagraphElement, Props>(
     ({ variant = 'default', className = '', ...props }, ref) => {
         const descriptionClasses = {
             default: 'text-text/80',
@@ -16,7 +17,7 @@ const AlertDescription = forwardRef<HTMLParagraphElement, Props>(
         };
 
         return (
-            <Text ref={ref} {...props} className={`relative !text-sm ${descriptionClasses[variant]} ${className}`}>
+            <Text ref={ref} {...props} className={cn('relative text-sm!', descriptionClasses[variant], className)}>
                 {props.children}
             </Text>
         );
@@ -24,4 +25,3 @@ const AlertDescription = forwardRef<HTMLParagraphElement, Props>(
 );
 
 AlertDescription.displayName = 'AlertDescription';
-export default AlertDescription;

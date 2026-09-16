@@ -7,7 +7,7 @@ type Props = {
     createTodo: (title: string) => void;
 };
 
-export default function AddTodo({ isLoading, createTodo = () => {} }: Props) {
+export const AddTodo = ({ isLoading, createTodo = () => {} }: Props) => {
     const [todoTitle, setTodoTitle] = useState('');
 
     const handleAddTodo = () => {
@@ -16,7 +16,7 @@ export default function AddTodo({ isLoading, createTodo = () => {} }: Props) {
     };
 
     return (
-        <div className="flex flex-wrap w-full gap-2.5">
+        <div className="flex w-full flex-wrap gap-2.5">
             <Input
                 name="search"
                 placeholder="Add Todo"
@@ -30,4 +30,4 @@ export default function AddTodo({ isLoading, createTodo = () => {} }: Props) {
             </Btn>
         </div>
     );
-}
+};

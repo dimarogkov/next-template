@@ -1,3 +1,3 @@
-import ComponentsFooter from './ComponentsFooter';
+import { ComponentsFooter } from './ComponentsFooter';
 
 export { ComponentsFooter };

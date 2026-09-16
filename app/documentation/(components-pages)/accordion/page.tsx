@@ -15,13 +15,13 @@ import {
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import AccordionDemo from './AccordionDemo';
+import { AccordionDemo } from './AccordionDemo';
 
 export const metadata: Metadata = {
     title: 'Accordion'
 };
 
-export default function AccordionPage() {
+const AccordionPage = () => {
     const preview: IDocumentationPreview = {
         demo: <AccordionDemo />,
         code: ACCORDION_DEMO_CODE
@@ -63,7 +63,12 @@ export default function AccordionPage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">Accordion</span> component and use its subcomponents to
+                    build your UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [ACCORDION_USAGE_CODE]
         },
@@ -92,4 +97,6 @@ export default function AccordionPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default AccordionPage;

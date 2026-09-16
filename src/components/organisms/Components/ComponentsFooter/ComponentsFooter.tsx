@@ -1,38 +1,53 @@
 'use client';
 import Link from 'next/link';
 import { useMain, usePrevNextComponentPath } from '@hooks';
+import { Footer } from '../../Footer/Footer';
 import { Text } from '@components/atoms';
 import { AlignJustify, ChevronLeft, ChevronRight } from 'lucide-react';
+import cn from 'classnames';
 
-export default function ComponentsFooter() {
+export const ComponentsFooter = () => {
     const { setIsSidebarOpen } = useMain();
     const links = usePrevNextComponentPath();
 
     return (
-        <div className="fixed bottom-0 left-0 md:relative z-10 flex justify-between w-full px-5 md:px-0 py-4 md:py-0 md:pt-5 border-t border-border md:border-none bg-bg">
-            <button
-                onClick={() => setIsSidebarOpen(true)}
-                className="flex md:hidden items-center justify-center gap-1.5 w-fit h-8 px-3 rounded-md bg-border transition-colors duration-300 hover:text-title"
-            >
-                <Text className="!w-fit">Menu</Text>
-                <AlignJustify className="size-5" />
-            </button>
+        <>
+            <div className="border-border bg-bg fixed bottom-0 left-0 z-10 flex w-full justify-between border-t px-5 py-4 md:relative md:border-none md:px-0 md:py-5">
+                <button
+                    onClick={() => setIsSidebarOpen(true)}
+                    className="bg-border hover:text-title flex h-8 w-fit items-center justify-center gap-1.5 rounded-md px-3 transition-colors duration-300 md:hidden"
+                >
+                    <Text className="w-fit!">Menu</Text>
+                    <AlignJustify className="size-5" />
+                </button>
 
-            <div className="flex md:justify-between gap-2 md:gap-2.5 w-fit md:w-full">
-                {links.map(({ href, name }, index) => (
-                    <Link
-                        key={href}
-                        href={href}
-                        className="flex items-center justify-center md:gap-0.5 size-8 md:w-fit md:h-8 font-media text-base md:px-3 rounded-md bg-border transition-colors duration-300 hover:text-title"
-                    >
-                        {index === 0 && <ChevronLeft className="size-5" />}
+                <div className="flex w-fit gap-2 md:w-full md:justify-between md:gap-2.5">
+                    {links.map(({ href, name }, index) => (
+                        <Link
+                            key={href}
+                            href={href}
+                            className={cn(
+                                'bg-grey hover:bg-border flex size-8 items-center justify-center rounded-md transition-colors duration-300 md:h-auto md:w-60 md:gap-3 md:p-3',
+                                index === 1 ? 'md:justify-end md:text-right' : 'md:justify-start'
+                            )}
+                        >
+                            {index === 0 && <ChevronLeft className="size-5 md:size-6" />}
 
-                        <span className="hidden md:block line-clamp-1">{name}</span>
+                            <div className="hidden flex-col md:flex">
+                                <Text size="large" className="text-title line-clamp-1 font-medium">
+                                    {name}
+                                </Text>
 
-                        {index === 1 && <ChevronRight className="size-5" />}
-                    </Link>
-                ))}
+                                <Text>{index === 0 ? 'Previous' : 'Next'} page</Text>
+                            </div>
+
+                            {index === 1 && <ChevronRight className="size-5 md:size-6" />}
+                        </Link>
+                    ))}
+                </div>
             </div>
-        </div>
+
+            <Footer />
+        </>
     );
-}
+};

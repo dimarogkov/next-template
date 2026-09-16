@@ -1,3 +1,3 @@
-import HomeDarkVeil from './HomeDarkVeil';
+import { HomeDarkVeil } from './HomeDarkVeil';
 
 export { HomeDarkVeil };

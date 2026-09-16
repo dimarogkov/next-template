@@ -3,13 +3,13 @@ import { TITLE_CODE, TITLE_DEMO_CODE, TITLE_USAGE_CODE } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import TitleDemo from './TitleDemo';
+import { TitleDemo } from './TitleDemo';
 
 export const metadata: Metadata = {
     title: 'Title'
 };
 
-export default function TitlePage() {
+const TitlePage = () => {
     const preview: IDocumentationPreview = {
         demo: <TitleDemo />,
         code: TITLE_DEMO_CODE
@@ -33,7 +33,11 @@ export default function TitlePage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">Title</span> component to build your UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [TITLE_USAGE_CODE]
         }
@@ -48,4 +52,6 @@ export default function TitlePage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default TitlePage;

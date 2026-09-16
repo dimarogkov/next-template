@@ -14,13 +14,13 @@ import {
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
-import RtkQueryDemo from './RtkQueryDemo';
+import { RtkQueryDemo } from './RtkQueryDemo';
 
 export const metadata: Metadata = {
     title: 'RTK Query'
 };
 
-export default function RtkQueryPage() {
+const RtkQueryPage = () => {
     const preview: IDocumentationPreview = {
         demo: <RtkQueryDemo />,
         code: RTK_QUERY_DEMO_CODE
@@ -74,4 +74,6 @@ export default function RtkQueryPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default RtkQueryPage;

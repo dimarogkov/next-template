@@ -6,6 +6,8 @@ export const metadata: Metadata = {
     title: 'Documentation'
 };
 
-export default function DocumentationPage() {
+const DocumentationPage = () => {
     return <DocumentationClient data={DATA} />;
-}
+};
+
+export default DocumentationPage;

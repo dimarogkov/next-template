@@ -1,16 +1,16 @@
 import { Progress } from '@components/atoms';
 
-export default function ProgressDemo() {
+export const ProgressDemo = () => {
     return (
         <>
-            <div className="relative flex flex-col gap-2.5 w-full mb-5 last:mb-0">
+            <div className="relative mb-5 flex w-full flex-col gap-2.5 last:mb-0">
                 <Progress value={25} />
                 <Progress value={50} />
                 <Progress value={75} />
                 <Progress value={100} />
             </div>
 
-            <div className="flex flex-wrap gap-5 w-full">
+            <div className="flex w-full flex-wrap gap-5">
                 <Progress type="circle" value={25} />
                 <Progress type="circle" value={50} />
                 <Progress type="circle" value={75} />
@@ -18,4 +18,4 @@ export default function ProgressDemo() {
             </div>
         </>
     );
-}
+};

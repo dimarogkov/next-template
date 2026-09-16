@@ -1,13 +1,13 @@
 import { Text, Title } from '@components/atoms';
 
-export default function IntroductionContent() {
+export const IntroductionContent = () => {
     return (
         <>
-            <Title size="h2" className="mb-1 md:mb-2 last:mb-0">
+            <Title size="h2" className="mb-1 last:mb-0 md:mb-2">
                 Introduction
             </Title>
 
-            <div className="flex flex-col gap-4 w-full">
+            <div className="flex w-full flex-col gap-4">
                 <Text size="large">
                     Next Template is a modern, production-ready starter kit for building web applications with Next.js
                     and TypeScript.
@@ -23,15 +23,16 @@ export default function IntroductionContent() {
                     <span className="text-title font-medium">Tailwind CSS</span> design system, state management
                     via&nbsp;
                     <span className="text-title font-medium">Redux Toolkit/Zustand</span>, built-in&nbsp;
-                    <span className="text-title font-medium">Axios</span> integration and smooth animations powered
-                    by&nbsp;
+                    <span className="text-title font-medium">Axios</span> integration,&nbsp;
+                    <span className="text-title font-medium">Next.js App Router</span> for navigation, and smooth
+                    animations powered by&nbsp;
                     <span className="text-title font-medium">Framer Motion</span>.
                 </Text>
 
                 <div>
                     <Text size="large">Core Principles:</Text>
 
-                    <ul className="list-disc pl-5 mt-2 space-y-1.5">
+                    <ul className="mt-2 list-disc space-y-1.5 pl-5">
                         <li>
                             <Text size="large">
                                 <span className="text-title font-medium">Open Code</span> – Every component is fully
@@ -74,4 +75,4 @@ export default function IntroductionContent() {
             </div>
         </>
     );
-}
+};

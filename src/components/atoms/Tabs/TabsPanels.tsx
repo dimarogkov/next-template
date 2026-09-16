@@ -11,6 +11,7 @@ import {
     SetStateAction
 } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     hasAnimation?: boolean;
@@ -19,16 +20,16 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
     setActiveIndex?: Dispatch<SetStateAction<number>>;
 }
 
-const TabsPanels = forwardRef<HTMLDivElement, Props>(
-    ({ hasAnimation, activeIndex, className = '', setActiveIndex = () => {}, ...props }, ref) => {
+export const TabsPanels = forwardRef<HTMLDivElement, Props>(
+    ({ hasAnimation, activeIndex, className = '', setActiveIndex, ...props }, ref) => {
         const childrenToRender = Children.map(props.children, (child, index) => {
             if (index === activeIndex) {
-                return isValidElement(child) ? cloneElement(child as ReactElement, { hasAnimation }) : child;
+                return isValidElement(child) ? cloneElement(child as ReactElement<any>, { hasAnimation }) : child;
             }
         });
 
         return (
-            <div ref={ref} {...props} className={`relative w-full ${className}`}>
+            <div ref={ref} {...props} className={cn('relative w-full', className)}>
                 {hasAnimation ? (
                     <AnimatePresence mode="wait" initial={false}>
                         {childrenToRender}
@@ -42,4 +43,3 @@ const TabsPanels = forwardRef<HTMLDivElement, Props>(
 );
 
 TabsPanels.displayName = 'TabsPanels';
-export default TabsPanels;

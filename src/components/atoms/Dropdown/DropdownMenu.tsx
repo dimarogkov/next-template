@@ -10,6 +10,7 @@ import {
     RefAttributes,
     SetStateAction
 } from 'react';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     isOpen?: boolean;
@@ -17,12 +18,14 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
-const DropdownMenu = forwardRef<HTMLDivElement, Props>(
+export const DropdownMenu = forwardRef<HTMLDivElement, Props>(
     ({ isOpen, className = '', setIsOpen = () => {}, ...props }, ref) => {
         return (
-            <div ref={ref} {...props} className={`relative flex flex-col gap-1 w-full ${className}`}>
+            <div ref={ref} {...props} className={cn('relative flex w-full flex-col gap-1', className)}>
                 {Children.map(props.children, (child) => {
-                    return isValidElement(child) ? cloneElement(child as ReactElement, { isOpen, setIsOpen }) : child;
+                    return isValidElement(child)
+                        ? cloneElement(child as ReactElement<any>, { isOpen, setIsOpen })
+                        : child;
                 })}
             </div>
         );
@@ -30,4 +33,3 @@ const DropdownMenu = forwardRef<HTMLDivElement, Props>(
 );
 
 DropdownMenu.displayName = 'DropdownMenu';
-export default DropdownMenu;

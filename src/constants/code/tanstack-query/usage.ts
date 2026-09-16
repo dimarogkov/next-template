@@ -3,5 +3,5 @@ export const TANSTACK_QUERY_PROVIDER_USAGE_CODE = `import { QueryClient, QueryCl
 const queryClient = new QueryClient();
 
 <QueryClientProvider client={queryClient}>
-	<App />
+  <App />
 </QueryClientProvider>`;

@@ -1,6 +1,6 @@
 import { Separator, Text, Title } from '@components/atoms';
 
-export default function SeparatorDemo() {
+export const SeparatorDemo = () => {
     return (
         <div className="relative w-full">
             <Title size="h3" className="mb-2.5 last:mb-0">
@@ -18,4 +18,4 @@ export default function SeparatorDemo() {
             <Text>An open-source UI component library.</Text>
         </div>
     );
-}
+};

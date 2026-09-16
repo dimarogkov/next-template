@@ -3,11 +3,11 @@ import { usePathname } from 'next/navigation';
 import { Btn } from '@components/atoms';
 import { User } from 'lucide-react';
 
-export default function BtnDemo() {
+export const BtnDemo = () => {
     const pathname = usePathname();
 
     return (
-        <div className="relative flex flex-wrap gap-2.5 w-full">
+        <div className="relative flex w-full flex-wrap gap-2.5">
             <Btn>Default Button</Btn>
             <Btn variant="secondary">Secondary Button</Btn>
             <Btn variant="outline">Outline Button</Btn>
@@ -23,4 +23,4 @@ export default function BtnDemo() {
             </Btn>
         </div>
     );
-}
+};

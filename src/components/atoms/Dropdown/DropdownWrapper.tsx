@@ -11,43 +11,45 @@ import {
     useRef,
     useState
 } from 'react';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     isOpen?: boolean;
     className?: string;
 }
 
-const DropdownWrapper = forwardRef<HTMLDivElement, Props>(({ isOpen = false, className = '', ...props }, ref) => {
-    const [isDropdownOpen, setIsDropdownOpen] = useState(isOpen);
-    const dropdownRef = useRef<HTMLDivElement>(null);
+export const DropdownWrapper = forwardRef<HTMLDivElement, Props>(
+    ({ isOpen = false, className = '', ...props }, ref) => {
+        const [isDropdownOpen, setIsDropdownOpen] = useState(isOpen);
+        const dropdownRef = useRef<HTMLDivElement>(null);
 
-    const handleClickOutside = (e: MouseEvent) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-            setIsDropdownOpen(false);
-        }
-    };
-
-    useEffect(() => {
-        document.addEventListener('click', handleClickOutside, true);
-
-        return () => {
-            document.removeEventListener('click', handleClickOutside, true);
+        const handleClickOutside = (e: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+                setIsDropdownOpen(false);
+            }
         };
-    }, []);
 
-    return (
-        <div ref={ref || dropdownRef} {...props} className={`relative ${className}`}>
-            {Children.map(props.children, (child) => {
-                return isValidElement(child)
-                    ? cloneElement(child as ReactElement, {
-                          isOpen: isDropdownOpen,
-                          setIsOpen: setIsDropdownOpen
-                      })
-                    : child;
-            })}
-        </div>
-    );
-});
+        useEffect(() => {
+            document.addEventListener('click', handleClickOutside, true);
+
+            return () => {
+                document.removeEventListener('click', handleClickOutside, true);
+            };
+        }, []);
+
+        return (
+            <div ref={ref || dropdownRef} {...props} className={cn('relative', className)}>
+                {Children.map(props.children, (child) => {
+                    return isValidElement(child)
+                        ? cloneElement(child as ReactElement<any>, {
+                              isOpen: isDropdownOpen,
+                              setIsOpen: setIsDropdownOpen
+                          })
+                        : child;
+                })}
+            </div>
+        );
+    }
+);
 
 DropdownWrapper.displayName = 'DropdownWrapper';
-export default DropdownWrapper;

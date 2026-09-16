@@ -2,7 +2,7 @@ import { usePathname } from 'next/navigation';
 import { PATHS } from '@constants';
 import { getLinks } from '@utils';
 
-export default function usePrevNextComponentPath() {
+export const usePrevNextComponentPath = () => {
     const pathname = usePathname();
     const { links } = getLinks();
 
@@ -14,4 +14,4 @@ export default function usePrevNextComponentPath() {
     const nextPath = linksArr[pathIndex + 1] || linksArr[0];
 
     return [prevPath, nextPath];
-}
+};

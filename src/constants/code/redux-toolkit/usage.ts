@@ -1,5 +1,6 @@
-export const REDUX_TOOLKIT_PROVIDER_USAGE_CODE = `import StoreProvider from './StoreProvider';
+export const REDUX_TOOLKIT_PROVIDER_USAGE_CODE = `import { Provider } from 'react-redux';
+import { store } from '@store/redux-toolkit';
 
-<StoreProvider>
-	<App />
-</StoreProvider>`;
+<Provider store={store}>
+  <App />
+</Provider>`;

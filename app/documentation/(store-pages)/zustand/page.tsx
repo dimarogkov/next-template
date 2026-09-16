@@ -2,13 +2,13 @@ import { Metadata } from 'next';
 import { NPM_ZUSTAND_CODE, ZUSTAND_CODE, ZUSTAND_COUNT_CODE, ZUSTAND_DEMO_CODE } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
-import ZustandDemo from './ZustandDemo';
+import { ZustandDemo } from './ZustandDemo';
 
 export const metadata: Metadata = {
     title: 'Zustand'
 };
 
-export default function ZustandPage() {
+const ZustandPage = () => {
     const preview: IDocumentationPreview = {
         demo: <ZustandDemo />,
         code: ZUSTAND_DEMO_CODE
@@ -56,4 +56,6 @@ export default function ZustandPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default ZustandPage;

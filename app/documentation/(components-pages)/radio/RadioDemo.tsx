@@ -2,11 +2,11 @@
 import { useState } from 'react';
 import { Label, Radio } from '@components/atoms';
 
-export default function RadioDemo() {
+export const RadioDemo = () => {
     const [selectedValue, setSelectedValue] = useState('checked_radio');
 
     return (
-        <div className="relative flex flex-col gap-2.5 w-full">
+        <div className="relative flex w-full flex-col gap-2.5">
             <Label>
                 <Radio
                     name="radio"
@@ -32,4 +32,4 @@ export default function RadioDemo() {
             </Label>
         </div>
     );
-}
+};

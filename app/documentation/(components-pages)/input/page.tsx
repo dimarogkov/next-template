@@ -3,13 +3,13 @@ import { INPUT_CODE, INPUT_DEMO_CODE, INPUT_USAGE_CODE, INPUT_CONTROLLED_USAGE_C
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import InputDemo from './InputDemo';
+import { InputDemo } from './InputDemo';
 
 export const metadata: Metadata = {
     title: 'Input'
 };
 
-export default function InputPage() {
+const InputPage = () => {
     const preview: IDocumentationPreview = {
         demo: <InputDemo />,
         code: INPUT_DEMO_CODE
@@ -33,7 +33,11 @@ export default function InputPage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">Input</span> component to build your UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [INPUT_USAGE_CODE]
         },
@@ -61,4 +65,6 @@ export default function InputPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default InputPage;

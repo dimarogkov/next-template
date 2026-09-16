@@ -1,3 +1,3 @@
-import HeaderSearchLink from './HeaderSearchLink';
+import { HeaderSearchLink } from './HeaderSearchLink';
 
 export { HeaderSearchLink };

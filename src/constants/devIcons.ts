@@ -2,8 +2,8 @@ import { IDevIcon } from '@interfaces/DevIcon';
 
 export const DEV_ICONS: IDevIcon[] = [
     {
-        icon: 'devicon-nextjs-plain',
-        text: 'Next.js'
+        icon: 'devicon-react-original',
+        text: 'React'
     },
     {
         icon: 'devicon-typescript-plain',
@@ -16,6 +16,10 @@ export const DEV_ICONS: IDevIcon[] = [
     {
         icon: 'devicon-redux-original',
         text: 'Redux Toolkit'
+    },
+    {
+        icon: 'devicon-nextjs-plain',
+        text: 'Next.js'
     },
     {
         icon: 'devicon-axios-plain',

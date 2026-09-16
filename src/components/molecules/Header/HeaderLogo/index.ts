@@ -1,3 +1,3 @@
-import HeaderLogo from './HeaderLogo';
+import { HeaderLogo } from './HeaderLogo';
 
 export { HeaderLogo };

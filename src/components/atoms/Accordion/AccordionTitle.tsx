@@ -1,5 +1,5 @@
 'use client';
-import { Dispatch, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
+import { Dispatch, forwardRef, HTMLAttributes, KeyboardEvent, RefAttributes, SetStateAction } from 'react';
 import { ChevronDown, Plus } from 'lucide-react';
 import cn from 'classnames';
 
@@ -11,7 +11,7 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
     setActiveIndex?: Dispatch<SetStateAction<number | null>>;
 }
 
-const AccordionTitle = forwardRef<HTMLDivElement, Props>(
+export const AccordionTitle = forwardRef<HTMLDivElement, Props>(
     ({ iconType, accordionIndex = 0, activeIndex, className = '', setActiveIndex = () => {}, ...props }, ref) => {
         const icon = {
             arrow: (
@@ -34,12 +34,25 @@ const AccordionTitle = forwardRef<HTMLDivElement, Props>(
             setActiveIndex((prevState) => (prevState !== accordionIndex ? accordionIndex : null));
         };
 
+        const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleAccordion();
+            }
+        };
+
         return (
             <div
                 ref={ref}
                 {...props}
+                role="button"
+                tabIndex={0}
                 onClick={toggleAccordion}
-                className={`relative flex items-center justify-between w-full text-base p-2.5 sm:p-3 cursor-pointer transition-all duration-300 select-none ${className}`}
+                onKeyDown={onKeyDown}
+                className={cn(
+                    'relative flex w-full cursor-pointer items-center justify-between p-2.5 text-base transition-all duration-300 select-none sm:p-3',
+                    className
+                )}
             >
                 {props.children}
                 {iconType && icon[iconType]}
@@ -49,4 +62,3 @@ const AccordionTitle = forwardRef<HTMLDivElement, Props>(
 );
 
 AccordionTitle.displayName = 'AccordionTitle';
-export default AccordionTitle;

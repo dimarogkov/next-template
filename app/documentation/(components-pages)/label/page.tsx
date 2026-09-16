@@ -3,13 +3,13 @@ import { LABEL_CODE, LABEL_DEMO_CODE, LABEL_USAGE_CODE } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import LabelDemo from './LabelDemo';
+import { LabelDemo } from './LabelDemo';
 
 export const metadata: Metadata = {
     title: 'Label'
 };
 
-export default function LabelPage() {
+const LabelPage = () => {
     const preview: IDocumentationPreview = {
         demo: <LabelDemo />,
         code: LABEL_DEMO_CODE
@@ -33,7 +33,11 @@ export default function LabelPage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">Label</span> component to build your UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [LABEL_USAGE_CODE]
         }
@@ -48,4 +52,6 @@ export default function LabelPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default LabelPage;

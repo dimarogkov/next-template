@@ -18,11 +18,11 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
     className?: string;
 }
 
-const AvatarGroup = forwardRef<HTMLDivElement, Props>(({ visibleCount, className = '', ...props }, ref) => {
+export const AvatarGroup = forwardRef<HTMLDivElement, Props>(({ visibleCount, className = '', ...props }, ref) => {
     const [currentWidth, setCurrentWidth] = useState(0);
     const groupRef = useRef<HTMLDivElement>(null);
 
-    const childArray = Children.toArray(props.children) as ReactElement[];
+    const childArray = Children.toArray(props.children) as ReactElement<any>[];
     const childType = childArray[0].props.type || 'circle';
     const widthClasses = childArray[0].props.className;
 
@@ -33,20 +33,22 @@ const AvatarGroup = forwardRef<HTMLDivElement, Props>(({ visibleCount, className
     const groupStyle = {
         ...(visibleCount && {
             left: `${visibleCount * Math.round(currentWidth / 4) * -1}px`,
-            outline: '3px solid var(--fallback-b1)'
+            outline: '3px solid var(--color-bg)'
         })
     };
 
     return (
-        <div ref={ref || groupRef} {...props} className={`relative flex items-center ${className}`}>
+        <div ref={ref || groupRef} {...props} className={cn('relative flex items-center', className)}>
             {childArray.slice(0, visibleCount).map((child, index) => {
-                return isValidElement(child) ? cloneElement(child as ReactElement, { currentIndex: index }) : child;
+                return isValidElement(child)
+                    ? cloneElement(child as ReactElement<any>, { currentIndex: index })
+                    : child;
             })}
 
             {visibleCount && childArray.length > visibleCount && (
                 <div
                     className={cn(
-                        `relative flex items-center justify-center font-medium text-base text-bg bg-title select-none ${
+                        `bg-title text-bg relative flex items-center justify-center text-base font-medium select-none ${
                             widthClasses || 'size-12'
                         }`,
                         {
@@ -64,4 +66,3 @@ const AvatarGroup = forwardRef<HTMLDivElement, Props>(({ visibleCount, className
 });
 
 AvatarGroup.displayName = 'AvatarGroup';
-export default AvatarGroup;

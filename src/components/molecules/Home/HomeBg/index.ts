@@ -1,3 +1,3 @@
-import HomeBg from './HomeBg';
+import { HomeBg } from './HomeBg';
 
 export { HomeBg };

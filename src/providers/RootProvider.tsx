@@ -1,8 +1,8 @@
 'use client';
 import { ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import StoreProvider from './StoreProvider';
-import MainProvider from './MainProvider';
+import { StoreProvider } from './StoreProvider';
+import { MainProvider } from './MainProvider';
 
 type Props = {
     children?: ReactNode;
@@ -10,7 +10,7 @@ type Props = {
 
 const queryClient = new QueryClient();
 
-export default function RootProvider({ children }: Props) {
+export const RootProvider = ({ children }: Props) => {
     return (
         <StoreProvider>
             <QueryClientProvider client={queryClient}>
@@ -18,4 +18,4 @@ export default function RootProvider({ children }: Props) {
             </QueryClientProvider>
         </StoreProvider>
     );
-}
+};

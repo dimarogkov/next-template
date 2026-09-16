@@ -1,3 +1,3 @@
-import SidebarBtn from './SidebarBtn';
+import { SidebarBtn } from './SidebarBtn';
 
 export { SidebarBtn };

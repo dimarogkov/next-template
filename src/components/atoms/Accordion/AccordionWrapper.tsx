@@ -9,6 +9,7 @@ import {
     RefAttributes,
     useState
 } from 'react';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     iconType?: 'arrow' | 'plus';
@@ -16,15 +17,15 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
     className?: string;
 }
 
-const AccordionWrapper = forwardRef<HTMLDivElement, Props>(
+export const AccordionWrapper = forwardRef<HTMLDivElement, Props>(
     ({ iconType = 'arrow', defaultActiveIndex = null, className = '', ...props }, ref) => {
         const [activeIndex, setActiveIndex] = useState<number | null>(defaultActiveIndex);
 
         return (
-            <div ref={ref} {...props} className={`relative w-full rounded-md border border-border ${className}`}>
+            <div ref={ref} {...props} className={cn('border-border relative w-full rounded-md border', className)}>
                 {Children.map(props.children, (child, index) => {
                     return isValidElement(child)
-                        ? cloneElement(child as ReactElement, {
+                        ? cloneElement(child as ReactElement<any>, {
                               iconType,
                               accordionIndex: index,
                               activeIndex,
@@ -38,4 +39,3 @@ const AccordionWrapper = forwardRef<HTMLDivElement, Props>(
 );
 
 AccordionWrapper.displayName = 'AccordionWrapper';
-export default AccordionWrapper;

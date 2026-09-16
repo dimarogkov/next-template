@@ -1,4 +1,4 @@
-const LOCAL_STORAGE_KEY = 'arr';
+export const LOCAL_STORAGE_KEY = 'arr';
 
 export const setDataToLocalStorage = (arr: []) => {
     return localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(arr));

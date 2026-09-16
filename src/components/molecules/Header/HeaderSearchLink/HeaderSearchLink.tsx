@@ -13,7 +13,7 @@ type Props = {
     };
 };
 
-export default function HeaderSearchLink({ link }: Props) {
+export const HeaderSearchLink = ({ link }: Props) => {
     const { label, name, href } = link;
     const pathname = usePathname();
 
@@ -21,9 +21,9 @@ export default function HeaderSearchLink({ link }: Props) {
         <Link
             href={href}
             className={cn(
-                'flex items-center justify-between rounded-md py-1.5 px-3 transition-colors duration-300 hover:bg-border mb-2 last:mb-0',
+                'hover:bg-border mb-2 flex items-center justify-between rounded-md px-3 py-1.5 transition-colors duration-300 last:mb-0',
                 {
-                    'bg-border opacity-70 pointer-events-none': pathname === href
+                    'bg-border pointer-events-none opacity-70': pathname === href
                 }
             )}
         >
@@ -38,4 +38,4 @@ export default function HeaderSearchLink({ link }: Props) {
             <MoveRight className="size-6" />
         </Link>
     );
-}
+};

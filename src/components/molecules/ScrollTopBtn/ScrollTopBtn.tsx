@@ -4,7 +4,7 @@ import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 import { Separator, Text } from '@components/atoms';
 import { CircleArrowUp } from 'lucide-react';
 
-export default function ScrollTopBtn() {
+export const ScrollTopBtn = () => {
     const [scrollPosition, setScrollPosition] = useState(0);
 
     useEffect(() => {
@@ -27,19 +27,19 @@ export default function ScrollTopBtn() {
 
     return (
         <AnimatePresence>
-            {scrollPosition > 100 && (
+            {scrollPosition > 150 && (
                 <motion.div {...animation} className="relative w-full">
                     <Separator className="my-2" />
 
-                    <button type="button" onClick={scrollTop} className="group flex items-center gap-2">
-                        <Text className="!w-fit transition-colors duration-200 group-hover:text-title">
+                    <button type="button" onClick={scrollTop} className="group flex cursor-pointer items-center gap-2">
+                        <Text className="group-hover:text-title w-fit! transition-colors duration-200">
                             Scroll to top
                         </Text>
 
-                        <CircleArrowUp className="size-5 text-text transition-colors duration-200 group-hover:text-title" />
+                        <CircleArrowUp className="text-text group-hover:text-title size-5 transition-colors duration-200" />
                     </button>
                 </motion.div>
             )}
         </AnimatePresence>
     );
-}
+};

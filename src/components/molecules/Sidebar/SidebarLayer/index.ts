@@ -1,3 +1,3 @@
-import SidebarLayer from './SidebarLayer';
+import { SidebarLayer } from './SidebarLayer';
 
 export { SidebarLayer };

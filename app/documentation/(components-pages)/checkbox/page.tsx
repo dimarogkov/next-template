@@ -10,13 +10,13 @@ import {
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import CheckboxDemo from './CheckboxDemo';
+import { CheckboxDemo } from './CheckboxDemo';
 
 export const metadata: Metadata = {
     title: 'Checkbox'
 };
 
-export default function CheckboxPage() {
+const CheckboxPage = () => {
     const preview: IDocumentationPreview = {
         demo: <CheckboxDemo />,
         code: CHECKBOX_DEMO_CODE
@@ -51,7 +51,11 @@ export default function CheckboxPage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">Checkbox</span> component to build your UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [CHECKBOX_USAGE_CODE]
         },
@@ -79,4 +83,6 @@ export default function CheckboxPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default CheckboxPage;

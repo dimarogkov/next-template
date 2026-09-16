@@ -6,6 +6,6 @@ type Props = {
     children?: ReactNode;
 };
 
-export default function StoreProvider({ children }: Props) {
+export const StoreProvider = ({ children }: Props) => {
     return <Provider store={store}>{children}</Provider>;
-}
+};

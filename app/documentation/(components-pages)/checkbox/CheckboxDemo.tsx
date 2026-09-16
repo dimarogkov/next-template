@@ -2,12 +2,12 @@
 import { useState } from 'react';
 import { Checkbox, Label } from '@components/atoms';
 
-export default function CheckboxDemo() {
+export const CheckboxDemo = () => {
     const [firstCheckbox, setFirstCheckbox] = useState(false);
     const [secondCheckbox, setSecondCheckbox] = useState(true);
 
     return (
-        <div className="relative flex flex-col gap-2.5 w-full">
+        <div className="relative flex w-full flex-col gap-2.5">
             <Label>
                 <Checkbox
                     label="Accept terms and conditions"
@@ -29,4 +29,4 @@ export default function CheckboxDemo() {
             </Label>
         </div>
     );
-}
+};

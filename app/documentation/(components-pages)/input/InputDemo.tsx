@@ -1,9 +1,9 @@
 import { Input, Label } from '@components/atoms';
 
-export default function InputDemo() {
+export const InputDemo = () => {
     return (
         <Label>
             <Input name="name" placeholder="Username" />
         </Label>
     );
-}
+};

@@ -2,13 +2,14 @@
 import { useEffect, useState } from 'react';
 import { IDevIcon } from '@interfaces/DevIcon';
 import { Text } from '@components/atoms';
+import cn from 'classnames';
 
 type Props = {
     devIcon: IDevIcon;
     className?: string;
 };
 
-export default function DevIcon({ devIcon, className = '' }: Props) {
+export const DevIcon = ({ devIcon, className = '' }: Props) => {
     const [isMount, setIsMount] = useState(false);
     const { icon, text } = devIcon;
 
@@ -18,10 +19,13 @@ export default function DevIcon({ devIcon, className = '' }: Props) {
 
     return (
         <div
-            className={`relative flex items-center gap-2 px-3.5 py-1 rounded-full border border-border whitespace-nowrap ${className}`}
+            className={cn(
+                'border-border relative flex items-center gap-2 rounded-full border px-3.5 py-1 whitespace-nowrap',
+                className
+            )}
         >
-            {!isMount ? <span className="size-5 rounded-full bg-text" /> : <i className={`text-xl ${icon}`} />}
-            <Text className="select-none !w-fit">{text}</Text>
+            {!isMount ? <span className="bg-text size-5 rounded-full" /> : <i className={`text-xl ${icon}`} />}
+            <Text className="w-fit! select-none">{text}</Text>
         </div>
     );
-}
+};

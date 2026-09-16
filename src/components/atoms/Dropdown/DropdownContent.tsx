@@ -22,7 +22,7 @@ interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
-const DropdownContent = forwardRef<HTMLDivElement, Props>(
+export const DropdownContent = forwardRef<HTMLDivElement, Props>(
     (
         { align = 'start', position = 'bottom', isOpen, className = '', children, setIsOpen = () => {}, ...props },
         ref
@@ -63,7 +63,8 @@ const DropdownContent = forwardRef<HTMLDivElement, Props>(
                         {...props}
                         {...animation}
                         className={cn(
-                            `absolute z-10 min-w-full max-w-[calc(100vw-32px)] w-max rounded-md p-1 border border-border bg-bg will-change-transform ${className}`,
+                            'border-border bg-bg absolute z-10 w-max max-w-[calc(100vw-32px)] min-w-full rounded-md border p-1 will-change-transform',
+                            className,
                             {
                                 'left-0': align === 'start' && isVerticalPosition,
                                 'top-0': align === 'start' && isHorizontalPosition,
@@ -75,7 +76,7 @@ const DropdownContent = forwardRef<HTMLDivElement, Props>(
                     >
                         {Children.map(children, (child) => {
                             return isValidElement(child)
-                                ? cloneElement(child as ReactElement, { isOpen, setIsOpen })
+                                ? cloneElement(child as ReactElement<any>, { isOpen, setIsOpen })
                                 : child;
                         })}
                     </motion.div>
@@ -86,4 +87,3 @@ const DropdownContent = forwardRef<HTMLDivElement, Props>(
 );
 
 DropdownContent.displayName = 'DropdownContent';
-export default DropdownContent;

@@ -1,8 +1,13 @@
+import type { ReactElement } from 'react';
 import { ILink } from './Link';
 
 export interface IDocumentationPreview {
-    demo: JSX.Element;
+    demo: ReactElement;
     code: string;
+}
+
+export interface IDocumentationLink extends ILink {
+    isNew: boolean;
 }
 
 export interface IDocumentationCodeArr {
@@ -14,7 +19,7 @@ export interface IDocumentationCodeSection {
     id: string;
     title: string;
     link: string;
-    description: JSX.Element | null;
+    description: ReactElement | null;
     withAccordion: boolean;
     codeArr: IDocumentationCodeArr[] | string[];
 }
@@ -25,10 +30,6 @@ export interface IDocumentationData {
     links: ILink[];
     preview: IDocumentationPreview;
     codeSections: IDocumentationCodeSection[];
-}
-
-export interface IDocumentationLink extends ILink {
-    isNew: boolean;
 }
 
 export interface IDocumentationBodyItem {

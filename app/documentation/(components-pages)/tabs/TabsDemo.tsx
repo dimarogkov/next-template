@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Checkbox, Label, Tabs } from '@components/atoms';
 
-export default function TabsDemo() {
+export const TabsDemo = () => {
     const [hasAnimation, setHasAnimation] = useState(false);
 
     return (
@@ -39,4 +39,4 @@ export default function TabsDemo() {
             </Tabs>
         </>
     );
-}
+};

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { EmblaCarouselType } from 'embla-carousel';
 
-export default function useCarousel(api?: EmblaCarouselType) {
+export const useCarousel = (api?: EmblaCarouselType) => {
     const [isPrevDisabled, setIsPrevDisabled] = useState(true);
     const [isNextDisabled, setIsNextDisabled] = useState(true);
     const [activeDotIndex, setActiveDotIndex] = useState(0);
@@ -47,4 +47,4 @@ export default function useCarousel(api?: EmblaCarouselType) {
         onNextClick,
         onDotClick
     };
-}
+};

@@ -12,7 +12,7 @@ import {
     ComponentsNavigation,
     ComponentsPreview,
     ComponentsWrapper
-} from '@components/organisms';
+} from '@components/organisms/Components';
 import { Text, Title } from '@components/atoms';
 import { ArrowUpRight } from 'lucide-react';
 import cn from 'classnames';
@@ -21,7 +21,7 @@ type Props = {
     data: IDocumentationData;
 };
 
-export default function DocumentationDetailClient({ data }: Props) {
+export const DocumentationDetailClient = ({ data }: Props) => {
     const { sectionsRef, registerRef } = useSectionsRefs();
     const { title, description, links, preview, codeSections } = data;
 
@@ -29,9 +29,9 @@ export default function DocumentationDetailClient({ data }: Props) {
 
     return (
         <ComponentsWrapper navigation={<ComponentsNavigation sectionsRef={sectionsRef} sectionsArr={sectionsArr} />}>
-            <div className="w-full xl:px-[30px]">
+            <div className="w-full xl:px-7.5">
                 <ComponentsHead>
-                    <Title size="h2" className="mb-1 md:mb-2 last:mb-0">
+                    <Title size="h2" className="mb-1 last:mb-0 md:mb-2">
                         {title}
                     </Title>
 
@@ -54,7 +54,7 @@ export default function DocumentationDetailClient({ data }: Props) {
                                     size="h4"
                                     className={cn({
                                         'flex items-center gap-1': link,
-                                        'mb-1 md:mb-2 last:mb-0': description
+                                        'mb-1 last:mb-0 md:mb-2': description
                                     })}
                                 >
                                     {link ? <span>{title}</span> : title}
@@ -63,7 +63,7 @@ export default function DocumentationDetailClient({ data }: Props) {
                                         <Link
                                             href={link}
                                             target="_blank"
-                                            className="transition-colors duration-300 hover:text-text"
+                                            className="hover:text-text transition-colors duration-300"
                                         >
                                             <ArrowUpRight />
                                         </Link>
@@ -83,7 +83,7 @@ export default function DocumentationDetailClient({ data }: Props) {
                                     size="h4"
                                     className={cn({
                                         'flex items-center gap-1': link,
-                                        'mb-1 md:mb-1.5 last:mb-0': description
+                                        'mb-1 last:mb-0 md:mb-2': description
                                     })}
                                 >
                                     {link ? <span>{title}</span> : title}
@@ -92,7 +92,7 @@ export default function DocumentationDetailClient({ data }: Props) {
                                         <Link
                                             href={link}
                                             target="_blank"
-                                            className="transition-colors duration-300 hover:text-text"
+                                            className="hover:text-text transition-colors duration-300"
                                         >
                                             <ArrowUpRight />
                                         </Link>
@@ -109,4 +109,4 @@ export default function DocumentationDetailClient({ data }: Props) {
             </div>
         </ComponentsWrapper>
     );
-}
+};

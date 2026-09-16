@@ -9,13 +9,13 @@ import {
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
-import ReduxToolkitDemo from './ReduxToolkitDemo';
+import { ReduxToolkitDemo } from './ReduxToolkitDemo';
 
 export const metadata: Metadata = {
     title: 'Redux Toolkit'
 };
 
-export default function ReduxToolkitPage() {
+const ReduxToolkitPage = () => {
     const preview: IDocumentationPreview = {
         demo: <ReduxToolkitDemo />,
         code: REDUX_TOOLKIT_DEMO_CODE
@@ -64,4 +64,6 @@ export default function ReduxToolkitPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default ReduxToolkitPage;

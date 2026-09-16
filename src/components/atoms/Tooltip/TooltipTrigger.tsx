@@ -1,14 +1,14 @@
 'use client';
 import { forwardRef, HTMLAttributes, RefAttributes } from 'react';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     isOpen?: boolean;
     className?: string;
 }
 
-const TooltipTrigger = forwardRef<HTMLDivElement, Props>(({ isOpen, className = '', ...props }, ref) => {
-    return <div ref={ref} {...props} className={`relative cursor-pointer ${className}`} />;
+export const TooltipTrigger = forwardRef<HTMLDivElement, Props>(({ isOpen, className = '', ...props }, ref) => {
+    return <div ref={ref} {...props} className={cn('relative cursor-pointer', className)} />;
 });
 
 TooltipTrigger.displayName = 'TooltipTrigger';
-export default TooltipTrigger;

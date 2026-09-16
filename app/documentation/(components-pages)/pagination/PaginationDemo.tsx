@@ -4,7 +4,7 @@ import { Pagination } from '@components/atoms';
 
 const ITEMS = Array.from({ length: 100 }, (_, index) => index + 1);
 
-export default function PaginationDemo() {
+export const PaginationDemo = () => {
     const { pagesArr, options } = usePagination(ITEMS);
 
     return (
@@ -22,4 +22,4 @@ export default function PaginationDemo() {
             <Pagination.Next />
         </Pagination>
     );
-}
+};

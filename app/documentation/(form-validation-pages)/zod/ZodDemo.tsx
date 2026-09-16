@@ -2,26 +2,44 @@
 import z from 'zod';
 import { useForm } from 'react-hook-form';
 import { formOptions, validationSchema } from '@form-validation/zod';
-import { Btn, Checkbox, ErrorMessage, Input, InputPassword, Label, Radio, Select, Textarea } from '@components/atoms';
+import {
+    Btn,
+    Checkbox,
+    ErrorMessage,
+    Input,
+    InputPassword,
+    Label,
+    Radio,
+    Select,
+    Textarea,
+    Toast
+} from '@components/atoms';
 import { RotateCcw, SendHorizontal } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 type FormData = z.infer<typeof validationSchema>;
 
-export default function ZodDemo() {
+export const ZodDemo = () => {
     const {
         register,
         watch,
+        trigger,
+        getValues,
         handleSubmit,
         reset,
-        formState: { errors, isSubmitted }
+        formState: { errors, isDirty }
     } = useForm<FormData>(formOptions);
 
-    const onSubmit = (data: FormData) => console.log(data);
+    const onSubmit = (data: FormData) => {
+        return toast.custom((t) => (
+            <Toast toast={t} type="success" data={{ title: 'Form submitted', text: `Submitted: ${data.username}` }} />
+        ));
+    };
 
     return (
-        <form className="relative flex flex-col gap-5 w-full" onSubmit={handleSubmit(onSubmit)}>
+        <form className="relative flex w-full flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
             <Label className="flex flex-col gap-2">
-                <Input {...register('username')} placeholder="Username" />
+                <Input {...register('username')} autoComplete="username" placeholder="Username" />
                 {errors.username && <ErrorMessage>{errors.username.message}</ErrorMessage>}
             </Label>
 
@@ -31,17 +49,17 @@ export default function ZodDemo() {
             </Label>
 
             <Label className="flex flex-col gap-2">
-                <Input {...register('email')} placeholder="Email" />
+                <Input {...register('email')} type="email" autoComplete="email" placeholder="Email" />
                 {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
             </Label>
 
             <Label className="flex flex-col gap-2">
-                <Input {...register('phone')} placeholder="Phone" />
+                <Input {...register('phone')} type="tel" autoComplete="tel" placeholder="Phone" />
                 {errors.phone && <ErrorMessage>{errors.phone.message}</ErrorMessage>}
             </Label>
 
             <Label className="flex flex-col gap-2">
-                <Select {...register('select')}>
+                <Select {...register('select')} value={watch('select')}>
                     <Select.Trigger placeholder="Select Option" />
                     <Select.Options>
                         <Select.Option value="option_1">Option 1</Select.Option>
@@ -54,12 +72,26 @@ export default function ZodDemo() {
             </Label>
 
             <Label className="flex flex-col gap-2">
-                <InputPassword {...register('password')} placeholder="Password" />
+                <InputPassword
+                    {...register('password', {
+                        onChange: () => {
+                            if (getValues('confirmPassword')) {
+                                trigger('confirmPassword');
+                            }
+                        }
+                    })}
+                    autoComplete="new-password"
+                    placeholder="Password"
+                />
                 {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
             </Label>
 
             <Label className="flex flex-col gap-2">
-                <InputPassword {...register('confirmPassword')} placeholder="Confirm Password" />
+                <InputPassword
+                    {...register('confirmPassword')}
+                    autoComplete="new-password"
+                    placeholder="Confirm Password"
+                />
                 {errors.confirmPassword && <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>}
             </Label>
 
@@ -67,8 +99,8 @@ export default function ZodDemo() {
                 <Textarea placeholder="Type your message here." />
             </Label>
 
-            <div className="flex flex-col gap-2 w-full">
-                <div className="flex gap-4 w-full">
+            <div className="flex w-full flex-col gap-2">
+                <div className="flex w-full gap-4">
                     <Label className="w-full">
                         <Radio
                             {...register('radioType')}
@@ -96,17 +128,17 @@ export default function ZodDemo() {
                 {errors.rememberMe && <ErrorMessage>{errors.rememberMe.message}</ErrorMessage>}
             </Label>
 
-            <div className="flex flex-wrap gap-2 w-full">
+            <div className="flex w-full flex-wrap gap-2">
                 <Btn type="submit">
                     <span>Send</span>
                     <SendHorizontal className="size-5" />
                 </Btn>
 
-                <Btn type="button" variant="ghost" disabled={!isSubmitted} onClick={() => reset()}>
+                <Btn type="button" variant="ghost" disabled={!isDirty} onClick={() => reset()}>
                     <RotateCcw className="size-5" />
                     <span>Reset</span>
                 </Btn>
             </div>
         </form>
     );
-}
+};

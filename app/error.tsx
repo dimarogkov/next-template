@@ -6,10 +6,10 @@ type Props = {
     reset?: () => void;
 };
 
-export default function Error({ error, reset = () => {} }: Props) {
+const Error = ({ error, reset = () => {} }: Props) => {
     return (
-        <section className="relative flex items-center w-full h-[calc(100svh-164px)] md:h-[calc(100svh-188px)] lg:h-[calc(100svh-204px)] pb-16 lg:pb-20">
-            <div className="container">
+        <section className="relative flex h-[calc(100svh-164px)] w-full items-center pb-16 md:h-[calc(100svh-188px)] lg:h-[calc(100svh-204px)] lg:pb-20">
+            <div className="page-container">
                 <div className="w-full text-center">
                     <Title size="h2" className="mb-5 last:mb-0">
                         {error?.message}
@@ -22,4 +22,6 @@ export default function Error({ error, reset = () => {} }: Props) {
             </div>
         </section>
     );
-}
+};
+
+export default Error;

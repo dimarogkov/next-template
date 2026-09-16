@@ -17,13 +17,13 @@ import {
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import PaginationDemo from './PaginationDemo';
+import { PaginationDemo } from './PaginationDemo';
 
 export const metadata: Metadata = {
     title: 'Pagination'
 };
 
-export default function PaginationPage() {
+const PaginationPage = () => {
     const preview: IDocumentationPreview = {
         demo: <PaginationDemo />,
         code: PAGINATION_DEMO_CODE
@@ -69,7 +69,12 @@ export default function PaginationPage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">Pagination</span> component and use its subcomponents to
+                    build your UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [PAGINATION_USAGE_CODE]
         },
@@ -96,4 +101,6 @@ export default function PaginationPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default PaginationPage;

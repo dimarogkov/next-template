@@ -1,3 +1,3 @@
-import ComponentsLinks from './ComponentsLinks';
+import { ComponentsLinks } from './ComponentsLinks';
 
 export { ComponentsLinks };

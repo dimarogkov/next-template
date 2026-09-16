@@ -21,13 +21,13 @@ import {
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import SelectDemo from './SelectDemo';
+import { SelectDemo } from './SelectDemo';
 
 export const metadata: Metadata = {
     title: 'Select'
 };
 
-export default function SelectPage() {
+const SelectPage = () => {
     const preview: IDocumentationPreview = {
         demo: <SelectDemo />,
         code: SELECT_DEMO_CODE
@@ -52,9 +52,9 @@ export default function SelectPage() {
             link: 'https://github.com/dimarogkov/next-template/tree/master/src/components/atoms/Select',
             description: (
                 <Text>
-                    Include a custom <span className="badge-item">ISelectItem</span> and&nbsp;
-                    <span className="badge-item">Select</span> component for consistent and maintainable usage
-                    throughout the project.
+                    Include a custom <span className="badge-item">ISelectItem</span>,&nbsp;
+                    <span className="badge-item">assignRefs</span> and <span className="badge-item">Select</span>&nbsp;
+                    component for consistent and maintainable usage throughout the project.
                 </Text>
             ),
             withAccordion: true,
@@ -74,7 +74,12 @@ export default function SelectPage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">Select</span> component and use its subcomponents to build
+                    your UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [SELECT_USAGE_CODE]
         },
@@ -128,4 +133,6 @@ export default function SelectPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default SelectPage;

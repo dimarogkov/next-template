@@ -6,7 +6,7 @@ type Props = {
     preview: IDocumentationPreview;
 };
 
-export default function ComponentsPreview({ preview }: Props) {
+export const ComponentsPreview = ({ preview }: Props) => {
     const { demo, code } = preview;
 
     return (
@@ -20,11 +20,11 @@ export default function ComponentsPreview({ preview }: Props) {
                 <Tabs.Panels>
                     <Tabs.Panel>{demo}</Tabs.Panel>
 
-                    <Tabs.Panel className="!p-0">
+                    <Tabs.Panel className="p-0!">
                         <ComponentsCodeDetail code={code} type="code" />
                     </Tabs.Panel>
                 </Tabs.Panels>
             </Tabs>
         </div>
     );
-}
+};

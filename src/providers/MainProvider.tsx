@@ -8,7 +8,7 @@ type MainContextType = {
 
 export const MainContext = createContext<MainContextType>({ isSidebarOpen: false, setIsSidebarOpen: () => {} });
 
-export default function MainProvider({ children }: { children: ReactNode }) {
+export const MainProvider = ({ children }: { children: ReactNode }) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     useEffect(() => {
@@ -24,4 +24,4 @@ export default function MainProvider({ children }: { children: ReactNode }) {
     );
 
     return <MainContext.Provider value={value}>{children}</MainContext.Provider>;
-}
+};

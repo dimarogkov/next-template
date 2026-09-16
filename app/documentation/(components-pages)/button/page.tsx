@@ -11,13 +11,13 @@ import {
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import BtnDemo from './BtnDemo';
+import { BtnDemo } from './BtnDemo';
 
 export const metadata: Metadata = {
     title: 'Btn'
 };
 
-export default function BtnPage() {
+const BtnPage = () => {
     const preview: IDocumentationPreview = {
         demo: <BtnDemo />,
         code: BTN_DEMO_CODE
@@ -53,7 +53,12 @@ export default function BtnPage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">Btn</span> component and use its subcomponents to build your
+                    UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [BTN_USAGE_CODE]
         },
@@ -82,4 +87,6 @@ export default function BtnPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default BtnPage;

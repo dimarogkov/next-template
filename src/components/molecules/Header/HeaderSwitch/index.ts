@@ -1,3 +1,3 @@
-import HeaderSwitch from './HeaderSwitch';
+import { HeaderSwitch } from './HeaderSwitch';
 
 export { HeaderSwitch };

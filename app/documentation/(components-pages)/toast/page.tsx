@@ -12,13 +12,13 @@ import {
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import ToastDemo from './ToastDemo';
+import { ToastDemo } from './ToastDemo';
 
 export const metadata: Metadata = {
     title: 'Toast'
 };
 
-export default function ToastPage() {
+const ToastPage = () => {
     const preview: IDocumentationPreview = {
         demo: <ToastDemo />,
         code: TOAST_DEMO_CODE
@@ -58,7 +58,11 @@ export default function ToastPage() {
             id: 'usage',
             title: 'Usage',
             link: '',
-            description: null,
+            description: (
+                <Text>
+                    Import the <span className="badge-item">Toast</span> component to build your UI.
+                </Text>
+            ),
             withAccordion: false,
             codeArr: [TOAST_MAIN_USAGE_CODE, TOAST_USAGE_CODE]
         }
@@ -73,4 +77,6 @@ export default function ToastPage() {
     };
 
     return <DocumentationDetailClient data={data} />;
-}
+};
+
+export default ToastPage;

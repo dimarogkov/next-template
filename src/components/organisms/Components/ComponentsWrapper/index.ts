@@ -1,3 +1,3 @@
-import ComponentsWrapper from './ComponentsWrapper';
+import { ComponentsWrapper } from './ComponentsWrapper';
 
 export { ComponentsWrapper };

@@ -1,3 +1,3 @@
-import ComponentsPreview from './ComponentsPreview';
+import { ComponentsPreview } from './ComponentsPreview';
 
 export { ComponentsPreview };

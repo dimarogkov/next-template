@@ -10,6 +10,7 @@ import {
     RefAttributes,
     SetStateAction
 } from 'react';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLUListElement>, RefAttributes<HTMLUListElement> {
     hasAnimation?: boolean;
@@ -18,13 +19,13 @@ interface Props extends HTMLAttributes<HTMLUListElement>, RefAttributes<HTMLULis
     setActiveIndex?: Dispatch<SetStateAction<number>>;
 }
 
-const TabsList = forwardRef<HTMLUListElement, Props>(
+export const TabsList = forwardRef<HTMLUListElement, Props>(
     ({ hasAnimation, activeIndex, className = '', setActiveIndex = () => {}, ...props }, ref) => {
         return (
-            <ul ref={ref} {...props} className={`relative flex w-full border-b border-border ${className}`}>
+            <ul ref={ref} {...props} className={cn('border-border relative flex w-full border-b', className)}>
                 {Children.map(props.children, (child, index) => {
                     return isValidElement(child)
-                        ? cloneElement(child as ReactElement, {
+                        ? cloneElement(child as ReactElement<any>, {
                               hasAnimation,
                               tabIndex: index,
                               activeIndex,
@@ -38,4 +39,3 @@ const TabsList = forwardRef<HTMLUListElement, Props>(
 );
 
 TabsList.displayName = 'TabsList';
-export default TabsList;

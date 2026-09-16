@@ -12,6 +12,7 @@ import {
 } from 'react';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 import { ISelectItem } from '@interfaces/SelectItem';
+import cn from 'classnames';
 
 interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
     isOpen?: boolean;
@@ -23,7 +24,7 @@ interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
     setSelectedItems?: (item: ISelectItem) => void;
 }
 
-const SelectOptions = forwardRef<HTMLDivElement, Props>(
+export const SelectOptions = forwardRef<HTMLDivElement, Props>(
     (
         {
             isOpen,
@@ -50,11 +51,14 @@ const SelectOptions = forwardRef<HTMLDivElement, Props>(
                         ref={ref}
                         {...props}
                         {...animation}
-                        className={`absolute top-[calc(100%+4px)] z-10 flex flex-col gap-1 min-w-full max-w-[calc(100vw-32px)] w-max max-h-[292px] overflow-auto rounded-md p-1 border border-border bg-bg will-change-transform ${className}`}
+                        className={cn(
+                            'border-border bg-bg absolute top-[calc(100%+4px)] z-10 flex max-h-73 w-max max-w-[calc(100vw-32px)] min-w-full flex-col gap-1 overflow-auto rounded-md border p-1 will-change-transform',
+                            className
+                        )}
                     >
                         {Children.map(children, (child) => {
                             return isValidElement(child)
-                                ? cloneElement(child as ReactElement, {
+                                ? cloneElement(child as ReactElement<any>, {
                                       isOpen,
                                       isMultiple,
                                       selectedItems,
@@ -71,4 +75,3 @@ const SelectOptions = forwardRef<HTMLDivElement, Props>(
 );
 
 SelectOptions.displayName = 'SelectOptions';
-export default SelectOptions;

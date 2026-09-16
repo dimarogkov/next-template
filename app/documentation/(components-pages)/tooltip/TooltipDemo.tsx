@@ -1,8 +1,8 @@
 import { Btn, Tooltip } from '@components/atoms';
 
-export default function TooltipDemo() {
+export const TooltipDemo = () => {
     return (
-        <div className="relative flex items-center justify-center w-full h-32">
+        <div className="relative flex h-32 w-full items-center justify-center">
             <Tooltip>
                 <Tooltip.Trigger>
                     <Btn variant="outline" className="pointer-events-none">
@@ -15,4 +15,4 @@ export default function TooltipDemo() {
             </Tooltip>
         </div>
     );
-}
+};

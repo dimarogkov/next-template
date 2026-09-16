@@ -12,29 +12,31 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, RefAttributes<H
     className?: string;
 }
 
-const PaginationItem = forwardRef<HTMLButtonElement, Props>(({ options, page, className = '', ...props }, ref) => {
-    const { currentPage = 1, setPage = () => {} } = options ?? {};
+export const PaginationItem = forwardRef<HTMLButtonElement, Props>(
+    ({ options, page, className = '', ...props }, ref) => {
+        const { currentPage = 1, setPage = () => {} } = options ?? {};
 
-    const toggleItem = () => setPage(+page);
+        const toggleItem = () => setPage(+page);
 
-    return (
-        <button
-            ref={ref}
-            {...props}
-            type="button"
-            onClick={toggleItem}
-            className={cn(
-                `relative flex items-center justify-center size-9 text-title rounded-md border ${className}`,
-                {
-                    'border-transparent transition-colors duration-300 hover:bg-border': currentPage !== page,
-                    'border-border bg-border pointer-events-none': currentPage === page
-                }
-            )}
-        >
-            {page}
-        </button>
-    );
-});
+        return (
+            <button
+                ref={ref}
+                {...props}
+                type="button"
+                onClick={toggleItem}
+                className={cn(
+                    'text-title relative flex size-9 cursor-pointer items-center justify-center rounded-md border',
+                    className,
+                    {
+                        'hover:bg-border border-transparent transition-colors duration-300': currentPage !== page,
+                        'border-border bg-border pointer-events-none': currentPage === page
+                    }
+                )}
+            >
+                {page}
+            </button>
+        );
+    }
+);
 
 PaginationItem.displayName = 'PaginationItem';
-export default PaginationItem;

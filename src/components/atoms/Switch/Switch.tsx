@@ -8,7 +8,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, RefAttributes<H
     className?: string;
 }
 
-const Switch = forwardRef<HTMLButtonElement, Props>(
+export const Switch = forwardRef<HTMLButtonElement, Props>(
     ({ isActive: isSwitchActive = false, className = '', ...props }, ref) => {
         const [isActive, setIsActive] = useState(isSwitchActive);
 
@@ -21,11 +21,12 @@ const Switch = forwardRef<HTMLButtonElement, Props>(
                 type="button"
                 onClick={toggleSwitch}
                 className={cn(
-                    `relative flex w-12 h-[26px] rounded-full p-0.5 border outline-none transition-colors duration-300 ${className}`,
+                    'relative flex h-6.5 w-12 cursor-pointer rounded-full border p-0.5 outline-hidden transition-colors duration-300',
+                    className,
                     {
-                        'opacity-60 pointer-events-none': props.disabled,
-                        'justify-start border-text': !isActive,
-                        'justify-end border-title': isActive
+                        'pointer-events-none opacity-60': props.disabled,
+                        'border-text justify-start': !isActive,
+                        'border-title justify-end': isActive
                     }
                 )}
             >
@@ -43,4 +44,3 @@ const Switch = forwardRef<HTMLButtonElement, Props>(
 );
 
 Switch.displayName = 'Switch';
-export default Switch;

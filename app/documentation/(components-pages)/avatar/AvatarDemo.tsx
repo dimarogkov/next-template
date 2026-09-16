@@ -4,11 +4,11 @@ import { Avatar, AvatarGroup } from '@components/atoms';
 
 const IMG_SRC = 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp';
 
-export default function AvatarDemo() {
+export const AvatarDemo = () => {
     const pathname = usePathname();
 
     return (
-        <div className="relative flex flex-col gap-4 w-full">
+        <div className="relative flex w-full flex-col gap-4">
             <div className="flex w-full gap-2.5">
                 <Avatar>
                     <Avatar.Img src={IMG_SRC} />
@@ -76,4 +76,4 @@ export default function AvatarDemo() {
             </div>
         </div>
     );
-}
+};

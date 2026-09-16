@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { HomeDarkVeil } from '@components/molecules';
 import cn from 'classnames';
 
-export default function HomeBg() {
+export const HomeBg = () => {
     const [isMount, setIsMount] = useState(false);
 
     useEffect(() => {
@@ -12,12 +12,12 @@ export default function HomeBg() {
 
     return (
         <div
-            className={cn('fixed top-0 left-0 w-full h-full transition-all duration-700', {
-                'opacity-100 visible': isMount,
-                'opacity-0 invisible': !isMount
+            className={cn('fixed top-0 left-0 h-full w-full transition-all duration-700', {
+                'visible opacity-100': isMount,
+                'invisible opacity-0': !isMount
             })}
         >
             <HomeDarkVeil hueShift={1} speed={1} />
         </div>
     );
-}
+};

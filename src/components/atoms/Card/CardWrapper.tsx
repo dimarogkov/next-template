@@ -1,18 +1,18 @@
 import { forwardRef, HTMLAttributes, RefAttributes } from 'react';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     className?: string;
 }
 
-const CardWrapper = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
+export const CardWrapper = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
     return (
         <div
             ref={ref}
             {...props}
-            className={`relative w-full rounded-md border border-border bg-border overflow-hidden ${className}`}
+            className={cn('border-border bg-border relative w-full overflow-hidden rounded-md border', className)}
         />
     );
 });
 
 CardWrapper.displayName = 'CardWrapper';
-export default CardWrapper;

@@ -8,19 +8,19 @@ type Props = {
     children?: ReactNode;
 };
 
-export default function ComponentsHead({ children }: Props) {
+export const ComponentsHead = ({ children }: Props) => {
     const links = usePrevNextComponentPath();
 
     return (
         <div className="relative w-full pb-2">
             <div className="w-full md:pr-16">{children}</div>
 
-            <div className="absolute top-0 right-0 hidden md:flex gap-2">
+            <div className="absolute top-0 right-0 hidden gap-2 md:flex">
                 {links.map(({ href }, index) => (
                     <Link
                         key={href}
                         href={href}
-                        className="flex items-center justify-center size-7 text-base rounded-md bg-border transition-colors duration-300 hover:text-title"
+                        className="bg-border hover:text-title flex size-7 items-center justify-center rounded-md text-base transition-colors duration-300"
                     >
                         {index === 0 ? <ChevronLeft className="size-5" /> : <ChevronRight className="size-5" />}
                     </Link>
@@ -28,4 +28,4 @@ export default function ComponentsHead({ children }: Props) {
             </div>
         </div>
     );
-}
+};

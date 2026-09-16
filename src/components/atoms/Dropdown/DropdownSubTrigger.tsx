@@ -11,20 +11,21 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
-const DropdownSubTrigger = forwardRef<HTMLDivElement, Props>(
-    ({ isOpen, isSubOpen, className = '', setIsOpen = () => {}, ...props }, ref) => {
+export const DropdownSubTrigger = forwardRef<HTMLDivElement, Props>(
+    ({ isOpen, isSubOpen, className = '', setIsOpen, ...props }, ref) => {
         return (
             <div
                 ref={ref}
                 {...props}
                 className={cn(
-                    `relative flex items-center justify-between cursor-pointer rounded-md px-2 py-1 transition-colors duration-300 hover:bg-border ${className}`,
+                    'hover:bg-border relative flex cursor-pointer items-center justify-between rounded-md px-2 py-1 transition-colors duration-300',
+                    className,
                     {
                         'bg-border': isSubOpen
                     }
                 )}
             >
-                <Text className="!w-fit !text-title">{props.children}</Text>
+                <Text className="text-title! w-fit!">{props.children}</Text>
                 <ChevronRight className="size-4" />
             </div>
         );
@@ -32,4 +33,3 @@ const DropdownSubTrigger = forwardRef<HTMLDivElement, Props>(
 );
 
 DropdownSubTrigger.displayName = 'DropdownSubTrigger';
-export default DropdownSubTrigger;
