@@ -76,7 +76,7 @@ export const DropdownContent = forwardRef<HTMLDivElement, Props>(
                     >
                         {Children.map(children, (child) => {
                             return isValidElement(child)
-                                ? cloneElement(child as ReactElement<any>, { isOpen, setIsOpen })
+                                ? cloneElement(child as ReactElement<Record<string, unknown>>, { isOpen, setIsOpen })
                                 : child;
                         })}
                     </motion.div>

@@ -30,7 +30,7 @@ export const PaginationWrapper = forwardRef<HTMLDivElement, Props>(
                     <div ref={ref} {...props} className={cn('relative flex w-full justify-center gap-1', className)}>
                         {Children.map(props.children, (child) => {
                             return isValidElement(child)
-                                ? cloneElement(child as ReactElement<any>, { options })
+                                ? cloneElement(child as ReactElement<Record<string, unknown>>, { options })
                                 : child;
                         })}
                     </div>

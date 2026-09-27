@@ -8,7 +8,9 @@ import {
     TOOLTIP_TRIGGER_CODE,
     TOOLTIP_CONTENT_CODE,
     TOOLTIP_DEMO_CODE,
-    TOOLTIP_USAGE_CODE
+    TOOLTIP_USAGE_CODE,
+    TOOLTIP_POSITION_USAGE_CODE,
+    TOOLTIP_ALIGN_USAGE_CODE
 } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
@@ -68,6 +70,32 @@ const TooltipPage = () => {
             ),
             withAccordion: false,
             codeArr: [TOOLTIP_USAGE_CODE]
+        },
+        {
+            id: 'position',
+            title: 'Position',
+            link: '',
+            description: (
+                <Text>
+                    To change the position, add the <span className="badge-item">position</span> prop to the&nbsp;
+                    <span className="badge-item">Tooltip</span> component.
+                </Text>
+            ),
+            withAccordion: false,
+            codeArr: [TOOLTIP_POSITION_USAGE_CODE]
+        },
+        {
+            id: 'align',
+            title: 'Align',
+            link: '',
+            description: (
+                <Text>
+                    To change the align, add the <span className="badge-item">align</span> prop to the&nbsp;
+                    <span className="badge-item">Tooltip</span> component.
+                </Text>
+            ),
+            withAccordion: false,
+            codeArr: [TOOLTIP_ALIGN_USAGE_CODE]
         }
     ];
 

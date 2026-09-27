@@ -25,7 +25,7 @@ export const TabsList = forwardRef<HTMLUListElement, Props>(
             <ul ref={ref} {...props} className={cn('border-border relative flex w-full border-b', className)}>
                 {Children.map(props.children, (child, index) => {
                     return isValidElement(child)
-                        ? cloneElement(child as ReactElement<any>, {
+                        ? cloneElement(child as ReactElement<Record<string, unknown>>, {
                               hasAnimation,
                               tabIndex: index,
                               activeIndex,

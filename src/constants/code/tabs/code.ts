@@ -38,7 +38,11 @@ export const TabsWrapper = forwardRef<HTMLDivElement, Props>(
       <div ref={ref} {...props} className={cn('border-border relative w-full rounded-md border', className)}>
         {Children.map(props.children, (child) => {
           return isValidElement(child)
-            ? cloneElement(child as ReactElement<any>, { hasAnimation, activeIndex, setActiveIndex })
+            ? cloneElement(child as ReactElement<Record<string, unknown>>, {
+               hasAnimation,
+               activeIndex,
+               setActiveIndex
+             })
             : child;
         })}
       </div>
@@ -75,7 +79,7 @@ export const TabsList = forwardRef<HTMLUListElement, Props>(
       <ul ref={ref} {...props} className={cn('border-border relative flex w-full border-b', className)}>
         {Children.map(props.children, (child, index) => {
           return isValidElement(child)
-            ? cloneElement(child as ReactElement<any>, {
+            ? cloneElement(child as ReactElement<Record<string, unknown>>, {
                hasAnimation,
                tabIndex: index,
                activeIndex,
@@ -180,7 +184,9 @@ export const TabsPanels = forwardRef<HTMLDivElement, Props>(
   ({ hasAnimation, activeIndex, className = '', setActiveIndex, ...props }, ref) => {
     const childrenToRender = Children.map(props.children, (child, index) => {
       if (index === activeIndex) {
-        return isValidElement(child) ? cloneElement(child as ReactElement<any>, { hasAnimation }) : child;
+        return isValidElement(child)
+          ? cloneElement(child as ReactElement<Record<string, unknown>>, { hasAnimation })
+          : child;
       }
     });
 

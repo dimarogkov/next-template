@@ -64,7 +64,7 @@ export const DropdownWrapper = forwardRef<HTMLDivElement, Props>(
       <div ref={ref || dropdownRef} {...props} className={cn('relative', className)}>
         {Children.map(props.children, (child) => {
           return isValidElement(child)
-            ? cloneElement(child as ReactElement<any>, {
+            ? cloneElement(child as ReactElement<Record<string, unknown>>, {
                isOpen: isDropdownOpen,
                setIsOpen: setIsDropdownOpen
              })
@@ -193,7 +193,7 @@ export const DropdownContent = forwardRef<HTMLDivElement, Props>(
           >
             {Children.map(children, (child) => {
               return isValidElement(child)
-                ? cloneElement(child as ReactElement<any>, { isOpen, setIsOpen })
+                ? cloneElement(child as ReactElement<Record<string, unknown>>, { isOpen, setIsOpen })
                 : child;
             })}
           </motion.div>
@@ -231,7 +231,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, Props>(
       <div ref={ref} {...props} className={cn('relative flex w-full flex-col gap-1', className)}>
         {Children.map(props.children, (child) => {
           return isValidElement(child)
-            ? cloneElement(child as ReactElement<any>, { isOpen, setIsOpen })
+            ? cloneElement(child as ReactElement<Record<string, unknown>>, { isOpen, setIsOpen })
             : child;
         })}
       </div>
@@ -362,7 +362,7 @@ export const DropdownSubMenu = forwardRef<HTMLDivElement, Props>(
       >
         {Children.map(props.children, (child) => {
           return isValidElement(child)
-            ? cloneElement(child as ReactElement<any>, {
+            ? cloneElement(child as ReactElement<Record<string, unknown>>, {
                isOpen,
                isSubOpen: isSubDropdownOpen,
                setIsOpen
@@ -457,7 +457,7 @@ export const DropdownSubContent = forwardRef<HTMLDivElement, Props>(
           >
             {Children.map(children, (child) => {
               return isValidElement(child)
-                ? cloneElement(child as ReactElement<any>, { isOpen, setIsOpen })
+                ? cloneElement(child as ReactElement<Record<string, unknown>>, { isOpen, setIsOpen })
                 : child;
             })}
           </motion.div>

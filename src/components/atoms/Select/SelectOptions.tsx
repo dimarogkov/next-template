@@ -58,7 +58,7 @@ export const SelectOptions = forwardRef<HTMLDivElement, Props>(
                     >
                         {Children.map(children, (child) => {
                             return isValidElement(child)
-                                ? cloneElement(child as ReactElement<any>, {
+                                ? cloneElement(child as ReactElement<Record<string, unknown>>, {
                                       isOpen,
                                       isMultiple,
                                       selectedItems,

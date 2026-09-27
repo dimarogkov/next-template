@@ -30,7 +30,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, Props>(
             >
                 {Children.map(props.children, (child) => {
                     return isValidElement(child)
-                        ? cloneElement(child as ReactElement<any>, {
+                        ? cloneElement(child as ReactElement<Record<string, unknown>>, {
                               iconType,
                               accordionIndex,
                               activeIndex,

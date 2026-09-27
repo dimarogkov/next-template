@@ -35,7 +35,9 @@ export const AvatarLink = forwardRef<HTMLAnchorElement, Props>(
                 })}
             >
                 {Children.map(children, (child) => {
-                    return isValidElement(child) ? cloneElement(child as ReactElement<any>, { type }) : child;
+                    return isValidElement(child)
+                        ? cloneElement(child as ReactElement<Record<string, unknown>>, { type })
+                        : child;
                 })}
             </Link>
         );

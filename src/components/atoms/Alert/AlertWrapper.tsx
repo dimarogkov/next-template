@@ -51,7 +51,9 @@ export const AlertWrapper = forwardRef<HTMLDivElement, Props>(
                     {Icon && <Icon className={`absolute top-0.5 left-0 size-4.5 md:size-5 ${iconClasses[variant]}`} />}
 
                     {Children.map(props.children, (child) => {
-                        return isValidElement(child) ? cloneElement(child as ReactElement<any>, { variant }) : child;
+                        return isValidElement(child)
+                            ? cloneElement(child as ReactElement<Record<string, unknown>>, { variant })
+                            : child;
                     })}
                 </div>
             </div>

@@ -58,6 +58,11 @@ interface Props extends SelectHTMLAttributes<HTMLSelectElement>, RefAttributes<H
   className?: string;
 }
 
+interface SelectOptionProps {
+  value: string;
+  children?: React.ReactNode;
+}
+
 export const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className = '', ...props }, ref) => {
   const [selectedItems, setSelectedItems] = useState<ISelectItem[]>([]);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
@@ -69,12 +74,12 @@ export const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className =
   const isMultiple = !!props.multiple;
 
   const optionsArr = useMemo(() => {
-    const getOptions = (node: React.ReactNode): ReactElement<any>[] =>
+    const getOptions = (node: React.ReactNode): ReactElement<SelectOptionProps>[] =>
       Children.toArray(node).flatMap((child) =>
         isValidElement(child)
-          ? (child.type as any)?.displayName === 'SelectOption'
-            ? [child]
-            : getOptions((child.props as any)?.children)
+          ? (child.type as { displayName?: string })?.displayName === 'SelectOption'
+            ? [child as ReactElement<SelectOptionProps>]
+            : getOptions((child.props as { children?: React.ReactNode })?.children)
           : []
       );
 
@@ -88,7 +93,9 @@ export const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className =
 
     const currentOption = optionsArr.find((option) => option.value === props.value);
 
-    setSelectedItems(currentOption ? [{ value: currentOption.value, label: currentOption.children }] : []);
+    setSelectedItems(
+      currentOption ? [{ value: currentOption.value, label: currentOption.children as string }] : []
+    );
   }, [props.value, optionsArr]);
 
   useEffect(() => {
@@ -137,7 +144,7 @@ export const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className =
 
       {Children.map(props.children, (child) => {
         return isValidElement(child)
-          ? cloneElement(child as ReactElement<any>, {
+          ? cloneElement(child as ReactElement<Record<string, unknown>>, {
              isOpen: isSelectOpen,
              isMultiple,
              selectedItems,
@@ -290,7 +297,7 @@ export const SelectOptions = forwardRef<HTMLDivElement, Props>(
           >
             {Children.map(children, (child) => {
               return isValidElement(child)
-                ? cloneElement(child as ReactElement<any>, {
+                ? cloneElement(child as ReactElement<Record<string, unknown>>, {
                    isOpen,
                    isMultiple,
                    selectedItems,
@@ -352,7 +359,7 @@ export const SelectGroup = forwardRef<HTMLDivElement, Props>(
       <div ref={ref} {...props} className={cn('relative flex flex-col gap-1', className)}>
         {Children.map(children, (child) => {
           return isValidElement(child)
-            ? cloneElement(child as ReactElement<any>, {
+            ? cloneElement(child as ReactElement<Record<string, unknown>>, {
                isOpen,
                isMultiple,
                selectedItems,

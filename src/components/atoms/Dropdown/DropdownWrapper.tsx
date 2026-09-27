@@ -41,7 +41,7 @@ export const DropdownWrapper = forwardRef<HTMLDivElement, Props>(
             <div ref={ref || dropdownRef} {...props} className={cn('relative', className)}>
                 {Children.map(props.children, (child) => {
                     return isValidElement(child)
-                        ? cloneElement(child as ReactElement<any>, {
+                        ? cloneElement(child as ReactElement<Record<string, unknown>>, {
                               isOpen: isDropdownOpen,
                               setIsOpen: setIsDropdownOpen
                           })

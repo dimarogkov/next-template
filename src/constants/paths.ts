@@ -34,7 +34,7 @@ export const PATHS = {
             TEXTAREA: { path: '/textarea', isNew: false },
             TITLE: { path: '/title', isNew: false },
             TOAST: { path: '/toast', isNew: false },
-            TOOLTIP: { path: '/tooltip', isNew: false }
+            TOOLTIP: { path: '/tooltip', isNew: true }
         },
         DATA_FETCHING: {
             RTK_QUERY: { path: '/RTK-query', isNew: false },

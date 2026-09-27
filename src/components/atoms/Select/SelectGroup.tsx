@@ -42,7 +42,7 @@ export const SelectGroup = forwardRef<HTMLDivElement, Props>(
             <div ref={ref} {...props} className={cn('relative flex flex-col gap-1', className)}>
                 {Children.map(children, (child) => {
                     return isValidElement(child)
-                        ? cloneElement(child as ReactElement<any>, {
+                        ? cloneElement(child as ReactElement<Record<string, unknown>>, {
                               isOpen,
                               isMultiple,
                               selectedItems,

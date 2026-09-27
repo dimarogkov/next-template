@@ -24,7 +24,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, Props>(
             <div ref={ref} {...props} className={cn('relative flex w-full flex-col gap-1', className)}>
                 {Children.map(props.children, (child) => {
                     return isValidElement(child)
-                        ? cloneElement(child as ReactElement<any>, { isOpen, setIsOpen })
+                        ? cloneElement(child as ReactElement<Record<string, unknown>>, { isOpen, setIsOpen })
                         : child;
                 })}
             </div>
