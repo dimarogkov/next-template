@@ -7,19 +7,38 @@ import {
     isValidElement,
     ReactElement,
     RefAttributes,
+    useId,
     useState
 } from 'react';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+    type?: 'single' | 'multiple';
     iconType?: 'arrow' | 'plus';
-    defaultActiveIndex?: number | null;
+    headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+    defaultActiveIndex?: number[];
     className?: string;
 }
 
 export const AccordionWrapper = forwardRef<HTMLDivElement, Props>(
-    ({ iconType = 'arrow', defaultActiveIndex = null, className = '', ...props }, ref) => {
-        const [activeIndex, setActiveIndex] = useState<number | null>(defaultActiveIndex);
+    (
+        { type = 'single', iconType = 'arrow', headingLevel = 3, defaultActiveIndex = [], className = '', ...props },
+        ref
+    ) => {
+        const [activeIndexArr, setActiveIndexArr] = useState(defaultActiveIndex);
+        const accordionId = useId();
+
+        const toggleIndex = (index: number) => {
+            setActiveIndexArr((prev) => {
+                const isActive = prev.includes(index);
+
+                if (type === 'single') {
+                    return isActive ? [] : [index];
+                }
+
+                return isActive ? prev.filter((item) => item !== index) : [...prev, index];
+            });
+        };
 
         return (
             <div ref={ref} {...props} className={cn('border-border relative w-full rounded-md border', className)}>
@@ -27,9 +46,11 @@ export const AccordionWrapper = forwardRef<HTMLDivElement, Props>(
                     return isValidElement(child)
                         ? cloneElement(child as ReactElement<Record<string, unknown>>, {
                               iconType,
+                              headingLevel,
+                              accordionId,
                               accordionIndex: index,
-                              activeIndex,
-                              setActiveIndex
+                              activeIndexArr,
+                              toggleIndex
                           })
                         : child;
                 })}

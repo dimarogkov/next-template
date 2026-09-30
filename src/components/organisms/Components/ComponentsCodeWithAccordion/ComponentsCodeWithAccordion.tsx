@@ -17,7 +17,7 @@ export const ComponentsCodeWithAccordion = forwardRef<HTMLDivElement, Props>(
             <div ref={ref} {...props} className="relative flex w-full scroll-mt-36 flex-col gap-4 py-4 md:py-5">
                 <div className="w-full">{children}</div>
 
-                <Accordion defaultActiveIndex={0}>
+                <Accordion defaultActiveIndex={[0]}>
                     {codeArr.map(({ label, code }) => (
                         <Accordion.Item key={label}>
                             <Accordion.Title>{label}</Accordion.Title>

@@ -1,27 +1,31 @@
 'use client';
-import {
-    Children,
-    cloneElement,
-    Dispatch,
-    forwardRef,
-    HTMLAttributes,
-    isValidElement,
-    ReactElement,
-    RefAttributes,
-    SetStateAction
-} from 'react';
+import { Children, cloneElement, forwardRef, HTMLAttributes, isValidElement, ReactElement, RefAttributes } from 'react';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     iconType?: 'arrow' | 'plus';
+    headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+    accordionId?: string;
     accordionIndex?: number;
-    activeIndex?: number;
+    activeIndexArr?: number[] | null;
     className?: string;
-    setActiveIndex?: Dispatch<SetStateAction<number | null>>;
+    toggleIndex?: (index: number) => void;
 }
 
 export const AccordionItem = forwardRef<HTMLDivElement, Props>(
-    ({ iconType, accordionIndex = 0, activeIndex, className = '', setActiveIndex = () => {}, ...props }, ref) => {
+    (
+        {
+            iconType,
+            headingLevel,
+            accordionId,
+            accordionIndex = 0,
+            activeIndexArr,
+            className = '',
+            toggleIndex = () => {},
+            ...props
+        },
+        ref
+    ) => {
         return (
             <div
                 ref={ref}
@@ -32,9 +36,11 @@ export const AccordionItem = forwardRef<HTMLDivElement, Props>(
                     return isValidElement(child)
                         ? cloneElement(child as ReactElement<Record<string, unknown>>, {
                               iconType,
+                              headingLevel,
+                              accordionId,
                               accordionIndex,
-                              activeIndex,
-                              setActiveIndex
+                              activeIndexArr,
+                              toggleIndex
                           })
                         : child;
                 })}

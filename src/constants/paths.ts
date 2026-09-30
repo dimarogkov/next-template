@@ -4,7 +4,7 @@ export const PATHS = {
     NOT_FOUND: '*',
     PAGES: {
         COMPONENTS: {
-            ACCORDION: { path: '/accordion', isNew: false },
+            ACCORDION: { path: '/accordion', isNew: true },
             ALERT: { path: '/alert', isNew: false },
             AVATAR: { path: '/avatar', isNew: false },
             BADGE: { path: '/badge', isNew: false },
@@ -12,9 +12,9 @@ export const PATHS = {
             BREADCRUMB: { path: '/breadcrumb', isNew: false },
             BTN: { path: '/button', isNew: false },
             CARD: { path: '/card', isNew: false },
-            CAROUSEL: { path: '/carousel', isNew: true },
+            CAROUSEL: { path: '/carousel', isNew: false },
             CHECKBOX: { path: '/checkbox', isNew: false },
-            DROPDOWN: { path: '/dropdown', isNew: true },
+            DROPDOWN: { path: '/dropdown', isNew: false },
             INPUT: { path: '/input', isNew: false },
             INPUT_PASSWORD: { path: '/input-password', isNew: false },
             LABEL: { path: '/label', isNew: false },
@@ -38,7 +38,7 @@ export const PATHS = {
         },
         DATA_FETCHING: {
             RTK_QUERY: { path: '/RTK-query', isNew: false },
-            TANSTACK_QUERY: { path: '/tanStack-query', isNew: true }
+            TANSTACK_QUERY: { path: '/tanStack-query', isNew: false }
         },
         FORM_VALIDATION: {
             YUP: { path: '/yup', isNew: false },

@@ -7,6 +7,8 @@ import {
     ACCORDION_CONTENT_CODE,
     ACCORDION_DEMO_CODE,
     ACCORDION_USAGE_CODE,
+    ACCORDION_ICON_TYPE_USAGE_CODE,
+    ACCORDION_TYPE_USAGE_CODE,
     ACCORDION_ACTIVE_USAGE_CODE,
     NPM_CLASSNAMES_CODE,
     NPM_FRAMER_MOTION_CODE,
@@ -73,13 +75,41 @@ const AccordionPage = () => {
             codeArr: [ACCORDION_USAGE_CODE]
         },
         {
+            id: 'icon',
+            title: 'Icon',
+            link: '',
+            description: (
+                <Text>
+                    To change the icon, add the <span className="badge-item">iconType</span> prop to the&nbsp;
+                    <span className="badge-item">Accordion</span> component.
+                </Text>
+            ),
+            withAccordion: false,
+            codeArr: [ACCORDION_ICON_TYPE_USAGE_CODE]
+        },
+        {
+            id: 'type',
+            title: 'Type',
+            link: '',
+            description: (
+                <Text>
+                    By default, only one <span className="badge-item">Accordion.Item</span> can be open at a time. To
+                    allow multiple items to stay open simultaneously, add the <span className="badge-item">type</span>
+                    &nbsp;prop to the <span className="badge-item">Accordion</span> component.
+                </Text>
+            ),
+            withAccordion: false,
+            codeArr: [ACCORDION_TYPE_USAGE_CODE]
+        },
+        {
             id: 'active',
             title: 'Active',
             link: '',
             description: (
                 <Text>
-                    To make an <span className="badge-item">Accordion</span> initially open, add the&nbsp;
-                    <span className="badge-item">defaultActiveIndex</span> prop to it.
+                    To make an <span className="badge-item">Accordion.Item</span> initially open, add the&nbsp;
+                    <span className="badge-item">defaultActiveIndex</span> prop with an array of indexes to the&nbsp;
+                    <span className="badge-item">Accordion</span> component.
                 </Text>
             ),
             withAccordion: false,
