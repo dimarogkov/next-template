@@ -1,6 +1,7 @@
 'use client';
 import { Fragment } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useSectionsRefs } from '@hooks';
 import { IDocumentationCodeArr, IDocumentationData } from '@interfaces/Documentation';
 import {
@@ -13,7 +14,8 @@ import {
     ComponentsPreview,
     ComponentsWrapper
 } from '@components/organisms/Components';
-import { Text, Title } from '@components/atoms';
+import { PulseDot, Text, Title } from '@components/atoms';
+import { getLinks } from '@utils';
 import { ArrowUpRight } from 'lucide-react';
 import cn from 'classnames';
 
@@ -22,18 +24,23 @@ type Props = {
 };
 
 export const DocumentationDetailClient = ({ data }: Props) => {
+    const pathname = usePathname();
     const { sectionsRef, registerRef } = useSectionsRefs();
     const { title, description, links, preview, codeSections } = data;
 
     const sectionsArr = codeSections.map(({ id, title }) => ({ id, text: title }));
 
+    const { links: pagesLinks } = getLinks();
+    const isNew = pagesLinks.find(({ href }) => href === pathname)?.isNew ?? false;
+
     return (
         <ComponentsWrapper navigation={<ComponentsNavigation sectionsRef={sectionsRef} sectionsArr={sectionsArr} />}>
             <div className="w-full xl:px-7.5">
                 <ComponentsHead>
-                    <Title size="h2" className="mb-1 last:mb-0 md:mb-2">
-                        {title}
-                    </Title>
+                    <div className="mb-1 flex items-center gap-3 last:mb-0 md:mb-2">
+                        <Title size="h2">{title}</Title>
+                        {isNew && <PulseDot className="size-3" />}
+                    </div>
 
                     <Text size="large">{description}</Text>
                 </ComponentsHead>

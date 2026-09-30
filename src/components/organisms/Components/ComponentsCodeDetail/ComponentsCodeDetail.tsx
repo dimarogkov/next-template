@@ -1,7 +1,8 @@
 'use client';
+import toast from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 import { getHighlightCode } from '@utils';
-import { Loader } from '@components/atoms';
+import { Loader, Toast } from '@components/atoms';
 import { ClipboardCheck, Clipboard } from 'lucide-react';
 import cn from 'classnames';
 
@@ -21,6 +22,17 @@ export const ComponentsCodeDetail = ({ code, type, className = '' }: Props) => {
 
     const handleCopy = () => {
         navigator.clipboard.writeText(code);
+
+        toast.custom((t) => (
+            <Toast
+                toast={t}
+                data={{
+                    title: 'Copied to clipboard',
+                    text: 'The code snippet has been copied to your clipboard.'
+                }}
+            />
+        ));
+
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -31,8 +43,12 @@ export const ComponentsCodeDetail = ({ code, type, className = '' }: Props) => {
                 <>
                     <button
                         type="button"
+                        disabled={copied}
                         onClick={handleCopy}
-                        className="hover:bg-border absolute top-2 right-2 flex size-8 items-center justify-center rounded-md transition-colors duration-300"
+                        className={cn(
+                            'hover:bg-border absolute top-2 right-2 flex size-8 cursor-pointer items-center justify-center rounded-md transition-colors duration-300',
+                            { 'pointer-events-none opacity-90': copied }
+                        )}
                     >
                         {copied ? (
                             <ClipboardCheck className="text-text size-5" />

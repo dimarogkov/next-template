@@ -9,23 +9,26 @@ export const IntroductionContent = () => {
 
             <div className="flex w-full flex-col gap-4">
                 <Text size="large">
-                    Next Template is a modern, production-ready starter kit for building web applications with Next.js
-                    and TypeScript.
+                    Next Template is a personal component library and playground built with React 19 and TypeScript.
+                    Every primitive gets a live preview with byte-accurate source, right next to the code.
                 </Text>
 
                 <Text size="large">
-                    It combines a proven tech stack, best practices, and ready-to-use components so you can focus on
-                    your product logic instead of spending hours on setup.
+                    Most templates ship one opinion per problem. This one ships two — compare&nbsp;
+                    <span className="text-title font-medium">Yup</span> against&nbsp;
+                    <span className="text-title font-medium">Zod</span> for form validation,&nbsp;
+                    <span className="text-title font-medium">TanStack Query</span> against&nbsp;
+                    <span className="text-title font-medium">RTK Query</span> for data fetching, or&nbsp;
+                    <span className="text-title font-medium">Redux Toolkit</span> against&nbsp;
+                    <span className="text-title font-medium">Zustand</span> for state management — side by side, in the
+                    same UI.
                 </Text>
 
                 <Text size="large">
-                    Unlike traditional boilerplates, this template comes with a clean project structure, a&nbsp;
-                    <span className="text-title font-medium">Tailwind CSS</span> design system, state management
-                    via&nbsp;
-                    <span className="text-title font-medium">Redux Toolkit/Zustand</span>, built-in&nbsp;
-                    <span className="text-title font-medium">Axios</span> integration,&nbsp;
-                    <span className="text-title font-medium">Next.js App Router</span> for navigation, and smooth
-                    animations powered by&nbsp;
+                    It’s built on a <span className="text-title font-medium">Tailwind CSS</span> design system,&nbsp;
+                    <span className="text-title font-medium">Next.js App Router</span> for navigation, built-in&nbsp;
+                    <span className="text-title font-medium">Axios</span> integration, and smooth animations powered
+                    by&nbsp;
                     <span className="text-title font-medium">Framer Motion</span>.
                 </Text>
 
@@ -35,43 +38,32 @@ export const IntroductionContent = () => {
                     <ul className="mt-2 list-disc space-y-1.5 pl-5">
                         <li>
                             <Text size="large">
-                                <span className="text-title font-medium">Open Code</span> – Every component is fully
-                                editable to match your needs.
+                                <span className="text-title font-medium">Two Ways, Not One</span> – Core patterns ship
+                                as real, working comparisons, not just documentation.
                             </Text>
                         </li>
                         <li>
                             <Text size="large">
-                                <span className="text-title font-medium">Composable</span> – Designed to be predictable
-                                and easy to combine.
+                                <span className="text-title font-medium">Byte-Accurate Docs</span> – Every code example
+                                is pulled straight from the real component source.
                             </Text>
                         </li>
                         <li>
                             <Text size="large">
-                                <span className="text-title font-medium">Fast Setup</span> – Preconfigured with API
-                                handling, routing, and styling.
+                                <span className="text-title font-medium">Compound, Not Monolithic</span> – Components
+                                compose from predictable subcomponents instead of one prop-heavy component.
                             </Text>
                         </li>
                         <li>
                             <Text size="large">
-                                <span className="text-title font-medium">Beautiful Defaults</span> – Thoughtfully chosen
-                                styles that look great out of the box.
-                            </Text>
-                        </li>
-                        <li>
-                            <Text size="large">
-                                <span className="text-title font-medium">Performance-Driven</span> – Optimized structure
-                                with modern tooling.
+                                <span className="text-title font-medium">Built to Be Read</span> – Every atom is small
+                                enough to open, understand, and edit in one sitting.
                             </Text>
                         </li>
                     </ul>
                 </div>
 
-                <Text size="large">
-                    Stop wasting time configuring your stack —&nbsp;
-                    <span className="text-title font-medium">clone</span>,&nbsp;
-                    <span className="text-title font-medium">run</span>, and&nbsp;
-                    <span className="text-title font-medium">start building</span>.
-                </Text>
+                <Text size="large">Clone it, open a component, and start editing — that’s the whole workflow.</Text>
             </div>
         </>
     );

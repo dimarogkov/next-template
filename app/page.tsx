@@ -8,15 +8,18 @@ const HomePage = () => {
         <section className="relative flex min-h-[calc(100svh-64px)] w-full items-center justify-center pb-16 sm:h-[calc(100svh-64px)] lg:h-[calc(100svh-80px)] lg:min-h-[calc(100svh-80px)] lg:pb-20">
             <HomeBg />
 
-            <div className="page-container relative md:w-200">
+            <div className="page-container relative md:w-204.5">
                 <div className="flex w-full flex-col items-center text-center">
-                    <Title className="mb-3 last:mb-0">Build Faster with Next Template</Title>
+                    <Title className="mb-3 last:mb-0">
+                        Build Faster with <br /> Next Template
+                    </Title>
 
                     <HomeSlider className="mb-3 last:mb-0" />
 
                     <Text size="large" className="mb-7 last:mb-0">
-                        A curated set of accessible, ready-to-use components for modern web apps. Designed to save you
-                        time and help you create stunning UIs effortlessly.
+                        Every primitive ships with a live preview and byte-accurate source. Every core pattern comes in
+                        two competing flavors — Yup vs Zod, Redux Toolkit vs Zustand — built to be compared, not just
+                        used.
                     </Text>
 
                     <div className="flex w-full flex-wrap justify-center gap-2">

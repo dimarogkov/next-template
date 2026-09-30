@@ -24,7 +24,7 @@ export const Toast = forwardRef<HTMLDivElement, Props>(
 
     const toastClasses = {
       border: {
-        default: 'border-l-title',
+        default: 'border-l-text',
         success: 'border-l-green',
         warning: 'border-l-yellow',
         error: 'border-l-red'

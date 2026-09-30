@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { IDocumentationLink } from '@interfaces/Documentation';
+import { PulseDot } from '@components/atoms';
 import cn from 'classnames';
 
 type Props = {
@@ -22,7 +23,7 @@ export const SidebarLink = ({ link, isActive }: Props) => {
             )}
         >
             <span>{name}</span>
-            {isNew && <span className="bg-blue flex size-2 rounded-full" />}
+            {isNew && <PulseDot className="size-2" />}
 
             <div
                 className={cn('bg-title absolute -left-4 h-full w-px transition-opacity duration-200', {

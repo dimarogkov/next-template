@@ -18,6 +18,7 @@ import { Modal } from './Modal';
 import { Pagination } from './Pagination';
 import { PinInput } from './PinInput';
 import { Progress } from './Progress';
+import { PulseDot } from './PulseDot';
 import { Radio } from './Radio';
 import { Select } from './Select';
 import { Separator } from './Separator';
@@ -52,6 +53,7 @@ export {
     Pagination,
     PinInput,
     Progress,
+    PulseDot,
     Radio,
     Select,
     Separator,

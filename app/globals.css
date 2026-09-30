@@ -18,6 +18,7 @@
 
     --animate-enter: enter 0.2s forwards;
     --animate-leave: leave 0.2s forwards;
+    --animate-pulse-ring: pulse-ring 1.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 @keyframes enter {
@@ -43,6 +44,17 @@
         opacity: 0;
         visibility: hidden;
         transform: translateY(20px);
+    }
+}
+
+@keyframes pulse-ring {
+    0% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2.4);
     }
 }
 

@@ -9,7 +9,7 @@ import {
     ComponentsWrapper
 } from '@components/organisms/Components';
 import { IntroductionContent } from '@components/molecules';
-import { Separator, Text, Title } from '@components/atoms';
+import { PulseDot, Separator, Text, Title } from '@components/atoms';
 
 type Props = {
     data: IDocumentationBodyItem[];
@@ -50,7 +50,7 @@ export const DocumentationClient = ({ data }: Props) => {
                                     className="text-text flex items-center gap-2.5 text-lg font-medium hover:underline"
                                 >
                                     <span>{name}</span>
-                                    {isNew && <span className="bg-blue flex size-2 rounded-full" />}
+                                    {isNew && <PulseDot className="size-2" />}
                                 </Link>
                             ))}
                         </div>
