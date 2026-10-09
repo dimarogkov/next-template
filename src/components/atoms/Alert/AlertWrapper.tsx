@@ -37,6 +37,7 @@ export const AlertWrapper = forwardRef<HTMLDivElement, Props>(
             <div
                 ref={ref}
                 {...props}
+                role={variant === 'warning' || variant === 'error' ? 'alert' : 'status'}
                 className={cn(
                     'relative w-full rounded-md border p-2.5 sm:p-3 md:p-4',
                     alertClasses[variant],
@@ -48,7 +49,12 @@ export const AlertWrapper = forwardRef<HTMLDivElement, Props>(
                         'pl-6 md:pl-7': Icon
                     })}
                 >
-                    {Icon && <Icon className={`absolute top-0.5 left-0 size-4.5 md:size-5 ${iconClasses[variant]}`} />}
+                    {Icon && (
+                        <Icon
+                            aria-hidden="true"
+                            className={cn('absolute top-0.5 left-0 size-4.5 md:size-5', iconClasses[variant])}
+                        />
+                    )}
 
                     {Children.map(props.children, (child) => {
                         return isValidElement(child)

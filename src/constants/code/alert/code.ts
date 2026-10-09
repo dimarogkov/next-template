@@ -46,6 +46,7 @@ export const AlertWrapper = forwardRef<HTMLDivElement, Props>(
       <div
         ref={ref}
         {...props}
+        role={variant === 'warning' || variant === 'error' ? 'alert' : 'status'}
         className={cn(
           'relative w-full rounded-md border p-2.5 sm:p-3 md:p-4',
           alertClasses[variant],
@@ -57,7 +58,12 @@ export const AlertWrapper = forwardRef<HTMLDivElement, Props>(
             'pl-6 md:pl-7': Icon
           })}
         >
-          {Icon && <Icon className={\`absolute top-0.5 left-0 size-4.5 md:size-5 \${iconClasses[variant]}\`} />}
+          {Icon && (
+            <Icon
+              aria-hidden="true"
+              className={cn('absolute top-0.5 left-0 size-4.5 md:size-5', iconClasses[variant])}
+            />
+          )}
 
           {Children.map(props.children, (child) => {
             return isValidElement(child)
@@ -73,31 +79,33 @@ export const AlertWrapper = forwardRef<HTMLDivElement, Props>(
 AlertWrapper.displayName = 'AlertWrapper';`;
 
 export const ALERT_TITLE_CODE = `import { forwardRef, HTMLAttributes, RefAttributes } from 'react';
-import { Text } from '@components/atoms';
+import { Title } from '@components/atoms';
 import cn from 'classnames';
 
-interface Props extends HTMLAttributes<HTMLParagraphElement>, RefAttributes<HTMLParagraphElement> {
+interface Props extends HTMLAttributes<HTMLHeadingElement>, RefAttributes<HTMLHeadingElement> {
   variant?: 'default' | 'success' | 'warning' | 'error';
+  headingSize?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   className?: string;
 }
 
-export const AlertTitle = forwardRef<HTMLParagraphElement, Props>(
-  ({ variant = 'default', className = '', ...props }, ref) => {
+export const AlertTitle = forwardRef<HTMLHeadingElement, Props>(
+  ({ variant = 'default', headingSize = 'h6', className = '', ...props }, ref) => {
     const titleClasses = {
-      default: 'text-title',
-      success: 'text-green',
-      warning: 'text-yellow',
-      error: 'text-red'
+      default: 'text-title!',
+      success: 'text-green!',
+      warning: 'text-yellow!',
+      error: 'text-red!'
     };
 
     return (
-      <Text
+      <Title
         ref={ref}
         {...props}
-        className={cn('relative mb-0.5 font-semibold last:mb-0', titleClasses[variant], className)}
+        size={headingSize}
+        className={cn('relative mb-0.5 font-medium! last:mb-0', titleClasses[variant], className)}
       >
         {props.children}
-      </Text>
+      </Title>
     );
   }
 );

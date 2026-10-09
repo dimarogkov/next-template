@@ -15,14 +15,14 @@ import cn from 'classnames';
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     type?: 'single' | 'multiple';
     iconType?: 'arrow' | 'plus';
-    headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+    headingSize?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     defaultActiveIndex?: number[];
     className?: string;
 }
 
 export const AccordionWrapper = forwardRef<HTMLDivElement, Props>(
     (
-        { type = 'single', iconType = 'arrow', headingLevel = 3, defaultActiveIndex = [], className = '', ...props },
+        { type = 'single', iconType = 'arrow', headingSize = 'h6', defaultActiveIndex = [], className = '', ...props },
         ref
     ) => {
         const [activeIndexArr, setActiveIndexArr] = useState(defaultActiveIndex);
@@ -46,7 +46,7 @@ export const AccordionWrapper = forwardRef<HTMLDivElement, Props>(
                     return isValidElement(child)
                         ? cloneElement(child as ReactElement<Record<string, unknown>>, {
                               iconType,
-                              headingLevel,
+                              headingSize,
                               accordionId,
                               accordionIndex: index,
                               activeIndexArr,

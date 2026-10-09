@@ -10,6 +10,7 @@ import {
     ACCORDION_ICON_TYPE_USAGE_CODE,
     ACCORDION_TYPE_USAGE_CODE,
     ACCORDION_ACTIVE_USAGE_CODE,
+    ACCORDION_HEADING_SIZE_USAGE_CODE,
     NPM_CLASSNAMES_CODE,
     NPM_FRAMER_MOTION_CODE,
     NPM_LUCIDE_CODE
@@ -73,6 +74,20 @@ const AccordionPage = () => {
             ),
             withAccordion: false,
             codeArr: [ACCORDION_USAGE_CODE]
+        },
+        {
+            id: 'heading-size',
+            title: 'Heading Size',
+            link: '',
+            description: (
+                <Text>
+                    To change the heading size, add the <span className="badge-item">headingSize</span> prop to
+                    the&nbsp;
+                    <span className="badge-item">Accordion</span> component.
+                </Text>
+            ),
+            withAccordion: false,
+            codeArr: [ACCORDION_HEADING_SIZE_USAGE_CODE]
         },
         {
             id: 'icon',

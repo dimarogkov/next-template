@@ -7,6 +7,8 @@ export const TitleDemo = () => {
             <Title size="h2">Title H2</Title>
             <Title size="h3">Title H3</Title>
             <Title size="h4">Title H4</Title>
+            <Title size="h5">Title H5</Title>
+            <Title size="h6">Title H6</Title>
         </div>
     );
 };
