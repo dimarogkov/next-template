@@ -10,7 +10,7 @@ export const ComponentsPreview = ({ preview }: Props) => {
     const { demo, code } = preview;
 
     return (
-        <div className="relative w-full py-4 md:py-5">
+        <div className="relative w-full py-4 sm:py-5 md:p-5">
             <Tabs>
                 <Tabs.TabList>
                     <Tabs.Tab>Preview</Tabs.Tab>

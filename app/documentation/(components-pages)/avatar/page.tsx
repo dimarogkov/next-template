@@ -1,4 +1,7 @@
 import { Metadata } from 'next';
+import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
+import { DocumentationDetailClient } from '@components/organisms';
+import { Text } from '@components/atoms';
 import {
     AVATAR_CODE,
     AVATAR_STYLE_CODE,
@@ -13,9 +16,6 @@ import {
     NPM_CLASSNAMES_CODE,
     NPM_FRAMER_MOTION_CODE
 } from '@code';
-import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
-import { DocumentationDetailClient } from '@components/organisms';
-import { Text } from '@components/atoms';
 import { AvatarDemo } from './AvatarDemo';
 
 export const metadata: Metadata = {

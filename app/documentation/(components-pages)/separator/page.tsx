@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import { SEPARATOR_CODE, SEPARATOR_DEMO_CODE, SEPARATOR_USAGE_CODE } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
+import { SEPARATOR_CODE, SEPARATOR_DEMO_CODE, SEPARATOR_USAGE_CODE } from '@code';
 import { SeparatorDemo } from './SeparatorDemo';
 
 export const metadata: Metadata = {

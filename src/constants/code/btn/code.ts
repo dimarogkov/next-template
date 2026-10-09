@@ -58,6 +58,7 @@ export const BtnLink = forwardRef<HTMLAnchorElement, Props>(
         ref={ref}
         href={href}
         target={target}
+        rel={target === '_blank' ? 'noopener noreferrer' : undefined}
         {...props}
         className={cn('flex h-full w-full items-center justify-center gap-1.5 px-4', className)}
       >

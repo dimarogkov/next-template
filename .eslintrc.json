@@ -1,3 +1,36 @@
 {
-    "extends": "next/core-web-vitals"
+    "extends": "next/core-web-vitals",
+    "plugins": ["import-x"],
+    "settings": {
+        "import-x/internal-regex": "^@(components|constants|code|form-validation|hooks|providers|root|services|store|interfaces|utils)(/|$)"
+    },
+    "rules": {
+        "import-x/order": [
+            "warn",
+            {
+                "groups": ["builtin", "external", "internal", ["parent", "sibling", "index"]],
+                "pathGroups": [
+                    { "pattern": "react", "group": "external", "position": "before" },
+                    { "pattern": "@hooks", "group": "internal", "position": "before" },
+                    { "pattern": "@providers", "group": "internal", "position": "before" },
+                    { "pattern": "@root", "group": "internal", "position": "before" },
+                    { "pattern": "@interfaces/**", "group": "internal", "position": "before" },
+                    { "pattern": "@store/**", "group": "internal", "position": "before" },
+                    { "pattern": "@services/**", "group": "internal", "position": "before" },
+                    { "pattern": "@form-validation/**", "group": "internal", "position": "before" },
+                    { "pattern": "@components/organisms", "group": "internal", "position": "before" },
+                    { "pattern": "@components/organisms/**", "group": "internal", "position": "before" },
+                    { "pattern": "@components/molecules", "group": "internal", "position": "before" },
+                    { "pattern": "@components/atoms", "group": "internal", "position": "before" },
+                    { "pattern": "@constants", "group": "internal", "position": "before" },
+                    { "pattern": "@code", "group": "internal", "position": "before" },
+                    { "pattern": "@utils", "group": "internal", "position": "before" },
+                    { "pattern": "lucide-react", "group": "index", "position": "after" },
+                    { "pattern": "classnames", "group": "index", "position": "after" }
+                ],
+                "pathGroupsExcludedImportTypes": [],
+                "newlines-between": "never"
+            }
+        ]
+    }
 }

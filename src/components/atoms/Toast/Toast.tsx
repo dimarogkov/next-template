@@ -1,6 +1,6 @@
 'use client';
-import toast, { type Toast as TostType } from 'react-hot-toast';
 import { forwardRef, HTMLAttributes, RefAttributes } from 'react';
+import toast, { type Toast as TostType } from 'react-hot-toast';
 import { IToastData } from '@interfaces/ToastData';
 import { Text } from '@components/atoms';
 import { CircleAlert, CircleCheck, CircleX, Info, X } from 'lucide-react';

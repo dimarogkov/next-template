@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { PATHS } from '@constants';
 import { Text } from '@components/atoms';
+import { PATHS } from '@constants';
 
 export const HeaderLogo = () => {
     return (

@@ -243,8 +243,8 @@ DropdownMenu.displayName = 'DropdownMenu';`;
 
 export const DROPDOWN_LABEL_CODE = `'use client';
 import { Dispatch, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
-import cn from 'classnames';
 import { Text } from '../Text';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
   isOpen?: boolean;
@@ -266,8 +266,8 @@ DropdownLabel.displayName = 'DropdownLabel';`;
 
 export const DROPDOWN_SEPARATOR_CODE = `'use client';
 import { Dispatch, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
-import cn from 'classnames';
 import { Separator } from '../Separator';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
   isOpen?: boolean;
@@ -285,8 +285,8 @@ DropdownSeparator.displayName = 'DropdownSeparator';`;
 
 export const DROPDOWN_ITEM_CODE = `'use client';
 import { Dispatch, forwardRef, HTMLAttributes, KeyboardEvent, RefAttributes, SetStateAction } from 'react';
-import cn from 'classnames';
 import { Text } from '../Text';
+import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
   isOpen?: boolean;

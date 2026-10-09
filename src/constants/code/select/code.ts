@@ -50,8 +50,8 @@ import {
   useRef,
   useState
 } from 'react';
-import { assignRefs } from '@utils';
 import { ISelectItem } from '@interfaces/SelectItem';
+import { assignRefs } from '@utils';
 import cn from 'classnames';
 
 interface Props extends SelectHTMLAttributes<HTMLSelectElement>, RefAttributes<HTMLSelectElement> {

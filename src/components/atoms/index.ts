@@ -12,6 +12,7 @@ import { Dropdown } from './Dropdown';
 import { ErrorMessage } from './ErrorMessage';
 import { Input } from './Input';
 import { InputPassword } from './InputPassword';
+import { Kbd } from './Kbd';
 import { Label } from './Label';
 import { Loader } from './Loader';
 import { Modal } from './Modal';
@@ -23,6 +24,7 @@ import { Radio } from './Radio';
 import { Select } from './Select';
 import { Separator } from './Separator';
 import { SimpleLink } from './SimpleLink';
+import { StatusBadge } from './StatusBadge';
 import { Switch } from './Switch';
 import { Tabs } from './Tabs';
 import { Text } from './Text';
@@ -47,6 +49,7 @@ export {
     ErrorMessage,
     Input,
     InputPassword,
+    Kbd,
     Label,
     Loader,
     Modal,
@@ -58,6 +61,7 @@ export {
     Select,
     Separator,
     SimpleLink,
+    StatusBadge,
     Switch,
     Tabs,
     Text,

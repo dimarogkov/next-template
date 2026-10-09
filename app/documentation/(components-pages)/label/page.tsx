@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import { LABEL_CODE, LABEL_DEMO_CODE, LABEL_USAGE_CODE } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
+import { LABEL_CODE, LABEL_DEMO_CODE, LABEL_USAGE_CODE } from '@code';
 import { LabelDemo } from './LabelDemo';
 
 export const metadata: Metadata = {

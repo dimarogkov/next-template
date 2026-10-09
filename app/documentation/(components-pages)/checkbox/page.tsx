@@ -1,4 +1,7 @@
 import { Metadata } from 'next';
+import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
+import { DocumentationDetailClient } from '@components/organisms';
+import { Text } from '@components/atoms';
 import {
     CHECKBOX_CODE,
     CHECKBOX_DEMO_CODE,
@@ -7,9 +10,6 @@ import {
     NPM_CLASSNAMES_CODE,
     NPM_LUCIDE_CODE
 } from '@code';
-import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
-import { DocumentationDetailClient } from '@components/organisms';
-import { Text } from '@components/atoms';
 import { CheckboxDemo } from './CheckboxDemo';
 
 export const metadata: Metadata = {

@@ -9,8 +9,7 @@ export const DATA = [
         links: [
             {
                 name: 'Introduction',
-                href: PATHS.DOCUMENTATION,
-                isNew: false
+                href: PATHS.DOCUMENTATION
             }
         ]
     },

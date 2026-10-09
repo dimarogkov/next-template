@@ -6,6 +6,7 @@ import {
     ComponentsFooter,
     ComponentsHead,
     ComponentsLinks,
+    ComponentsNavigationBtns,
     ComponentsNavigation,
     ComponentsPreview,
     ComponentsWrapper
@@ -23,6 +24,7 @@ export {
     ComponentsFooter,
     ComponentsHead,
     ComponentsLinks,
+    ComponentsNavigationBtns,
     ComponentsNavigation,
     ComponentsPreview,
     ComponentsWrapper,

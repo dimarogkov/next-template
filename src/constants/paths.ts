@@ -1,52 +1,54 @@
+import { IPath } from '@interfaces/Path';
+
 export const PATHS = {
     HOME: '/',
     DOCUMENTATION: '/documentation',
     NOT_FOUND: '*',
     PAGES: {
         COMPONENTS: {
-            ACCORDION: { path: '/accordion', isNew: true },
-            ALERT: { path: '/alert', isNew: false },
-            AVATAR: { path: '/avatar', isNew: false },
-            BADGE: { path: '/badge', isNew: false },
-            BLOCKQUOTE: { path: '/blockquote', isNew: false },
-            BREADCRUMB: { path: '/breadcrumb', isNew: false },
-            BTN: { path: '/button', isNew: false },
-            CARD: { path: '/card', isNew: false },
-            CAROUSEL: { path: '/carousel', isNew: false },
-            CHECKBOX: { path: '/checkbox', isNew: false },
-            DROPDOWN: { path: '/dropdown', isNew: false },
-            INPUT: { path: '/input', isNew: false },
-            INPUT_PASSWORD: { path: '/input-password', isNew: false },
-            LABEL: { path: '/label', isNew: false },
-            LOADER: { path: '/loader', isNew: false },
-            MODAL: { path: '/modal', isNew: false },
-            PAGINATION: { path: '/pagination', isNew: false },
-            PIN_INPUT: { path: '/pin-input', isNew: false },
-            PROGRESS: { path: '/progress', isNew: false },
-            RADIO: { path: '/radio', isNew: false },
-            REORDER: { path: '/reorder', isNew: false },
-            SELECT: { path: '/select', isNew: true },
-            SEPARATOR: { path: '/separator', isNew: false },
-            SIMPLE_LINK: { path: '/simple-link', isNew: false },
-            SWITCH: { path: '/switch', isNew: false },
-            TABS: { path: '/tabs', isNew: false },
-            TEXT: { path: '/text', isNew: false },
-            TEXTAREA: { path: '/textarea', isNew: false },
-            TITLE: { path: '/title', isNew: false },
-            TOAST: { path: '/toast', isNew: false },
-            TOOLTIP: { path: '/tooltip', isNew: true }
-        },
+            ACCORDION: { path: '/accordion', status: 'updated' },
+            ALERT: { path: '/alert' },
+            AVATAR: { path: '/avatar' },
+            BADGE: { path: '/badge' },
+            BLOCKQUOTE: { path: '/blockquote' },
+            BREADCRUMB: { path: '/breadcrumb' },
+            BTN: { path: '/button' },
+            CARD: { path: '/card' },
+            CAROUSEL: { path: '/carousel' },
+            CHECKBOX: { path: '/checkbox' },
+            DROPDOWN: { path: '/dropdown' },
+            INPUT: { path: '/input' },
+            INPUT_PASSWORD: { path: '/input-password' },
+            LABEL: { path: '/label' },
+            LOADER: { path: '/loader' },
+            MODAL: { path: '/modal' },
+            PAGINATION: { path: '/pagination' },
+            PIN_INPUT: { path: '/pin-input' },
+            PROGRESS: { path: '/progress' },
+            RADIO: { path: '/radio' },
+            REORDER: { path: '/reorder' },
+            SELECT: { path: '/select', status: 'updated' },
+            SEPARATOR: { path: '/separator' },
+            SIMPLE_LINK: { path: '/simple-link' },
+            SWITCH: { path: '/switch' },
+            TABS: { path: '/tabs' },
+            TEXT: { path: '/text' },
+            TEXTAREA: { path: '/textarea' },
+            TITLE: { path: '/title' },
+            TOAST: { path: '/toast' },
+            TOOLTIP: { path: '/tooltip', status: 'new' }
+        } satisfies Record<string, IPath>,
         DATA_FETCHING: {
-            RTK_QUERY: { path: '/RTK-query', isNew: false },
-            TANSTACK_QUERY: { path: '/tanStack-query', isNew: false }
-        },
+            RTK_QUERY: { path: '/RTK-query' },
+            TANSTACK_QUERY: { path: '/tanStack-query' }
+        } satisfies Record<string, IPath>,
         FORM_VALIDATION: {
-            YUP: { path: '/yup', isNew: false },
-            ZOD: { path: '/zod', isNew: false }
-        },
+            YUP: { path: '/yup' },
+            ZOD: { path: '/zod' }
+        } satisfies Record<string, IPath>,
         STORE: {
-            REDUX_TOOLKIT: { path: '/redux-toolkit', isNew: false },
-            ZUSTAND: { path: '/zustand', isNew: false }
-        }
+            REDUX_TOOLKIT: { path: '/redux-toolkit' },
+            ZUSTAND: { path: '/zustand' }
+        } satisfies Record<string, IPath>
     }
 };

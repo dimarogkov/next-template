@@ -99,10 +99,11 @@ input[type='number']::-webkit-outer-spin-button {
         position: absolute;
         z-index: 1;
         content: '';
+        top: 0;
         left: 0;
         width: 100%;
         height: 150px;
-        background: linear-gradient(color-mix(in srgb, var(--color-bg) 80%, transparent), transparent);
+        background: linear-gradient(color-mix(in srgb, var(--color-bg) 90%, transparent), transparent);
         pointer-events: none;
         transition: opacity 0.2s;
     }
@@ -110,7 +111,7 @@ input[type='number']::-webkit-outer-spin-button {
     .sidebar::after {
         top: auto;
         bottom: 0;
-        background: linear-gradient(to top, color-mix(in srgb, var(--color-bg) 80%, transparent), transparent);
+        background: linear-gradient(to top, color-mix(in srgb, var(--color-bg) 90%, transparent), transparent);
     }
 
     @media (max-width: 1279px) {
@@ -182,7 +183,8 @@ pre {
 }
 
 pre,
-code {
+code,
+.code {
     font-family: 'Geist Mono', monospace !important;
     font-optical-sizing: auto;
 }

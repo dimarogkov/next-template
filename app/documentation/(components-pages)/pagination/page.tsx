@@ -1,4 +1,7 @@
 import { Metadata } from 'next';
+import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
+import { DocumentationDetailClient } from '@components/organisms';
+import { Text } from '@components/atoms';
 import {
     NPM_LUCIDE_CODE,
     NPM_CLASSNAMES_CODE,
@@ -14,9 +17,6 @@ import {
     PAGINATION_USAGE_CODE,
     PAGINATION_DATA_USAGE_CODE
 } from '@code';
-import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
-import { DocumentationDetailClient } from '@components/organisms';
-import { Text } from '@components/atoms';
 import { PaginationDemo } from './PaginationDemo';
 
 export const metadata: Metadata = {

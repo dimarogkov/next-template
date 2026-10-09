@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import { TEXTAREA_CODE, TEXTAREA_DEMO_CODE, TEXTAREA_USAGE_CODE, TEXTAREA_CONTROLLED_USAGE_CODE } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
+import { TEXTAREA_CODE, TEXTAREA_DEMO_CODE, TEXTAREA_USAGE_CODE, TEXTAREA_CONTROLLED_USAGE_CODE } from '@code';
 import { TextareaDemo } from './TextareaDemo';
 
 export const metadata: Metadata = {

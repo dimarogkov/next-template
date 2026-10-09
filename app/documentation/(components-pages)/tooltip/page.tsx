@@ -1,4 +1,7 @@
 import { Metadata } from 'next';
+import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
+import { DocumentationDetailClient } from '@components/organisms';
+import { Text } from '@components/atoms';
 import {
     NPM_CLASSNAMES_CODE,
     NPM_LUCIDE_CODE,
@@ -12,9 +15,6 @@ import {
     TOOLTIP_POSITION_USAGE_CODE,
     TOOLTIP_ALIGN_USAGE_CODE
 } from '@code';
-import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
-import { DocumentationDetailClient } from '@components/organisms';
-import { Text } from '@components/atoms';
 import { TooltipDemo } from './TooltipDemo';
 
 export const metadata: Metadata = {

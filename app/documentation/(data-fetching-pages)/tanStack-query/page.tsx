@@ -1,4 +1,6 @@
 import { Metadata } from 'next';
+import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
+import { DocumentationDetailClient } from '@components/organisms';
 import {
     NPM_CLASSNAMES_CODE,
     NPM_LUCIDE_CODE,
@@ -10,8 +12,6 @@ import {
     TANSTACK_QUERY_DEMO_CODE,
     TANSTACK_QUERY_PROVIDER_USAGE_CODE
 } from '@code';
-import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
-import { DocumentationDetailClient } from '@components/organisms';
 import { TanStackQueryDemo } from './TanStackQueryDemo';
 
 export const metadata: Metadata = {

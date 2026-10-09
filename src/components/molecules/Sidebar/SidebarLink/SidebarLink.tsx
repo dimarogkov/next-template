@@ -9,28 +9,22 @@ type Props = {
 };
 
 export const SidebarLink = ({ link, isActive }: Props) => {
-    const { name, href, isNew } = link;
+    const { name, href, status } = link;
 
     return (
         <Link
             href={href}
+            aria-current={isActive ? 'page' : undefined}
             className={cn(
-                'hover:text-title relative flex w-fit items-center gap-2.5 font-medium transition-colors duration-300',
+                'hover:text-title hover:bg-grey relative flex h-9 items-center gap-2.5 rounded-md px-2 transition-colors duration-300',
                 {
-                    'text-title pointer-events-none': isActive,
+                    'text-title bg-border pointer-events-none': isActive,
                     'text-text/80': !isActive
                 }
             )}
         >
             <span>{name}</span>
-            {isNew && <PulseDot className="size-2" />}
-
-            <div
-                className={cn('bg-title absolute -left-4 h-full w-px transition-opacity duration-200', {
-                    'opacity-100': isActive,
-                    'opacity-0': !isActive
-                })}
-            />
+            {status && <PulseDot variant={status} className="size-2" />}
         </Link>
     );
 };

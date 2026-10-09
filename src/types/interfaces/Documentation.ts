@@ -7,7 +7,7 @@ export interface IDocumentationPreview {
 }
 
 export interface IDocumentationLink extends ILink {
-    isNew: boolean;
+    status?: 'new' | 'updated';
 }
 
 export interface IDocumentationCodeArr {

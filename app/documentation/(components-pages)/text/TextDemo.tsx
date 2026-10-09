@@ -2,8 +2,8 @@ import { Text } from '@components/atoms';
 
 export const TextDemo = () => {
     return (
-        <>
-            <Text size="large" className="mb-2.5 last:mb-0">
+        <div className="flex flex-col gap-2.5">
+            <Text size="large">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam doloribus obcaecati aliquid
                 accusamus hic dicta blanditiis porro
             </Text>
@@ -12,6 +12,11 @@ export const TextDemo = () => {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam doloribus obcaecati aliquid
                 accusamus hic dicta blanditiis porro
             </Text>
-        </>
+
+            <Text size="small">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam doloribus obcaecati aliquid
+                accusamus hic dicta blanditiis porro
+            </Text>
+        </div>
     );
 };

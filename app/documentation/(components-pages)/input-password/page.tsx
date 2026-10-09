@@ -1,4 +1,7 @@
 import { Metadata } from 'next';
+import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
+import { DocumentationDetailClient } from '@components/organisms';
+import { Text } from '@components/atoms';
 import {
     INPUT_PASSWORD_CODE,
     INPUT_PASSWORD_DEMO_CODE,
@@ -6,9 +9,6 @@ import {
     INPUT_PASSWORD_CONTROLLED_USAGE_CODE,
     NPM_LUCIDE_CODE
 } from '@code';
-import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
-import { DocumentationDetailClient } from '@components/organisms';
-import { Text } from '@components/atoms';
 import { InputPasswordDemo } from './InputPasswordDemo';
 
 export const metadata: Metadata = {

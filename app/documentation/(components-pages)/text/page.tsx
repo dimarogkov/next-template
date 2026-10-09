@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import { NPM_CLASSNAMES_CODE, TEXT_CODE, TEXT_DEMO_CODE, TEXT_USAGE_CODE } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
+import { NPM_CLASSNAMES_CODE, TEXT_CODE, TEXT_DEMO_CODE, TEXT_USAGE_CODE } from '@code';
 import { TextDemo } from './TextDemo';
 
 export const metadata: Metadata = {

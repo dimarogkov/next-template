@@ -209,7 +209,7 @@ import {
     TOOLTIP_ALIGN_USAGE_CODE
 } from './tooltip';
 import { YUP_CODE, YUP_SCHEMA_CODE, YUP_OPTIONS_CODE, YUP_DEMO_CODE } from './yup';
-import { ZOD_CODE, ZOD_SCHEMA_CODE, ZOP_OPTIONS_CODE, ZOD_DEMO_CODE } from './zod';
+import { ZOD_CODE, ZOD_SCHEMA_CODE, ZOD_OPTIONS_CODE, ZOD_DEMO_CODE } from './zod';
 import { ZUSTAND_CODE, ZUSTAND_COUNT_CODE, ZUSTAND_DEMO_CODE } from './zustand';
 
 export {
@@ -440,7 +440,7 @@ export {
     YUP_DEMO_CODE,
     ZOD_CODE,
     ZOD_SCHEMA_CODE,
-    ZOP_OPTIONS_CODE,
+    ZOD_OPTIONS_CODE,
     ZOD_DEMO_CODE,
     ZUSTAND_CODE,
     ZUSTAND_COUNT_CODE,

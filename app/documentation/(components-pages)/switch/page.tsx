@@ -1,4 +1,7 @@
 import { Metadata } from 'next';
+import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
+import { DocumentationDetailClient } from '@components/organisms';
+import { Text } from '@components/atoms';
 import {
     NPM_CLASSNAMES_CODE,
     NPM_FRAMER_MOTION_CODE,
@@ -8,9 +11,6 @@ import {
     SWITCH_ACTIVE_USAGE_CODE,
     SWITCH_DISABLED_USAGE_CODE
 } from '@code';
-import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
-import { DocumentationDetailClient } from '@components/organisms';
-import { Text } from '@components/atoms';
 import { SwitchDemo } from './SwitchDemo';
 
 export const metadata: Metadata = {

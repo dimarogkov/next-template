@@ -10,8 +10,10 @@ export const SidebarBtn = () => {
     return (
         <button
             type="button"
+            aria-label={isSidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
+            aria-expanded={isSidebarOpen}
             onClick={toggleSidebar}
-            className="sidebar-btn border-border bg-bg absolute -right-7 hidden size-7 items-center justify-center rounded-r border md:flex lg:-right-8 lg:size-8 xl:hidden"
+            className="sidebar-btn border-border bg-bg absolute -right-12 hidden size-7 items-center justify-center rounded-r border md:flex lg:-right-13 lg:size-8 xl:hidden"
         >
             {isSidebarOpen ? (
                 <ChevronLeft className="text-text size-5" />

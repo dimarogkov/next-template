@@ -14,7 +14,7 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
 export const ComponentsCodeWithAccordion = forwardRef<HTMLDivElement, Props>(
     ({ codeArr, type = 'code', children, ...props }, ref) => {
         return (
-            <div ref={ref} {...props} className="relative flex w-full scroll-mt-36 flex-col gap-4 py-4 md:py-5">
+            <div ref={ref} {...props} className="relative flex w-full scroll-mt-31 flex-col gap-4 py-4 sm:py-5 md:p-5">
                 <div className="w-full">{children}</div>
 
                 <Accordion defaultActiveIndex={[0]}>

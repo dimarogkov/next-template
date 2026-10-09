@@ -1,8 +1,6 @@
 'use client';
 import { ReactNode, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { PATHS } from '@constants';
-import cn from 'classnames';
 
 type Props = {
     children?: ReactNode;
@@ -15,5 +13,5 @@ export const RootMain = ({ children }: Props) => {
         window.scrollTo({ top: 0 });
     }, [pathname]);
 
-    return <main className={cn('relative w-full', { 'pt-5 md:pt-10': pathname !== PATHS.HOME })}>{children}</main>;
+    return <main className="relative w-full">{children}</main>;
 };

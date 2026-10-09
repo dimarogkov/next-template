@@ -1,4 +1,6 @@
 import { Metadata } from 'next';
+import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
+import { DocumentationDetailClient } from '@components/organisms';
 import {
     NPM_HOOK_FORM_CODE,
     NPM_HOOK_FORM_RESOLVERS_CODE,
@@ -8,8 +10,6 @@ import {
     YUP_OPTIONS_CODE,
     YUP_DEMO_CODE
 } from '@code';
-import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
-import { DocumentationDetailClient } from '@components/organisms';
 import { YupDemo } from './YupDemo';
 
 export const metadata: Metadata = {

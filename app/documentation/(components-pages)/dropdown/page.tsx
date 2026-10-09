@@ -1,4 +1,7 @@
 import { Metadata } from 'next';
+import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
+import { DocumentationDetailClient } from '@components/organisms';
+import { Text } from '@components/atoms';
 import {
     DROPDOWN_CODE,
     DROPDOWN_WRAPPER_CODE,
@@ -18,9 +21,6 @@ import {
     NPM_CLASSNAMES_CODE,
     NPM_FRAMER_MOTION_CODE
 } from '@code';
-import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
-import { DocumentationDetailClient } from '@components/organisms';
-import { Text } from '@components/atoms';
 import { DropdownDemo } from './DropdownDemo';
 
 export const metadata: Metadata = {

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import { PATHS } from '@constants';
 import { Btn, Text, Title } from '@components/atoms';
+import { PATHS } from '@constants';
 import { ArrowUpRight } from 'lucide-react';
 
 export const metadata: Metadata = {

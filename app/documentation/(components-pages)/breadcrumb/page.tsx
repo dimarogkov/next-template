@@ -1,4 +1,7 @@
 import { Metadata } from 'next';
+import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
+import { DocumentationDetailClient } from '@components/organisms';
+import { Text } from '@components/atoms';
 import {
     BREADCRUMB_CODE,
     BREADCRUMB_UTILS_CODE,
@@ -6,9 +9,6 @@ import {
     BREADCRUMB_USAGE_CODE,
     NPM_LUCIDE_CODE
 } from '@code';
-import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
-import { DocumentationDetailClient } from '@components/organisms';
-import { Text } from '@components/atoms';
 import { BreadcrumbDemo } from './BreadcrumbDemo';
 
 export const metadata: Metadata = {

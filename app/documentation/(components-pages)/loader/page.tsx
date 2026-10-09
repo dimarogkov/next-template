@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import { LOADER_CODE, LOADER_DEMO_CODE, LOADER_USAGE_CODE } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
+import { LOADER_CODE, LOADER_DEMO_CODE, LOADER_USAGE_CODE } from '@code';
 import { LoaderDemo } from './LoaderDemo';
 
 export const metadata: Metadata = {

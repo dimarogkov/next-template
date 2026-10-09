@@ -96,8 +96,19 @@ export const ModalTrigger = forwardRef<HTMLDivElement, Props>(
 ModalTrigger.displayName = 'ModalTrigger';`;
 
 export const MODAL_CONTENT_CODE = `'use client';
-import { Dispatch, forwardRef, ReactNode, RefAttributes, SetStateAction } from 'react';
+import {
+  Dispatch,
+  forwardRef,
+  MutableRefObject,
+  ReactNode,
+  RefAttributes,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useRef
+} from 'react';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
+import { useEscapeKey, useFocusRestore, useFocusTrap } from '@hooks';
 import { ModalLayer } from './ModalLayer';
 import { ModalClose } from './ModalClose';
 import cn from 'classnames';
@@ -108,10 +119,44 @@ interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
   children?: ReactNode;
   className?: string;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  onOpenChange?: (isOpen: boolean) => void;
 }
 
 export const ModalContent = forwardRef<HTMLDivElement, Props>(
-  ({ isOpen, disableCloseBtn = false, children, className = '', setIsOpen = () => {}, ...props }, ref) => {
+  (
+    {
+      isOpen,
+      disableCloseBtn = false,
+      children,
+      className = '',
+      setIsOpen = () => {},
+      onOpenChange = () => {},
+      ...props
+    },
+    ref
+  ) => {
+    const dialogRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+      onOpenChange(!!isOpen);
+    }, [isOpen, onOpenChange]);
+
+    const setRefs = (node: HTMLDivElement | null) => {
+      dialogRef.current = node;
+
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) {
+        (ref as MutableRefObject<HTMLDivElement | null>).current = node;
+      }
+    };
+
+    const closeModal = useCallback(() => setIsOpen(false), [setIsOpen]);
+
+    useFocusRestore(dialogRef, isOpen);
+    useEscapeKey(closeModal, isOpen);
+    useFocusTrap(dialogRef, isOpen);
+
     const animation: HTMLMotionProps<'div'> = {
       initial: { opacity: 0 },
       animate: { opacity: 1, transition: { duration: 0.3, ease: [0.215, 0.61, 0.355, 1] } },
@@ -134,15 +179,18 @@ export const ModalContent = forwardRef<HTMLDivElement, Props>(
             <ModalLayer setIsOpen={setIsOpen} />
 
             <motion.div
-              ref={ref}
+              ref={setRefs}
               {...props}
               {...animationPopup}
+              role="dialog"
+              aria-modal="true"
+              tabIndex={-1}
               className={cn(
-                'border-border bg-bg relative max-w-[calc(100%-32px)] overflow-hidden rounded-md border will-change-transform md:w-150',
+                'border-border bg-bg relative w-full max-w-[calc(100%-40px)] overflow-hidden rounded-md border outline-hidden will-change-transform md:w-150',
                 className
               )}
             >
-              {!disableCloseBtn && <ModalClose onClick={() => setIsOpen(false)} />}
+              {!disableCloseBtn && <ModalClose onClick={closeModal} />}
               {children}
             </motion.div>
           </motion.div>
@@ -168,7 +216,7 @@ export const ModalLayer = forwardRef<HTMLDivElement, Props>(({ setIsOpen = () =>
       {...props}
       onClick={() => setIsOpen(false)}
       aria-hidden="true"
-      className="absolute top-0 left-0 h-full w-full bg-black/60"
+      className="absolute top-0 left-0 h-full w-full bg-black/80"
     />
   );
 });
@@ -186,6 +234,8 @@ export const ModalClose = forwardRef<HTMLButtonElement, Props>(({ ...props }, re
     <button
       ref={ref}
       {...props}
+      type="button"
+      aria-label="Close"
       className="absolute top-2.5 right-2.5 z-10 size-5 cursor-pointer outline-hidden transition-opacity duration-300 hover:opacity-75"
     >
       <X className="text-text h-full w-full" />

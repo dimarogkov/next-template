@@ -12,7 +12,7 @@ export const ModalLayer = forwardRef<HTMLDivElement, Props>(({ setIsOpen = () =>
             {...props}
             onClick={() => setIsOpen(false)}
             aria-hidden="true"
-            className="absolute top-0 left-0 h-full w-full bg-black/60"
+            className="absolute top-0 left-0 h-full w-full bg-black/80"
         />
     );
 });

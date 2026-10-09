@@ -15,6 +15,7 @@ export const SimpleLink = forwardRef<HTMLAnchorElement, Props>(({ href, target, 
       {...props}
       href={href}
       target={target}
+      rel={target === '_blank' ? 'noopener noreferrer' : undefined}
       className={cn(
         'text-title relative w-auto font-medium underline transition-opacity duration-300 hover:opacity-75',
         className

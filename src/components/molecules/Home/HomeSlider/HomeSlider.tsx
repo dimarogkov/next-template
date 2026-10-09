@@ -2,9 +2,9 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoScroll from 'embla-carousel-auto-scroll';
 import { EmblaOptionsType } from 'embla-carousel';
-import { DEV_ICONS } from '@constants';
 import { DevIcon } from '@components/molecules';
 import { Carousel } from '@components/atoms';
+import { DEV_ICONS } from '@constants';
 import cn from 'classnames';
 
 const OPTIONS: EmblaOptionsType = { loop: true, align: 'start', watchDrag: false };

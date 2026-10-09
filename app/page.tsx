@@ -1,6 +1,6 @@
-import { PATHS } from '@constants';
 import { HomeBg, HomeSlider } from '@components/molecules';
 import { Btn, Text, Title } from '@components/atoms';
+import { PATHS } from '@constants';
 import { ArrowUpRight } from 'lucide-react';
 
 const HomePage = () => {

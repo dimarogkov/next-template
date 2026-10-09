@@ -1,4 +1,7 @@
 import { Metadata } from 'next';
+import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
+import { DocumentationDetailClient } from '@components/organisms';
+import { Text } from '@components/atoms';
 import {
     NPM_CLASSNAMES_CODE,
     NPM_FRAMER_MOTION_CODE,
@@ -13,9 +16,6 @@ import {
     TABS_ACTIVE_USAGE_CODE,
     TABS_ANIMATION_USAGE_CODE
 } from '@code';
-import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
-import { DocumentationDetailClient } from '@components/organisms';
-import { Text } from '@components/atoms';
 import { TabsDemo } from './TabsDemo';
 
 export const metadata: Metadata = {

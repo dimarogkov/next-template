@@ -1,15 +1,15 @@
 import { Metadata } from 'next';
+import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
+import { DocumentationDetailClient } from '@components/organisms';
 import {
     NPM_HOOK_FORM_CODE,
     NPM_HOOK_FORM_RESOLVERS_CODE,
     NPM_ZOD_CODE,
     ZOD_CODE,
     ZOD_SCHEMA_CODE,
-    ZOP_OPTIONS_CODE,
+    ZOD_OPTIONS_CODE,
     ZOD_DEMO_CODE
 } from '@code';
-import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
-import { DocumentationDetailClient } from '@components/organisms';
 import { ZodDemo } from './ZodDemo';
 
 export const metadata: Metadata = {
@@ -43,7 +43,7 @@ const ZodPage = () => {
             withAccordion: true,
             codeArr: [
                 { label: 'index.ts', code: ZOD_CODE },
-                { label: 'formOptions.ts', code: ZOP_OPTIONS_CODE },
+                { label: 'formOptions.ts', code: ZOD_OPTIONS_CODE },
                 { label: 'schema.ts', code: ZOD_SCHEMA_CODE }
             ]
         },

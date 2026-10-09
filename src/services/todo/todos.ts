@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { API_URL } from '@constants';
 import { ITodo } from '@interfaces/Todo';
+import { API_URL } from '@constants';
 
 const LIMIT_COUNT = 6;
 

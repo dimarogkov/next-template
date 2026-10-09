@@ -16,8 +16,8 @@ export const useAppDispatch: () => AppDispatch = createDispatchHook<RootState>()
 export const useAppSelector: TypedUseSelectorHook<RootState> = createSelectorHook();`;
 
 export const RTK_QUERY_SLICE_CODE = `import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { API_URL } from '@constants';
 import { ITodo } from '@interfaces/Todo';
+import { API_URL } from '@constants';
 
 const LIMIT_COUNT = 6;
 

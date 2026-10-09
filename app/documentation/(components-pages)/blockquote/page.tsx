@@ -1,4 +1,7 @@
 import { Metadata } from 'next';
+import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
+import { DocumentationDetailClient } from '@components/organisms';
+import { Text } from '@components/atoms';
 import {
     BLOCKQUOTE_CODE,
     BLOCKQUOTE_WRAPPER_CODE,
@@ -7,9 +10,6 @@ import {
     BLOCKQUOTE_DEMO_CODE,
     BLOCKQUOTE_USAGE_CODE
 } from '@code';
-import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
-import { DocumentationDetailClient } from '@components/organisms';
-import { Text } from '@components/atoms';
 import { BlockquoteDemo } from './BlockquoteDemo';
 
 export const metadata: Metadata = {

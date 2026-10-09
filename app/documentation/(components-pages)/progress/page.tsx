@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import { NPM_CLASSNAMES_CODE, PROGRESS_CODE, PROGRESS_DEMO_CODE, PROGRESS_USAGE_CODE } from '@code';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
+import { NPM_CLASSNAMES_CODE, PROGRESS_CODE, PROGRESS_DEMO_CODE, PROGRESS_USAGE_CODE } from '@code';
 import { ProgressDemo } from './ProgressDemo';
 
 export const metadata: Metadata = {

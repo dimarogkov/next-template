@@ -9,6 +9,8 @@ export const ModalClose = forwardRef<HTMLButtonElement, Props>(({ ...props }, re
         <button
             ref={ref}
             {...props}
+            type="button"
+            aria-label="Close"
             className="absolute top-2.5 right-2.5 z-10 size-5 cursor-pointer outline-hidden transition-opacity duration-300 hover:opacity-75"
         >
             <X className="text-text h-full w-full" />

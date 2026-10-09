@@ -1,8 +1,8 @@
 'use client';
 import { usePathname } from 'next/navigation';
+import { Breadcrumb } from '@components/atoms';
 import { PATHS } from '@constants';
 import { getLinks } from '@utils';
-import { Breadcrumb } from '@components/atoms';
 import cn from 'classnames';
 
 type Props = {
