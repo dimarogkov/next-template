@@ -46,3 +46,12 @@ export const SELECT_MULTIPLE_USAGE_CODE = `<Select multiple>
     <Select.Option value='value_3'>...</Select.Option>
   </Select.Options>
 </Select>`;
+
+export const SELECT_DISABLED_USAGE_CODE = `<Select disabled>
+  <Select.Trigger placeholder='Select item' />
+  <Select.Options>
+    <Select.Option value='value_1'>...</Select.Option>
+    <Select.Option value='value_2'>...</Select.Option>
+    <Select.Option value='value_3'>...</Select.Option>
+  </Select.Options>
+</Select>`;

@@ -3,19 +3,22 @@ import { ITodo } from '@interfaces/Todo';
 import { API_URL } from '@constants';
 
 const LIMIT_COUNT = 6;
+const TODOS_URL = '/todos';
+
+const todosApi = axios.create({ baseURL: API_URL });
 
 export const getTodos = () => {
-    return axios.get<ITodo[]>(`${API_URL}/todos?limit=${LIMIT_COUNT}`);
+    return todosApi.get<ITodo[]>(TODOS_URL, { params: { limit: LIMIT_COUNT } });
 };
 
 export const createTodo = (todo: Omit<ITodo, 'id'>) => {
-    return axios.post<ITodo>(`${API_URL}/todos`, todo);
+    return todosApi.post<ITodo>(TODOS_URL, todo);
 };
 
 export const updateTodo = (todo: ITodo) => {
-    return axios.patch<ITodo>(`${API_URL}/todos/${todo.id}`, todo);
+    return todosApi.patch<ITodo>(`${TODOS_URL}/${todo.id}`, todo);
 };
 
 export const removeTodo = (todoId: number) => {
-    return axios.delete<ITodo>(`${API_URL}/todos/${todoId}`);
+    return todosApi.delete<ITodo>(`${TODOS_URL}/${todoId}`);
 };

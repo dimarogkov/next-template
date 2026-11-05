@@ -1,31 +1,27 @@
 'use client';
-import {
-    Children,
-    cloneElement,
-    Dispatch,
-    forwardRef,
-    HTMLAttributes,
-    isValidElement,
-    ReactElement,
-    RefAttributes,
-    SetStateAction
-} from 'react';
+import { Children, cloneElement, forwardRef, HTMLAttributes, isValidElement, ReactElement, RefAttributes } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+    tabsId?: string;
     hasAnimation?: boolean;
     activeIndex?: number;
     className?: string;
-    setActiveIndex?: Dispatch<SetStateAction<number>>;
+    setActiveIndex?: (index: number) => void;
 }
 
 export const TabsPanels = forwardRef<HTMLDivElement, Props>(
-    ({ hasAnimation, activeIndex, className = '', setActiveIndex, ...props }, ref) => {
+    ({ tabsId, hasAnimation, activeIndex, className = '', setActiveIndex, ...props }, ref) => {
         const childrenToRender = Children.map(props.children, (child, index) => {
             if (index === activeIndex) {
                 return isValidElement(child)
-                    ? cloneElement(child as ReactElement<Record<string, unknown>>, { hasAnimation })
+                    ? cloneElement(child as ReactElement<Record<string, unknown>>, {
+                          tabsId,
+                          hasAnimation,
+                          id: `${tabsId}-panel-${index}`,
+                          'aria-labelledby': `${tabsId}-tab-${index}`
+                      })
                     : child;
             }
         });

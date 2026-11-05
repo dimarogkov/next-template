@@ -56,8 +56,8 @@ const ReduxToolkitPage = () => {
         title: 'Redux Toolkit',
         description: 'The official, opinionated, batteries-included toolset for efficient Redux development.',
         links: [
-            { href: 'https://redux-toolkit.js.org/introduction/getting-started', name: 'Docs' },
-            { href: 'https://redux-toolkit.js.org/api/configureStore', name: 'API Reference' }
+            { href: 'https://redux-toolkit.js.org/introduction/getting-started', name: 'Redux Toolkit Docs' },
+            { href: 'https://redux-toolkit.js.org/api/configureStore', name: 'Redux Toolkit API Reference' }
         ],
         preview,
         codeSections

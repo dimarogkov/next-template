@@ -6,6 +6,7 @@ import {
     NPM_CLASSNAMES_CODE,
     NPM_LUCIDE_CODE,
     NPM_FRAMER_MOTION_CODE,
+    NPM_FLOATING_UI_CODE,
     SELECT_TYPE_CODE,
     SELECT_UTILS_CODE,
     SELECT_CODE,
@@ -15,11 +16,14 @@ import {
     SELECT_GROUP_CODE,
     SELECT_LABEL_CODE,
     SELECT_OPTION_CODE,
+    USE_ESCAPE_KEY_CODE,
+    USE_FOCUS_RESTORE_CODE,
     SELECT_DEMO_CODE,
     SELECT_USAGE_CODE,
     SELECT_CONTROLLED_USAGE_CODE,
     SELECT_ICON_USAGE_CODE,
-    SELECT_MULTIPLE_USAGE_CODE
+    SELECT_MULTIPLE_USAGE_CODE,
+    SELECT_DISABLED_USAGE_CODE
 } from '@code';
 import { SelectDemo } from './SelectDemo';
 
@@ -43,7 +47,8 @@ const SelectPage = () => {
             codeArr: [
                 { label: 'Classnames', code: NPM_CLASSNAMES_CODE },
                 { label: 'Lucide', code: NPM_LUCIDE_CODE },
-                { label: 'Framer Motion', code: NPM_FRAMER_MOTION_CODE }
+                { label: 'Framer Motion', code: NPM_FRAMER_MOTION_CODE },
+                { label: 'Floating UI', code: NPM_FLOATING_UI_CODE }
             ]
         },
         {
@@ -54,7 +59,10 @@ const SelectPage = () => {
                 <Text>
                     Include a custom <span className="badge-item">ISelectItem</span>,&nbsp;
                     <span className="badge-item">assignRefs</span> and <span className="badge-item">Select</span>&nbsp;
-                    component for consistent and maintainable usage throughout the project.
+                    component for consistent and maintainable usage throughout the project. Its options list renders
+                    through a portal and uses <span className="badge-item">Floating UI</span> for positioning and
+                    collision detection, and reuses the <span className="badge-item">useEscapeKey</span> and&nbsp;
+                    <span className="badge-item">useFocusRestore</span> hooks for accessibility.
                 </Text>
             ),
             withAccordion: true,
@@ -67,7 +75,9 @@ const SelectPage = () => {
                 { label: 'SelectOptions.tsx', code: SELECT_OPTIONS_CODE },
                 { label: 'SelectGroup.tsx', code: SELECT_GROUP_CODE },
                 { label: 'SelectLabel.tsx', code: SELECT_LABEL_CODE },
-                { label: 'SelectOption.tsx', code: SELECT_OPTION_CODE }
+                { label: 'SelectOption.tsx', code: SELECT_OPTION_CODE },
+                { label: 'useEscapeKey.tsx', code: USE_ESCAPE_KEY_CODE },
+                { label: 'useFocusRestore.tsx', code: USE_FOCUS_RESTORE_CODE }
             ]
         },
         {
@@ -121,13 +131,29 @@ const SelectPage = () => {
             ),
             withAccordion: false,
             codeArr: [SELECT_MULTIPLE_USAGE_CODE]
+        },
+        {
+            id: 'disabled',
+            title: 'Disabled',
+            link: '',
+            description: (
+                <Text>
+                    To prevent user interaction, add the <span className="badge-item">disabled</span> prop to the&nbsp;
+                    <span className="badge-item">Select</span> component.
+                </Text>
+            ),
+            withAccordion: false,
+            codeArr: [SELECT_DISABLED_USAGE_CODE]
         }
     ];
 
     const data: IDocumentationData = {
         title: 'Select',
         description: 'Displays a list of options for the user to pick from triggered by a button using Framer Motion.',
-        links: [{ href: 'https://motion.dev/docs/react', name: 'Docs' }],
+        links: [
+            { href: 'https://motion.dev/docs/react', name: 'Framer Motion Docs' },
+            { href: 'https://floating-ui.com/docs/react-dom', name: 'Floating UI Docs' }
+        ],
         preview,
         codeSections
     };

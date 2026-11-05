@@ -73,7 +73,7 @@ export const ToastDemo = () => {
               toast={t}
               type="error"
               data={{
-                title: 'This is a Error notification.',
+                title: 'This is an Error notification.',
                 text: 'This toast message notifies you of an Error. It is probably not your fault.'
               }}
             />

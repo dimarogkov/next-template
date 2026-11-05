@@ -6,10 +6,14 @@ import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLSpanElement>, RefAttributes<HTMLSpanElement> {
     value: string;
+    triggerElement?: HTMLElement | null;
     isOpen?: boolean;
     isMultiple?: boolean;
     selectedItems?: ISelectItem[];
+    disabled?: boolean;
+    labelId?: string;
     className?: string;
+    setTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
     setSelectedItems?: (item: ISelectItem) => void;
 }
@@ -18,12 +22,16 @@ export const SelectOption = forwardRef<HTMLSpanElement, Props>(
     (
         {
             value,
+            triggerElement,
             isOpen,
             isMultiple,
             selectedItems,
-            setIsOpen = () => {},
-            setSelectedItems = () => {},
+            disabled,
+            labelId,
             className = '',
+            setTriggerElement,
+            setIsOpen,
+            setSelectedItems,
             ...props
         },
         ref
@@ -31,8 +39,10 @@ export const SelectOption = forwardRef<HTMLSpanElement, Props>(
         const isActive = selectedItems?.some((item) => value === item.value) || false;
 
         const selectItem = () => {
-            setSelectedItems({ value, label: props.children as string });
-            !isMultiple && setIsOpen(false);
+            if (disabled) return;
+
+            setSelectedItems?.({ value, label: props.children as string });
+            !isMultiple && setIsOpen?.(false);
         };
 
         const onKeyDown = (e: KeyboardEvent<HTMLSpanElement>) => {
@@ -47,8 +57,9 @@ export const SelectOption = forwardRef<HTMLSpanElement, Props>(
                 ref={ref}
                 {...props}
                 role="option"
-                tabIndex={0}
+                tabIndex={disabled ? -1 : 0}
                 aria-selected={isActive}
+                aria-disabled={disabled || undefined}
                 onClick={selectItem}
                 onKeyDown={onKeyDown}
                 className={cn(
@@ -56,7 +67,8 @@ export const SelectOption = forwardRef<HTMLSpanElement, Props>(
                     className,
                     {
                         'hover:bg-border transition-colors duration-300': !isActive || (isActive && isMultiple),
-                        'bg-border pointer-events-none': isActive && !isMultiple
+                        'bg-border pointer-events-none': isActive && !isMultiple,
+                        'pointer-events-none opacity-60': disabled
                     }
                 )}
             >
@@ -72,7 +84,5 @@ export const SelectOption = forwardRef<HTMLSpanElement, Props>(
         );
     }
 );
-
-SelectOption.displayName = 'SelectOption';
 
 SelectOption.displayName = 'SelectOption';

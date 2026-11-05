@@ -1,5 +1,6 @@
 import { NPM_CLASSNAMES_CODE } from './classnames';
 import { NPM_EMBLA_CAROUSEL_CODE } from './embla-carousel';
+import { NPM_FLOATING_UI_CODE } from './floating-ui';
 import { NPM_FRAMER_MOTION_CODE } from './framer-motion';
 import { NPM_HOOK_FORM_CODE, NPM_HOOK_FORM_RESOLVERS_CODE } from './hook-form';
 import { NPM_HOT_TOAST_CODE } from './hot-toast';
@@ -13,6 +14,7 @@ import { NPM_ZUSTAND_CODE } from './zustand';
 export {
     NPM_CLASSNAMES_CODE,
     NPM_EMBLA_CAROUSEL_CODE,
+    NPM_FLOATING_UI_CODE,
     NPM_FRAMER_MOTION_CODE,
     NPM_HOOK_FORM_CODE,
     NPM_HOOK_FORM_RESOLVERS_CODE,

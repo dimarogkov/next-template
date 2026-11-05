@@ -7,9 +7,9 @@ export const SimpleLinkDemo = () => {
 
     return (
         <Text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae repellendus maxime esse aut quidem itaque
-            ipsum beatae corporis, nobis <SimpleLink href={pathname}>natus</SimpleLink> ex molestiae quam temporibus
-            placeat ad mollitia. Itaque, debitis perferendis!
+            Our new guide walks through everything you need to get started, from setting up your workspace to shipping
+            your first project. It covers the basics first, then moves into more advanced topics like testing and
+            deployment. Read the full guide <SimpleLink href={pathname}>here</SimpleLink> to follow along step by step.
         </Text>
     );
 };

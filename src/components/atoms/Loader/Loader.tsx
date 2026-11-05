@@ -28,10 +28,11 @@ export const Loader = forwardRef<SVGSVGElement, Props>(
             <svg
                 ref={ref}
                 {...props}
-                aria-hidden="true"
+                role="status"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 100 101"
                 fill="none"
+                aria-label="Loading"
                 className={cn('relative animate-spin', className)}
                 style={loaderSize}
             >

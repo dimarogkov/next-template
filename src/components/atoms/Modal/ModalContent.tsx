@@ -1,17 +1,8 @@
 'use client';
-import {
-    Dispatch,
-    forwardRef,
-    MutableRefObject,
-    ReactNode,
-    RefAttributes,
-    SetStateAction,
-    useCallback,
-    useEffect,
-    useRef
-} from 'react';
+import { Dispatch, forwardRef, ReactNode, RefAttributes, SetStateAction, useCallback, useEffect, useRef } from 'react';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 import { useEscapeKey, useFocusRestore, useFocusTrap } from '@hooks';
+import { assignRefs } from '@utils';
 import { ModalLayer } from './ModalLayer';
 import { ModalClose } from './ModalClose';
 import cn from 'classnames';
@@ -19,42 +10,22 @@ import cn from 'classnames';
 interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
     isOpen?: boolean;
     disableCloseBtn?: boolean;
-    children?: ReactNode;
     className?: string;
+    children?: ReactNode;
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
     onOpenChange?: (isOpen: boolean) => void;
 }
 
 export const ModalContent = forwardRef<HTMLDivElement, Props>(
-    (
-        {
-            isOpen,
-            disableCloseBtn = false,
-            children,
-            className = '',
-            setIsOpen = () => {},
-            onOpenChange = () => {},
-            ...props
-        },
-        ref
-    ) => {
+    ({ isOpen, disableCloseBtn = false, className = '', children, setIsOpen, onOpenChange, ...props }, ref) => {
         const dialogRef = useRef<HTMLDivElement>(null);
 
         useEffect(() => {
-            onOpenChange(!!isOpen);
+            onOpenChange?.(!!isOpen);
         }, [isOpen, onOpenChange]);
 
-        const setRefs = (node: HTMLDivElement | null) => {
-            dialogRef.current = node;
-
-            if (typeof ref === 'function') {
-                ref(node);
-            } else if (ref) {
-                (ref as MutableRefObject<HTMLDivElement | null>).current = node;
-            }
-        };
-
-        const closeModal = useCallback(() => setIsOpen(false), [setIsOpen]);
+        const setRefs = assignRefs<HTMLDivElement>(ref, dialogRef);
+        const closeModal = useCallback(() => setIsOpen?.(false), [setIsOpen]);
 
         useFocusRestore(dialogRef, isOpen);
         useEscapeKey(closeModal, isOpen);

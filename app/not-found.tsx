@@ -20,11 +20,9 @@ const NotFoundPage = () => {
                         This page doesn’t exist or was removed! We suggest you go back to home.
                     </Text>
 
-                    <Btn isLink className="m-auto">
-                        <Btn.Link href={PATHS.HOME}>
-                            <span>Go Home</span>
-                            <ArrowUpRight className="size-5" />
-                        </Btn.Link>
+                    <Btn href={PATHS.HOME} variant="secondary" className="m-auto">
+                        <span>Go Home</span>
+                        <ArrowUpRight className="size-5" />
                     </Btn>
                 </div>
             </div>

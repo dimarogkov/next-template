@@ -12,6 +12,7 @@ export const formOptions = {
         password: '',
         confirmPassword: '',
         radioType: '',
-        rememberMe: false
+        rememberMe: false,
+        message: ''
     }
 };

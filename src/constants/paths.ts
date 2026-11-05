@@ -12,7 +12,7 @@ export const PATHS = {
             BADGE: { path: '/badge' },
             BLOCKQUOTE: { path: '/blockquote' },
             BREADCRUMB: { path: '/breadcrumb' },
-            BTN: { path: '/button' },
+            BTN: { path: '/button', status: 'updated' },
             CARD: { path: '/card' },
             CAROUSEL: { path: '/carousel' },
             CHECKBOX: { path: '/checkbox' },

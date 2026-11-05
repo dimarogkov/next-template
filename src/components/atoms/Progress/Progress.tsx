@@ -11,15 +11,20 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
 
 export const Progress = forwardRef<HTMLDivElement, Props>(
     ({ value, radius = 60, type = 'line', className = '', ...props }, ref) => {
+        const clampedValue = Math.min(100, Math.max(0, value));
         const size = radius * 2;
         const normalizedRadius = radius - 3;
         const circumference = normalizedRadius * 2 * Math.PI;
-        const strokeDashoffset = circumference - (value / 100) * circumference;
+        const strokeDashoffset = circumference - (clampedValue / 100) * circumference;
 
         return (
             <div
                 ref={ref}
                 {...props}
+                role="progressbar"
+                aria-valuenow={clampedValue}
+                aria-valuemax={100}
+                aria-valuemin={0}
                 className={cn('relative overflow-hidden rounded-md', className, {
                     'bg-border h-2 w-full': type === 'line'
                 })}
@@ -53,13 +58,13 @@ export const Progress = forwardRef<HTMLDivElement, Props>(
                             size="large"
                             className="absolute top-0 left-0 flex h-full w-full items-center justify-center"
                         >
-                            {value}%
+                            {clampedValue}%
                         </Text>
                     </div>
                 ) : (
                     <span
                         className="bg-title absolute top-0 left-0 h-full rounded-md transition-all duration-300"
-                        style={{ width: `${value}%` }}
+                        style={{ width: `${clampedValue}%` }}
                     />
                 )}
             </div>

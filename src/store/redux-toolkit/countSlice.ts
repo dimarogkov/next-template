@@ -16,7 +16,7 @@ const countSlice = createSlice({
             state.count += action.payload;
         },
         removeCount: (state, action: PayloadAction<number>) => {
-            state.count = state.count !== 0 ? state.count - action.payload : 0;
+            state.count = Math.max(0, state.count - action.payload);
         },
         resetCount: () => initialState
     }

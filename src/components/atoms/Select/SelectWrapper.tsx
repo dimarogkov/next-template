@@ -28,6 +28,7 @@ interface SelectOptionProps {
 export const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className = '', ...props }, ref) => {
     const [selectedItems, setSelectedItems] = useState<ISelectItem[]>([]);
     const [isSelectOpen, setIsSelectOpen] = useState(false);
+    const [triggerElement, setTriggerElement] = useState<HTMLElement | null>(null);
 
     const wrapperRef = useRef<HTMLDivElement>(null);
     const selectRef = useRef<HTMLSelectElement>(null);
@@ -62,7 +63,11 @@ export const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className =
 
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
-            if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+            const target = e.target as Element;
+            const isInsideWrapper = wrapperRef.current?.contains(target);
+            const isInsidePortal = target.closest('[data-select-portal]');
+
+            if (!isInsideWrapper && !isInsidePortal) {
                 setIsSelectOpen(false);
             }
         };
@@ -107,9 +112,12 @@ export const SelectWrapper = forwardRef<HTMLSelectElement, Props>(({ className =
             {Children.map(props.children, (child) => {
                 return isValidElement(child)
                     ? cloneElement(child as ReactElement<Record<string, unknown>>, {
+                          triggerElement,
                           isOpen: isSelectOpen,
                           isMultiple,
                           selectedItems,
+                          disabled: !!props.disabled,
+                          setTriggerElement,
                           setIsOpen: setIsSelectOpen,
                           setSelectedItems: handleSelectedItems
                       })

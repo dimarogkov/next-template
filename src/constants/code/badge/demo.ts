@@ -9,7 +9,7 @@ export const BadgeDemo = () => {
       <Badge type="outline">Outline Badge</Badge>
 
       <Badge>
-        <User className="size-5" />
+        <User aria-hidden="true" className="size-5" />
         <span>Icon Badge</span>
       </Badge>
     </div>

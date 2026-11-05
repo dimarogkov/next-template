@@ -12,7 +12,10 @@ export const Input = forwardRef<HTMLInputElement, Props>(({ className = '', ...p
             {...props}
             className={cn(
                 'border-border text-title placeholder:text-text focus:border-text h-10 w-full rounded-md border bg-transparent px-4 outline-hidden transition-all duration-300',
-                className
+                className,
+                {
+                    'pointer-events-none opacity-60': props.disabled
+                }
             )}
         />
     );

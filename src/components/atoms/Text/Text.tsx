@@ -1,14 +1,17 @@
-import { HTMLAttributes, RefAttributes, forwardRef } from 'react';
+import { ElementType, forwardRef, HTMLAttributes, RefAttributes } from 'react';
 import cn from 'classnames';
 
-interface Props extends HTMLAttributes<HTMLParagraphElement>, RefAttributes<HTMLParagraphElement> {
+interface Props extends HTMLAttributes<HTMLElement>, RefAttributes<HTMLElement> {
+    as?: 'p' | 'span' | 'div';
     size?: 'default' | 'large' | 'small';
     className?: string;
 }
 
-export const Text = forwardRef<HTMLParagraphElement, Props>(({ size = 'default', className = '', ...props }, ref) => {
+export const Text = forwardRef<HTMLElement, Props>(({ as = 'p', size = 'default', className = '', ...props }, ref) => {
+    const Component = as as ElementType;
+
     return (
-        <p
+        <Component
             ref={ref}
             {...props}
             className={cn(

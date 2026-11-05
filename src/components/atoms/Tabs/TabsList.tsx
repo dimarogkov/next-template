@@ -1,34 +1,33 @@
 'use client';
-import {
-    Children,
-    cloneElement,
-    Dispatch,
-    forwardRef,
-    HTMLAttributes,
-    isValidElement,
-    ReactElement,
-    RefAttributes,
-    SetStateAction
-} from 'react';
+import { Children, cloneElement, forwardRef, HTMLAttributes, isValidElement, ReactElement, RefAttributes } from 'react';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLUListElement>, RefAttributes<HTMLUListElement> {
+    tabsId?: string;
     hasAnimation?: boolean;
     activeIndex?: number;
     className?: string;
-    setActiveIndex?: Dispatch<SetStateAction<number>>;
+    setActiveIndex?: (index: number) => void;
 }
 
 export const TabsList = forwardRef<HTMLUListElement, Props>(
-    ({ hasAnimation, activeIndex, className = '', setActiveIndex = () => {}, ...props }, ref) => {
+    ({ tabsId, hasAnimation, activeIndex, className = '', setActiveIndex, ...props }, ref) => {
         return (
-            <ul ref={ref} {...props} className={cn('border-border relative flex w-full border-b', className)}>
+            <ul
+                ref={ref}
+                {...props}
+                role="tablist"
+                className={cn('border-border relative flex w-full border-b', className)}
+            >
                 {Children.map(props.children, (child, index) => {
                     return isValidElement(child)
                         ? cloneElement(child as ReactElement<Record<string, unknown>>, {
+                              tabsId,
+                              index,
                               hasAnimation,
-                              tabIndex: index,
                               activeIndex,
+                              id: `${tabsId}-tab-${index}`,
+                              'aria-controls': `${tabsId}-panel-${index}`,
                               setActiveIndex
                           })
                         : child;

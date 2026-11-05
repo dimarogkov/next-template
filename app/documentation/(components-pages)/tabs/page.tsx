@@ -14,7 +14,9 @@ import {
     TABS_DEMO_CODE,
     TABS_USAGE_CODE,
     TABS_ACTIVE_USAGE_CODE,
-    TABS_ANIMATION_USAGE_CODE
+    TABS_ANIMATION_USAGE_CODE,
+    TABS_CONTROLLED_USAGE_CODE,
+    TABS_DISABLED_USAGE_CODE
 } from '@code';
 import { TabsDemo } from './TabsDemo';
 
@@ -74,12 +76,27 @@ const TabsPage = () => {
             codeArr: [TABS_USAGE_CODE]
         },
         {
+            id: 'controlled',
+            title: 'Controlled',
+            link: '',
+            description: (
+                <Text>
+                    To control the <span className="badge-item">Tabs</span>, add&nbsp;
+                    <span className="badge-item">activeIndex</span>
+                    &nbsp;and <span className="badge-item">onActiveIndexChange</span> props to manage its state
+                    manually.
+                </Text>
+            ),
+            withAccordion: false,
+            codeArr: [TABS_CONTROLLED_USAGE_CODE]
+        },
+        {
             id: 'active',
             title: 'Active',
             link: '',
             description: (
                 <Text>
-                    To make an <span className="badge-item">Tabs</span> initially active, add the&nbsp;
+                    To make a <span className="badge-item">Tabs</span> initially active, add the&nbsp;
                     <span className="badge-item">defaultActiveIndex</span> prop to it.
                 </Text>
             ),
@@ -98,6 +115,19 @@ const TabsPage = () => {
             ),
             withAccordion: false,
             codeArr: [TABS_ANIMATION_USAGE_CODE]
+        },
+        {
+            id: 'disabled',
+            title: 'Disabled',
+            link: '',
+            description: (
+                <Text>
+                    To prevent user interaction, add the <span className="badge-item">disabled</span> prop to the&nbsp;
+                    <span className="badge-item">Tabs.Tab</span> component.
+                </Text>
+            ),
+            withAccordion: false,
+            codeArr: [TABS_DISABLED_USAGE_CODE]
         }
     ];
 
@@ -105,7 +135,7 @@ const TabsPage = () => {
         title: 'Tabs',
         description:
             'A set of layered sections of content known as tab panels that are displayed one at a time using Framer Motion.',
-        links: [{ href: 'https://motion.dev/docs/react', name: 'Docs' }],
+        links: [{ href: 'https://motion.dev/docs/react', name: 'Framer Motion Docs' }],
         preview,
         codeSections
     };

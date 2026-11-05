@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { Checkbox, Label } from '@components/atoms';
+import { Checkbox } from '@components/atoms';
 
 export const CheckboxDemo = () => {
     const [firstCheckbox, setFirstCheckbox] = useState(false);
@@ -8,25 +8,19 @@ export const CheckboxDemo = () => {
 
     return (
         <div className="relative flex w-full flex-col gap-2.5">
-            <Label>
-                <Checkbox
-                    label="Accept terms and conditions"
-                    checked={firstCheckbox}
-                    onChange={() => setFirstCheckbox(!firstCheckbox)}
-                />
-            </Label>
+            <Checkbox
+                label="Accept terms and conditions"
+                checked={firstCheckbox}
+                onChange={() => setFirstCheckbox(!firstCheckbox)}
+            />
 
-            <Label>
-                <Checkbox
-                    label="Accept terms and conditions"
-                    checked={secondCheckbox}
-                    onChange={() => setSecondCheckbox(!secondCheckbox)}
-                />
-            </Label>
+            <Checkbox
+                label="Subscribe to our newsletter"
+                checked={secondCheckbox}
+                onChange={() => setSecondCheckbox(!secondCheckbox)}
+            />
 
-            <Label>
-                <Checkbox label="Accept terms and conditions" disabled />
-            </Label>
+            <Checkbox label="Unavailable option" disabled />
         </div>
     );
 };

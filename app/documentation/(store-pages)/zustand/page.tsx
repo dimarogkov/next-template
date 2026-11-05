@@ -48,8 +48,8 @@ const ZustandPage = () => {
         title: 'Zustand',
         description: 'A small, fast, and scalable bearbones state management solution.',
         links: [
-            { href: 'https://zustand.docs.pmnd.rs/getting-started/introduction', name: 'Docs' },
-            { href: 'https://zustand.docs.pmnd.rs/apis/create-store', name: 'API Reference' }
+            { href: 'https://zustand.docs.pmnd.rs/getting-started/introduction', name: 'Zustand Docs' },
+            { href: 'https://zustand.docs.pmnd.rs/apis/create-store', name: 'Zustand API Reference' }
         ],
         preview,
         codeSections

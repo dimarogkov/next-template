@@ -4,22 +4,31 @@ import { HTMLMotionProps, motion } from 'framer-motion';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+    tabsId?: string;
     hasAnimation?: boolean;
     className?: string;
 }
 
-export const TabsPanel = forwardRef<HTMLDivElement, Props>(({ hasAnimation, className = '', ...props }, ref) => {
-    const animation: HTMLMotionProps<'div'> = {
-        initial: { y: 8, opacity: 0 },
-        animate: { y: 0, opacity: 1, transition: { duration: 0.2 } },
-        exit: { y: -8, opacity: 0 }
-    };
+export const TabsPanel = forwardRef<HTMLDivElement, Props>(
+    ({ tabsId, hasAnimation, className = '', ...props }, ref) => {
+        const animation: HTMLMotionProps<'div'> = {
+            initial: { y: 8, opacity: 0 },
+            animate: { y: 0, opacity: 1, transition: { duration: 0.2 } },
+            exit: { y: -8, opacity: 0 }
+        };
 
-    return (
-        <div ref={ref} {...props} className={cn('relative w-full p-3 text-base sm:p-4', className)}>
-            {hasAnimation ? <motion.div {...animation}>{props.children}</motion.div> : <div>{props.children}</div>}
-        </div>
-    );
-});
+        return (
+            <div
+                ref={ref}
+                {...props}
+                role="tabpanel"
+                tabIndex={0}
+                className={cn('relative w-full p-3 text-base sm:p-4', className)}
+            >
+                {hasAnimation ? <motion.div {...animation}>{props.children}</motion.div> : <div>{props.children}</div>}
+            </div>
+        );
+    }
+);
 
 TabsPanel.displayName = 'TabsPanel';

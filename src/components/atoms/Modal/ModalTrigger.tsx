@@ -9,8 +9,8 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
 }
 
 export const ModalTrigger = forwardRef<HTMLDivElement, Props>(
-    ({ isOpen, className = '', setIsOpen = () => {}, ...props }, ref) => {
-        const openModal = () => setIsOpen(true);
+    ({ isOpen, className = '', setIsOpen, ...props }, ref) => {
+        const openModal = () => setIsOpen?.(true);
 
         const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
             if (e.key === 'Enter' || e.key === ' ') {
@@ -25,6 +25,8 @@ export const ModalTrigger = forwardRef<HTMLDivElement, Props>(
                 {...props}
                 role="button"
                 tabIndex={0}
+                aria-haspopup="dialog"
+                aria-expanded={!!isOpen}
                 onClick={openModal}
                 onKeyDown={onKeyDown}
                 className={cn('relative cursor-pointer list-none', className)}

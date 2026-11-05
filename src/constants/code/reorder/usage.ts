@@ -8,7 +8,7 @@ export const ReorderDemo = () => {
   const resetCursor = () => document.body.classList.remove('dragging');
 
   return (
-    <Reorder.Group values={items} onReorder={setItems}>
+    <Reorder.Group values={items} onReorder={setItems} aria-label='Reorderable list'>
       {items.map((item) => (
         <Reorder.Item
           key={item}

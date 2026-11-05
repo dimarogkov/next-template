@@ -4,18 +4,18 @@ export const SeparatorDemo = () => {
     return (
         <div className="relative w-full">
             <Title size="h3" className="mb-2.5 last:mb-0">
-                Separator Title
+                Weekend Trip
             </Title>
 
             <Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae voluptate dolorum vitae harum magni
-                adipisci tempore ducimus sed nesciunt dignissimos fugit rem consequatur beatae numquam voluptatem,
-                nostrum, ipsum temporibus esse.
+                We are heading north for a few days to unplug from work and spend some real time outdoors before the
+                weather turns colder. The cabin has no signal, which is honestly half the reason we picked it, and the
+                lake nearby is supposed to be good for fishing this time of year.
             </Text>
 
-            <Separator className="my-5" />
+            <Separator className="my-4" />
 
-            <Text>An open-source UI component library.</Text>
+            <Text>See you Monday.</Text>
         </div>
     );
 };

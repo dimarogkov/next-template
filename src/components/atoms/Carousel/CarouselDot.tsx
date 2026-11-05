@@ -12,6 +12,7 @@ export const CarouselDot = forwardRef<HTMLButtonElement, Props>(({ isActive, cla
             ref={ref}
             {...props}
             type="button"
+            aria-current={isActive ? 'true' : undefined}
             className={cn(
                 'relative size-4 cursor-pointer rounded-full border-2 outline-hidden transition-colors duration-300 md:size-5',
                 className,

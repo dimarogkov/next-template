@@ -13,15 +13,16 @@ export const CarouselNext = forwardRef<HTMLButtonElement, Props>(({ className = 
             ref={ref}
             {...props}
             type="button"
+            aria-label="Next slide"
             className={cn(
-                'border-border text-title hover:bg-border relative flex size-9 min-w-9 cursor-pointer items-center justify-center rounded-md border outline-hidden transition-colors duration-300',
+                'border-border text-title hover:bg-border relative flex size-9 min-w-9 cursor-pointer items-center justify-center rounded-md border outline-hidden transition-all duration-300',
                 className,
                 {
                     'pointer-events-none opacity-60 select-none': props.disabled
                 }
             )}
         >
-            <ChevronRight className="size-5" />
+            <ChevronRight aria-hidden="true" className="size-5" />
         </button>
     );
 });

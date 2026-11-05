@@ -4,18 +4,18 @@ export const TextDemo = () => {
   return (
     <div className="flex flex-col gap-2.5">
       <Text size="large">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam doloribus obcaecati aliquid
-        accusamus hic dicta blanditiis porro
+        Good typography makes long paragraphs easier to read without the words ever calling attention to
+        themselves.
       </Text>
 
       <Text>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam doloribus obcaecati aliquid
-        accusamus hic dicta blanditiis porro
+        Good typography makes long paragraphs easier to read without the words ever calling attention to
+        themselves.
       </Text>
 
       <Text size="small">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam doloribus obcaecati aliquid
-        accusamus hic dicta blanditiis porro
+        Good typography makes long paragraphs easier to read without the words ever calling attention to
+        themselves.
       </Text>
     </div>
   );

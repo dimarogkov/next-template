@@ -1,6 +1,3 @@
-import { BtnWrapper } from './BtnWrapper';
-import { BtnLink } from './BtnLink';
+import { Btn } from './Btn';
 
-export const Btn = Object.assign(BtnWrapper, {
-    Link: BtnLink
-});
+export { Btn };

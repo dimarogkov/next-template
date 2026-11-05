@@ -1,19 +1,26 @@
 'use client';
-import { Dispatch, forwardRef, KeyboardEvent, LiHTMLAttributes, RefAttributes, SetStateAction } from 'react';
+import { forwardRef, KeyboardEvent, LiHTMLAttributes, RefAttributes } from 'react';
 import { motion } from 'framer-motion';
 import cn from 'classnames';
 
 interface Props extends LiHTMLAttributes<HTMLLIElement>, RefAttributes<HTMLLIElement> {
+    tabsId?: string;
     hasAnimation?: boolean;
-    tabIndex?: number;
+    index?: number;
     activeIndex?: number;
+    disabled?: boolean;
     className?: string;
-    setActiveIndex?: Dispatch<SetStateAction<number>>;
+    setActiveIndex?: (index: number) => void;
 }
 
 export const TabsTab = forwardRef<HTMLLIElement, Props>(
-    ({ hasAnimation, tabIndex = 0, activeIndex, className = '', setActiveIndex = () => {}, ...props }, ref) => {
-        const selectTab = () => setActiveIndex(tabIndex);
+    ({ tabsId, hasAnimation, index = 0, activeIndex, disabled, className = '', setActiveIndex, ...props }, ref) => {
+        const isActive = index === activeIndex;
+
+        const selectTab = () => {
+            if (disabled) return;
+            setActiveIndex?.(index);
+        };
 
         const onKeyDown = (e: KeyboardEvent<HTMLLIElement>) => {
             if (e.key === 'Enter' || e.key === ' ') {
@@ -27,8 +34,9 @@ export const TabsTab = forwardRef<HTMLLIElement, Props>(
                 ref={ref}
                 {...props}
                 role="tab"
-                tabIndex={0}
-                aria-selected={tabIndex === activeIndex}
+                tabIndex={disabled ? -1 : 0}
+                aria-selected={isActive}
+                aria-disabled={disabled || undefined}
                 onClick={selectTab}
                 onKeyDown={onKeyDown}
                 className={cn(
@@ -36,17 +44,17 @@ export const TabsTab = forwardRef<HTMLLIElement, Props>(
                     className,
                     {
                         'transition-colors duration-200': hasAnimation,
-                        'text-title': tabIndex === activeIndex
+                        'pointer-events-none opacity-60': disabled,
+                        'text-title': isActive
                     }
                 )}
             >
                 {props.children}
 
-                {tabIndex === activeIndex && (
+                {isActive && (
                     <>
                         {hasAnimation ? (
                             <motion.div
-                                id="underline"
                                 layoutId="underline"
                                 className="bg-title absolute -bottom-px left-0 h-0.5 w-full"
                             />

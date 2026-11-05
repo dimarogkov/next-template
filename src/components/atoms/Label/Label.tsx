@@ -6,7 +6,7 @@ interface Props extends LabelHTMLAttributes<HTMLLabelElement>, RefAttributes<HTM
 }
 
 export const Label = forwardRef<HTMLLabelElement, Props>(({ className = '', ...props }, ref) => {
-    return <label ref={ref} {...props} className={cn('relative block w-full text-base', className)} />;
+    return <label ref={ref} {...props} className={cn('relative block w-full cursor-pointer text-base', className)} />;
 });
 
 Label.displayName = 'Label';

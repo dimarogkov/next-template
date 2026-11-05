@@ -9,21 +9,23 @@ export const ModalDemo = () => {
       <Modal.Content>
         <div className="w-full">
           <Title size="h3" className="p-2.5 md:p-4">
-            Modal Title
+            Mountain Trail Guide
           </Title>
 
           <Separator />
 
           <div className="flex w-full flex-col gap-2.5 p-2.5 md:p-4">
             <Text>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima eum dolor nulla delectus
-              sint optio cum ducimus vitae placeat veritatis vero deleniti, voluptatibus fugit. Laudantium
-              error cum earum rem hic!
+              Mountain trails wind through dense forest before opening into wide alpine meadows, where
+              wildflowers bloom through most of the summer.
             </Text>
             <Text>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima eum dolor nulla delectus
-              sint optio cum ducimus vitae placeat veritatis vero deleniti, voluptatibus fugit. Laudantium
-              error cum earum rem hic!
+              Early starts are rewarded with cooler temperatures and quieter paths, giving hikers a better
+              chance to spot deer and other wildlife along the way.
+            </Text>
+            <Text>
+              Pack enough water for the full distance, since there are no refill points until the ranger
+              station near the final overlook.
             </Text>
           </div>
         </div>

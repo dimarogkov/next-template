@@ -10,13 +10,13 @@ export const Blockquote = Object.assign(BlockquoteWrapper, {
 export const BLOCKQUOTE_WRAPPER_CODE = `import { forwardRef, HTMLAttributes, RefAttributes } from 'react';
 import cn from 'classnames';
 
-interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+interface Props extends HTMLAttributes<HTMLElement>, RefAttributes<HTMLElement> {
   className?: string;
 }
 
-export const BlockquoteWrapper = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
+export const BlockquoteWrapper = forwardRef<HTMLElement, Props>(({ className = '', ...props }, ref) => {
   return (
-    <div
+    <figure
       ref={ref}
       {...props}
       className={cn('border-border relative flex w-full flex-col gap-1.5 border-l-4 pl-3 md:pl-4', className)}
@@ -29,25 +29,25 @@ BlockquoteWrapper.displayName = 'BlockquoteWrapper';`;
 export const BLOCKQUOTE_AUTHOR_CODE = `import { forwardRef, HTMLAttributes, RefAttributes } from 'react';
 import cn from 'classnames';
 
-interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+interface Props extends HTMLAttributes<HTMLElement>, RefAttributes<HTMLElement> {
   className?: string;
 }
 
-export const BlockquoteAuthor = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
-  return <div ref={ref} {...props} className={cn('relative w-full', className)} />;
+export const BlockquoteAuthor = forwardRef<HTMLElement, Props>(({ className = '', ...props }, ref) => {
+  return <figcaption ref={ref} {...props} className={cn('relative w-full', className)} />;
 });
 
 BlockquoteAuthor.displayName = 'BlockquoteAuthor';`;
 
-export const BLOCKQUOTE_CONTENT_CODE = `import { forwardRef, HTMLAttributes, RefAttributes } from 'react';
+export const BLOCKQUOTE_CONTENT_CODE = `import { BlockquoteHTMLAttributes, forwardRef, RefAttributes } from 'react';
 import cn from 'classnames';
 
-interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+interface Props extends BlockquoteHTMLAttributes<HTMLQuoteElement>, RefAttributes<HTMLQuoteElement> {
   className?: string;
 }
 
-export const BlockquoteContent = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
-  return <div ref={ref} {...props} className={cn('relative w-full', className)} />;
+export const BlockquoteContent = forwardRef<HTMLQuoteElement, Props>(({ className = '', ...props }, ref) => {
+  return <blockquote ref={ref} {...props} className={cn('relative w-full', className)} />;
 });
 
 BlockquoteContent.displayName = 'BlockquoteContent';`;

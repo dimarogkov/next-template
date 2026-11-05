@@ -3,6 +3,7 @@ import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } 
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
 import {
+    DROPDOWN_UTILS_CODE,
     DROPDOWN_CODE,
     DROPDOWN_WRAPPER_CODE,
     DROPDOWN_TRIGGER_CODE,
@@ -14,11 +15,15 @@ import {
     DROPDOWN_SUB_MENU_CODE,
     DROPDOWN_SUB_TRIGGER_CODE,
     DROPDOWN_SUB_CONTENT_CODE,
+    USE_ESCAPE_KEY_CODE,
+    USE_FOCUS_RESTORE_CODE,
     DROPDOWN_DEMO_CODE,
     DROPDOWN_USAGE_CODE,
     DROPDOWN_POSITION_USAGE_CODE,
     DROPDOWN_ALIGN_USAGE_CODE,
+    DROPDOWN_DISABLED_USAGE_CODE,
     NPM_CLASSNAMES_CODE,
+    NPM_FLOATING_UI_CODE,
     NPM_FRAMER_MOTION_CODE
 } from '@code';
 import { DropdownDemo } from './DropdownDemo';
@@ -42,7 +47,8 @@ const DropdownPage = () => {
             withAccordion: true,
             codeArr: [
                 { label: 'Classnames', code: NPM_CLASSNAMES_CODE },
-                { label: 'Framer Motion', code: NPM_FRAMER_MOTION_CODE }
+                { label: 'Framer Motion', code: NPM_FRAMER_MOTION_CODE },
+                { label: 'Floating UI', code: NPM_FLOATING_UI_CODE }
             ]
         },
         {
@@ -51,13 +57,18 @@ const DropdownPage = () => {
             link: 'https://github.com/dimarogkov/next-template/tree/master/src/components/atoms/Dropdown',
             description: (
                 <Text>
-                    Include a custom <span className="badge-item">Dropdown</span> component for consistent and
-                    maintainable usage throughout the project.
+                    Include a custom <span className="badge-item">assignRefs</span> and&nbsp;
+                    <span className="badge-item">Dropdown</span> component for consistent and maintainable usage
+                    throughout the project. Its content renders through a portal (nested submenus position directly
+                    against it) and uses <span className="badge-item">Floating UI</span> for positioning and collision
+                    detection, and reuses the <span className="badge-item">useEscapeKey</span> and&nbsp;
+                    <span className="badge-item">useFocusRestore</span> hooks for accessibility.
                 </Text>
             ),
             withAccordion: true,
             codeArr: [
                 { label: 'index.ts', code: DROPDOWN_CODE },
+                { label: 'assignRefs.ts', code: DROPDOWN_UTILS_CODE },
                 { label: 'DropdownWrapper.tsx', code: DROPDOWN_WRAPPER_CODE },
                 { label: 'DropdownTrigger.tsx', code: DROPDOWN_TRIGGER_CODE },
                 { label: 'DropdownContent.tsx', code: DROPDOWN_CONTENT_CODE },
@@ -67,7 +78,9 @@ const DropdownPage = () => {
                 { label: 'DropdownItem.tsx', code: DROPDOWN_ITEM_CODE },
                 { label: 'DropdownSubMenu.tsx', code: DROPDOWN_SUB_MENU_CODE },
                 { label: 'DropdownSubTrigger.tsx', code: DROPDOWN_SUB_TRIGGER_CODE },
-                { label: 'DropdownSubContent.tsx', code: DROPDOWN_SUB_CONTENT_CODE }
+                { label: 'DropdownSubContent.tsx', code: DROPDOWN_SUB_CONTENT_CODE },
+                { label: 'useEscapeKey.tsx', code: USE_ESCAPE_KEY_CODE },
+                { label: 'useFocusRestore.tsx', code: USE_FOCUS_RESTORE_CODE }
             ]
         },
         {
@@ -108,6 +121,19 @@ const DropdownPage = () => {
             ),
             withAccordion: false,
             codeArr: [DROPDOWN_ALIGN_USAGE_CODE]
+        },
+        {
+            id: 'disabled',
+            title: 'Disabled',
+            link: '',
+            description: (
+                <Text>
+                    Use the <span className="badge-item">disabled</span> prop on&nbsp;
+                    <span className="badge-item">Dropdown.Item</span> to prevent user interaction with that item.
+                </Text>
+            ),
+            withAccordion: false,
+            codeArr: [DROPDOWN_DISABLED_USAGE_CODE]
         }
     ];
 
@@ -115,7 +141,10 @@ const DropdownPage = () => {
         title: 'Dropdown',
         description:
             'Displays a menu to the user such as a set of actions or functions triggered by a button using Framer Motion.',
-        links: [{ href: 'https://motion.dev/docs/react', name: 'Docs' }],
+        links: [
+            { href: 'https://motion.dev/docs/react', name: 'Framer Motion Docs' },
+            { href: 'https://floating-ui.com/docs/react-dom', name: 'Floating UI Docs' }
+        ],
         preview,
         codeSections
     };

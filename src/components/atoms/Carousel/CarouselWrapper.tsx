@@ -6,7 +6,16 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
 }
 
 export const CarouselWrapper = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
-    return <div ref={ref} {...props} className={cn('relative w-full', className)} />;
+    return (
+        <div
+            ref={ref}
+            {...props}
+            tabIndex={0}
+            role="region"
+            aria-roledescription="carousel"
+            className={cn('relative w-full outline-hidden', className)}
+        />
+    );
 });
 
 CarouselWrapper.displayName = 'CarouselWrapper';

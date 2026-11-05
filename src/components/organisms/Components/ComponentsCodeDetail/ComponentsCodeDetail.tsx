@@ -58,7 +58,7 @@ export const ComponentsCodeDetail = ({ code, type, className = '' }: Props) => {
                 </>
             ) : (
                 <div
-                    className={cn('flex w-full items-center justify-center', {
+                    className={cn('bg-grey flex w-full items-center justify-center', {
                         'h-13': type === 'installation',
                         'h-24': type === 'code'
                     })}

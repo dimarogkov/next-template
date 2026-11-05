@@ -27,7 +27,8 @@ export const validationSchema = z
     radioType: z.string().nonempty('Radio Type is required'),
     rememberMe: z.boolean().refine((value) => value === true, {
       message: 'Remember me is required'
-    })
+    }),
+    message: z.string().trim()
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ['confirmPassword'],
@@ -48,6 +49,7 @@ export const formOptions = {
     password: '',
     confirmPassword: '',
     radioType: '',
-    rememberMe: false
+    rememberMe: false,
+    message: ''
   }
 };`;

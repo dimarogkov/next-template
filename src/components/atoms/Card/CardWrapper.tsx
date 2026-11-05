@@ -10,7 +10,7 @@ export const CardWrapper = forwardRef<HTMLDivElement, Props>(({ className = '', 
         <div
             ref={ref}
             {...props}
-            className={cn('border-border bg-border relative w-full overflow-hidden rounded-md border', className)}
+            className={cn('border-border bg-grey relative w-full overflow-hidden rounded-md border', className)}
         />
     );
 });

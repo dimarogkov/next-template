@@ -23,7 +23,16 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
 }
 
 export const CarouselWrapper = forwardRef<HTMLDivElement, Props>(({ className = '', ...props }, ref) => {
-  return <div ref={ref} {...props} className={cn('relative w-full', className)} />;
+  return (
+    <div
+      ref={ref}
+      {...props}
+      tabIndex={0}
+      role="region"
+      aria-roledescription="carousel"
+      className={cn('relative w-full outline-hidden', className)}
+    />
+  );
 });
 
 CarouselWrapper.displayName = 'CarouselWrapper';`;
@@ -69,15 +78,16 @@ export const CarouselPrevious = forwardRef<HTMLButtonElement, Props>(({ classNam
       ref={ref}
       {...props}
       type="button"
+      aria-label="Previous slide"
       className={cn(
-        'border-border text-title hover:bg-border relative flex size-9 min-w-9 cursor-pointer items-center justify-center rounded-md border outline-hidden transition-colors duration-300',
+        'border-border text-title hover:bg-border relative flex size-9 min-w-9 cursor-pointer items-center justify-center rounded-md border outline-hidden transition-all duration-300',
         className,
         {
           'pointer-events-none opacity-60 select-none': props.disabled
         }
       )}
     >
-      <ChevronLeft className="size-5" />
+      <ChevronLeft aria-hidden="true" className="size-5" />
     </button>
   );
 });
@@ -112,15 +122,16 @@ export const CarouselNext = forwardRef<HTMLButtonElement, Props>(({ className = 
       ref={ref}
       {...props}
       type="button"
+      aria-label="Next slide"
       className={cn(
-        'border-border text-title hover:bg-border relative flex size-9 min-w-9 cursor-pointer items-center justify-center rounded-md border outline-hidden transition-colors duration-300',
+        'border-border text-title hover:bg-border relative flex size-9 min-w-9 cursor-pointer items-center justify-center rounded-md border outline-hidden transition-all duration-300',
         className,
         {
           'pointer-events-none opacity-60 select-none': props.disabled
         }
       )}
     >
-      <ChevronRight className="size-5" />
+      <ChevronRight aria-hidden="true" className="size-5" />
     </button>
   );
 });
@@ -141,6 +152,7 @@ export const CarouselDot = forwardRef<HTMLButtonElement, Props>(({ isActive, cla
       ref={ref}
       {...props}
       type="button"
+      aria-current={isActive ? 'true' : undefined}
       className={cn(
         'relative size-4 cursor-pointer rounded-full border-2 outline-hidden transition-colors duration-300 md:size-5',
         className,
@@ -155,7 +167,7 @@ export const CarouselDot = forwardRef<HTMLButtonElement, Props>(({ isActive, cla
 
 CarouselDot.displayName = 'CarouselDot';`;
 
-export const CAROUSEL_HOOK_CODE = `import { useEffect, useState } from 'react';
+export const CAROUSEL_HOOK_CODE = `import { KeyboardEvent, useEffect, useState } from 'react';
 import { EmblaCarouselType } from 'embla-carousel';
 
 export const useCarousel = (api?: EmblaCarouselType) => {
@@ -195,6 +207,18 @@ export const useCarousel = (api?: EmblaCarouselType) => {
   const onNextClick = () => api?.scrollNext();
   const onDotClick = (index: number) => api?.scrollTo(index);
 
+  const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      onPrevClick();
+    }
+
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      onNextClick();
+    }
+  };
+
   return {
     dots,
     activeDotIndex,
@@ -202,6 +226,7 @@ export const useCarousel = (api?: EmblaCarouselType) => {
     isNextDisabled,
     onPrevClick,
     onNextClick,
-    onDotClick
+    onDotClick,
+    onKeyDown
   };
 };`;

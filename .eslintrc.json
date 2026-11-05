@@ -11,6 +11,8 @@
                 "groups": ["builtin", "external", "internal", ["parent", "sibling", "index"]],
                 "pathGroups": [
                     { "pattern": "react", "group": "external", "position": "before" },
+                    { "pattern": "next", "group": "external", "position": "before" },
+                    { "pattern": "next/**", "group": "external", "position": "before" },
                     { "pattern": "@hooks", "group": "internal", "position": "before" },
                     { "pattern": "@providers", "group": "internal", "position": "before" },
                     { "pattern": "@root", "group": "internal", "position": "before" },
@@ -21,7 +23,9 @@
                     { "pattern": "@components/organisms", "group": "internal", "position": "before" },
                     { "pattern": "@components/organisms/**", "group": "internal", "position": "before" },
                     { "pattern": "@components/molecules", "group": "internal", "position": "before" },
+                    { "pattern": "@components/molecules/**", "group": "internal", "position": "before" },
                     { "pattern": "@components/atoms", "group": "internal", "position": "before" },
+                    { "pattern": "@components/atoms/**", "group": "internal", "position": "before" },
                     { "pattern": "@constants", "group": "internal", "position": "before" },
                     { "pattern": "@code", "group": "internal", "position": "before" },
                     { "pattern": "@utils", "group": "internal", "position": "before" },

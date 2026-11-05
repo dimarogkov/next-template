@@ -12,13 +12,10 @@ export const BtnDemo = () => {
       <Btn variant="secondary">Secondary Button</Btn>
       <Btn variant="outline">Outline Button</Btn>
       <Btn variant="ghost">Ghost Button</Btn>
-
-      <Btn isLink>
-        <Btn.Link href={pathname}>Link Button</Btn.Link>
-      </Btn>
+      <Btn href={pathname}>Link Button</Btn>
 
       <Btn>
-        <User className="size-5" />
+        <User aria-hidden="true" className="size-5" />
         <span>Icon Button</span>
       </Btn>
     </div>

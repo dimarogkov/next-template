@@ -14,9 +14,9 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, RefAttributes<H
 
 export const PaginationItem = forwardRef<HTMLButtonElement, Props>(
     ({ options, page, className = '', ...props }, ref) => {
-        const { currentPage = 1, setPage = () => {} } = options ?? {};
+        const { currentPage = 1, setPage } = options ?? {};
 
-        const toggleItem = () => setPage(+page);
+        const toggleItem = () => setPage?.(+page);
 
         return (
             <button

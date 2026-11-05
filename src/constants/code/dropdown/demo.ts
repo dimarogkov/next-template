@@ -15,7 +15,7 @@ export const DropdownDemo = () => {
 
           <Dropdown.SubMenu>
             <Dropdown.SubTrigger>Team</Dropdown.SubTrigger>
-            <Dropdown.SubContent>
+            <Dropdown.SubContent className="sm:w-50">
               <Dropdown.Menu>
                 <Dropdown.Item>Invite Users</Dropdown.Item>
                 <Dropdown.Item>New Team</Dropdown.Item>
@@ -24,6 +24,7 @@ export const DropdownDemo = () => {
           </Dropdown.SubMenu>
 
           <Dropdown.Item>Billing</Dropdown.Item>
+          <Dropdown.Item disabled>Archived</Dropdown.Item>
           <Dropdown.Separator />
           <Dropdown.Item>Settings</Dropdown.Item>
           <Dropdown.Item>Log out</Dropdown.Item>

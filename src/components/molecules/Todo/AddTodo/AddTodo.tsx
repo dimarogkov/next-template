@@ -1,33 +1,36 @@
 'use client';
-import { useState } from 'react';
+import { SubmitEvent, useState } from 'react';
 import { Btn, Input } from '@components/atoms';
+import { Plus } from 'lucide-react';
 
 type Props = {
     isLoading: boolean;
     createTodo: (title: string) => void;
 };
 
-export const AddTodo = ({ isLoading, createTodo = () => {} }: Props) => {
+export const AddTodo = ({ isLoading, createTodo }: Props) => {
     const [todoTitle, setTodoTitle] = useState('');
 
-    const handleAddTodo = () => {
+    const handleAddTodo = (e: SubmitEvent<HTMLFormElement>) => {
+        e.preventDefault();
         createTodo(todoTitle);
         setTodoTitle('');
     };
 
     return (
-        <div className="flex w-full flex-wrap gap-2.5">
+        <form className="flex w-full flex-wrap gap-2.5" onSubmit={handleAddTodo}>
             <Input
-                name="search"
+                name="title"
                 placeholder="Add Todo"
                 disabled={isLoading}
                 value={todoTitle}
                 onChange={({ target }) => setTodoTitle(target.value)}
             />
 
-            <Btn disabled={todoTitle.length === 0 || isLoading} onClick={handleAddTodo}>
-                {isLoading ? 'Loading...' : 'Add todo'}
+            <Btn type="submit" variant="secondary" disabled={todoTitle.length === 0 || isLoading}>
+                <Plus className="size-5" />
+                <span>{isLoading ? 'Loading...' : 'Add todo'}</span>
             </Btn>
-        </div>
+        </form>
     );
 };

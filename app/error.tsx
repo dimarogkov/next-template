@@ -6,7 +6,7 @@ type Props = {
     reset?: () => void;
 };
 
-const Error = ({ error, reset = () => {} }: Props) => {
+const Error = ({ error, reset }: Props) => {
     return (
         <section className="relative flex h-[calc(100svh-164px)] w-full items-center pb-16 md:h-[calc(100svh-188px)] lg:h-[calc(100svh-204px)] lg:pb-20">
             <div className="page-container">
@@ -15,7 +15,7 @@ const Error = ({ error, reset = () => {} }: Props) => {
                         {error?.message}
                     </Title>
 
-                    <Btn onClick={() => reset()} className="m-auto">
+                    <Btn onClick={() => reset?.()} className="m-auto">
                         Retry
                     </Btn>
                 </div>

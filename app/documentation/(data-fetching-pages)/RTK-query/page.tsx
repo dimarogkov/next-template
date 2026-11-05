@@ -68,7 +68,7 @@ const RtkQueryPage = () => {
         title: 'RTK Query',
         description:
             'Powerful data fetching and caching tool. It is designed to simplify common cases for loading data in a web application, eliminating the need to hand-write data fetching & caching logic yourself.',
-        links: [{ href: 'https://redux-toolkit.js.org/rtk-query/overview', name: 'Docs' }],
+        links: [{ href: 'https://redux-toolkit.js.org/rtk-query/overview', name: 'RTK Query Docs' }],
         preview,
         codeSections
     };

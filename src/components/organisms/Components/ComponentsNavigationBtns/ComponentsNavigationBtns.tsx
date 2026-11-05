@@ -33,7 +33,10 @@ export const ComponentsNavigationBtns = () => {
                         onClick={scrollTop}
                         className="group border-border hover:bg-grey flex h-10 w-full cursor-pointer items-center justify-between gap-2 rounded-md border px-2.5 transition-all duration-300 will-change-transform active:scale-[0.98]"
                     >
-                        <Text className="group-hover:text-title w-fit! leading-5! transition-colors duration-300">
+                        <Text
+                            as="span"
+                            className="group-hover:text-title w-fit! leading-5! transition-colors duration-300"
+                        >
                             Scroll to top
                         </Text>
 

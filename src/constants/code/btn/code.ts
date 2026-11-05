@@ -1,71 +1,61 @@
-export const BTN_CODE = `import { BtnWrapper } from './BtnWrapper';
-import { BtnLink } from './BtnLink';
-
-export const Btn = Object.assign(BtnWrapper, {
-  Link: BtnLink
-});`;
-
-export const BTN_WRAPPER_CODE = `import { ButtonHTMLAttributes, forwardRef, RefAttributes } from 'react';
+export const BTN_CODE = `'use client';
+import {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  forwardRef,
+  HTMLAttributeAnchorTarget,
+  MouseEventHandler,
+  Ref,
+  RefAttributes
+} from 'react';
+import Link from 'next/link';
 import cn from 'classnames';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, RefAttributes<HTMLButtonElement> {
   variant?: 'default' | 'secondary' | 'outline' | 'ghost';
-  isLink?: boolean;
+  href?: string;
+  target?: HTMLAttributeAnchorTarget;
   className?: string;
 }
 
-export const BtnWrapper = forwardRef<HTMLButtonElement, Props>(
-  ({ variant = 'default', isLink = false, className = '', ...props }, ref) => {
-    return (
-      <button
-        ref={ref}
-        {...props}
-        type={props.type || 'button'}
-        className={cn(
-          'flex h-10 w-full cursor-pointer items-center justify-center gap-1.5 rounded-md outline-hidden transition-all duration-300 will-change-transform active:scale-95 sm:w-fit',
-          className,
-          {
-            'bg-border text-text pointer-events-none select-none': props.disabled,
-            'bg-title text-bg hover:opacity-80': !props.disabled && variant === 'default',
-            'bg-yellow text-bg hover:opacity-80': !props.disabled && variant === 'secondary',
-            'border-border text-title border hover:opacity-80': !props.disabled && variant === 'outline',
-            'text-text hover:bg-border': !props.disabled && variant === 'ghost',
-            'px-4': !isLink
-          }
-        )}
-      />
+export const Btn = forwardRef<HTMLButtonElement, Props>(
+  ({ variant = 'default', href, target, className = '', ...props }, ref) => {
+    const classes = cn(
+      'flex h-10 w-full cursor-pointer items-center justify-center gap-1.5 rounded-md border px-4 outline-hidden transition-all duration-300 will-change-transform active:scale-95 sm:w-fit',
+      className,
+      {
+        'pointer-events-none opacity-60 select-none': props.disabled,
+        'border-border bg-border text-text': props.disabled || variant === 'default',
+        'hover:opacity-80': !props.disabled && variant === 'default',
+        'border-title bg-title text-bg hover:opacity-80': !props.disabled && variant === 'secondary',
+        'border-border text-title hover:opacity-80': !props.disabled && variant === 'outline',
+        'text-text hover:bg-border border-transparent': !props.disabled && variant === 'ghost'
+      }
     );
-  }
-);
 
-BtnWrapper.displayName = 'BtnWrapper';`;
-
-export const BTN_LINK_CODE = `import { ReactNode, RefAttributes, forwardRef } from 'react';
-import Link from 'next/link';
-import cn from 'classnames';
-
-interface Props extends RefAttributes<HTMLAnchorElement>, RefAttributes<HTMLAnchorElement> {
-  href: string;
-  target?: string;
-  children: ReactNode;
-  className?: string;
-}
-
-export const BtnLink = forwardRef<HTMLAnchorElement, Props>(
-  ({ href, target, children, className = '', ...props }, ref) => {
-    return (
+    return href ? (
       <Link
-        ref={ref}
+        ref={ref as Ref<HTMLAnchorElement>}
+        {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}
         href={href}
         target={target}
         rel={target === '_blank' ? 'noopener noreferrer' : undefined}
-        {...props}
-        className={cn('flex h-full w-full items-center justify-center gap-1.5 px-4', className)}
-      >
-        {children}
-      </Link>
+        aria-disabled={props.disabled || undefined}
+        tabIndex={props.disabled ? -1 : undefined}
+        onClick={(e) => {
+          if (props.disabled) {
+            e.preventDefault();
+            return;
+          }
+
+          (props.onClick as MouseEventHandler<HTMLAnchorElement> | undefined)?.(e);
+        }}
+        className={classes}
+      />
+    ) : (
+      <button ref={ref} {...props} type={props.type || 'button'} className={classes} />
     );
   }
 );
 
-BtnLink.displayName = 'BtnLink';`;
+Btn.displayName = 'Btn';`;

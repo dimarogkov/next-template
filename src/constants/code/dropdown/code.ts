@@ -1,3 +1,21 @@
+export const DROPDOWN_UTILS_CODE = `import { MutableRefObject, Ref } from 'react';
+
+export const assignRefs =
+  <T>(...refs: (Ref<T> | undefined)[]) =>
+  (node: T) => {
+    refs.forEach((r) => {
+      if (!r) {
+        return;
+      }
+
+      if (typeof r === 'function') {
+        r(node);
+      } else {
+        (r as MutableRefObject<T | null>).current = node;
+      }
+    });
+  };`;
+
 export const DROPDOWN_CODE = `import { DropdownWrapper } from './DropdownWrapper';
 import { DropdownTrigger } from './DropdownTrigger';
 import { DropdownContent } from './DropdownContent';
@@ -34,6 +52,7 @@ import {
   useRef,
   useState
 } from 'react';
+import { assignRefs } from '@utils';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
@@ -44,10 +63,16 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
 export const DropdownWrapper = forwardRef<HTMLDivElement, Props>(
   ({ isOpen = false, className = '', ...props }, ref) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(isOpen);
+    const [triggerElement, setTriggerElement] = useState<HTMLElement | null>(null);
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const setRefs = assignRefs<HTMLDivElement>(ref, dropdownRef);
 
     const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      const target = e.target as Element;
+      const isInsideWrapper = dropdownRef.current?.contains(target);
+      const isInsidePortal = target.closest('[data-dropdown-portal]');
+
+      if (!isInsideWrapper && !isInsidePortal) {
         setIsDropdownOpen(false);
       }
     };
@@ -61,11 +86,13 @@ export const DropdownWrapper = forwardRef<HTMLDivElement, Props>(
     }, []);
 
     return (
-      <div ref={ref || dropdownRef} {...props} className={cn('relative', className)}>
+      <div ref={setRefs} {...props} className={cn('relative', className)}>
         {Children.map(props.children, (child) => {
           return isValidElement(child)
             ? cloneElement(child as ReactElement<Record<string, unknown>>, {
+               triggerElement,
                isOpen: isDropdownOpen,
+               setTriggerElement,
                setIsOpen: setIsDropdownOpen
              })
             : child;
@@ -78,36 +105,32 @@ export const DropdownWrapper = forwardRef<HTMLDivElement, Props>(
 DropdownWrapper.displayName = 'DropdownWrapper';`;
 
 export const DROPDOWN_TRIGGER_CODE = `'use client';
-import { Dispatch, forwardRef, HTMLAttributes, KeyboardEvent, RefAttributes, SetStateAction } from 'react';
+import { Dispatch, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
+import { assignRefs } from '@utils';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+  triggerElement?: HTMLElement | null;
   isOpen?: boolean;
   className?: string;
+  setTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const DropdownTrigger = forwardRef<HTMLDivElement, Props>(
-  ({ isOpen, className = '', setIsOpen = () => {}, ...props }, ref) => {
-    const toggleOpen = () => setIsOpen((prevState) => !prevState);
+  ({ triggerElement, isOpen, className = '', setTriggerElement, setIsOpen, ...props }, ref) => {
+    const setRefs = assignRefs<HTMLDivElement>(ref, setTriggerElement);
 
-    const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggleOpen();
-      }
-    };
+    const toggleOpen = () => setIsOpen?.((prevState) => !prevState);
 
     return (
       <div
-        ref={ref}
+        ref={setRefs}
         {...props}
-        role="button"
-        tabIndex={0}
+        aria-haspopup="menu"
         aria-expanded={isOpen}
         onClick={toggleOpen}
-        onKeyDown={onKeyDown}
-        className={cn('relative cursor-pointer list-none', className)}
+        className={cn('relative cursor-pointer', className)}
       />
     );
   }
@@ -125,27 +148,81 @@ import {
   ReactElement,
   ReactNode,
   RefAttributes,
-  SetStateAction
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
 } from 'react';
+import { createPortal } from 'react-dom';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
+import { autoUpdate, flip, offset, shift, useFloating } from '@floating-ui/react-dom';
+import { useEscapeKey, useFocusRestore } from '@hooks';
+import { assignRefs } from '@utils';
 import cn from 'classnames';
 
 interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
+  triggerElement?: HTMLElement | null;
+  isOpen?: boolean;
+  subTriggerElement?: HTMLElement | null;
+  isSubOpen?: boolean;
   align?: 'start' | 'end';
   position?: 'bottom' | 'left' | 'right' | 'top';
-  isOpen?: boolean;
   className?: string;
   children?: ReactNode;
+  setTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  setSubTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
+  setIsSubOpen?: Dispatch<SetStateAction<boolean>>;
 }
+
+const PLACEMENTS = {
+  bottom: { start: 'bottom-start', end: 'bottom-end' },
+  top: { start: 'top-start', end: 'top-end' },
+  left: { start: 'left-start', end: 'left-end' },
+  right: { start: 'right-start', end: 'right-end' }
+} as const;
 
 export const DropdownContent = forwardRef<HTMLDivElement, Props>(
   (
-    { align = 'start', position = 'bottom', isOpen, className = '', children, setIsOpen = () => {}, ...props },
+    {
+      triggerElement,
+      isOpen,
+      subTriggerElement,
+      isSubOpen,
+      align = 'start',
+      position = 'bottom',
+      className = '',
+      children,
+      setTriggerElement,
+      setIsOpen,
+      setSubTriggerElement,
+      setIsSubOpen,
+      ...props
+    },
     ref
   ) => {
-    const isVerticalPosition = position === 'top' || position === 'bottom';
-    const isHorizontalPosition = position === 'left' || position === 'right';
+    const contentRef = useRef<HTMLDivElement>(null);
+    const [isMounted, setIsMounted] = useState(false);
+
+    const { refs, x, y, strategy } = useFloating({
+      open: isOpen,
+      strategy: 'fixed',
+      placement: PLACEMENTS[position][align],
+      middleware: [offset(4), flip(), shift({ padding: 8 })],
+      elements: { reference: triggerElement },
+      whileElementsMounted: autoUpdate
+    });
+
+    useEffect(() => {
+      setIsMounted(true);
+    }, []);
+
+    const setRefs = assignRefs<HTMLDivElement>(ref, contentRef, refs.setFloating);
+    const closeDropdown = useCallback(() => setIsOpen?.(false), [setIsOpen]);
+
+    useEscapeKey(closeDropdown, isOpen);
+    useFocusRestore(contentRef, isOpen);
 
     const animation: HTMLMotionProps<'div'> = {
       initial: { scale: 0.95, opacity: 0 },
@@ -153,53 +230,43 @@ export const DropdownContent = forwardRef<HTMLDivElement, Props>(
       exit: { scale: 0.95, opacity: 0 }
     };
 
-    const dropdownContentStyle = {
-      ...(position === 'top' && {
-        bottom: 'calc(100% + 4px)',
-        transformOrigin: 'bottom left'
-      }),
-      ...(position === 'right' && {
-        left: 'calc(100% + 4px)',
-        transformOrigin: 'top left'
-      }),
-      ...(position === 'bottom' && {
-        top: 'calc(100% + 4px)',
-        transformOrigin: 'top left'
-      }),
-      ...(position === 'left' && {
-        right: 'calc(100% + 4px)',
-        transformOrigin: 'top right'
-      })
-    };
-
-    return (
-      <AnimatePresence mode="wait">
-        {isOpen && (
-          <motion.div
-            ref={ref}
-            {...props}
-            {...animation}
-            className={cn(
-              'border-border bg-bg absolute z-10 w-max max-w-[calc(100vw-32px)] min-w-full rounded-md border p-1 will-change-transform',
-              className,
-              {
-                'left-0': align === 'start' && isVerticalPosition,
-                'top-0': align === 'start' && isHorizontalPosition,
-                'right-0': align === 'end' && isVerticalPosition,
-                'bottom-0': align === 'end' && isHorizontalPosition
-              }
-            )}
-            style={dropdownContentStyle}
-          >
-            {Children.map(children, (child) => {
-              return isValidElement(child)
-                ? cloneElement(child as ReactElement<Record<string, unknown>>, { isOpen, setIsOpen })
-                : child;
-            })}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    );
+    return !isMounted
+      ? null
+      : createPortal(
+         <AnimatePresence mode="wait">
+           {isOpen && (
+             <motion.div
+               ref={setRefs}
+               {...props}
+               {...animation}
+               role="menu"
+               tabIndex={-1}
+               data-dropdown-portal
+               style={{ position: strategy, top: y ?? 0, left: x ?? 0, ...props.style }}
+               className={cn(
+                 'border-border bg-bg z-10 w-max max-w-[calc(100vw-32px)] rounded-md border p-1 outline-hidden will-change-transform',
+                 className
+               )}
+             >
+               {Children.map(children, (child) => {
+                 return isValidElement(child)
+                   ? cloneElement(child as ReactElement<Record<string, unknown>>, {
+                      triggerElement,
+                      isOpen,
+                      subTriggerElement,
+                      isSubOpen,
+                      setTriggerElement,
+                      setIsOpen,
+                      setSubTriggerElement,
+                      setIsSubOpen
+                    })
+                   : child;
+               })}
+             </motion.div>
+           )}
+         </AnimatePresence>,
+         document.body
+       );
   }
 );
 
@@ -220,18 +287,47 @@ import {
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+  triggerElement?: HTMLElement | null;
   isOpen?: boolean;
+  subTriggerElement?: HTMLElement | null;
+  isSubOpen?: boolean;
   className?: string;
+  setTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  setSubTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
+  setIsSubOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const DropdownMenu = forwardRef<HTMLDivElement, Props>(
-  ({ isOpen, className = '', setIsOpen = () => {}, ...props }, ref) => {
+  (
+    {
+      triggerElement,
+      isOpen,
+      subTriggerElement,
+      isSubOpen,
+      className = '',
+      setTriggerElement,
+      setIsOpen,
+      setSubTriggerElement,
+      setIsSubOpen,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <div ref={ref} {...props} className={cn('relative flex w-full flex-col gap-1', className)}>
         {Children.map(props.children, (child) => {
           return isValidElement(child)
-            ? cloneElement(child as ReactElement<Record<string, unknown>>, { isOpen, setIsOpen })
+            ? cloneElement(child as ReactElement<Record<string, unknown>>, {
+               triggerElement,
+               isOpen,
+               subTriggerElement,
+               isSubOpen,
+               setTriggerElement,
+               setIsOpen,
+               setSubTriggerElement,
+               setIsSubOpen
+             })
             : child;
         })}
       </div>
@@ -243,17 +339,37 @@ DropdownMenu.displayName = 'DropdownMenu';`;
 
 export const DROPDOWN_LABEL_CODE = `'use client';
 import { Dispatch, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
-import { Text } from '../Text';
+import { Text } from '@components/atoms/Text';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+  triggerElement?: HTMLElement | null;
   isOpen?: boolean;
+  subTriggerElement?: HTMLElement | null;
+  isSubOpen?: boolean;
   className?: string;
+  setTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  setSubTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
+  setIsSubOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const DropdownLabel = forwardRef<HTMLDivElement, Props>(
-  ({ isOpen, className = '', setIsOpen, ...props }, ref) => {
+  (
+    {
+      triggerElement,
+      isOpen,
+      subTriggerElement,
+      isSubOpen,
+      className = '',
+      setTriggerElement,
+      setIsOpen,
+      setSubTriggerElement,
+      setIsSubOpen,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <div ref={ref} {...props} className={cn('relative px-2 py-1', className)}>
         <Text className="text-title!">{props.children}</Text>
@@ -266,18 +382,38 @@ DropdownLabel.displayName = 'DropdownLabel';`;
 
 export const DROPDOWN_SEPARATOR_CODE = `'use client';
 import { Dispatch, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
-import { Separator } from '../Separator';
+import { Separator } from '@components/atoms/Separator';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+  triggerElement?: HTMLElement | null;
   isOpen?: boolean;
+  subTriggerElement?: HTMLElement | null;
+  isSubOpen?: boolean;
   className?: string;
+  setTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  setSubTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
+  setIsSubOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const DropdownSeparator = forwardRef<HTMLDivElement, Props>(
-  ({ isOpen, className = '', setIsOpen, ...props }, ref) => {
-    return <Separator ref={ref} {...props} className={cn('-mx-1 w-auto!', className)} />;
+  (
+    {
+      triggerElement,
+      isOpen,
+      subTriggerElement,
+      isSubOpen,
+      className = '',
+      setTriggerElement,
+      setIsOpen,
+      setSubTriggerElement,
+      setIsSubOpen,
+      ...props
+    },
+    ref
+  ) => {
+    return <Separator ref={ref} {...props} decorative={false} className={cn('-mx-1 w-auto!', className)} />;
   }
 );
 
@@ -285,18 +421,44 @@ DropdownSeparator.displayName = 'DropdownSeparator';`;
 
 export const DROPDOWN_ITEM_CODE = `'use client';
 import { Dispatch, forwardRef, HTMLAttributes, KeyboardEvent, RefAttributes, SetStateAction } from 'react';
-import { Text } from '../Text';
+import { Text } from '@components/atoms/Text';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+  triggerElement?: HTMLElement | null;
   isOpen?: boolean;
+  subTriggerElement?: HTMLElement | null;
+  isSubOpen?: boolean;
+  disabled?: boolean;
   className?: string;
+  setTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  setSubTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
+  setIsSubOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const DropdownItem = forwardRef<HTMLDivElement, Props>(
-  ({ isOpen, className = '', setIsOpen = () => {}, ...props }, ref) => {
-    const closeDropdown = () => setIsOpen(false);
+  (
+    {
+      triggerElement,
+      isOpen,
+      subTriggerElement,
+      isSubOpen,
+      disabled = false,
+      className = '',
+      setTriggerElement,
+      setIsOpen,
+      setSubTriggerElement,
+      setIsSubOpen,
+      ...props
+    },
+    ref
+  ) => {
+    const closeDropdown = () => {
+      if (disabled) return;
+      setIsOpen?.(false);
+      setIsSubOpen?.(false);
+    };
 
     const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
       if (e.key === 'Enter' || e.key === ' ') {
@@ -310,12 +472,16 @@ export const DropdownItem = forwardRef<HTMLDivElement, Props>(
         ref={ref}
         {...props}
         role="menuitem"
-        tabIndex={0}
+        tabIndex={disabled ? -1 : 0}
+        aria-disabled={disabled || undefined}
         onClick={closeDropdown}
         onKeyDown={onKeyDown}
         className={cn(
           'hover:bg-border relative cursor-pointer rounded-md px-2 py-1 transition-colors duration-300',
-          className
+          className,
+          {
+            'pointer-events-none opacity-60': disabled
+          }
         )}
       >
         <Text className="text-title!">{props.children}</Text>
@@ -337,19 +503,47 @@ import {
   ReactElement,
   RefAttributes,
   SetStateAction,
+  useEffect,
   useState
 } from 'react';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+  triggerElement?: HTMLElement | null;
   isOpen?: boolean;
+  subTriggerElement?: HTMLElement | null;
+  isSubOpen?: boolean;
   className?: string;
+  setTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  setSubTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
+  setIsSubOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const DropdownSubMenu = forwardRef<HTMLDivElement, Props>(
-  ({ isOpen, className = '', setIsOpen = () => {}, ...props }, ref) => {
+  (
+    {
+      triggerElement,
+      isOpen,
+      subTriggerElement,
+      isSubOpen,
+      className = '',
+      setTriggerElement,
+      setIsOpen,
+      setSubTriggerElement,
+      setIsSubOpen,
+      ...props
+    },
+    ref
+  ) => {
+    const [ownSubTriggerElement, setOwnSubTriggerElement] = useState<HTMLElement | null>(null);
     const [isSubDropdownOpen, setIsSubDropdownOpen] = useState(false);
+
+    useEffect(() => {
+      if (!isOpen) {
+        setIsSubDropdownOpen(false);
+      }
+    }, [isOpen]);
 
     return (
       <div
@@ -363,9 +557,14 @@ export const DropdownSubMenu = forwardRef<HTMLDivElement, Props>(
         {Children.map(props.children, (child) => {
           return isValidElement(child)
             ? cloneElement(child as ReactElement<Record<string, unknown>>, {
+               triggerElement,
                isOpen,
+               subTriggerElement: ownSubTriggerElement,
                isSubOpen: isSubDropdownOpen,
-               setIsOpen
+               setTriggerElement,
+               setIsOpen,
+               setSubTriggerElement: setOwnSubTriggerElement,
+               setIsSubOpen: setIsSubDropdownOpen
              })
             : child;
         })}
@@ -377,26 +576,68 @@ export const DropdownSubMenu = forwardRef<HTMLDivElement, Props>(
 DropdownSubMenu.displayName = 'DropdownSubMenu';`;
 
 export const DROPDOWN_SUB_TRIGGER_CODE = `'use client';
-import { Dispatch, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
-import { Text } from '../Text';
+import { Dispatch, forwardRef, HTMLAttributes, KeyboardEvent, RefAttributes, SetStateAction } from 'react';
+import { Text } from '@components/atoms/Text';
+import { assignRefs } from '@utils';
 import { ChevronRight } from 'lucide-react';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+  triggerElement?: HTMLElement | null;
   isOpen?: boolean;
+  subTriggerElement?: HTMLElement | null;
   isSubOpen?: boolean;
   className?: string;
+  setTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  setSubTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
+  setIsSubOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const DropdownSubTrigger = forwardRef<HTMLDivElement, Props>(
-  ({ isOpen, isSubOpen, className = '', setIsOpen, ...props }, ref) => {
+  (
+    {
+      triggerElement,
+      isOpen,
+      subTriggerElement,
+      isSubOpen,
+      className = '',
+      setTriggerElement,
+      setIsOpen,
+      setSubTriggerElement,
+      setIsSubOpen,
+      ...props
+    },
+    ref
+  ) => {
+    const setRefs = assignRefs<HTMLDivElement>(ref, setSubTriggerElement);
+
+    const toggleSubOpen = () => setIsSubOpen?.((prevState) => !prevState);
+
+    const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        setIsSubOpen?.(true);
+      }
+
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        setIsSubOpen?.(false);
+      }
+    };
+
     return (
       <div
-        ref={ref}
+        ref={setRefs}
         {...props}
+        tabIndex={0}
+        role="menuitem"
+        aria-haspopup="menu"
+        aria-expanded={isSubOpen}
+        onClick={toggleSubOpen}
+        onKeyDown={onKeyDown}
         className={cn(
-          'hover:bg-border relative flex cursor-pointer items-center justify-between rounded-md px-2 py-1 transition-colors duration-300',
+          'hover:bg-border relative flex cursor-pointer items-center justify-between rounded-md px-2 py-1 outline-hidden transition-colors duration-300',
           className,
           {
             'bg-border': isSubOpen
@@ -404,7 +645,7 @@ export const DropdownSubTrigger = forwardRef<HTMLDivElement, Props>(
         )}
       >
         <Text className="text-title! w-fit!">{props.children}</Text>
-        <ChevronRight className="size-4" />
+        <ChevronRight aria-hidden="true" className="size-4" />
       </div>
     );
   }
@@ -425,18 +666,51 @@ import {
   SetStateAction
 } from 'react';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
+import { autoUpdate, flip, offset, shift, useFloating } from '@floating-ui/react-dom';
+import { assignRefs } from '@utils';
 import cn from 'classnames';
 
 interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
+  triggerElement?: HTMLElement | null;
   isOpen?: boolean;
+  subTriggerElement?: HTMLElement | null;
   isSubOpen?: boolean;
   className?: string;
   children?: ReactNode;
+  setTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  setSubTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
+  setIsSubOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const DropdownSubContent = forwardRef<HTMLDivElement, Props>(
-  ({ isOpen, isSubOpen, className = '', children, setIsOpen = () => {}, ...props }, ref) => {
+  (
+    {
+      triggerElement,
+      isOpen,
+      subTriggerElement,
+      isSubOpen,
+      className = '',
+      children,
+      setTriggerElement,
+      setIsOpen,
+      setSubTriggerElement,
+      setIsSubOpen,
+      ...props
+    },
+    ref
+  ) => {
+    const { refs, x, y, strategy } = useFloating({
+      open: isSubOpen,
+      strategy: 'absolute',
+      placement: 'right-start',
+      middleware: [offset({ mainAxis: 4, crossAxis: -5 }), flip(), shift({ padding: 8 })],
+      elements: { reference: subTriggerElement },
+      whileElementsMounted: autoUpdate
+    });
+
+    const setRefs = assignRefs<HTMLDivElement>(ref, refs.setFloating);
+
     const animation: HTMLMotionProps<'div'> = {
       initial: { scale: 0.95, opacity: 0 },
       animate: { scale: 1, opacity: 1, transition: { ease: [0.215, 0.61, 0.355, 1] } },
@@ -447,17 +721,28 @@ export const DropdownSubContent = forwardRef<HTMLDivElement, Props>(
       <AnimatePresence mode="wait">
         {isSubOpen && (
           <motion.div
-            ref={ref}
+            ref={setRefs}
             {...props}
             {...animation}
+            role="menu"
+            style={{ position: strategy, top: y ?? 0, left: x ?? 0, ...props.style }}
             className={cn(
-              'border-border bg-bg absolute top-[calc(100%+4px)] z-10 w-max max-w-[calc(100vw-32px)] min-w-full origin-top-left rounded-md border p-1 will-change-transform sm:-top-px sm:left-[calc(100%+4px)]',
+              'border-border bg-bg z-10 w-max max-w-[calc(100vw-32px)] rounded-md border p-1 will-change-transform',
               className
             )}
           >
             {Children.map(children, (child) => {
               return isValidElement(child)
-                ? cloneElement(child as ReactElement<Record<string, unknown>>, { isOpen, setIsOpen })
+                ? cloneElement(child as ReactElement<Record<string, unknown>>, {
+                   triggerElement,
+                   isOpen,
+                   subTriggerElement,
+                   isSubOpen,
+                   setTriggerElement,
+                   setIsOpen,
+                   setSubTriggerElement,
+                   setIsSubOpen
+                 })
                 : child;
             })}
           </motion.div>
@@ -468,3 +753,45 @@ export const DropdownSubContent = forwardRef<HTMLDivElement, Props>(
 );
 
 DropdownSubContent.displayName = 'DropdownSubContent';`;
+
+export const USE_ESCAPE_KEY_CODE = `import { useEffect } from 'react';
+
+export const useEscapeKey = (onEscape: () => void, isActive?: boolean) => {
+  useEffect(() => {
+    if (!isActive) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onEscape();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onEscape, isActive]);
+};`;
+
+export const USE_FOCUS_RESTORE_CODE = `import { RefObject, useEffect, useRef } from 'react';
+
+export const useFocusRestore = (containerRef: RefObject<HTMLElement | null>, isActive?: boolean) => {
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
+  const wasActiveRef = useRef(false);
+
+  if (isActive && !wasActiveRef.current) {
+    previouslyFocusedRef.current = document.activeElement as HTMLElement;
+  }
+
+  wasActiveRef.current = !!isActive;
+
+  useEffect(() => {
+    if (!isActive) {
+      previouslyFocusedRef.current?.focus();
+      return;
+    }
+
+    if (!containerRef.current?.contains(document.activeElement)) {
+      containerRef.current?.focus();
+    }
+  }, [containerRef, isActive]);
+};`;

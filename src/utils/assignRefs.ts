@@ -1,8 +1,8 @@
 import { MutableRefObject, Ref } from 'react';
 
 export const assignRefs =
-    (...refs: (Ref<HTMLSelectElement> | undefined)[]) =>
-    (node: HTMLSelectElement) => {
+    <T>(...refs: (Ref<T> | undefined)[]) =>
+    (node: T) => {
         refs.forEach((r) => {
             if (!r) {
                 return;
@@ -11,7 +11,7 @@ export const assignRefs =
             if (typeof r === 'function') {
                 r(node);
             } else {
-                (r as MutableRefObject<HTMLSelectElement | null>).current = node;
+                (r as MutableRefObject<T | null>).current = node;
             }
         });
     };

@@ -8,7 +8,7 @@ export const validationSchema = yup
         age: yup
             .number()
             .required('Missing age')
-            .positive('Age must be an positive number')
+            .positive('Age must be a positive number')
             .integer('Age must be an integer')
             .min(18, 'Your age must be minimum 18'),
         email: yup.string().trim().required('Missing email').email('Invalid email format'),
@@ -17,7 +17,10 @@ export const validationSchema = yup
             .trim()
             .required('Missing phone')
             .matches(phoneRegex, 'Phone number must be in correct format - +380 XX XXX XX XX'),
-        select: yup.string().required().oneOf(['option_1', 'option_2', 'option_3'], 'Select any option'),
+        select: yup
+            .string()
+            .required('Select any option')
+            .oneOf(['option_1', 'option_2', 'option_3'], 'Select any option'),
         password: yup.string().trim().required('Missing password').min(4, 'Your password must be minimum 4'),
         confirmPassword: yup
             .string()
@@ -25,6 +28,7 @@ export const validationSchema = yup
             .required('Missing confirm password')
             .oneOf([yup.ref('password')], 'Passwords must match'),
         radioType: yup.string().required('Radio Type is required'),
-        rememberMe: yup.bool().required().oneOf([true], 'Remember me is required')
+        rememberMe: yup.bool().required('Remember me is required').oneOf([true], 'Remember me is required'),
+        message: yup.string().trim()
     })
     .required();

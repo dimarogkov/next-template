@@ -103,7 +103,7 @@ const TooltipPage = () => {
         title: 'Tooltip',
         description:
             'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it using Framer Motion.',
-        links: [{ href: 'https://motion.dev/docs/react', name: 'Docs' }],
+        links: [{ href: 'https://motion.dev/docs/react', name: 'Framer Motion Docs' }],
         preview,
         codeSections
     };

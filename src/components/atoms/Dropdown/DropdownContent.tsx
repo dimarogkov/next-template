@@ -8,27 +8,81 @@ import {
     ReactElement,
     ReactNode,
     RefAttributes,
-    SetStateAction
+    SetStateAction,
+    useCallback,
+    useEffect,
+    useRef,
+    useState
 } from 'react';
+import { createPortal } from 'react-dom';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
+import { autoUpdate, flip, offset, shift, useFloating } from '@floating-ui/react-dom';
+import { useEscapeKey, useFocusRestore } from '@hooks';
+import { assignRefs } from '@utils';
 import cn from 'classnames';
 
 interface Props extends HTMLMotionProps<'div'>, RefAttributes<HTMLDivElement> {
+    triggerElement?: HTMLElement | null;
+    isOpen?: boolean;
+    subTriggerElement?: HTMLElement | null;
+    isSubOpen?: boolean;
     align?: 'start' | 'end';
     position?: 'bottom' | 'left' | 'right' | 'top';
-    isOpen?: boolean;
     className?: string;
     children?: ReactNode;
+    setTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
+    setSubTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
+    setIsSubOpen?: Dispatch<SetStateAction<boolean>>;
 }
+
+const PLACEMENTS = {
+    bottom: { start: 'bottom-start', end: 'bottom-end' },
+    top: { start: 'top-start', end: 'top-end' },
+    left: { start: 'left-start', end: 'left-end' },
+    right: { start: 'right-start', end: 'right-end' }
+} as const;
 
 export const DropdownContent = forwardRef<HTMLDivElement, Props>(
     (
-        { align = 'start', position = 'bottom', isOpen, className = '', children, setIsOpen = () => {}, ...props },
+        {
+            triggerElement,
+            isOpen,
+            subTriggerElement,
+            isSubOpen,
+            align = 'start',
+            position = 'bottom',
+            className = '',
+            children,
+            setTriggerElement,
+            setIsOpen,
+            setSubTriggerElement,
+            setIsSubOpen,
+            ...props
+        },
         ref
     ) => {
-        const isVerticalPosition = position === 'top' || position === 'bottom';
-        const isHorizontalPosition = position === 'left' || position === 'right';
+        const contentRef = useRef<HTMLDivElement>(null);
+        const [isMounted, setIsMounted] = useState(false);
+
+        const { refs, x, y, strategy } = useFloating({
+            open: isOpen,
+            strategy: 'fixed',
+            placement: PLACEMENTS[position][align],
+            middleware: [offset(4), flip(), shift({ padding: 8 })],
+            elements: { reference: triggerElement },
+            whileElementsMounted: autoUpdate
+        });
+
+        useEffect(() => {
+            setIsMounted(true);
+        }, []);
+
+        const setRefs = assignRefs<HTMLDivElement>(ref, contentRef, refs.setFloating);
+        const closeDropdown = useCallback(() => setIsOpen?.(false), [setIsOpen]);
+
+        useEscapeKey(closeDropdown, isOpen);
+        useFocusRestore(contentRef, isOpen);
 
         const animation: HTMLMotionProps<'div'> = {
             initial: { scale: 0.95, opacity: 0 },
@@ -36,53 +90,43 @@ export const DropdownContent = forwardRef<HTMLDivElement, Props>(
             exit: { scale: 0.95, opacity: 0 }
         };
 
-        const dropdownContentStyle = {
-            ...(position === 'top' && {
-                bottom: 'calc(100% + 4px)',
-                transformOrigin: 'bottom left'
-            }),
-            ...(position === 'right' && {
-                left: 'calc(100% + 4px)',
-                transformOrigin: 'top left'
-            }),
-            ...(position === 'bottom' && {
-                top: 'calc(100% + 4px)',
-                transformOrigin: 'top left'
-            }),
-            ...(position === 'left' && {
-                right: 'calc(100% + 4px)',
-                transformOrigin: 'top right'
-            })
-        };
-
-        return (
-            <AnimatePresence mode="wait">
-                {isOpen && (
-                    <motion.div
-                        ref={ref}
-                        {...props}
-                        {...animation}
-                        className={cn(
-                            'border-border bg-bg absolute z-10 w-max max-w-[calc(100vw-32px)] min-w-full rounded-md border p-1 will-change-transform',
-                            className,
-                            {
-                                'left-0': align === 'start' && isVerticalPosition,
-                                'top-0': align === 'start' && isHorizontalPosition,
-                                'right-0': align === 'end' && isVerticalPosition,
-                                'bottom-0': align === 'end' && isHorizontalPosition
-                            }
-                        )}
-                        style={dropdownContentStyle}
-                    >
-                        {Children.map(children, (child) => {
-                            return isValidElement(child)
-                                ? cloneElement(child as ReactElement<Record<string, unknown>>, { isOpen, setIsOpen })
-                                : child;
-                        })}
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        );
+        return !isMounted
+            ? null
+            : createPortal(
+                  <AnimatePresence mode="wait">
+                      {isOpen && (
+                          <motion.div
+                              ref={setRefs}
+                              {...props}
+                              {...animation}
+                              role="menu"
+                              tabIndex={-1}
+                              data-dropdown-portal
+                              style={{ position: strategy, top: y ?? 0, left: x ?? 0, ...props.style }}
+                              className={cn(
+                                  'border-border bg-bg z-10 w-max max-w-[calc(100vw-32px)] rounded-md border p-1 outline-hidden will-change-transform',
+                                  className
+                              )}
+                          >
+                              {Children.map(children, (child) => {
+                                  return isValidElement(child)
+                                      ? cloneElement(child as ReactElement<Record<string, unknown>>, {
+                                            triggerElement,
+                                            isOpen,
+                                            subTriggerElement,
+                                            isSubOpen,
+                                            setTriggerElement,
+                                            setIsOpen,
+                                            setSubTriggerElement,
+                                            setIsSubOpen
+                                        })
+                                      : child;
+                              })}
+                          </motion.div>
+                      )}
+                  </AnimatePresence>,
+                  document.body
+              );
     }
 );
 

@@ -71,7 +71,7 @@ const ToastPage = () => {
     const data: IDocumentationData = {
         title: 'Toast',
         description: 'A succinct message that is displayed temporarily using React Hot Toast.',
-        links: [{ href: 'https://react-hot-toast.com/docs', name: 'Docs' }],
+        links: [{ href: 'https://react-hot-toast.com/docs', name: 'React Hot Toast Docs' }],
         preview,
         codeSections
     };

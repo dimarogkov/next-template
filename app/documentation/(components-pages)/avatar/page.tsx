@@ -11,6 +11,7 @@ import {
     AVATAR_GROUP_CODE,
     AVATAR_DEMO_CODE,
     AVATAR_USAGE_CODE,
+    AVATAR_FALLBACK_USAGE_CODE,
     AVATAR_LINK_USAGE_CODE,
     AVATAR_GROUP_USAGE_CODE,
     NPM_CLASSNAMES_CODE,
@@ -72,6 +73,20 @@ const AvatarPage = () => {
             ),
             withAccordion: false,
             codeArr: [AVATAR_USAGE_CODE]
+        },
+        {
+            id: 'fallback',
+            title: 'Fallback',
+            link: '',
+            description: (
+                <Text>
+                    Pass a <span className="badge-item">fallback</span> node to&nbsp;
+                    <span className="badge-item">Avatar.Img</span> to render it instead of a broken image when the
+                    source fails to load.
+                </Text>
+            ),
+            withAccordion: false,
+            codeArr: [AVATAR_FALLBACK_USAGE_CODE]
         },
         {
             id: 'link',

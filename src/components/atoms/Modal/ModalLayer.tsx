@@ -2,16 +2,16 @@
 import { Dispatch, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
-    setIsOpen: Dispatch<SetStateAction<boolean>>;
+    setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
-export const ModalLayer = forwardRef<HTMLDivElement, Props>(({ setIsOpen = () => {}, ...props }, ref) => {
+export const ModalLayer = forwardRef<HTMLDivElement, Props>(({ setIsOpen, ...props }, ref) => {
     return (
         <div
             ref={ref}
             {...props}
-            onClick={() => setIsOpen(false)}
             aria-hidden="true"
+            onClick={() => setIsOpen?.(false)}
             className="absolute top-0 left-0 h-full w-full bg-black/80"
         />
     );

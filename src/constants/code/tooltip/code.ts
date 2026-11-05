@@ -82,7 +82,7 @@ export const TooltipWrapper = forwardRef<HTMLDivElement, Props>(
 TooltipWrapper.displayName = 'TooltipWrapper';`;
 
 export const TOOLTIP_TRIGGER_CODE = `'use client';
-import { forwardRef, HTMLAttributes, RefAttributes } from 'react';
+import { cloneElement, forwardRef, HTMLAttributes, isValidElement, ReactElement, RefAttributes } from 'react';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
@@ -94,14 +94,20 @@ interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivEle
 }
 
 export const TooltipTrigger = forwardRef<HTMLDivElement, Props>(
-  ({ align, position, tooltipId, isOpen, className = '', ...props }, ref) => {
+  ({ align, position, tooltipId, isOpen, className = '', children, ...props }, ref) => {
     return (
       <div
         ref={ref}
         {...props}
-        aria-describedby={tooltipId}
+        aria-describedby={!isValidElement(children) ? tooltipId : undefined}
         className={cn('relative cursor-pointer', className)}
-      />
+      >
+        {isValidElement(children)
+          ? cloneElement(children as ReactElement<Record<string, unknown>>, {
+             'aria-describedby': tooltipId
+           })
+          : children}
+      </div>
     );
   }
 );
@@ -176,6 +182,7 @@ export const TooltipContent = forwardRef<HTMLDivElement, Props>(
               {props.children}
 
               <Triangle
+                aria-hidden="true"
                 className={cn(
                   'fill-title text-title absolute size-3',
                   trianglePositionClasses[position],

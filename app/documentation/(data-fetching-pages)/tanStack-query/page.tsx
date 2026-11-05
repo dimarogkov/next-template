@@ -63,7 +63,9 @@ const TanStackQueryPage = () => {
     const data: IDocumentationData = {
         title: 'TanStack Query',
         description: 'Powerful asynchronous state management for TS/JS and React.',
-        links: [{ href: 'https://tanstack.com/query/latest/docs/framework/react/overview', name: 'Docs' }],
+        links: [
+            { href: 'https://tanstack.com/query/latest/docs/framework/react/overview', name: 'TanStack Query Docs' }
+        ],
         preview,
         codeSections
     };

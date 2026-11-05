@@ -2,15 +2,7 @@ import { Metadata } from 'next';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import {
-    BTN_CODE,
-    BTN_WRAPPER_CODE,
-    BTN_LINK_CODE,
-    BTN_DEMO_CODE,
-    BTN_USAGE_CODE,
-    BTN_LINK_USAGE_CODE,
-    NPM_CLASSNAMES_CODE
-} from '@code';
+import { BTN_CODE, BTN_DEMO_CODE, BTN_USAGE_CODE, BTN_HREF_USAGE_CODE, NPM_CLASSNAMES_CODE } from '@code';
 import { BtnDemo } from './BtnDemo';
 
 export const metadata: Metadata = {
@@ -42,12 +34,8 @@ const BtnPage = () => {
                     usage throughout the project.
                 </Text>
             ),
-            withAccordion: true,
-            codeArr: [
-                { label: 'index.ts', code: BTN_CODE },
-                { label: 'BtnWrapper.tsx', code: BTN_WRAPPER_CODE },
-                { label: 'BtnLink.tsx', code: BTN_LINK_CODE }
-            ]
+            withAccordion: false,
+            codeArr: [BTN_CODE]
         },
         {
             id: 'usage',
@@ -55,8 +43,7 @@ const BtnPage = () => {
             link: '',
             description: (
                 <Text>
-                    Import the <span className="badge-item">Btn</span> component and use its subcomponents to build your
-                    UI.
+                    Import the <span className="badge-item">Btn</span> component to build your UI.
                 </Text>
             ),
             withAccordion: false,
@@ -68,13 +55,12 @@ const BtnPage = () => {
             link: '',
             description: (
                 <Text>
-                    You can use the <span className="badge-item">isLink</span> prop and&nbsp;
-                    <span className="badge-item">Btn.Link</span> child component to make another component look like a
-                    button. Here&apos;s an example of a link that looks like a button.
+                    Pass an <span className="badge-item">href</span> prop to render a router link styled as a button,
+                    instead of a plain button element.
                 </Text>
             ),
             withAccordion: false,
-            codeArr: [BTN_LINK_USAGE_CODE]
+            codeArr: [BTN_HREF_USAGE_CODE]
         }
     ];
 

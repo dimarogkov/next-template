@@ -43,7 +43,7 @@ export const AvatarWrapper = forwardRef<HTMLDivElement, Props>(
             <div
                 ref={ref || avatarRef}
                 {...props}
-                className={cn('skeleton relative', className || 'size-12', {
+                className={cn('relative', className || 'size-12', {
                     'rounded-full': isTypeCircle,
                     'rounded-md': isTypeSquare,
                     'online-square': isOnline && isTypeSquare,
@@ -56,6 +56,8 @@ export const AvatarWrapper = forwardRef<HTMLDivElement, Props>(
                         ? cloneElement(child as ReactElement<Record<string, unknown>>, { type })
                         : child;
                 })}
+
+                {isOnline && <span className="sr-only">Online</span>}
             </div>
         );
     }

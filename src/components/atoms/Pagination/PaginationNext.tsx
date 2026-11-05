@@ -13,9 +13,9 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, RefAttributes<H
 }
 
 export const PaginationNext = forwardRef<HTMLButtonElement, Props>(({ options, className = '', ...props }, ref) => {
-    const { currentPage = 1, endPage, setPage = () => {} } = options ?? {};
+    const { currentPage = 1, endPage, setPage } = options ?? {};
 
-    const toggleNext = () => setPage(currentPage + 1);
+    const toggleNext = () => setPage?.(currentPage + 1);
 
     return (
         <button
@@ -25,7 +25,7 @@ export const PaginationNext = forwardRef<HTMLButtonElement, Props>(({ options, c
             disabled={currentPage === endPage}
             onClick={toggleNext}
             className={cn(
-                'text-title hover:bg-border relative flex size-9 cursor-pointer items-center justify-center rounded-md transition-colors duration-300',
+                'text-title hover:bg-border relative flex size-9 cursor-pointer items-center justify-center rounded-md transition-all duration-300',
                 className,
                 {
                     'pointer-events-none opacity-60 select-none': currentPage === endPage

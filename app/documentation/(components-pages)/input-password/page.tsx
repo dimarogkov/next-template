@@ -61,7 +61,7 @@ const InputPasswordPage = () => {
             link: '',
             description: (
                 <Text>
-                    To control the Input, add <span className="badge-item">value</span> and&nbsp;
+                    To control the InputPassword, add <span className="badge-item">value</span> and&nbsp;
                     <span className="badge-item">onChange</span> props to manage its state manually.
                 </Text>
             ),

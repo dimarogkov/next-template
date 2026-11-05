@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { KeyboardEvent, useEffect, useState } from 'react';
 import { EmblaCarouselType } from 'embla-carousel';
 
 export const useCarousel = (api?: EmblaCarouselType) => {
@@ -38,6 +38,18 @@ export const useCarousel = (api?: EmblaCarouselType) => {
     const onNextClick = () => api?.scrollNext();
     const onDotClick = (index: number) => api?.scrollTo(index);
 
+    const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            onPrevClick();
+        }
+
+        if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            onNextClick();
+        }
+    };
+
     return {
         dots,
         activeDotIndex,
@@ -45,6 +57,7 @@ export const useCarousel = (api?: EmblaCarouselType) => {
         isNextDisabled,
         onPrevClick,
         onNextClick,
-        onDotClick
+        onDotClick,
+        onKeyDown
     };
 };

@@ -21,7 +21,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, Props>(
             accordionIndex = 0,
             activeIndexArr,
             className = '',
-            toggleIndex = () => {},
+            toggleIndex,
             ...props
         },
         ref

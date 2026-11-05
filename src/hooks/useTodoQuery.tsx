@@ -5,7 +5,8 @@ export const useTodoQuery = () => {
     const {
         data: todos,
         refetch,
-        isLoading
+        isLoading,
+        isError
     } = useQuery({
         queryFn: () => getTodos(),
         select: (data) => data.data,
@@ -33,6 +34,7 @@ export const useTodoQuery = () => {
     return {
         todos,
         isLoading,
+        isError,
         createTodoMutation,
         isLoadingCreateTodo,
         updateTodoMutation,

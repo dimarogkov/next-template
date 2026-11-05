@@ -66,6 +66,7 @@ export const TooltipContent = forwardRef<HTMLDivElement, Props>(
                             {props.children}
 
                             <Triangle
+                                aria-hidden="true"
                                 className={cn(
                                     'fill-title text-title absolute size-3',
                                     trianglePositionClasses[position],

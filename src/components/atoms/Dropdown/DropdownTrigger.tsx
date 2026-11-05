@@ -1,34 +1,30 @@
 'use client';
-import { Dispatch, forwardRef, HTMLAttributes, KeyboardEvent, RefAttributes, SetStateAction } from 'react';
+import { Dispatch, forwardRef, HTMLAttributes, RefAttributes, SetStateAction } from 'react';
+import { assignRefs } from '@utils';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
+    triggerElement?: HTMLElement | null;
     isOpen?: boolean;
     className?: string;
+    setTriggerElement?: Dispatch<SetStateAction<HTMLElement | null>>;
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const DropdownTrigger = forwardRef<HTMLDivElement, Props>(
-    ({ isOpen, className = '', setIsOpen = () => {}, ...props }, ref) => {
-        const toggleOpen = () => setIsOpen((prevState) => !prevState);
+    ({ triggerElement, isOpen, className = '', setTriggerElement, setIsOpen, ...props }, ref) => {
+        const setRefs = assignRefs<HTMLDivElement>(ref, setTriggerElement);
 
-        const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggleOpen();
-            }
-        };
+        const toggleOpen = () => setIsOpen?.((prevState) => !prevState);
 
         return (
             <div
-                ref={ref}
+                ref={setRefs}
                 {...props}
-                role="button"
-                tabIndex={0}
+                aria-haspopup="menu"
                 aria-expanded={isOpen}
                 onClick={toggleOpen}
-                onKeyDown={onKeyDown}
-                className={cn('relative cursor-pointer list-none', className)}
+                className={cn('relative cursor-pointer', className)}
             />
         );
     }

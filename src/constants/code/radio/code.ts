@@ -10,9 +10,9 @@ interface Props extends InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTM
 
 export const Radio = forwardRef<HTMLInputElement, Props>(({ label, className = '', ...props }, ref) => {
   return (
-    <div
+    <label
       className={cn('flex cursor-pointer items-center gap-2 select-none', className, {
-        'pointer-events-none opacity-70': props.disabled
+        'pointer-events-none opacity-60': props.disabled
       })}
     >
       <div className="relative size-5 min-w-5">
@@ -20,26 +20,16 @@ export const Radio = forwardRef<HTMLInputElement, Props>(({ label, className = '
           ref={ref}
           {...props}
           type="radio"
-          className="absolute top-5 left-0 h-full w-full cursor-pointer opacity-0"
+          className="peer absolute top-0 left-0 h-full w-full cursor-pointer opacity-0"
         />
 
-        <span
-          className={cn('flex h-full w-full items-center justify-center rounded-full border bg-transparent', {
-            'border-border': !props.checked,
-            'border-title': props.checked
-          })}
-        >
-          <Circle
-            className={cn('bg-title text-title size-3 rounded-full', {
-              'invisible opacity-0': !props.checked,
-              'visible opacity-100': props.checked
-            })}
-          />
-        </span>
+        <span className="peer-checked:border-title border-border pointer-events-none absolute inset-0 rounded-full border bg-transparent" />
+
+        <Circle className="bg-title text-title pointer-events-none invisible absolute inset-0 m-auto size-3 rounded-full opacity-0 peer-checked:visible peer-checked:opacity-100" />
       </div>
 
-      {label && <Text>{label}</Text>}
-    </div>
+      {label && <Text as="span">{label}</Text>}
+    </label>
   );
 });
 

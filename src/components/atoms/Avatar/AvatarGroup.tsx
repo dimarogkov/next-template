@@ -47,6 +47,8 @@ export const AvatarGroup = forwardRef<HTMLDivElement, Props>(({ visibleCount, cl
 
             {visibleCount && childArray.length > visibleCount && (
                 <div
+                    role="img"
+                    aria-label={`and ${childArray.length - visibleCount} more`}
                     className={cn(
                         `bg-title text-bg relative flex items-center justify-center text-base font-medium select-none ${
                             widthClasses || 'size-12'

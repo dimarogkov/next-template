@@ -70,9 +70,9 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, RefAttributes<H
 }
 
 export const PaginationPrevious = forwardRef<HTMLButtonElement, Props>(({ options, className = '', ...props }, ref) => {
-  const { currentPage = 1, setPage = () => {} } = options ?? {};
+  const { currentPage = 1, setPage } = options ?? {};
 
-  const togglePrevious = () => setPage(currentPage - 1);
+  const togglePrevious = () => setPage?.(currentPage - 1);
 
   return (
     <button
@@ -82,7 +82,7 @@ export const PaginationPrevious = forwardRef<HTMLButtonElement, Props>(({ option
       disabled={currentPage === 1}
       onClick={togglePrevious}
       className={cn(
-        'text-title hover:bg-border relative flex size-9 cursor-pointer items-center justify-center rounded-md transition-colors duration-300',
+        'text-title hover:bg-border relative flex size-9 cursor-pointer items-center justify-center rounded-md transition-all duration-300',
         className,
         {
           'pointer-events-none opacity-60 select-none': currentPage === 1
@@ -112,9 +112,9 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, RefAttributes<H
 
 export const PaginationItem = forwardRef<HTMLButtonElement, Props>(
   ({ options, page, className = '', ...props }, ref) => {
-    const { currentPage = 1, setPage = () => {} } = options ?? {};
+    const { currentPage = 1, setPage } = options ?? {};
 
-    const toggleItem = () => setPage(+page);
+    const toggleItem = () => setPage?.(+page);
 
     return (
       <button
@@ -154,9 +154,9 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, RefAttributes<H
 }
 
 export const PaginationNext = forwardRef<HTMLButtonElement, Props>(({ options, className = '', ...props }, ref) => {
-  const { currentPage = 1, endPage, setPage = () => {} } = options ?? {};
+  const { currentPage = 1, endPage, setPage } = options ?? {};
 
-  const toggleNext = () => setPage(currentPage + 1);
+  const toggleNext = () => setPage?.(currentPage + 1);
 
   return (
     <button
@@ -166,7 +166,7 @@ export const PaginationNext = forwardRef<HTMLButtonElement, Props>(({ options, c
       disabled={currentPage === endPage}
       onClick={toggleNext}
       className={cn(
-        'text-title hover:bg-border relative flex size-9 cursor-pointer items-center justify-center rounded-md transition-colors duration-300',
+        'text-title hover:bg-border relative flex size-9 cursor-pointer items-center justify-center rounded-md transition-all duration-300',
         className,
         {
           'pointer-events-none opacity-60 select-none': currentPage === endPage

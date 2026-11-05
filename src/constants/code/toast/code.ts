@@ -5,14 +5,14 @@ export const TOAST_TYPE_CODE = `export interface IToastData {
 
 export const TOAST_CODE = `'use client';
 import { forwardRef, HTMLAttributes, RefAttributes } from 'react';
-import toast, { type Toast as TostType } from 'react-hot-toast';
+import toast, { type Toast as ToastType } from 'react-hot-toast';
 import { IToastData } from '@interfaces/ToastData';
 import { Text } from '@components/atoms';
 import { CircleAlert, CircleCheck, CircleX, Info, X } from 'lucide-react';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
-  toast: TostType;
+  toast: ToastType;
   type?: 'default' | 'success' | 'warning' | 'error';
   data: IToastData;
   className?: string;
@@ -38,16 +38,17 @@ export const Toast = forwardRef<HTMLDivElement, Props>(
     };
 
     const icon = {
-      default: <Info className="text-title hidden size-9 min-w-9 stroke-1 sm:block" />,
-      success: <CircleCheck className="text-green hidden size-9 min-w-9 stroke-1 sm:block" />,
-      warning: <CircleAlert className="text-yellow hidden size-9 min-w-9 stroke-1 sm:block" />,
-      error: <CircleX className="text-red hidden size-9 min-w-9 stroke-1 sm:block" />
+      default: <Info aria-hidden="true" className="text-title hidden size-9 min-w-9 stroke-1 sm:block" />,
+      success: <CircleCheck aria-hidden="true" className="text-green hidden size-9 min-w-9 stroke-1 sm:block" />,
+      warning: <CircleAlert aria-hidden="true" className="text-yellow hidden size-9 min-w-9 stroke-1 sm:block" />,
+      error: <CircleX aria-hidden="true" className="text-red hidden size-9 min-w-9 stroke-1 sm:block" />
     };
 
     return (
       <div
         ref={ref}
         {...props}
+        role={type === 'warning' || type === 'error' ? 'alert' : 'status'}
         className={cn(
           'border-border bg-bg relative flex w-full items-center gap-3 rounded-md border border-l-4 p-2.5 pr-10 sm:w-110 sm:p-3',
           toastClasses.border[type],
@@ -70,10 +71,11 @@ export const Toast = forwardRef<HTMLDivElement, Props>(
 
         <button
           type="button"
+          aria-label="Dismiss notification"
           onClick={() => toast.dismiss(t.id)}
           className="absolute top-1.5 right-1.5 cursor-pointer outline-hidden transition-opacity duration-300 hover:opacity-65"
         >
-          <X className="size-5" />
+          <X aria-hidden="true" className="size-5" />
         </button>
       </div>
     );

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import { NPM_CLASSNAMES_CODE, TEXT_CODE, TEXT_DEMO_CODE, TEXT_USAGE_CODE } from '@code';
+import { NPM_CLASSNAMES_CODE, TEXT_CODE, TEXT_DEMO_CODE, TEXT_USAGE_CODE, TEXT_AS_USAGE_CODE } from '@code';
 import { TextDemo } from './TextDemo';
 
 export const metadata: Metadata = {
@@ -48,6 +48,21 @@ const TextPage = () => {
             ),
             withAccordion: false,
             codeArr: [TEXT_USAGE_CODE]
+        },
+        {
+            id: 'as',
+            title: 'As',
+            link: '',
+            description: (
+                <Text>
+                    To change the rendered element, add the <span className="badge-item">as</span> prop to the&nbsp;
+                    <span className="badge-item">Text</span> component — useful when nesting inside elements that only
+                    allow phrasing content, like <span className="badge-item">label</span> or&nbsp;
+                    <span className="badge-item">button</span>.
+                </Text>
+            ),
+            withAccordion: false,
+            codeArr: [TEXT_AS_USAGE_CODE]
         }
     ];
 
