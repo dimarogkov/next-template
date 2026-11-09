@@ -15,16 +15,20 @@ export const AvatarDemo = () => {
                 </Avatar>
 
                 <Avatar>
-                    <Avatar.Img src={IMG_SRC} alt="User avatar" />
+                    <Avatar.Img src={IMG_SRC} alt="Jane Doe" />
                 </Avatar>
 
                 <Avatar isOnline>
-                    <Avatar.Img src={IMG_SRC} alt="User avatar" />
+                    <Avatar.Img src={IMG_SRC} alt="Jane Doe" />
+                </Avatar>
+
+                <Avatar hasRing>
+                    <Avatar.Img src={IMG_SRC} alt="Jane Doe" />
                 </Avatar>
 
                 <Avatar>
                     <Avatar.Link href={pathname}>
-                        <Avatar.Img src={IMG_SRC} alt="User avatar" hasHover />
+                        <Avatar.Img src={IMG_SRC} alt="Jane Doe" />
                     </Avatar.Link>
                 </Avatar>
             </div>
@@ -35,56 +39,44 @@ export const AvatarDemo = () => {
                 </Avatar>
 
                 <Avatar type="square">
-                    <Avatar.Img src={IMG_SRC} alt="User avatar" />
+                    <Avatar.Img src={IMG_SRC} alt="Jane Doe" />
                 </Avatar>
 
                 <Avatar type="square" isOnline>
-                    <Avatar.Img src={IMG_SRC} alt="User avatar" />
+                    <Avatar.Img src={IMG_SRC} alt="Jane Doe" />
+                </Avatar>
+
+                <Avatar type="square" hasRing>
+                    <Avatar.Img src={IMG_SRC} alt="Jane Doe" />
                 </Avatar>
 
                 <Avatar type="square">
                     <Avatar.Link href={pathname}>
-                        <Avatar.Img src={IMG_SRC} alt="User avatar" hasHover />
+                        <Avatar.Img src={IMG_SRC} alt="Jane Doe" />
                     </Avatar.Link>
                 </Avatar>
             </div>
 
             <div className="flex w-full gap-2.5">
-                <AvatarGroup visibleCount={4}>
+                <AvatarGroup visibleCount={3}>
                     <Avatar>
-                        <Avatar.Link href={pathname}>
-                            <Avatar.Img src={IMG_SRC} alt="User avatar" hasHover />
-                        </Avatar.Link>
+                        <Avatar.Img src={IMG_SRC} alt="Jane Doe" />
                     </Avatar>
 
                     <Avatar>
-                        <Avatar.Link href={pathname}>
-                            <Avatar.Img src={IMG_SRC} alt="User avatar" hasHover />
-                        </Avatar.Link>
+                        <Avatar.Img src={IMG_SRC} alt="Jane Doe" />
                     </Avatar>
 
                     <Avatar>
-                        <Avatar.Link href={pathname}>
-                            <Avatar.Img src={IMG_SRC} alt="User avatar" hasHover />
-                        </Avatar.Link>
+                        <Avatar.Img src={IMG_SRC} alt="Jane Doe" />
                     </Avatar>
 
                     <Avatar>
-                        <Avatar.Link href={pathname}>
-                            <Avatar.Img src={IMG_SRC} alt="User avatar" hasHover />
-                        </Avatar.Link>
+                        <Avatar.Img src={IMG_SRC} alt="Jane Doe" />
                     </Avatar>
 
                     <Avatar>
-                        <Avatar.Link href={pathname}>
-                            <Avatar.Img src={IMG_SRC} alt="User avatar" hasHover />
-                        </Avatar.Link>
-                    </Avatar>
-
-                    <Avatar>
-                        <Avatar.Link href={pathname}>
-                            <Avatar.Img src={IMG_SRC} alt="User avatar" hasHover />
-                        </Avatar.Link>
+                        <Avatar.Img src={IMG_SRC} alt="Jane Doe" />
                     </Avatar>
                 </AvatarGroup>
             </div>

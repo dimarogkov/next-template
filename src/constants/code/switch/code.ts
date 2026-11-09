@@ -1,7 +1,7 @@
 export const SWITCH_CODE = `'use client';
 import { ButtonHTMLAttributes, forwardRef, RefAttributes, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Text } from '@components/atoms';
+import { Text } from '@components/atoms/Text';
 import cn from 'classnames';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, RefAttributes<HTMLButtonElement> {

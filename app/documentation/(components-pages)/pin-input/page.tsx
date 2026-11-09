@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { IDocumentationData, IDocumentationCodeSection, IDocumentationPreview } from '@interfaces/Documentation';
 import { DocumentationDetailClient } from '@components/organisms';
 import { Text } from '@components/atoms';
-import { PIN_INPUT_CODE, PIN_INPUT_DEMO_CODE, PIN_INPUT_USAGE_CODE } from '@code';
+import { PIN_INPUT_CODE, PIN_INPUT_DEMO_CODE, PIN_INPUT_USAGE_CODE, PIN_INPUT_LENGTH_USAGE_CODE } from '@code';
 import { PinInputDemo } from './PinInputDemo';
 
 export const metadata: Metadata = {
@@ -40,6 +40,18 @@ const PinInputPage = () => {
             ),
             withAccordion: false,
             codeArr: [PIN_INPUT_USAGE_CODE]
+        },
+        {
+            id: 'length',
+            title: 'Length',
+            link: '',
+            description: (
+                <Text>
+                    Use the <span className="badge-item">length</span> prop to change the number of digits.
+                </Text>
+            ),
+            withAccordion: false,
+            codeArr: [PIN_INPUT_LENGTH_USAGE_CODE]
         }
     ];
 

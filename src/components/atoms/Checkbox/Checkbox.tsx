@@ -1,5 +1,5 @@
 import { forwardRef, InputHTMLAttributes, RefAttributes } from 'react';
-import { Text } from '@components/atoms';
+import { Text } from '@components/atoms/Text';
 import { Check } from 'lucide-react';
 import cn from 'classnames';
 

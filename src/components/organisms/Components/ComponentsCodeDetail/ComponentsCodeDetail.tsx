@@ -21,20 +21,32 @@ export const ComponentsCodeDetail = ({ code, type, className = '' }: Props) => {
     }, [code]);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(code);
+        navigator.clipboard
+            .writeText(code)
+            .then(() => {
+                toast.custom((t) => (
+                    <Toast
+                        toast={t}
+                        type="success"
+                        data={{
+                            title: 'Copied to clipboard',
+                            text: 'The code snippet has been copied to your clipboard.'
+                        }}
+                    />
+                ));
 
-        toast.custom((t) => (
-            <Toast
-                toast={t}
-                data={{
-                    title: 'Copied to clipboard',
-                    text: 'The code snippet has been copied to your clipboard.'
-                }}
-            />
-        ));
-
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+            })
+            .catch(() => {
+                toast.custom((t) => (
+                    <Toast
+                        toast={t}
+                        type="error"
+                        data={{ title: 'Copy failed', text: 'Could not copy the code snippet to your clipboard.' }}
+                    />
+                ));
+            });
     };
 
     return (

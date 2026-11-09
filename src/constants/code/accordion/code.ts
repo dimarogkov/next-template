@@ -127,7 +127,7 @@ AccordionItem.displayName = 'AccordionItem';`;
 
 export const ACCORDION_TITLE_CODE = `'use client';
 import { forwardRef, HTMLAttributes, RefAttributes } from 'react';
-import { Title } from '@components/atoms';
+import { Title } from '@components/atoms/Title';
 import { ChevronDown, Plus } from 'lucide-react';
 import cn from 'classnames';
 

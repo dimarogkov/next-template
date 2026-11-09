@@ -7,7 +7,7 @@ export const TOAST_CODE = `'use client';
 import { forwardRef, HTMLAttributes, RefAttributes } from 'react';
 import toast, { type Toast as ToastType } from 'react-hot-toast';
 import { IToastData } from '@interfaces/ToastData';
-import { Text } from '@components/atoms';
+import { Text } from '@components/atoms/Text';
 import { CircleAlert, CircleCheck, CircleX, Info, X } from 'lucide-react';
 import cn from 'classnames';
 

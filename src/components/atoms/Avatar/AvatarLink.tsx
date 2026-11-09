@@ -22,16 +22,15 @@ interface Props extends AnchorHTMLAttributes<HTMLAnchorElement>, RefAttributes<H
 export const AvatarLink = forwardRef<HTMLAnchorElement, Props>(
     ({ href, type = 'circle', children, className = '', ...props }, ref) => {
         const isTypeCircle = type === 'circle';
-        const isTypeSquare = type === 'square';
 
         return (
             <Link
                 ref={ref}
                 {...props}
                 href={href}
-                className={cn('relative block h-full w-full overflow-hidden', className, {
+                className={cn('group relative block h-full w-full overflow-hidden', className, {
                     'rounded-full': isTypeCircle,
-                    'rounded-md': isTypeSquare
+                    'rounded-md': !isTypeCircle
                 })}
             >
                 {Children.map(children, (child) => {

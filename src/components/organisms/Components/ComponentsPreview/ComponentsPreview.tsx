@@ -1,5 +1,5 @@
 import { IDocumentationPreview } from '@interfaces/Documentation';
-import { ComponentsCodeDetail } from '@components/organisms';
+import { ComponentsCodeDetail } from '@components/organisms/Components/ComponentsCodeDetail';
 import { Tabs } from '@components/atoms';
 
 type Props = {

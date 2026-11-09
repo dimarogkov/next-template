@@ -1,6 +1,6 @@
 export const RTK_QUERY_CODE = `import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, createDispatchHook, createSelectorHook } from 'react-redux';
-import todosApiSlice from './todosApiSlice';
+import { todosApiSlice } from './todosApiSlice';
 
 export const store = configureStore({
   reducer: {

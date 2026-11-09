@@ -1,5 +1,5 @@
 export const RADIO_CODE = `import { forwardRef, InputHTMLAttributes, RefAttributes } from 'react';
-import { Text } from '@components/atoms';
+import { Text } from '@components/atoms/Text';
 import { Circle } from 'lucide-react';
 import cn from 'classnames';
 

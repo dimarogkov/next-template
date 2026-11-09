@@ -1,5 +1,5 @@
 import { forwardRef, HTMLAttributes, RefAttributes } from 'react';
-import { Title } from '@components/atoms';
+import { Title } from '@components/atoms/Title';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLHeadingElement>, RefAttributes<HTMLHeadingElement> {

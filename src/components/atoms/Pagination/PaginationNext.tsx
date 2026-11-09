@@ -23,6 +23,7 @@ export const PaginationNext = forwardRef<HTMLButtonElement, Props>(({ options, c
             {...props}
             type="button"
             disabled={currentPage === endPage}
+            aria-label="Next page"
             onClick={toggleNext}
             className={cn(
                 'text-title hover:bg-border relative flex size-9 cursor-pointer items-center justify-center rounded-md transition-all duration-300',

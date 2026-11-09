@@ -14,8 +14,8 @@ import {
     AVATAR_FALLBACK_USAGE_CODE,
     AVATAR_LINK_USAGE_CODE,
     AVATAR_GROUP_USAGE_CODE,
-    NPM_CLASSNAMES_CODE,
-    NPM_FRAMER_MOTION_CODE
+    AVATAR_RING_USAGE_CODE,
+    NPM_CLASSNAMES_CODE
 } from '@code';
 import { AvatarDemo } from './AvatarDemo';
 
@@ -35,11 +35,8 @@ const AvatarPage = () => {
             title: 'Installation',
             link: '',
             description: null,
-            withAccordion: true,
-            codeArr: [
-                { label: 'Classnames', code: NPM_CLASSNAMES_CODE },
-                { label: 'Framer Motion', code: NPM_FRAMER_MOTION_CODE }
-            ]
+            withAccordion: false,
+            codeArr: [NPM_CLASSNAMES_CODE]
         },
         {
             id: 'code',
@@ -89,6 +86,19 @@ const AvatarPage = () => {
             codeArr: [AVATAR_FALLBACK_USAGE_CODE]
         },
         {
+            id: 'ring',
+            title: 'Ring',
+            link: '',
+            description: (
+                <Text>
+                    Use the <span className="badge-item">hasRing</span> prop to outline the avatar, useful for
+                    highlighting a selected or active user.
+                </Text>
+            ),
+            withAccordion: false,
+            codeArr: [AVATAR_RING_USAGE_CODE]
+        },
+        {
             id: 'link',
             title: 'Link',
             link: '',
@@ -120,8 +130,8 @@ const AvatarPage = () => {
 
     const data: IDocumentationData = {
         title: 'Avatar',
-        description: 'An image element with a fallback for representing the user using Framer Motion.',
-        links: [{ href: 'https://motion.dev/docs/react', name: 'Docs' }],
+        description: 'An image element with a fallback for representing the user.',
+        links: [],
         preview,
         codeSections
     };

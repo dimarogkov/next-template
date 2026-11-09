@@ -1,5 +1,5 @@
 import { forwardRef, HTMLAttributes, ReactNode, RefAttributes } from 'react';
-import { ComponentsCodeDetail } from '@components/organisms';
+import { ComponentsCodeDetail } from '@components/organisms/Components/ComponentsCodeDetail';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     codeArr: string[];

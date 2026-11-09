@@ -3,7 +3,10 @@
 import { KeyboardEvent as ReactKeyboardEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { useMain } from '@hooks';
-import { HeaderSearchFilters, HeaderSearchFooter, HeaderSearchLink, HeaderSearchTrigger } from '@components/molecules';
+import { HeaderSearchFilters } from '@components/molecules/Header/HeaderSearchFilters';
+import { HeaderSearchFooter } from '@components/molecules/Header/HeaderSearchFooter';
+import { HeaderSearchLink } from '@components/molecules/Header/HeaderSearchLink';
+import { HeaderSearchTrigger } from '@components/molecules/Header/HeaderSearchTrigger';
 import { Input, Kbd, Label, Modal, Text } from '@components/atoms';
 import { canTriggerGlobalSearchShortcut, debounce, getLinks } from '@utils';
 import { Search } from 'lucide-react';

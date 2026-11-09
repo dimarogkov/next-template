@@ -1,5 +1,5 @@
 import { forwardRef, HTMLAttributes, RefAttributes } from 'react';
-import { Text } from '@components/atoms';
+import { Text } from '@components/atoms/Text';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLParagraphElement>, RefAttributes<HTMLParagraphElement> {

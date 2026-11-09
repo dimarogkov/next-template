@@ -9,7 +9,7 @@ import {
     SetStateAction
 } from 'react';
 import { ISelectItem } from '@interfaces/SelectItem';
-import { Text } from '@components/atoms';
+import { Text } from '@components/atoms/Text';
 import { assignRefs } from '@utils';
 import { ChevronDown, LucideProps } from 'lucide-react';
 import cn from 'classnames';

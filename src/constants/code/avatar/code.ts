@@ -42,22 +42,24 @@ import {
   useRef,
   useState
 } from 'react';
+import { assignRefs } from '@utils';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
   currentIndex?: number;
   type?: 'circle' | 'square';
   isOnline?: boolean;
+  hasRing?: boolean;
   className?: string;
 }
 
 export const AvatarWrapper = forwardRef<HTMLDivElement, Props>(
-  ({ currentIndex, type = 'circle', isOnline = false, className = '', ...props }, ref) => {
+  ({ currentIndex, type = 'circle', isOnline = false, hasRing = false, className = '', ...props }, ref) => {
     const [currentWidth, setCurrentWidth] = useState(0);
     const avatarRef = useRef<HTMLDivElement>(null);
+    const setRefs = assignRefs<HTMLDivElement>(ref, avatarRef);
 
     const isTypeCircle = type === 'circle';
-    const isTypeSquare = type === 'square';
 
     useEffect(() => {
       setCurrentWidth(avatarRef.current?.offsetWidth || 48);
@@ -66,21 +68,22 @@ export const AvatarWrapper = forwardRef<HTMLDivElement, Props>(
     const avatarStyle = {
       ...(currentIndex && {
         left: \`\${currentIndex * Math.round(currentWidth / 4) * -1}px\`,
-        outline: '3px solid var(--color-bg)'
+        boxShadow: '0 0 0 3px var(--color-bg)'
       })
     };
 
     return (
       <div
-        ref={ref || avatarRef}
+        ref={setRefs}
         {...props}
+        style={avatarStyle}
         className={cn('relative', className || 'size-12', {
+          'outline-title outline-2 outline-offset-2': hasRing,
           'rounded-full': isTypeCircle,
-          'rounded-md': isTypeSquare,
-          'online-square': isOnline && isTypeSquare,
+          'rounded-md': !isTypeCircle,
+          'online-square': isOnline && !isTypeCircle,
           online: isOnline && isTypeCircle
         })}
-        style={avatarStyle}
       >
         {Children.map(props.children, (child) => {
           return isValidElement(child)
@@ -120,16 +123,15 @@ interface Props extends AnchorHTMLAttributes<HTMLAnchorElement>, RefAttributes<H
 export const AvatarLink = forwardRef<HTMLAnchorElement, Props>(
   ({ href, type = 'circle', children, className = '', ...props }, ref) => {
     const isTypeCircle = type === 'circle';
-    const isTypeSquare = type === 'square';
 
     return (
       <Link
         ref={ref}
         {...props}
         href={href}
-        className={cn('relative block h-full w-full overflow-hidden', className, {
+        className={cn('group relative block h-full w-full overflow-hidden', className, {
           'rounded-full': isTypeCircle,
-          'rounded-md': isTypeSquare
+          'rounded-md': !isTypeCircle
         })}
       >
         {Children.map(children, (child) => {
@@ -146,58 +148,74 @@ AvatarLink.displayName = 'AvatarLink';`;
 
 export const AVATAR_IMG_CODE = `'use client';
 import { forwardRef, ReactNode, RefAttributes, useState } from 'react';
-import { HTMLMotionProps, motion } from 'framer-motion';
+import Image, { ImageProps } from 'next/image';
 import cn from 'classnames';
 
-interface Props extends Omit<HTMLMotionProps<'img'>, 'alt'>, RefAttributes<HTMLImageElement> {
+interface Props extends Omit<ImageProps, 'alt' | 'fill'>, RefAttributes<HTMLImageElement> {
   alt: string;
   type?: 'circle' | 'square';
   fallback?: ReactNode;
-  hasHover?: boolean;
   className?: string;
 }
 
 export const AvatarImg = forwardRef<HTMLImageElement, Props>(
-  ({ type = 'circle', fallback, hasHover = false, className = '', onError, ...props }, ref) => {
+  ({ type = 'circle', fallback, className = '', onLoad, onError, ...props }, ref) => {
+    const [isLoaded, setIsLoaded] = useState(false);
     const [hasError, setHasError] = useState(false);
 
     const isTypeCircle = type === 'circle';
-    const isTypeSquare = type === 'square';
-
-    const animation: HTMLMotionProps<'img'> = {
-      whileHover: { scale: 1.1, transition: { duration: 0.5, ease: [0.215, 0.61, 0.355, 1] } }
-    };
 
     return hasError && fallback ? (
       <div
         role="img"
         aria-label={props.alt}
         className={cn(
-          'bg-border text-title absolute inset-0 flex items-center justify-center text-sm font-medium',
+          'bg-border text-title absolute inset-0 flex items-center justify-center text-base font-medium',
           className,
           {
             'rounded-full': isTypeCircle,
-            'rounded-md': isTypeSquare
+            'rounded-md': !isTypeCircle
           }
         )}
       >
         {fallback}
       </div>
     ) : (
-      <motion.img
-        ref={ref}
-        {...props}
-        {...(hasHover && animation)}
-        onError={(e) => {
-          setHasError(true);
-          onError?.(e);
-        }}
-        className={cn('absolute top-0 left-0 object-cover object-center', className, {
-          'will-change-transform': hasHover,
-          'rounded-full': isTypeCircle,
-          'rounded-md': isTypeSquare
-        })}
-      />
+      <>
+        {!isLoaded && !hasError && (
+          <div
+            aria-hidden="true"
+            className={cn('bg-border absolute inset-0 animate-pulse', className, {
+              'rounded-full': isTypeCircle,
+              'rounded-md': !isTypeCircle
+            })}
+          />
+        )}
+
+        <Image
+          ref={ref}
+          {...props}
+          alt={props.alt}
+          sizes="128px"
+          fill
+          onLoad={(e) => {
+            setIsLoaded(true);
+            onLoad?.(e);
+          }}
+          onError={(e) => {
+            setHasError(true);
+            onError?.(e);
+          }}
+          className={cn(
+            'object-cover object-center transition-transform duration-300 will-change-transform group-hover:scale-105',
+            className,
+            {
+              'rounded-full': isTypeCircle,
+              'rounded-md': !isTypeCircle
+            }
+          )}
+        />
+      </>
     );
   }
 );
@@ -256,7 +274,7 @@ export const AvatarGroup = forwardRef<HTMLDivElement, Props>(({ visibleCount, cl
           role="img"
           aria-label={\`and \${childArray.length - visibleCount} more\`}
           className={cn(
-            \`bg-title text-bg relative flex items-center justify-center text-base font-medium select-none \${
+            \`bg-title text-bg relative flex items-center justify-center text-lg select-none \${
               widthClasses || 'size-12'
             }\`,
             {

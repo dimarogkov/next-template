@@ -8,7 +8,7 @@ export const PATHS = {
         COMPONENTS: {
             ACCORDION: { path: '/accordion', status: 'updated' },
             ALERT: { path: '/alert' },
-            AVATAR: { path: '/avatar' },
+            AVATAR: { path: '/avatar', status: 'updated' },
             BADGE: { path: '/badge' },
             BLOCKQUOTE: { path: '/blockquote' },
             BREADCRUMB: { path: '/breadcrumb' },
@@ -31,7 +31,7 @@ export const PATHS = {
             SEPARATOR: { path: '/separator' },
             SIMPLE_LINK: { path: '/simple-link' },
             SWITCH: { path: '/switch' },
-            TABS: { path: '/tabs' },
+            TABS: { path: '/tabs', status: 'updated' },
             TEXT: { path: '/text' },
             TEXTAREA: { path: '/textarea' },
             TITLE: { path: '/title' },

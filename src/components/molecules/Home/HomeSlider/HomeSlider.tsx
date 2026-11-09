@@ -2,7 +2,7 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoScroll from 'embla-carousel-auto-scroll';
 import { EmblaOptionsType } from 'embla-carousel';
-import { DevIcon } from '@components/molecules';
+import { DevIcon } from '@components/molecules/DevIcon';
 import { Carousel } from '@components/atoms';
 import { DEV_ICONS } from '@constants';
 import cn from 'classnames';

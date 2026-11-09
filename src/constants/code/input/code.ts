@@ -25,7 +25,7 @@ Input.displayName = 'Input';`;
 
 export const INPUT_PASSWORD_CODE = `'use client';
 import { InputHTMLAttributes, RefAttributes, forwardRef, MouseEvent, useRef, useState } from 'react';
-import { Input } from '@components/atoms';
+import { Input } from '@components/atoms/Input';
 import { Eye, EyeOff } from 'lucide-react';
 import cn from 'classnames';
 

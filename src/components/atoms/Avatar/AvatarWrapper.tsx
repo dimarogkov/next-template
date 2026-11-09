@@ -11,22 +11,24 @@ import {
     useRef,
     useState
 } from 'react';
+import { assignRefs } from '@utils';
 import cn from 'classnames';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     currentIndex?: number;
     type?: 'circle' | 'square';
     isOnline?: boolean;
+    hasRing?: boolean;
     className?: string;
 }
 
 export const AvatarWrapper = forwardRef<HTMLDivElement, Props>(
-    ({ currentIndex, type = 'circle', isOnline = false, className = '', ...props }, ref) => {
+    ({ currentIndex, type = 'circle', isOnline = false, hasRing = false, className = '', ...props }, ref) => {
         const [currentWidth, setCurrentWidth] = useState(0);
         const avatarRef = useRef<HTMLDivElement>(null);
+        const setRefs = assignRefs<HTMLDivElement>(ref, avatarRef);
 
         const isTypeCircle = type === 'circle';
-        const isTypeSquare = type === 'square';
 
         useEffect(() => {
             setCurrentWidth(avatarRef.current?.offsetWidth || 48);
@@ -35,21 +37,22 @@ export const AvatarWrapper = forwardRef<HTMLDivElement, Props>(
         const avatarStyle = {
             ...(currentIndex && {
                 left: `${currentIndex * Math.round(currentWidth / 4) * -1}px`,
-                outline: '3px solid var(--color-bg)'
+                boxShadow: '0 0 0 3px var(--color-bg)'
             })
         };
 
         return (
             <div
-                ref={ref || avatarRef}
+                ref={setRefs}
                 {...props}
+                style={avatarStyle}
                 className={cn('relative', className || 'size-12', {
+                    'outline-title outline-2 outline-offset-2': hasRing,
                     'rounded-full': isTypeCircle,
-                    'rounded-md': isTypeSquare,
-                    'online-square': isOnline && isTypeSquare,
+                    'rounded-md': !isTypeCircle,
+                    'online-square': isOnline && !isTypeCircle,
                     online: isOnline && isTypeCircle
                 })}
-                style={avatarStyle}
             >
                 {Children.map(props.children, (child) => {
                     return isValidElement(child)

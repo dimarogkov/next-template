@@ -1,5 +1,5 @@
 import { forwardRef, HTMLAttributes, ReactNode, RefAttributes } from 'react';
-import { ComponentsCodeDetail } from '@components/organisms';
+import { ComponentsCodeDetail } from '@components/organisms/Components/ComponentsCodeDetail';
 import { Accordion } from '@components/atoms';
 
 interface Props extends HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
