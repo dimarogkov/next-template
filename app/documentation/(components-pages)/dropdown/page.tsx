@@ -17,6 +17,7 @@ import {
     DROPDOWN_SUB_CONTENT_CODE,
     USE_ESCAPE_KEY_CODE,
     USE_FOCUS_RESTORE_CODE,
+    USE_MEDIA_QUERY_CODE,
     DROPDOWN_DEMO_CODE,
     DROPDOWN_USAGE_CODE,
     DROPDOWN_POSITION_USAGE_CODE,
@@ -59,10 +60,7 @@ const DropdownPage = () => {
                 <Text>
                     Include a custom <span className="badge-item">assignRefs</span> and&nbsp;
                     <span className="badge-item">Dropdown</span> component for consistent and maintainable usage
-                    throughout the project. Its content renders through a portal (nested submenus position directly
-                    against it) and uses <span className="badge-item">Floating UI</span> for positioning and collision
-                    detection, and reuses the <span className="badge-item">useEscapeKey</span> and&nbsp;
-                    <span className="badge-item">useFocusRestore</span> hooks for accessibility.
+                    throughout the project.
                 </Text>
             ),
             withAccordion: true,
@@ -80,7 +78,8 @@ const DropdownPage = () => {
                 { label: 'DropdownSubTrigger.tsx', code: DROPDOWN_SUB_TRIGGER_CODE },
                 { label: 'DropdownSubContent.tsx', code: DROPDOWN_SUB_CONTENT_CODE },
                 { label: 'useEscapeKey.tsx', code: USE_ESCAPE_KEY_CODE },
-                { label: 'useFocusRestore.tsx', code: USE_FOCUS_RESTORE_CODE }
+                { label: 'useFocusRestore.tsx', code: USE_FOCUS_RESTORE_CODE },
+                { label: 'useMediaQuery.tsx', code: USE_MEDIA_QUERY_CODE }
             ]
         },
         {

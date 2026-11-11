@@ -16,7 +16,7 @@ import {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
-import { autoUpdate, flip, offset, shift, useFloating } from '@floating-ui/react-dom';
+import { autoUpdate, flip, offset, shift, size, useFloating } from '@floating-ui/react-dom';
 import { useEscapeKey, useFocusRestore } from '@hooks';
 import { assignRefs } from '@utils';
 import cn from 'classnames';
@@ -69,7 +69,16 @@ export const DropdownContent = forwardRef<HTMLDivElement, Props>(
             open: isOpen,
             strategy: 'fixed',
             placement: PLACEMENTS[position][align],
-            middleware: [offset(4), flip(), shift({ padding: 8 })],
+            middleware: [
+                offset(4),
+                flip(),
+                shift({ padding: 8 }),
+                size({
+                    apply({ rects, elements }) {
+                        elements.floating.style.setProperty('--dropdown-trigger-width', `${rects.reference.width}px`);
+                    }
+                })
+            ],
             elements: { reference: triggerElement },
             whileElementsMounted: autoUpdate
         });
@@ -104,7 +113,7 @@ export const DropdownContent = forwardRef<HTMLDivElement, Props>(
                               data-dropdown-portal
                               style={{ position: strategy, top: y ?? 0, left: x ?? 0, ...props.style }}
                               className={cn(
-                                  'border-border bg-bg z-10 w-max max-w-[calc(100vw-32px)] rounded-md border p-1 outline-hidden will-change-transform',
+                                  'border-border bg-bg z-10 w-(--dropdown-trigger-width) max-w-[calc(100vw-32px)] rounded-md border p-1 outline-hidden will-change-transform',
                                   className
                               )}
                           >

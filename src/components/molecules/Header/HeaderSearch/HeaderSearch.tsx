@@ -137,7 +137,7 @@ export const HeaderSearch = () => {
             </Modal.Trigger>
 
             <Modal.Content disableCloseBtn onOpenChange={handleModalOpenChange}>
-                <div className="flex h-116 max-h-[90svh] w-full flex-col sm:h-128">
+                <div className="flex h-116 max-h-[90dvh] w-full flex-col sm:h-128">
                     <div className="w-full shrink-0 px-2 pt-2">
                         <Label className="relative flex! items-center">
                             <Input

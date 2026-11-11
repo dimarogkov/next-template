@@ -48,7 +48,7 @@ export const ModalContent = forwardRef<HTMLDivElement, Props>(
                 {isOpen && (
                     <motion.div
                         {...animation}
-                        className="fixed top-0 left-0 z-20 flex h-svh w-full items-center justify-center"
+                        className="fixed top-0 left-0 z-50 flex h-dvh w-full items-center justify-center"
                     >
                         <ModalLayer setIsOpen={setIsOpen} />
 

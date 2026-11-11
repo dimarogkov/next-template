@@ -43,7 +43,7 @@ export const ModalWrapper = forwardRef<HTMLDivElement, Props>(({ className = '',
   }, [isModalOpen]);
 
   return (
-    <div ref={ref} {...props} className={cn('relative z-50 w-fit', className)}>
+    <div ref={ref} {...props} className={cn('relative w-fit', className)}>
       {Children.map(props.children, (child) => {
         return isValidElement(child)
           ? cloneElement(child as ReactElement<Record<string, unknown>>, {
@@ -147,7 +147,7 @@ export const ModalContent = forwardRef<HTMLDivElement, Props>(
         {isOpen && (
           <motion.div
             {...animation}
-            className="fixed top-0 left-0 z-20 flex h-svh w-full items-center justify-center"
+            className="fixed top-0 left-0 z-50 flex h-dvh w-full items-center justify-center"
           >
             <ModalLayer setIsOpen={setIsOpen} />
 

@@ -156,7 +156,7 @@ import {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
-import { autoUpdate, flip, offset, shift, useFloating } from '@floating-ui/react-dom';
+import { autoUpdate, flip, offset, shift, size, useFloating } from '@floating-ui/react-dom';
 import { useEscapeKey, useFocusRestore } from '@hooks';
 import { assignRefs } from '@utils';
 import cn from 'classnames';
@@ -209,7 +209,16 @@ export const DropdownContent = forwardRef<HTMLDivElement, Props>(
       open: isOpen,
       strategy: 'fixed',
       placement: PLACEMENTS[position][align],
-      middleware: [offset(4), flip(), shift({ padding: 8 })],
+      middleware: [
+        offset(4),
+        flip(),
+        shift({ padding: 8 }),
+        size({
+          apply({ rects, elements }) {
+            elements.floating.style.setProperty('--dropdown-trigger-width', \`\${rects.reference.width}px\`);
+          }
+        })
+      ],
       elements: { reference: triggerElement },
       whileElementsMounted: autoUpdate
     });
@@ -244,7 +253,7 @@ export const DropdownContent = forwardRef<HTMLDivElement, Props>(
                data-dropdown-portal
                style={{ position: strategy, top: y ?? 0, left: x ?? 0, ...props.style }}
                className={cn(
-                 'border-border bg-bg z-10 w-max max-w-[calc(100vw-32px)] rounded-md border p-1 outline-hidden will-change-transform',
+                 'border-border bg-bg z-10 w-(--dropdown-trigger-width) max-w-[calc(100vw-32px)] rounded-md border p-1 outline-hidden will-change-transform',
                  className
                )}
              >
@@ -666,7 +675,8 @@ import {
   SetStateAction
 } from 'react';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
-import { autoUpdate, flip, offset, shift, useFloating } from '@floating-ui/react-dom';
+import { autoUpdate, flip, offset, shift, size, useFloating } from '@floating-ui/react-dom';
+import { useMediaQuery } from '@hooks';
 import { assignRefs } from '@utils';
 import cn from 'classnames';
 
@@ -700,11 +710,25 @@ export const DropdownSubContent = forwardRef<HTMLDivElement, Props>(
     },
     ref
   ) => {
+    const isDesktop = useMediaQuery('(min-width: 640px)');
+
     const { refs, x, y, strategy } = useFloating({
       open: isSubOpen,
       strategy: 'absolute',
-      placement: 'right-start',
-      middleware: [offset({ mainAxis: 4, crossAxis: -5 }), flip(), shift({ padding: 8 })],
+      placement: isDesktop ? 'right-start' : 'bottom-start',
+      middleware: [
+        offset(isDesktop ? { mainAxis: 4, crossAxis: -5 } : 4),
+        flip(),
+        shift({ padding: 8 }),
+        size({
+          apply({ rects, elements }) {
+            elements.floating.style.setProperty(
+              '--dropdown-subtrigger-width',
+              \`\${rects.reference.width}px\`
+            );
+          }
+        })
+      ],
       elements: { reference: subTriggerElement },
       whileElementsMounted: autoUpdate
     });
@@ -727,7 +751,7 @@ export const DropdownSubContent = forwardRef<HTMLDivElement, Props>(
             role="menu"
             style={{ position: strategy, top: y ?? 0, left: x ?? 0, ...props.style }}
             className={cn(
-              'border-border bg-bg z-10 w-max max-w-[calc(100vw-32px)] rounded-md border p-1 will-change-transform',
+              'border-border bg-bg z-10 w-(--dropdown-subtrigger-width) max-w-[calc(100vw-32px)] rounded-md border p-1 will-change-transform',
               className
             )}
           >
@@ -794,4 +818,22 @@ export const useFocusRestore = (containerRef: RefObject<HTMLElement | null>, isA
       containerRef.current?.focus();
     }
   }, [containerRef, isActive]);
+};`;
+
+export const USE_MEDIA_QUERY_CODE = `import { useEffect, useState } from 'react';
+
+export const useMediaQuery = (query: string) => {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(query);
+    setMatches(mediaQuery.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => setMatches(e.matches);
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, [query]);
+
+  return matches;
 };`;

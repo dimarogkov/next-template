@@ -60,7 +60,7 @@ export const ReorderDemo = () => {
         axis="x"
         onReorder={setItemsX}
         aria-label="Reorderable list"
-        className="grid grid-cols-3 gap-2.5"
+        className="hidden grid-cols-3 gap-2.5 sm:grid"
       >
         {itemsX.map((item) => (
           <Reorder.Item

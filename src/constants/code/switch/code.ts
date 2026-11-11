@@ -40,8 +40,8 @@ export const Switch = forwardRef<HTMLButtonElement, Props>(
         >
           <motion.span
             layout
-            transition={{ type: 'spring', visualDuration: 0.3, bounce: 0.2 }}
-            className={cn('relative size-5 rounded-full transition-colors duration-300', {
+            transition={{ type: 'spring', visualDuration: 0.2, bounce: 0.2 }}
+            className={cn('relative size-5 rounded-full transition-colors duration-200', {
               'bg-title': isActive,
               'bg-text': !isActive
             })}

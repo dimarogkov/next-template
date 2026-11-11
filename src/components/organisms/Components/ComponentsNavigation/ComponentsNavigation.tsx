@@ -2,6 +2,7 @@
 import { MutableRefObject, useState } from 'react';
 import Link from 'next/link';
 import { motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
+import { useActiveSection } from '@hooks';
 import { IComponentsSection } from '@interfaces/ComponentsSection';
 import { ComponentsNavigationBtns } from '@components/organisms/Components/ComponentsNavigationBtns';
 import { Text } from '@components/atoms';
@@ -15,31 +16,10 @@ type Props = {
 };
 
 export const ComponentsNavigation = ({ sectionsRef, sectionsArr, codeLink }: Props) => {
-    const [activeSection, setActiveSection] = useState('');
     const [hasScrolled, setHasScrolled] = useState(false);
-    const { scrollY, scrollYProgress } = useScroll();
+    const { scrollYProgress } = useScroll();
     const roundedProgress = useTransform(scrollYProgress, (value) => Math.round(value * 100));
-
-    const findActiveSection = () => {
-        for (const { id } of sectionsArr) {
-            const el = sectionsRef.current[id];
-            if (!el) continue;
-
-            const { top, bottom } = el.getBoundingClientRect();
-            const targetPoint = window.innerHeight / 3;
-
-            if (top <= targetPoint && bottom >= targetPoint) {
-                return id;
-            }
-        }
-
-        return '';
-    };
-
-    useMotionValueEvent(scrollY, 'change', () => {
-        const section = findActiveSection();
-        section !== activeSection && setActiveSection(section);
-    });
+    const activeSection = useActiveSection(sectionsRef, sectionsArr);
 
     useMotionValueEvent(scrollYProgress, 'change', (latest) => {
         const scrolled = latest > 0;

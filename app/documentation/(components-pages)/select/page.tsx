@@ -59,10 +59,7 @@ const SelectPage = () => {
                 <Text>
                     Include a custom <span className="badge-item">ISelectItem</span>,&nbsp;
                     <span className="badge-item">assignRefs</span> and <span className="badge-item">Select</span>&nbsp;
-                    component for consistent and maintainable usage throughout the project. Its options list renders
-                    through a portal and uses <span className="badge-item">Floating UI</span> for positioning and
-                    collision detection, and reuses the <span className="badge-item">useEscapeKey</span> and&nbsp;
-                    <span className="badge-item">useFocusRestore</span> hooks for accessibility.
+                    component for consistent and maintainable usage throughout the project.
                 </Text>
             ),
             withAccordion: true,
